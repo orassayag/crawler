@@ -1,0 +1,202 @@
+<!--<![endif]--><head>
+
+        <meta charset="utf-8">
+        <meta name="robots" content="index,follow">
+        <meta http-equiv="imagetoolbar" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+        <title>דרושים הנהלת חשבונות, חשבי שכר - ט.מ.ל</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="ברוכים הבאים לדף הדרושים של ט.מ.ל ! ריכזנו עבורכם מספר רב של משרות במגוון של חברות ומשרדים בדגש על הנהלת חשבונות וחשבי שכר
+">
+
+        <meta property="og:locale" content="he_IL">
+        <meta property="og:image" content="//www.tamal.co.il/images/logo_social.png">
+        <meta property="og:site_name" content="דרושים הנהלת חשבונות, חשבי שכר - ט.מ.ל">
+        <meta property="og:title" content="דרושים הנהלת חשבונות, חשבי שכר - ט.מ.ל">
+        <meta property="og:description" content="ברוכים הבאים לדף הדרושים של ט.מ.ל ! ריכזנו עבורכם מספר רב של משרות במגוון של חברות ומשרדים בדגש על הנהלת חשבונות וחשבי שכר
+">
+        <link rel="canonical" href="https://www.tamal.co.il/דרושים">
+    <link rel="alternate" href="https://www.tamal.co.il/mobile/דרושים">
+
+        <link type="text/css" rel="stylesheet" href="/style/general.css?v=2">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-455613-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-455613-1');
+</script>
+
+
+</head><body id="blue">-----------------------------------------------
+
+
+<!--<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-455613-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>-->
+
+
+<!-- Google Tag Manager -->
+<!--<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M77684"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M77684');</script>-->
+<!-- End Google Tag Manager -->
+
+<meta name="google-site-verification" content="isNu9GiGDSglWEupKDVDQ9hhVSyglsn2M2ARS_2BzE8">
+
+        <link type="text/css" rel="stylesheet" href="/style/jobs.css">
+
+
+
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-455613-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-455613-1');
+</script>
+
+        <header>
+                <div class="clsLoginBtn" onclick="Login.open()">כניסה<br>למערכת</div>
+                <div class="clsPaycheckBtn" onclick="window.open('https://paychecks.tamal.co.il/');"><img src="/images/logo.png" alt="ט.מ.ל"><br>PAYCHECKS</div>
+                <a href="/"><img class="clsLogo" src="/images/logo.png" alt="ט.מ.ל"></a>
+                <nav class="clsTopMenu">
+                        <ul>
+                                <li><a id="oTopMenuBtn166" href="/אודות">אודות</a></li><li><a id="oTopMenuBtn167" href="/מוצרים">מוצרים</a></li><li><a id="oTopMenuBtn168" href="/תמיכה-ושירות/כללי">תמיכה ושירות</a></li><li><a id="oTopMenuBtn170" href="/חדשות">מרכז ידע</a></li><li><a id="oTopMenuBtn182" href="/דרושים" class="clsSelected">דרושים</a></li><li><a id="oTopMenuBtn171" href="/צור-קשר">צרו קשר</a></li><li><a id="oTopMenuBtn187" href="/טפסים-שימושיים">טפסים לרשויות המס</a></li>
+                        </ul>
+                        <div id="oTopMenuArrow" style="opacity: 1; display: block; left: 315.859px; width: 53px;"></div>
+                </nav>
+                <div class="clsLoginStrip" style="">
+                        <div class="clsCloseIcon" onclick="Login.close()"></div>
+                        <div class="clsRegBtn" onclick="location.href='https://service.tamal.co.il/NewUser.aspx';">לחץ להרשמה</div>
+                        <form method="post" action="http://service.tamal.co.il/Login.aspx">
+                                <input type="text" name="UserId" class="clsField" placeholder="מספר לקוח">
+                                <input type="password" name="UserPass" class="clsField" placeholder="סיסמא">
+                                <input type="submit" value="כניסה" class="clsBtn">
+                                <div class="clsPassReset">
+                                        <a href="https://service.tamal.co.il/LostPass.aspx" class="clsBlueLink">שכחת סיסמתך?</a>
+                                </div>
+                        </form>
+                </div>
+        </header>
+
+
+
+
+        <div class="clsContent">
+
+
+
+                <section class="clsHeadBoxBlue clsCenter">
+                        <img src="//www.tamal.co.il/data/upl/icons/top-icon_jobs.png" alt="דרושים" class="clsIcon">
+                        <h1>דרושים</h1>
+                </section>
+
+                <div class="clsPageAlign clsHasSubMenu clsJobsList">
+                        <h2>דרושים - ט.מ.ל</h2>
+<section class="clsItem"><h3>145 - נציג/ת תמיכה מקצועית וטכנית </h3><div class="clsText">לצוות התמיכה והשירות בבית תוכנה, ט.מ.ל. מערכות מידע, דרוש/ה נציג/ת שירות לקוחות טלפוני. התמיכה הינה ללקוחות החברה בתוכנות המקצועיות פרי פיתוחה, החל משכר ונוכחות, דרך מיסוי וחשבונאות ועד ניהול משרד.<br>ט.מ.ל. מעניקה לכם/ן הזדמנות חד פעמית ללמוד מקצוע בעולם החשבונאות וכן, ללמוד מערכות מחשוב פיננסיות.<br><br>דרישות:<br>* נסיון קודם במתן תמיכה ושירות - יתרון.<br>* אוריינטציה טכנית - חובה.<br>* עבודה לטווח ארוך.<br>* בוגר/ת קורס חשבי שכר - חובה.<br><br>על המשרה:<br>* שכר מתגמל ותנאים מצוינים.<br>* סביבת עבודה מדהימה!<br>* אפשרויות קידום למצטיינים.<br>* המשרה היא מלאה (ימים א'-ה', 8:30-17:00) ומשרדי החברה ממוקמים בבני-ברק.<br></div><div class="clsContact clsLink" onclick="location.href='mailto:jobs@tamal.co.il'">קורות חיים נא לשלוח לאימייל: <a href="mailto:jobs@tamal.co.il" class="clsBlackLink">jobs@tamal.co.il</a></div></section>                       <h2>דרושים - חיצוני</h2>
+                        <section class="clsAddJobBanner">
+                                <img src="/images/icon_add-job_blue.png" class="clsIcon" alt="מעוניין לפרסם מודעה בלוח?">
+                                <div class="clsText">מעוניין לפרסם מודעה בלוח?</div>
+                                <a href="jobs-add" class="clsBtn">לחץ כאן</a>
+                        </section>
+
+                        <section class="clsItem"><h3>101 - חשב/ת שכר</h3><div class="clsText">למשרד רו"ח בצמיחה שממוקם בבני ברק דרוש/ה חשב/ת שכר למשרה מלאה.<br>נסיון בתוכנת שקלולית- יתרון<br><br></div><div class="clsContact clsLink" onclick="location.href='mailto:amos@amoscpa.co.il'">קורות חיים נא לשלוח לאימייל: <a href="mailto:amos@amoscpa.co.il" class="clsBlackLink">amos@amoscpa.co.il</a></div></section><section class="clsItem"><h3>מנהל/ת חשבונות</h3><div class="clsText">בגירה מערכות, מהמובילות בעולם בתחום הסימולאטורים מגייסת מנהל/ת חשבונות.<br>הזדמנות מדהימה להשתלב בארגון יציב וטוב!<br>התפקיד 
+כולל הכנה למאזן של ספקים ובנקים, התאמות בנקים כולל מט"ח ושקלים, רישום חשבוניות, תמיכה בחשבות השכר, תיוקים ועוד.<br>המשרה ממוקמת במרכז תל- אביב, קיימת גמישות באחוזי המשרה.<br></div><div class="clsContact clsLink" onclick="location.href='mailto:Careers@bagirasys.com'">קורות חיים נא לשלוח לאימייל: <a href="mailto:Careers@bagirasys.com" class="clsBlackLink">Careers@bagirasys.com</a></div></section><section class="clsItem"><h3>JB-756 - חשב/ת שכר</h3><div class="clsText">לחברת פרוסיד, חברת הייעוץ המובילה במתן פתרונות לארגונים מרובי פרויקטים דרוש/ה חשב/ת שכר בתחילת הדרך !<br>תיאור התפקיד:<br>דיווחי שעות, אחריות מלאה על תהליך השכר מתחילתו ועד סופו, דיווחים לרשויות, עבודה מול מנהל ההסדר ועוד. <br>סביבת עבודה צעירה ודינאמית בחברה בצמיחה <br>התפקיד בעל אופק התפתחותי ורוחבי במחלקת הכספים של החברה <br>עבודה במשרה מלאה במרכז תל-אביב <br>דרישות:<br>- ניסיון כחשב/ת שכר 1-2 שנות ניסיון – חובה<br>- שליטה בתוכנות אופיס לרבות אקסל - חובה<br>- ידע בדיני עבודה- יתרון <br>- ניסיון בעבודה עם תוכנת מיכפל – יתרון<br>- בוגר תואר ראשון- יתרון <br>- יחסי אנוש טובים, לויאליות, אמינות, חריצות וראש גדול</div><div class="clsContact clsLink" onclick="location.href='mailto:SharonH@proceed.co.il'">קורות חיים נא לשלוח לאימייל: <a href="mailto:SharonH@proceed.co.il" class="clsBlackLink">SharonH@proceed.co.il</a></div></section>
+
+                        <hr>
+                        <br>
+                </div>
+        </div>
+
+
+
+        <div class="clsAnchorsMenu clsAnchorsMenuInner">
+        <!--div class="clsChatBtn" onclick="window.open('https://tamal.wizsupport.com/chat/rchat.aspx?profile=1','wiz','width=500,height=500');">צ'ט עם נציג מכירות</div-->
+                        <div class="clsContactBtn" onclick="top.location.href='/צור-קשר';">צור קשר</div>
+                <div class="clsContactText">נשמח לעמוד לשרותך | <a href="tel:03-7552500" class="clsWhiteLink">03-7552500</a></div>
+        </div>
+        <footer>
+                <div class="clsPageAlign">
+                        <div class="clsLinksBoxes">
+                                <section class="clsItem1"><h3>חברה</h3><ul>
+        <li><a href="/אודות">מי אנחנו</a></li>
+        <li><a href="/דרושים">דרושים</a></li>
+</ul>
+
+<p>&nbsp;</p>
+</section><section class="clsItem2"><h3>מוצרים</h3><ul>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%AA%D7%95%D7%9B%D7%A0%D7%AA-%D7%A9%D7%9B%D7%A8-%D7%A9%D7%99%D7%A7%D7%9C%D7%95%D7%9C%D7%99%D7%AA" target="_blank">תוכנת שכר - שיקלולית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%A9%D7%A8%D7%95%D7%AA-%D7%94%D7%AA%D7%A2%D7%A1%D7%95%D7%A7%D7%94" target="_blank">שירות התעסוקה</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%97%D7%99%D7%A1%D7%95%D7%9C%D7%99%D7%AA" target="_blank">חיסולית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%90%D7%A9%D7%A4%D7%99%D7%AA" target="_blank">אשפית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%AA%D7%99%D7%A2%D7%95%D7%93%D7%99%D7%AA" target="_blank">תיעודית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%A2%D7%A6%D7%9E%D7%90%D7%99%D7%AA" target="_blank">עצמאית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%94%D7%A6%D7%94%D7%A8%D7%95%D7%A0%D7%99%D7%AA" target="_blank">הצהרונית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/mr-wintime" target="_blank">MR. TIME</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%A2%D7%93%D7%9B%D7%A0%D7%99%D7%AA" target="_blank">עדכנית</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%AA%D7%9C%D7%95%D7%A9%D7%99-%D7%A9%D7%9B%D7%A8" target="_blank">תלושי&nbsp;שכר</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/dms" target="_blank">ארכיון דיגיטלי</a></li>
+        <li><a href="https://www.accountbook.co.il/" target="_blank">Accountbook</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/paychecks" target="_blank">ט.מ.ל PAYCHECKS</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D/%D7%A4%D7%A0%D7%A1%D7%99%D7%94" target="_blank">טמל פנסיה</a></li>
+</ul>
+</section><section class="clsItem3"><h3>תמיכה ושירות</h3><ul>
+        <li><a href="/תמיכה-ושירות/מועדי-הפצת-עדכונים">מועדי הפצת עדכונים</a></li>
+        <li><a href="/תמיכה-ושירות/מדריכים-למשתמש">מדריכי משתמש</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D-%D7%A9%D7%99%D7%9E%D7%95%D7%A9%D7%99%D7%99%D7%9D" target="_blank">טפסים שימושיים לרשויות המס</a></li>
+        <li><a href="https://www.tamal.co.il/%D7%AA%D7%9E%D7%99%D7%9B%D7%94-%D7%95%D7%A9%D7%99%D7%A8%D7%95%D7%AA/%D7%98%D7%A4%D7%A1%D7%99%D7%9D-%D7%9C%D7%94%D7%95%D7%A8%D7%93%D7%94">טפסים להורדה ללקוחות ט.מ.ל</a></li>
+        <li><a href="http://www.tamal.co.il/%D7%AA%D7%9E%D7%99%D7%9B%D7%94-%D7%95%D7%A9%D7%99%D7%A8%D7%95%D7%AA/%D7%98%D7%91%D7%9C%D7%90%D7%95%D7%AA-%D7%A9%D7%99%D7%9E%D7%95%D7%A9%D7%99%D7%95%D7%AA/%D7%98%D7%91%D7%9C%D7%AA-%D7%9E%D7%93%D7%A8%D7%92%D7%95%D7%AA-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94">מדרגות מס הכנסה</a></li>
+        <li><a href="/sitemap">מפת אתר</a></li>
+        <li><a href="https://download.teamviewer.com/download/TeamViewer_Setup.exe" target="_blank">שליטה מרחוק</a></li>
+</ul>
+</section>
+                        </div>
+                        <div class="clsContactBox">
+                                <h3>נשמח לעמוד לשירותך</h3>
+
+<p>טל <a href="tel:972-3-7552500">03-7552500</a><br>
+דוא”ל <a href="mailto:support@tamal.co.il">support@tamal.co.il</a></p>
+
+                        </div>
+                </div>
+                <div class="clsCredits">
+                        טמל מערכות מידע © כל הזכויות שמורות
+                        <span id="oCredits"></span>
+                </div>
+        </footer>
+
+        <script type="text/javascript" src="/script/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="/script/plugins.js"></script>
+        <script type="text/javascript" src="/script/general.js?v=2"></script>
+
+
+        <script>
+                $("#oTopMenuBtn182").addClass("clsSelected");
+        </script>
+
+
+
+
+</body>

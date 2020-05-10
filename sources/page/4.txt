@@ -1,0 +1,133 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <link rel="SHORTCUT ICON" href="http://www.systematitech.com/logo.ICO">
+    <meta name="keywords" content="סיסטמטיטק">
+    <meta name="description" content="סיסטמטיטק">
+    <title>דרושים</title>
+    <link rel="stylesheet" type="text/css" href="/css/style_RTL.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/editor.css">
+or@gmail.com
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script language="javascript" type="text/javascript" src="/js/func.js"></script>
+    <script language="javascript" type="text/javascript" src="/_customs/custom_functions.js"></script>
+</head><body>
+<div class="wrapper">
+  <div class="frame">
+voske@fijetvut.佛山
+    <div class="page">
+      <div class="header">
+        <a href="/" class="logo">
+                <img src="images/logo.png" alt="סיסטמטיטק בע" מ"=""></a><a href="english.asp" class="lang">English</a>
+        <div class="nav_top">
+                <ul><li class="first"><a class="" href="http://www.systematitech.com/">ראשי</a></li><li class=""><a class="selected" href="http://www.systematitech.com/?p=401">אודות</a></li><li class=""><a class="" href="http://www.systematitech.com/products.asp">מוצרים</a></li><li class=""><a class="" href="http://www.systematitech.com/projects.asp">פתרונות יצור</a></li><li class=""><a class="" href="http://www.systematitech.com/?p=459">חברות מיוצגות</a></li><li class=""><a class="" href="http://www.systematitech.com/?p=585">גלריה</a></li><li class=""><a class="" href="http://www.systematitech.com/articles.asp">מאמרים</a></li><li class=" last"><a class="" href="http://www.systematitech.com/contact.asp">צור קשר</a></li></ul><script language="javascript" type="text/javascript"></script>        
+        </div><!--nav_top-->
+        <div class="search">
+                <form name="f1" action="search.asp">
+                        <input type="text" name="search" class="inpText">
+                        <input type="submit" value="חפש" class="inpBtn">
+                </form>
+        </div><!--search-->
+</div><!--header-->
+
+<div class="media">
+        <img src="images/inner_media1.jpg" alt="דרושים" class="">
+</div><!--media-->
+<div class="links_top">
+        <a href="products.asp" class="product">מוצרים</a>
+        <a href="projects.asp" class="solution">פתרונות<br>יצור</a>
+</div>
+
+
+      <div class="content_hold">
+        <div class="box1_top"></div>
+        <div class="box1_body">
+                <div class="about">
+                        <div class="right">
+                                <ul class="nav_side"><li class="first">
+        <a href="http://www.systematitech.com/?p=522" class="">אודות</a></li><li class=" last">
+        <a href="http://www.systematitech.com/?p=1346" class="selected">דרושים</a></li></ul><script language="javascript" type="text/javascript"></script>
+                                <div class="hpphone">03-9605008</div>
+                                <p class="text04">צור קשר:</p>
+                                <script language="javascript" type="text/javascript" src="/_Resources/SubmissionForm_handler/js/SubmissionFormsBehaviors.js"></script><div class="contact_form"><form name="fo_520" method="post" action="http://www.systematitech.com/?p=1346&amp;handle=send_520" enctype="multipart/form-data" onsubmit="return SubmitForm(this)"><input type="hidden" name="lastViewedUrl" id="lastViewedUrl" value="http://www.systematitech.com"><div class="c_fullName ">
+<div class="title">שם</div>
+<div class="field"><input type="text" name="c_fullName" id="c_fullName" value="" class="text name " size="50" maxlength="50">&nbsp;<span class="mandatory">*</span></div>
+<div class="validation_response"></div>
+</div>
+<div class="c_email ">
+<div class="title">דוא”ל</div>
+Carmen.Buckridge48@f03b5b88-0f4d-376c-8b56-8b27549eff14 
+<div class="field"><input type="text" name="c_email" id="c_email" value="" class="text email " size="50" maxlength="50">&nbsp;<span class="mandatory">*</span></div>
+<div class="validation_response"></div>
+</div>
+<div class="c_businessPhone ">
+<div class="title">טלפון</div>
+<div class="field"><input type="text" name="c_businessPhone" id="c_businessPhone" value="" class="text phone " size="50" maxlength="50">&nbsp;<span class="mandatory">*</span></div>
+<div class="validation_response"></div>
+</div>
+<div class="submit"><input type="submit" value="&nbsp;שלח&nbsp;" class="submit"></div>
+</form>
+<script type="text/javascript" language="javascript">document.getElementById("c_fullName").focus()</script>
+</div>
+
+                        </div><!--right-->
+                        <div class="left">
+                                <div class="BC">
+                                        <!--%= p_linkedBreadCrumbs %-->
+                                </div>
+                                <h1>דרושים</h1>
+cfcdca4dg3@.com,
+                                <!--%= CF_FixingYouTubeScript("", 100, 300) %-->
+
+
+                        <div class="text_01" style="width:auto;border:0px solid #DDD;vertical-align:bottom !important;"></div>
+                                <br>
+                                <div class="player_hold">
+                                        דרושה מנהלת משרד רצינית ואחראית <br>לחצי משרה 09:00-14:00<br>עברית / אנגלית <br>ניסיון ביבוא - יתרון <br>רכב חובה לשם הגעה. מגורים באזור ראשל"צ והסביבה.<br><br>קו"ח נא לשלוח למייל: sales@systematitech.com<br><br>לתשומת לבכם הפנייה מופנת לגברים ונשים כאחד <br><br><br><br>
+                                </div>
+                        </div><!--left-->
+                </div><!--about-->
+        </div><!--box1_body-->
+        <div class="box1_foot"></div>
+</div><!--content_hold-->
+
+       <div class="footer">
+        <div class="nav"><a href="/contact.asp">צור קשר</a><a href="http://www.systematitech.com/site_map.asp">מפת אתר</a><a href="http://www.systematitech.com/?p=1344">קידום אתרים</a><a href="http://www.systematitech.com/?p=1345">בניית אתר אינטרנט </a></div><script language="javascript" type="text/javascript"></script>
+
+                        <div class="text_01" style="width:auto;border:0px solid #DDD;vertical-align:bottom !important;"><p><span class="text04"><span class="text_04">סיסטמטיטק בע"מ.</span> </span>מרכז 
+פז התאומים, מחלף השבעה טל. 03-9605008 פקס. 03-9605004 דוא”ל:&nbsp;<a class="text_01" href="mailto:sales@systematitech.com">sales@systematitech.com</a></p></div>
+</div><!--footer-->
+
+    </div><!--page-->
+  </div><!--frame-->
+</div><!--wrapper-->
+
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 10px" width="100%">
+        <tbody><tr>
+                <td width="45%"></td>
+                <td nowrap="nowrap">
+                        האתר נבנה ע"י תורוויז</td>
+                <td style="padding-right: 3px;"></td>
+                <td nowrap="nowrap">
+                        <a style="color:#5f5d5c" href="http://www.tourwise.co.il">
+                                בניית אתרים</a></td>
+                <td width="45%"></td>
+        </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17586104-16']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script type="text/javascript" language="javascript">setTimeout(onLoadPage,30)</script>
+ </body>

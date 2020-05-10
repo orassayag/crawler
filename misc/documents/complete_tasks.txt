@@ -1,0 +1,1122 @@
+Tests Sources Tasks: *
+==================== *
+-On the 'C:\Or\Web\Crawler\Sources\FixesToImplement' path there is more fixes to implement. *
+-Add tests: *
+-Before anything you do - Do a backup! *
+-Update NPM packages. *
+-Run the cases script (isValid / isInvalid) and write here the results: X valid, Y invalid. *
+-In the 'C:\Or\Web\Crawler\Sources\EmailAddressesSources' path there are multi sources of testing email addresses. *
+-Build a script that reads from a file, validate the email addresses, and run domains count script. *
+-It will work like the normal script, just create another service that will fetch email addresses from files instead of links. *
+-Make sure that you read the file with large files, read line NPM package or something. Look for it in EmailsManager project. *
+-Make sure that the script can read all files: txt, bak, xlsx, csv, and others. *
+-List all the bugs of the email addresses here. *
+-After each file you scan - Fix it's errors, and recheck that nothing went wrong with the cases script (isValid / isInvalid). *
+
+Other Tasks: *
+============ *
+-Build logic in the initiate step to check that there is at least 1 active search engine to work with. *
+-Test the logic of checking if at least 1 search engine is active - Misspell all search engines if needed. *
+-Before anything you do - Do a backup! *
+-Update NPM packages. *
+-Add puppeter.js nice close when end of all processes: Build function in *
+ puppeterService that close the browser if exists, and call it when the process end. *
+ -Add logic to check when preforming Dropbox backup - Verify that Dropbox is running. If not - Throw error - Canccelled. *
+-Fix bug of time - 4:30 minutes and see 5/5 when goal is complete: *
+===[GENERAL] Time: 00.00:04:30 [\] | Goal: MINUTES | Progress: 5/5 (100.00%) | Status: FINISH=== *
+-Change the "dropbox" backup to secondary backup path. Change it to iomega path. *
+-Development mode off: Test invalid search engine address and make sure it's not active. If no one else active - Throw exception. *
+
+Tasks From Production Tests: *
+============================ *
+-Change all the validation service and the initiate service. *
+-Create local status functions with only the status, the color is status (in all logics files). *
+-Fix the bug with node_modules directory. *
+-Do all ToDo points. *
+-Change IS_DEVELOPMENT_MODE to IS_PRODUCTION_MODE and all the logic all around the application. *
+-Check final time if all tests, development and production works OK: *
+-Development mode for 5 minutes. *
+-emailAddressGenerator.test.js *
+-emailAddressSandBox.test.js *
+-emailAddressTestCases.test.js *
+-emailAddressTypos.test.js *
+-freeStyle.test.js *
+-Production mode for 5 minutes. *
+-linkCrawl.test.js *
+-Fix bug of closing puppeter browser after finish. *
+-Add error numbers to all error messages. *
+-Reset error numbers all over the source code. *
+-Add new error numbers all over the code. *
+-Create instructions to run this script on the INSTRUCTIONS.md file. *
+
+IMPORTANT: *
+========== *
+-Add reminder to update both development and production package.json files when doing some changes - Cancelled. *
+
+Other Scripts Tasks: *
+==================== *
+-From the Manager project in the VisualizationTool project, take the relevant parts to do backups automatically. *
+-Build a script that backup the project without temporary data. *
+-Add option to do a backup to the Dropbox directory. *
+
+Before Production Tasks: *
+======================== *
+-Do tests on all of the logic, check for links and email address domains need to filter, check for improvements in the email validation logics. *
+-Make sure that in production the status changes frequency and not stuck in PAUSE. *
+-The selected engine for production is Google. Test Google for 100 times, to filter all irrelevant links. *
+
+Tasks From Production Tests: *
+============================ *
+-After all fixes done - Remove 'old-dist' from the project directories + from all places in the code + npmignore + eslintignore + gitignore. *
+-The 'old-dist' needs to be in tge outside 'sources' directory, not inside the project. *
+-In the global initate service - Verify that 'dist' directory exists. If not - Create it. *
+
+Tasks From Production Tests: *
+============================ *
+-Fix last fixed - They are invalid: *
+Time: 12:02:16 | isValid: true | original: argov.nurit@mail.huji.ac.il | fix: argov.nurit@mail.huji.ai | functionIds: 12 *
+Time: 12:02:18 | isValid: true | original: gvanim@org.il | fix: gvanim@org.org.il | functionIds: 12 *
+Time: 12:02:18 | isValid: true | original: statms@mail.biu.ac.il | fix: statms@mail.biu.ai | functionIds: 12 *
+Time: 12:02:18 | isValid: true | original: jobs.osem@il.nestle.com | fix: jobs.osem@il.com | functionIds: 12 *
+Time: 12:02:18 | isValid: true | original: HR.JOBS@il.gt.com | fix: HR.JOBS@il.com | functionIds: 12 *
+Time: 12:02:20 | isValid: true | original: amigam@trdf.technion.ac.il | fix: amigam@trdf.technion.io | functionIds: 12 *
+Time: 12:02:20 | isValid: true | original: Gila.Gutenberg@mail.biu.ac.il | fix: Gila.Gutenberg@mail.biu.ai | functionIds: 12 *
+-Add more domain to filter. *
+-Check why error pages not count in error and error-in-a-row. *
+-Add a 'stick' (like when install / update NPM package) to the console line. *
+-Change the logic that if the PAGE title is [PAGE ((-))] - Remove the current link. *
+-Invalid fix - cv@modli.co | fix: cv@modli.co.il | functionIds: 11 *
+-Invalid fix - HR@TheMarketingHub.co | fix: HR@themarketinghub.co.il | functionIds: 5,11 *
+-Split the validation service to functions by category. *
+-Fix all misspelling of charecters / cherecters / cheracters in all application. *
+-Move emailAddressSettings to the global settings, create sections in this file. Transfter all settings of the tests also to this file + *
+ Add validations to all new settings. *
+-Separate the test database functions. *
+
+Tasks From Production Tests: *
+============================ *
+-Fix: oshrat@basharon.co.il71 (get most popular domain ending, and if it's contains, replace it). *
+-Fill the relevant function ids after some tests on production, after results from some tests being made on production. *
+-Insert all the invalid links to the filter domains. *
+-Add 'yourdomain.com' to filter. *
+-Add 'calameo.com' to filter domains. *
+-Invalid fix - .yadbyd@zahav.net.il | fix: yadbyd@zahav.co.il | functionIds: 7,17. *
+
+Tasks From Production Tests: *
+============================ *
+-Check why invalid links don't being logged. *
+-Fix time goal bug: ===[GENERAL] Time: 00.03:48:53 | Goal: MINUTES | Progress: 48/120 (40.00%) | Status: CRAWL=== *
+-Add new validation that if the domain part contains 2 dots and numbers (Example: 1.3.2) - Invalid without any log. *
+-After it works, remove all the invalid email addresses that contains 1.3.2, leave one for example. *
+-Don't remove the old logic, and keep it just in case we will need it. *
+-Add flag if to use advance search keys or not, in settings.js. *
+-Refactor search keys logic: *
+1. Create class of SearchKey: keyType, isMiddleReplace, isNoSpaceAfter, globalKey, maleKey, femaleKey, bothKey. *
+2. Create 2 enums of SearchKeyGender: MALE, FEMALE, BOTH and SearchKeyType: NEED, PERSON, PROFESSION, RELATION, CITY, EMAIL_ADDRESS. *
+3. Backup all the search keys. *
+4. Fill the classes (+add more or remove if needed). *
+5. Change the logic of generate search keys accordingly. *
+-Fix this: pkupot@moh.health.gov.i (fix fixDomainEnd function). *
+-Find fix for ofer@0a5v3i-d7a2r6.3c9o6.i9l *
+-Find a way to remove '.ai' from the file extentions for the email addresses. *
+
+Tasks From Production Tests: *
+============================ *
+1. Create enum of male / female / both - Cancelled. *
+2. Separate all the keys for male / female / both - Cancelled. *
+3. Change the logic of the search key to add search key by male / female / both - Cancelled. *
+-Add logic of invalid email address - if the local part contains file name, don't log it to the invalid email address - Canccelled. *
+-Find more points to list here. *
+
+Tasks From Production Tests: *
+============================ *
+-Go thought all files and see if need to pass to the settings.js stuff. *
+-In domains.logic.js move all the logic to domainsCounterService.js + Change the logic to pass parameters to the script service. *
+-When the application finish to run, automatically run the domain counter script *
+ (domains.logic.js) (add it a flag in the settings.js) (only if any email addresses length bigger from 0). *
+-Add flag on settings.js for log status instead of log consoleline. *
+-Fix the 'Save' count to be with commas. *
+-Put all the numbers of all the functions in the fixed log functions array. *
+-Fix bug with same number of direcotry. *
+-Add the current mode to the log directory name - Cancelled. *
+-Fix bug with proxy on all json files. *
+-Add logic to log the development TXT files to development directory. Same for production and for scripts. *
+-Change the logic of path of script with new enum for scripts. *
+-Each script will be written to the relevant directory by the mode. *
+-Add logic to remove only the directories with the current mode word - Canccelled. *
+-Add logic to remove only the directory of the current mod in the dist directory. *
+-Add the word 'configuration' to all files inside configuration directory and rename in all places. *
+-Inside of 'configurations' directory there is a file with 'settings' key, remove it. *
+-Add flag if to clear previous dists directories. *
+-Fix bug with generator service of InvalidEmailAddress class. *
+-Add logic for steps activation: *
+-Links X | Crawl X | Send X - Error. *
+-Links V | Crawl X | Send X - OK. *
+-Links X | Crawl V | Send X - Error. *
+-Links X | Crawl X | Send V - Error. *
+-Links V | Crawl V | Send V - OK. *
+-Links X | Crawl V | Send V - Error. *
+-Links V | Crawl X | Send V - OK. *
+-Links V | Crawl V | Send X - OK. *
+
+Unsolved Tasks: *
+=============== *
+-When drop collection on production, sometimes have a bug: *
+MongoError: cannot perform operation: a background operation is currently running for collection crawl_production.emailaddresses *
+    at MessageStream.messageHandler (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\connection.js:261:20) *
+    at MessageStream.emit (events.js:311:20) *
+    at processIncomingData (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\message_stream.js:144:12) *
+    at MessageStream._write (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\message_stream.js:42:5) *
+    at doWrite (_stream_writable.js:441:12) *
+    at writeOrBuffer (_stream_writable.js:425:5) *
+    at MessageStream.Writable.write (_stream_writable.js:316:11) *
+    at Socket.ondata (_stream_readable.js:714:22) *
+    at Socket.emit (events.js:311:20) *
+    at addChunk (_stream_readable.js:294:12) *
+    at readableAddChunk (_stream_readable.js:275:11) *
+    at Socket.Readable.push (_stream_readable.js:209:10) *
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) { *
+  ok: 0, *
+  errmsg: 'cannot perform operation: a background operation is currently running for collection crawl_production.emailaddresses', *
+  code: 12587, *
+  codeName: 'BackgroundOperationInProgressForNamespace', *
+  name: 'MongoError', *
+  [Symbol(mongoErrorContextSymbol)]: {} *
+} *
+Promise { *
+  <rejected> MongoError: cannot perform operation: a background operation is currently running for collection crawl_production.emailaddresses *
+      at MessageStream.messageHandler (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\connection.js:261:20) *
+      at MessageStream.emit (events.js:311:20) *
+      at processIncomingData (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\message_stream.js:144:12) *
+      at MessageStream._write (C:\Or\Web\Crawler\Crawler\node_modules\mongodb\lib\cmap\message_stream.js:42:5) *
+      at doWrite (_stream_writable.js:441:12) *
+      at writeOrBuffer (_stream_writable.js:425:5) *
+      at MessageStream.Writable.write (_stream_writable.js:316:11) *
+      at Socket.ondata (_stream_readable.js:714:22) *
+      at Socket.emit (events.js:311:20) *
+      at addChunk (_stream_readable.js:294:12) *
+      at readableAddChunk (_stream_readable.js:275:11) *
+      at Socket.Readable.push (_stream_readable.js:209:10) *
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) { *
+    ok: 0, *
+    errmsg: 'cannot perform operation: a background operation is currently running for collection crawl_production.emailaddresses', *
+    code: 12587, *
+    codeName: 'BackgroundOperationInProgressForNamespace', *
+    name: 'MongoError', *
+    [Symbol(mongoErrorContextSymbol)]: {} *
+  } *
+} *
+
+Unsolved Tasks: *
+=============== *
+-Still stuck sometimes: *
+1: *
+===[SETTINGS] Mode: PRODUCTION | Database: crawl_production | Drop: true | Steps: LINKS=== *
+===[GENERAL] Time: 00.00:02:20 | Goal: LINKS | Progress: 61/1,000 (06.10%) | Status: PAUSE=== *
+===[PROCESS] Process: 2/2 | Page: 3/3 | Engine: google | Key: ליימ-יא בוני ל"כנמ תריכזמל הדיקפ שורד=== *
+===[LINK] Crawl: ✅  61 | Total: 292 | Filter: 231 | Error: 0 | Error In A Row: 0 | Current: (-)=== *
+===[EMAIL ADDRESS] Save: ✅  0 | Total: 0 | Database: 0 | Exists: 0 | Invalid: ❌  0 | Valid Fix: 0 | Invalid Fix: 0 | Unsave: 0 | Filter: 0=== *
+===[TRENDING] === *
+===[PAGE ((-))] http://www.jobcrawler.co.il=== *
+===[SEARCH (3/3)] https://www.google.com/search?q=דרוש+פקידה+למזכירת+מנכ"ל+ינוב+אי-מייל&ei=PGo5XqvTJpCT8gKAyo3gDw&start=12&sa=N&ved=2ahUKEwir4a6q-bf=== *
+2: *
+===[SETTINGS] Mode: PRODUCTION | Database: crawl_production | Drop: true | Steps: LINKS=== *
+===[GENERAL] Time: 00.00:01:18 | Goal: EMAIL ADDRESSES | Progress: 0/30 (00.00%) | Status: PAUSE=== *
+===[PROCESS] Process: 2/2 | Page: 3/3 | Engine: bing | Key: ליימ-יא ןרוצ םיטנמוקוד תדיקפ ה/שורד=== *
+===[LINK] Crawl: ✅  44 | Total: 270 | Filter: 226 | Error: 0 | Error In A Row: 0 | Current: (-)=== *
+===[EMAIL ADDRESS] Save: ✅  0 | Total: 0 | Database: 18 | Exists: 0 | Invalid: ❌  0 | Valid Fix: 0 | Invalid Fix: 0 | Unsave: 0 | Filter: 0=== *
+===[TRENDING] === *
+===[PAGE ((-))] === *
+===[SEARCH (3/3)] https://www.bing.com/search?q=דרוש/ה+פקידת+דוקומנטים+צורן+אי-מייל&qs=n&sp=-1&pq=%d7%93&sc=0-1&sk=&cvid=AD0065E122BA4D3BA6916409816=== *
+
+Tasks From Production Tests: *
+============================ *
+-Add logic that if more than 2 unsave (configured from settings.js) - Break the processes. *
+-Add enum to the keys of '#DATE#' and every one of it's kind. *
+-Add new logic: recovery swipe. If the email is invalid after the 2 final validation email addresses, add logic *
+ to search for a key value. If found, it will change the status from invalid to fix, and will be saved and logged (if not already exists). *
+-Add to the validation fix a method - On the local part - Convert multiply repeated dots to single dot. *
+-Add validation on the validation email address method that if it's a common domain, minimum 1 charecter on the local part is exception (add in settings.js). *
+-Fix bug of random typos tests. *
+-Create enum for steps and replace it in the relevant places. *
+-Change the name of 'independent utils' to 'global utils'. *
+-Fix bug with link test. *
+
+End of Process Tests: *
+===================== *
+-Verify (in development / production modes) - That the application ends: *
+-When goal reached (check with 3 kind of goals) - Check each with CRAWL step true and false. *
+-When process reach limit - Check each with CRAWL step true and false. *
+-On development mode (check with 3 kind of goals): *
+1. Check errorPageInARowCounter. *
+2. Check with unsave limit. *
+-Add to the end process - Check each goal with different steps. *
+-Tests checkList: *
+Development: *
+Email Addresses: *
+1. Max processes: 3. All steps. Email addresses goal - 30 Email addresses (stop by goal). *
+2. Max processes: 3. All steps. Email addresses goal - 1000 Email addresses (stop by processes). *
+3. Max processes: 3. no crawl step. Email addresses goal - 30 Email addresses (stop by processes). *
+4. Max processes: 3. no crawl step. Email addresses goal - 1000 Email addresses (stop by processes). *
+Minutes: *
+1. Max processes: 3. All steps. Minutes goal - 1 minute (stop by goal). *
+2. Max processes: 3. All steps. Minutes goal - 100 minute (stop by processes). *
+3. Max processes: 3. no crawl step. Minutes goal - 1 minute (stop by goal). *
+4. Max processes: 3. no crawl step. Minutes goal - 100 minute (stop by processes). *
+Links: *
+1. Max processes: 3. All steps. Links goal - 100 links (stop by goal). *
+2. Max processes: 3. All steps. Links goal - 100000 links (stop by processes). *
+3. Max processes: 3. no crawl step. Links goal - 100 links (stop by goal). *
+4. Max processes: 3. no crawl step. Links goal - 100000 links (stop by processes). *
+Other:
+1. Check errorPageInARowCounter. *
+2. Check with unsave limit. *
+Production: *
+Email Addresses: *
+1. Max processes: 2. All steps. Email addresses goal - 30 Email addresses (stop by goal). *
+2. Max processes: 2. All steps. Email addresses goal - 10000 Email addresses (stop by processes). *
+3. Max processes: 2. no crawl step. Email addresses goal - 30 Email addresses (stop by processes). *
+4. Max processes: 2. no crawl step. Email addresses goal - 1000 Email addresses (stop by processes). *
+Minutes: *
+1. Max processes: 2. All steps. Minutes goal - 1 minute (stop by goal). *
+2. Max processes: 2. All steps. Minutes goal - 100 minute (stop by processes). *
+3. Max processes: 2. no crawl step. Minutes goal - 1 minute (stop by goal). *
+4. Max processes: 2. no crawl step. Minutes goal - 100 minute (stop by processes). *
+Links: *
+1. Max processes: 2. All steps. Links goal - 100 links (stop by goal). *
+2. Max processes: 2. All steps. Links goal - 100000 links (stop by processes). *
+3. Max processes: 2. no crawl step. Links goal - 100 links (stop by goal). *
+4. Max processes: 2. no crawl step. Links goal - 100000 links (stop by processes). *
+
+Tasks From Production Tests: *
+============================ *
+-Comment all the current logic of the try recover. *
+-Create new class of ValidEmailAddress and InvalidEmailAddress. For the invalid add recover field. *
+-Move all the tests cases inside these classes. *
+-Change the file name to 'emailAddressesLists'. *
+-For the invalid email addresses that have recover, add it. *
+-Change the logic in the test cases and in all places to load the classes. *
+-Uncomment the recover logic and finish the recover logic with more elegant way. *
+-Fix 'jobs@theisraelproject.org-tip' => 'tip-jobs@theisraelproject.org'. *
+-Check if an invalid email address exists in the invalid email addresses list. If it's already exists, don't log it to the TXT file. *
+-Change Drop Collection to Clear Database - Canccelled. *
+-Add enum for mode, and add to the application data. *
+-Add for development mode a different collection name. Add 'development' or 'production' according to the mode. *
+-Add the database name to the console line and to the confirm settings. *
+-Add 'wallatours.co.il' to common typos if needed according to domain counter script. *
+-Add on typos letters in the start and end of the domain - Already exists. *
+-Add typos of random 1-5 charecters in the start and the end of the domain - Already Exists. *
+-Add retries to the database save action in case failure (add maximum number of retries from settings.js). *
+-Create a list of recover email addresses. *
+
+Tasks From Production Tests: *
+============================ *
+-Do the logging refectory to log fixes only with specific functions ids. *
+
+Unordered Tasks: *
+================ *
+File1: *
+-Remove similar domain logic. *
+-Add for each different domain is own common domain typos. *
+-Test walla.com and walla.co.il after the change. *
+-Do it also for 012.net, 012.net.il and zahav.net.il, 013.net.il *
+-Add the domain counter script from a string comma delimiter. *
+-Bonus: Add the domain counter script option to load from recursive TXT files or from database (the *
+ count function in the end in to receive an array of email addresses and to count). *
+File2: *
+
+LOGS: *
+===== *
+-Change the logic of logging - Each session will have seperated directory with running number and date and time. *
+-Move to directory with unique name with running index number (1_crawl_20200229_124737). On development empty all directories. *
+-Convert the function ids to enum, to be global, for the next task - Canccelled. *
+-Add logic to list to 'fixed' TXT file according to specific functions include numbers, like (13, -1, -10). *
+
+Tasks From Production Tests: *
+============================ *
+-On the 'searchEngine.js', need a quick array on the top of active and not active that will determine which search engine is active. *
+-On 'IMPORTANT SETTINGS' log the active search engines. *
+
+Tasks From Production Tests: *
+============================ *
+-Fix bug that when processes run one after another and no crawl links and no save email addresses - The application never ends. *
+-Add logic to filter specific email address, not by domain, by the hole email address, convert to lower case and check. *
+-Handle error pages: *
+1. Add to console line to the link part: error. *
+2. List all the errorcount in the consoleline. *
+3. Write to log all the error links. *
+4. Add error-in-row counter. If error-in-row is above 20 (configured from settings.js) the application will stop with appropriate exit reason. *
+
+Tasks From Production Tests: *
+============================ *
+-Check key: 'Key: ינורטקלא-ראוד אבס רפכ יאלמ לוהינ תיארחא ה/שור===' *
+-Add 'files' directory and index.js file to the scripts directory - Canccelled. *
+-Update the invalid email address list (from here and from other sources) according to last crawlings. *
+-Fix '05015808@001.html' and '01012013113204@rishom.pdf' *
+-On the 'fixed' TXT file, add the time: 'Time: 23:57:23 | isValid: true | original: JP@JOBPOWER.CO.IL | fix: JP@jobpower.co.il | functionIds: 5'. *
+-Create a list of links that timeout - For future use. Put it on misc. *
+-When initiate the 'emailAddressDomainDetailsList' - Remove duplicates from it. *
+-On the preload.script.js, if the package.json changed, delete also the package-lock.json before run the initiate script. *
+-Do the 'domain count' list script. *
+-After getting results from the domain count script - Add more common typos. *
+-Verify that the lower case the domain part automatically. *
+-Add the 'valid fix' to the save TXT file list automatically. *
+-Save the both on the 'valid fix' TXT file and in the 'save' TXT file. *
+-Fix the bug of (PAGE 1/0) / Current: 1/0. Zero is not needed. *
+-On LINKS mode only, can't see the current link (PAGE 1/0) / Current: 1/0. *
+-When the last link on PAGE (12/12) it switch to PAGE (12/0). *
+-On LINKS mode only, the process not stop after reach 10/10. *
+-On production, process 10/10 with 175/1,000 email address - It won't stop: *
+===[SETTINGS] Mode: PRODUCTION | Drop: false | Steps: LINKS,CRAWL=== *
+===[GENERAL] Time: 00.00:08:14 | Goal: EMAIL ADDRESSES | Progress: 175/1,000 (17.50%) | Status: PAUSE=== *
+===[PROCESS] Process: 10/10 | Page: 1/3 | Engine: google | Key: ליימ ןופשר היצרטסינימדא תדבוע שורד=== *
+===[LINK] Crawl: ✅  130 | Total: 872 | Filter: 742 | Current: 9/0=== *
+===[EMAIL ADDRESS] Save: ✅  175 | Total: 1,480 | Database: 241 | Exists: 378 | Invalid: ❌  15 | Valid Fix: 13 | Invalid Fix: 0 | Unsave: 0 | Filter: 0=== *
+===[TRENDING] === *
+===[PAGE (9/0)] === *
+===[SEARCH (1/3)] https://www.google.com/search?q=דרוש+עובדת+אדמיניסטרציה+רשפון+מייל&ei=PGo5XqvTJpCT8gKAyo3gDw&start=10&sa=N&ved=2ahUKEwir4a6q-bfnAh=== *
+-Script 'npm run preload' not downloading puppeter browser, need to check why - Canccelled. *
+
+Other Scripts Tasks: *
+==================== *
+-Add another script that scan from string of email addresses (fetch email addresses), all the *
+ email addresses and log all the domains with count sorted decending to separated TXT file: *
+3,667 | gmail.com *
+3,633 | yahoo.com *
+-Bonus: Different sources: string fetch email addresses / array of email addresses / TXT files path fetch email addresses *
+ (recursive logic to the 'old-dist' directory for example) / database (by enum flag). *
+
+Tasks From Production Tests: *
+============================ *
+-Fix Dudu8193@gmail.comA (Build a function that check if the domain part exists in the list of common domains, *
+ but not equal to the domain, if so, re-assign the domain instead of the original). *
+-Build a function that removes on loop from start or end with these charecters - Remove them in loop (',.-_). *
+-Refactor start and end removal: *
+-To handle this - Build a functions that call 4 different functions: *
+-Create a function that remove all from the start of the local part. *
+-Create a function that remove all from the end of the local part. *
+-Create a function that remove all from the start of the domain part. *
+-Create a function that remove all from the end of the domain part. *
+-Once replace, start the process again from the beginning. *
+-After the fix, check the following out: *
+-Fix all ...ckerenc@gmail.com | -dafnac@e-learning.co.il (start or end with these charecters - Remove them in loop). *
+-Fix einat@bariglobali.com._ (add to replace). *
+-Remove the loop functions exists today. *
+-Add the 'old_dist' to all ignore directories anywhere. *
+-Rearrange tasks here from faster to slower and importance. *
+-Change the 'searchEngineLink' to 'google.com'. *
+-Set the initiate of the puppetterService.js. *
+-Create a initiateService that called each test, and on the crawl logic - The current logic don't work. *
+-However, don't touch the preload script. *
+-Remove all the scripts with the initiate, bring the state back to normal. *
+-Test the puppeteer.js to find out if MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT / MILLISECONDS_WAIT_LOAD_PAGE_COUNT needed. *
+-Remove from settings the timeout load per page, need to the parameter of this in the settings.js. *
+-On the 'IMPORTANT SETTINGS' display the active search engine(s), the goal type and the goal value. *
+-Rearrange settings.js by priority. *
+-Fix all 'zahav.net.il' and '012.net.il into '012.net'. *
+-Add 'zahav.net.il' to similar domains of '012.net'. *
+-Remove all the typos of any similar domain - Fix only the addresses that identical in the structure. *
+-Septate all asKnowenAs to more common typos. *
+-Remove duplicate with DupChecker. *
+-Add more typos and test the new common typos. *
+-Fix mailto.bamboo@gmail.com (remove the mailto from the invalid list). *
+-Fix shellysb@.matnasim.org.il (add to replace). *
+-Fix miyuval@wallal.com (add to typos). *
+-Fix tifool@bat-ami.org.i (add to missing typos ending). *
+-Fix to lower case: DODO8193@GMi.COM (make sure all domain part are lower case in the database). *
+-Fix a@walla.com (check minimal length on the local part). *
+-Change 'scanEmailAddress' to 'validateEmailAddress'. *
+-Check nbi@absahsahraoronn.c.coo..iill | fix: nbi@absahsahraoronn.c.coo.iill *
+-To handle file extentions - Build a functions that call 4 different functions: *
+-Create a function that validates if the start of the local part is file extention from a list. *
+-Create a function that validates if the end of the local part is file extention from a list. *
+-Create a function that validates if the start of the domain part is file extention from a list. *
+-Create a function that validates if the end of the domain part is file extention from a list. *
+-After the fix, check the following out: *
+-Fix *
+300_300Laura-Truscott-@-Rick-Roberts-Hair-for-Schwarzkopf-Professional-UK-398.jpg | 520.6_Karly-Whittaker-@-Sarah-Hodge-for-Schwarzkopf-Professional-UK-465.jpg *
+-Check image002.gif@01CD5E8E.5DCE4AA0 | fix: image002.gif@01cd5e8e.5dce4aa0 *
+
+Tasks From Production Tests: *
+============================ *
+-Add logic that if ends with more than 3 dots or equal to 3 dots ('...') it's invalid - Canccelled. *
+-Add logic on fix, that if exists in 'isKnownAs' - Don't fix it - Cancelled. *
+-Check ilan@trio-h... | fix: ilan@trio-h - Canccelled. *
+-Check the night crawler. *
+-Create test file for crawl links. *
+-Add timeout of crawl of 30 seconds - 'http://www.ariel.ac.il/projects/jobs' stacked for a long time. *
+-Fix exception of CONNECTION_TIMED_OUT: *
+(node:1272) UnhandledPromiseRejectionWarning: Error: net::ERR_CONNECTION_TIMED_OUT at https://www.acabafrs.ga/rashlanut *
+    at navigate (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\FrameManager.js:120:37) *
+    at runMicrotasks (<anonymous>) *
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) *
+    at async FrameManager.navigateFrame (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\FrameManager.js:94:17) *
+    at async Frame.goto (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\FrameManager.js:406:12) *
+    at async Page.goto (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\Page.js:672:12) *
+    at async PuppeteerService.crawl (C:\Or\Web\Crawler\Crawler\src\services\files\puppeteerService.js:18:9) *
+    at async SourceService.getPageSourceProduction (C:\Or\Web\Crawler\Crawler\src\services\files\source.service.js:101:16) *
+    at async CrawlEmailAddressService.getEmailAddressesFromPage (C:\Or\Web\Crawler\Crawler\src\services\files\crawlEmailAddress.service.js:61:22) *
+    at async CrawlLogic.scanEmailAddresses (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:200:38) *
+    at async CrawlLogic.crawlLinks (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:185:13) *
+    at async CrawlLogic.runProcess (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:174:13) *
+    at async CrawlLogic.startProcesses (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:145:13) *
+    at async Timeout._onTimeout (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:123:17) *
+  -- ASYNC -- *
+    at Frame.<anonymous> (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\helper.js:111:15) *
+    at Page.goto (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\Page.js:672:49) *
+    at Page.<anonymous> (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\helper.js:112:23) *
+    at PuppeteerService.crawl (C:\Or\Web\Crawler\Crawler\src\services\files\puppeteerService.js:18:20) *
+    at runMicrotasks (<anonymous>) *
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) *
+    at async SourceService.getPageSourceProduction (C:\Or\Web\Crawler\Crawler\src\services\files\source.service.js:101:16) *
+    at async CrawlEmailAddressService.getEmailAddressesFromPage (C:\Or\Web\Crawler\Crawler\src\services\files\crawlEmailAddress.service.js:61:22) *
+-Put try catch on specific error of: *
+(node:9864) UnhandledPromiseRejectionWarning: TimeoutError: Navigation timeout of 30000 ms exceeded *
+    at C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\LifecycleWatcher.js:142:21 *
+  -- ASYNC -- *
+    at Frame.<anonymous> (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\helper.js:111:15) *
+    at Page.goto (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\Page.js:672:49) *
+    at Page.<anonymous> (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\helper.js:112:23) *
+    at PuppeteerService.crawl (C:\Or\Web\Crawler\Crawler\src\services\files\puppeteerService.js:25:20) *
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) *
+    at async SourceService.getPageSourceProduction (C:\Or\Web\Crawler\Crawler\src\services\files\source.service.js:101:16) *
+    at async CrawlEmailAddressService.getEmailAddressesFromPage (C:\Or\Web\Crawler\Crawler\src\services\files\crawlEmailAddress.service.js:61:22) *
+    at async CrawlLogic.scanEmailAddresses (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:200:38) *
+
+Test Production Tasks: *
+====================== *
+-Set the IS_DEVELOPMENT_MODE to false. *
+-Set the DROP_Collection to false *
+-Delete the node_modules directory. *
+-Manually drop the collection from the Mongo database. *
+-Run 'npm run io' script. *
+-On the steps in the settings, leave only the LINKS active = true. *
+-Fetched links, and see if it works good. *
+-Make sure all working good, and you filtered all the irrelevant links (test it 100 processes). *
+-Once done, active the CRAWL step. *
+-Test it a large number of times. *
+-Search invalid and fix invalid to see if need to change any logic, and list it below. *
+-List as many fixes of domains, validation, all bugs relevant, list them below. *
+
+Tasks: *
+====== *
+-Find duplicate logics and refactor, by DupChecker extension. *
+-Write more tasks for the future. *
+-Need a pre-run script to run all the initiate things that need for any logic: *
+1. Exceptions handling. *
+2. node_modules directory check. *
+3. Do logic to auto 'npm i' if missing - Cancelled. *
+4. Validate that node_modules exists and not empty (before and after npm i). *
+5. Load needed stuff for validate email addresses - Cancelled. *
+-Remove the logic of multi package.json files. *
+-Bring back the logic of edit the package.json file according to the mode, before doing the 'npm i' programmatically. *
+-Remove all unused functions and files. *
+-Format all documents. *
+-Remove all comments of unused code in all files. *
+-In console_line_index.txt write each parameter in the console, what it's role and what is the meaning of it. *
+-Fix all spelling mistakes in all TXT tasks files. *
+-Fix spelling mistakes on all tasks documents and on 'status_index.txt' document. *
+
+Tasks: *
+====== *
+-Separate 'package.json' into development/production files. *
+-Replace all 'console.log' with logUtils.log. *
+-Implement the logic of puppeteer.js and leave it with comments. *
+-Continue with ToDo points. *
+-Do all the ToDo points. *
+-Move to logService the 'logScore' in the tests. *
+-Reformat to one line all short objects initialize. *
+-Do all { } in the relevant places, don't need const = results if not needed. *
+-Implement the logic with puppeteer.js and build alternative package.json for development and for production - *
+ Don't forget to write about it on README.md file. *
+-Add the real logic of crawling source with puppeteer.js - Take it from one of the sources *
+ (implement also load time and timeout time + make sure not to load styles and images). *
+-On tests, when you test 'walla.com' you will see nothing is valid. Need to add 'alsoKnownAs' or field like that. *
+-It will be done by array that updates each module of 7 new email addresses. *
+-At home, copy the settings for DupChecker and search for duplicates logics and refactor them with the plugin for that. *
+
+NPM i Script Tasks: *
+=================== *
+-The goal is to build 1 script that will initiate the 'npm i' command NPM packages without all the development and testings NPM packages - Cancelled. *
+-First thing of all, do order in that NPM packages needs to be in devDependencies and which NPM packages needs to be in the dependencies - Cancelled. *
+-Test edit json - Cancelled. *
+-The first check is to check if node_modules directory exists. If not, continue with the rest of the logic. If exists, ignore the rest of the logic - Cancelled. *
+ that related to create the node_modules directory - Cancelled. *
+-The first thing to do on any script running, is to edit the package.json file - Cancelled. *
+-Delete the package-lock.json file - Cancelled. *
+-If it's development mode, rewrite the dependencies and devDependencies to be without puppeteer.js - Cancelled. *
+-If it's production mode, rewrite the dependencies and devDependencies to be with puppeteer.js - Cancelled. *
+-Do 'npm i' and log the result - Cancelled. *
+-Continue the initiate script in 'Other Tasks' - Cancelled. *
+
+Tasks: *
+====== *
+-On the generator of the tests - Add a function that will return random email address from the database. *
+-Add validation on the generated search key max and min length (from settings.js). *
+ If exceeded the limits - Retry to generate other key (limit to 10 (configured) retries). *
+-Build a function that retry logic with limit count, and replace it in all the relevant places - Cancelled. *
+-Add 'lorem-ipsum' npm package to the email generator. *
+-Change 'linkService' to 'crawlLinksService', and 'emailAddressService' to 'crawlEmailAddressService'. *
+-Change all 'URL' to link. *
+-'INITIATE THE XXXX' - Add the 'SERVICE' word - Cancelled. *
+-'INITIATE THE XXXXX' - Repeat itself. Can be self function with a word as a parameter - Cancelled. *
+-All 'INITIATE THE XXXXX' services - Change it to 'INITIATE THE SERVICES'. *
+-Fix bug with 'database' counter when drop collection is false. *
+-Fix bugs with testings. *
+-New console line structure: *
+===[SETTINGS] Mode: DEVELOPMENT/PRODUCTION | Drop: true/false | Steps: Links, Crawl, Send *
+===[GENERAL] Time: 00.00:00:11 | Goal: EMAIL ADDRESSES | Progress: 27/50 (54.00%) | Status: PAUSE=== *
+===[PROCESS] Process: 1/10 | Page: 2/3 | Engine: bing | Key: הריכזמ השורד=== *
+===[LINK] Crawl: ✅  18 | Total: 72 | Filter: 54 | Current: 2/9=== *
+===[EMAIL ADDRESS] Save: ✅  27 | Total: 282 | Database: 27 | Exists: 18 | Invalid: ❌  45 | Valid Fix: 2 | Invalid Fix: 6 | Unsave: 0 | Filter: 79=== *
+===[TRENDING] === *
+===[PAGE (2/9)] https://www.drushim.co.il/jobs/search/%d7%9e%d7%96%d7%9b%d7%99%d7%a8%d7%94=== *
+===[SEARCH (2/3)] https://www.bing.com/search?q=דרושה+מזכירה&qs=n&sp=-1&pq=%d7%93&sc=0-1&sk=&cvid=AD0065E122BA4D3BA69164098163F923&first=11&FORM=PER=== *
+-On system.utils - Move to a function on system utils that exits the application (with reason, like in the application today). *
+-Add option of color to the '===' in the status. *
+-Add 'Fix: ' in the TRENDING section in the console line. *
+-Replace the 'this.processStarted' with check that the startDateTime parameter is not null. *
+-Change "IS_TEST_MODE" to "IS_DEVELOPMENT_MODE" + Change in all places. *
+-On development mode off (but on development mode for tests and creation) - When running 'npm start' *
+ The first thing to show, even before any load of anything, It will log the following: *
+ ===SETTINGS=== *
+IS_DEVELOPMENT_MODE: true *
+IS_DROP_COLLECTION: true, *
+SEARCH_KEY: null, *
+IS_LOG_VALID_EMAIL_ADDRESSES: true, *
+IS_LOG_FIX_EMAIL_ADDRESSES: true, *
+IS_LOG_INVALID_EMAIL_ADDRESSES: true, *
+IS_LOG_UNSAVE_EMAIL_ADDRESSES: true, *
+IS_LOG_CRAWL_LINKS: true, *
+=============== *
+Ok to start? y/n *
+-Only when hit 'y' run the application. *
+-All settings name will be in purple. *
+-Again, this message will only show on production (IS_DEVELOPMENT_MODE = false). *
+-It will cancel the task for the delay of the drop collection. *
+-On development mode off - Add delay if the flag to clear the database is true, with a counter of a - Cancelled. *
+ minute (configured) until it happen - Give the time and the option to abort - Cancelled. *
+-Add 3 more booleans in the settings under 'STEPS': IS_LINKS_STEP / IS_CRAWL_STEP / IS_SEND_STEP. *
+-Add logic to active each step according to the settings.js. *
+-Add flag 'isCrawlEmailAddresses' in the settings. Default is true, but if it's false, After the link fetch (include log the link) - Cancelled. *
+ no further actions will be take. It's good for test links, and test other stuff - Cancelled. *
+-Improve the function of log to confirm settings. *
+-Add it also to the 'IMPORTANT SETTINGS' message. *
+-Fix bug with number of process exceeded the limit in the end. *
+-Fix bug of display minutes on progress with leading zero. *
+-Fix bug of continue after 10 processes. *
+-Test the goals in low numbers. *
+-Update new syntax logic of package 'uuid' on NPM. *
+-Fix bug on uuid when error occurred. *
+-Rename 'CrawlData.js' to 'ApplicationData.js'. *
+
+Tasks: *
+====== *
+-Add minimum validation of 1 character for local part (error) and 3 characters the domain part (error): *
+1. Add to the settings the min characters length of each part and total min. *
+2. Check the min in the validation function. *
+-Max characters is 130 (configure within the settings.js). Example: ehshsh@shsg.com | shaga@gmail.com | shsgsg@yahoo.com *
+-Add booleans for each ones of the logs from the settings. *
+-Add option to search by specific search key instead of random one. *
+
+Tasks: *
+====== *
+-New structure of the console status line: *
+===[GENERAL] Time: 00.00:00:19 | Goal: LINKS | Progress: 94/50 (188.00%) | Status: PAUSE=== *
+===[PROCESS] Process: 1/10 | Page: 2/3 | Search Engine: bing | Key: Email ןח-תעבג תדיקפ ה/שורד=== *
+===[LINK] Crawl: ✅15 | Total: 94 | Filter: 64 | Current: 3/15 *
+===[EMAIL ADDRESS] Save: ✅50 | Total: 316 | Database: 50 | Exists: 18 | Invalid: ❌42 | Valid Fix: 4 | Invalid Fix: 10 | Unsave: 0 | Filter: 84=== *
+===[TRENDING]: luiza@qhr.co.il | jobs@totaladmin.co.il | nluiza@qhr.co.il=== *
+===[PAGE (1/15)]: https://www.shatil.org.il/node/add/advertising-a-job-advertisement=== *
+===[SEARCH (2/3)]: https://www.bing.com/search?q=דרוש/ה+פקידת+גבעת-חן+Email&qs=n&sp=-1&pq=%d7%93&sc=0-1&sk=&cvid=AD0065E122BA4D3BA69164098163F923&fir=== *
+-Split the CrawlData class into 2 classes, to make it more readable. *
+-Add to console: '✅' : '❌' (V near total, X near invalid). *
+-Change the order of the fields counters according to the new console structure. *
+-Fix the logic of goals to stop exactly in the goal value itself. *
+-Check all type of goal 5 times. *
+
+Tasks: *
+====== *
+3. Email Address Filter: *
+------------------------ *
+-Add support of filter specific email address domains - Add 'Filter' on the console status log. *
+-Return 'Filter'. *
+-Change all relevant files of domains to 'linkDomains' and 'emailAddressDomains'. *
+-upperCase goal type. *
+-Convert that statuses to be upperCase. *
+-Add the 'filterEmailAddressDomain.js' *
+-Add logic to not insert the same email to the trending save list. *
+-Add the filter email addresses logic. *
+
+Tasks: *
+====== *
+-Fix all known bugs. *
+-If return 'Add' update also the 'Database'. *
+-On development mode, empty the dist directory each run. *
+-Add settings to drop collection before run on settings.js. *
+-When finish the logic of crawl email address, check all kind of situations: original, fix valid, fix invalid, save, unsave, exists. *
+-Check all types of goals: email addresses, minutes, links. *
+-Test all the goal cases. *
+-Add logic to remove duplicates email addresses before anything else. *
+-Make enum of goal types: emailAddresses, time, links. *
+-Make the settings of 2 things: the type of goal and the value. The validation of this settings will be number. In time it will be minutes. *
+-Write a log of each fix is being maid. The original and the fix - *
+ Verify that the logic don't destroy email addresses (new line for each, of course). *
+-In the bottom line on the console display recent email addresses inserted to the database. *
+-Add percentage to the console status line: Total 0/1,000 (0%). *
+-The 'Fix' count is only when the fix and valid. In any case, isValid true or false, log to a TXT file. *
+-Add logic to add comma and space before the email address, except for the first append. *
+-Add the goal type to the console line status. *
+-Add logic to goal by number of email addresses / limit time (1 hour for example) / number of processes / number of crawl pages. *
+-Log the console status line with the percentage near the field of the goal. Keep the '35/37 (36%)' format always. *
+
+Email address modify service: *
+============================= *
+-Create the new file. *
+-Move all email address stuff to the new service. *
+-Move the logic from text.utils.js to the new file. *
+-Remove the 'Rename' status - Will be merged with 'Fix'. *
+-The result will be return as the following: - Cancelled. *
+status (new enum: Add, Exist, Invalid, Rename, Fix, Filter), - Cancelled. *
+the new email address. The logic will add the counters according to the result. - Cancelled. *
+-Use booleans instead of enum statuses. *
+-On the first fix - break the loop - Cancelled. *
+-Don't forget to put all of this method inside a promise and perform async await on it. *
+-Re-edit all the common mistakes from Jumbo into class with all the mistakes and the domain fix. *
+-In the end of each step, return the appropriate result according *
+ to check if equal to the original email address. *
+-The method will be separated to several functionalities: *
+1. Check if the email address is invalid and can be fixed. *
+2. Check if the email address domain is valid and need to be renamed. *
+3. Check if the email domain is filtered. *
+4. Check if exists and insert to database. *
+
+1. Email Address Validation: *
+---------------------------- *
+-Add validation on email address length: *
+'There is a length limit on email addresses. That limit is a maximum of 64 characters (octets) in the 'local part' *
+(before the '@') and a maximum of 255 characters (octets) in the domain part (after the '@') for a total length of 320 characters'. *
+-Add the new fixed from the source TXT file. *
+-Return 'Fix' or 'Invalid'. *
+
+2. Email Address Domain Check: *
+------------------------------ *
+-At home, search in Jumbo code a task that have common email mistakes: *
+ Go to JumboMail website and pull all rows of common mistakes - Send it to the gmail. *
+-After taking the common mistakes, implement the logic here. *
+-This section will be separated into several parts: *
+A. Manually Domain Check: *
+------------------------- *
+-Implement a list of case and fix and check if it has been replaced. *
+B. Auto Typo Check: *
+------------------- *
+-Remove all specific special characters. *
+-Implement the function that fix typos. *
+-Build function that create auto typo and check that the first function detect and fix all typos. *
+-Add a list of valid domains (according to the common mistakes and will be added more later). *
+-The fix typo function will be using this list. *
+-In the initiate step, a random domain will be chosen and typo will be generated and will be tested - Cancelled. *
+ (If any typo missed - it will throw exception). *
+-Return 'Fix'. *
+
+4. Email Address Save: *
+---------------------- *
+-Like the logic today. It's the last step. *
+-Return 'Add' or 'Exists'. *
+-If return 'Add' update also the 'Database'. *
+
+Tasks: *
+====== *
+-Fix bug with with maximum processes, don't stop the loop. *
+-Change the console status line: totalCount will be the total email addresses crawled. *
+-New counter - "Save": valid email address, not filter / fix / exists / invalid, that saved in the database and logged to the TXT file. *
+-Implement the logic of crawl email address according to the logic of the links service. *
+-Add logic to add new counter - 'unsave'. Unsave it's when failed to save to the database. Log it to a separated TXT file. *
+-Make enum of goal types: emailAddresses, time, links. *
+-Add new class with all flags possible for the email address. *
+-Fit the logic according to this class. *
+-Add also field of status for logging, for the function on the log.service, so that the results for the log will be sent to the function with the status. *
+-All the counters will be updated according to the flags of the result. *
+-Add the logic to fit each of the statuses. *
+-Order the statuses on the console status line according to the 'status_index.txt' document. *
+-The new console status line need to be as the following: *
+===Time: 00.00:00:08 | Goal: Email addresses count | Progress: 10/1,000 (5%) | Status: pause=== *
+===Process: 1/10 | Page: 1/3 | Link: 9/15 | Links: 47 | Filter Links: 32 | Engine: bing | Key: ליימ יא ריאי-בכוכ דרשמ תלהנמ ה/שורד=== *
+===Total: 0 | Save: 0 | Database: 0 | Exists: 0 | Invalid: 0 | Valid Fix: 0 | Invalid Fix: 0 | Unsave: 0 | Filter: 0=== *
+===Search Engine URL: https://www.bing.com/search?q=דרוש/ה+מנהלת+משרד+כוכב-יאיר+אי+מייל&qs=n&sp=-1&pq=%d7%93&sc=0-1&sk=&cvid=AD0065E122BA4D3BA6916409816=== *
+===URL: https://il.indeed.com/%D7%9E%D7%A0%D7%94%D7%9C-%D7%AA-%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%95%D7%AA-jobs-in-%D7%91%D7%90%D7%A8-%D7%A9=== *
+===Trending Save: orassayag@gmail.com | orassayag@gmail.com | orassayag@gmail.com | orassayag@gmail.com | orassayag@gmail.com=== *
+-Load email addresses already fetched to the 'Database' counter. *
+
+Last Email Address Tasks: *
+========================= *
+-After each fix do a backup and check cases. *
+-Fix the fixDomainEnd function. *
+-Refactor all Micromatch function into one. *
+-Refactor all the functions of substring, substr, split dot, in the generator and in the validation, into textUtils. *
+-Change all places in the logic from 'leftPart' to 'localPart' and from 'rightPart' to 'domainPart'. *
+-Move all invalid email addresses from the list into the invalid email addresses. *
+-Add 'Joi' NPM validation package to the email validation function - Cancelled - Not good validation of email addresses. *
+-Build file called 'regex.utils' that will store all the regexs. *
+-Build file called 'character.utils' that will store all keys of strings. *
+-Refactor 'createSimpleValidEmailAddress' function. *
+-In the validation method, create keyMap by function id and function name. *
+-Add numbers of "-1,-2,-3,-4" to the basic validation method. *
+-Add support for remove duplicate '@' characters: (change the function id). *
+-Remove the validation after "fixed.indexOf('@') === -1)". *
+-Add another possible fix, when there are more than '@' - Remove all except the first one. *
+-Do all the ToDo points that related to textUtils. *
+-Add another fix function to remove dot in the beginning of the email. *
+-Refactor the "console.log(`${icon} | isValid: ${isValid} | original: ${original} | fix: ${fix} | functionIds: ${functionIds}`);" to a function.
+-That function will receive property "isIcon", and will return a string without the console.line. *
+-The log will print only the total, the fix, and the invalid into a TXT file. *
+-The fix log should look like: 'isValid: true/false | original: | fix: ' + break line. *
+-Replace in all the relevant places. *
+-Validate that all testings and validations works as expected. *
+
+Logs: *
+===== *
+-Links: *
+-Each link that was crawled, will be logged: link + break line. *
+-Email Addresses: *
+-Valid: Log valid email addresses in one line, break lines, with ','. Start the first one without ',', but all new email addresses will be with comma separated. *
+-Invalid & Fixed (separated files): (check if built a method for this) ${icon} | isValid: ${isValid} | original: ${original} | fix: ${fix} | functionIds: ${functionIds} *
+
+Bonus More Tests: *
+================= *
+-Build a new service called 'emailAddressesGenerator.service.js' - Cancelled. *
+-Sandbox with random words package. *
+-Convert the 'typosGenerator.service.js' into 'generatorService.js' - Cancelled. *
+-Create new service called 'emailAddressesGenerator.service'. *
+-Add email address settings file and change all places accordingly. *
+-generatorService will have 4 functions: getValidEmailAddress() and getInvalidEmailAddresses() - Return accordingly. *
+-Change the "emailAddressTestCases.test.js" accordingly and check it works. *
+-And have 2 functions: "getTypos" and "getEmailAddresses". *
+-getTypos: *
+{ *
+localPart: *
+domainPart: *
+} *
+-Each empty will be randomize. *
+-Change 'emailAddressTypos.test.js' accordingly and check it. *
+-getEmailAddresses() - All options will be inside, since it's a long list of flags. *
+-All the settings of this function will be inside. *
+-Build all the logic, then add all the flags. *
+-There will be 2 main functions: random email address typos *
+ (same as today + flag of random name or if not empty - the name selected + load the domainDetails from the generator), random email addresses. *
+-The new function will create random email addresses with the following types of email addresses: *
+1. Random a number between 100-500 of email addresses to randomize. *
+2. Add flags for each type of pairs, to create email addresses of this type. *
+3. According to the settings in the previous results. *
+4. For each of the pairs, random a number that will all together match the maximum number from the section 1. *
+5. Each pair will create a type of email address will be created from a different function - with the pair comments from here. *
+6. For each array, random the type of email addresses. *
+7. Each method will return the final email address that has been created, the local part and the domain part. *
+8. Random number of emails by the following: *
+{ *
+  LocalPart: Random letters (settings: valid random size of part, insert numbers randomly, upperCase randomly). *
+  DomainPart: Random valid domains from 'isCommonDomain=true' or random domain name with random end, no typos. *
+}, *
+{ *
+  LocalPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+  DomainPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+}, *
+{ *
+  LocalPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+  DomainPart: TyposGenerator of domain common typos (use domainDetails list for random). *
+}, *
+{ *
+  LocalPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+  DomainPart: Random common domain typos. IsCommonDomain='false', from the list. *
+}, *
+{ *
+  LocalPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+  DomainPart: Random common domain typos. IsCommonDomain='true', from the list. *
+}, *
+{ *
+  LocalPart: Merged valid and invalid email addresses lists, random local part of one of them. *
+  DomainPart: TyposGenerator of domain common typos (use domainDetails list for random). *
+}, *
+{ *
+  LocalPart: Merged valid and invalid email addresses lists, random local part of one of them. *
+  DomainPart: Merged valid and invalid email addresses lists, random domain part of one of them. *
+}, *
+{ *
+  LocalPart: Random letters and randomly replace letters, numbers, special characters (random size of part). *
+  DomainPart: TyposGenerator of domain common typos (use domainDetails list for random) + Remove domain end. *
+  DomainEnd: Random from 'emailAddressEndFixTypos'. *
+}, *
+{ *
+  LocalPart: Random local part from all of any method. *
+  DomainPart: Random local part from all of any method. *
+} *
+-Convert the modes to 'VALID', 'INVALID', 'RANDOM'. *
+-Add another development mode to 'emailAddressTestCases.test.js' and change the logic according to the new enum. *
+-Change the logic on 'emailAddressTypos.test.js' accordingly. *
+-Refactor the 'emailAddressesGenerator.service' with all the common logics. *
+-Build 'emailAddress.utils' for common functions related to email address around the project. *
+
+Fix Common Typos: *
+================= *
+-Need to be merged into one single list, remove the duplicates, and to keep only the last check, *
+ before the validation (this.finalRenameEmailAddressManuallyTypo), and to cancel the check on (this.fixDomainCommonTypos). *
+
+Fix Hardcoded Lists: *
+==================== *
+-Holding inside the code all kind of lists (email addresses, typos, filter email addresses, filter domains, domain ends, search keys) *
+ it's a bad idea, because it's not dynamic, and each change need to go to the code and change it. Therefore, it need to be changed to be *
+ hold in TXT files. *
+--emailAddressCommonDomainTypos.js: *
+-To hold all the typos in 2 lists and inside the js file it's bad idea. *
+-Need to be merged into one single list, remove the duplicates, and to keep only the last check, *
+ before the validation (this.finalRenameEmailAddressManuallyTypo), and to cancel the check on (this.fixDomainCommonTypos). *
+--emailAddressesTestCases.js *
+-Reload from external files, the valid and the invalid email addresses. *
+--emailAddressSettings.js *
+-Reload from external files, the *
+
+Fix Typo Bugs: *
+============== *
+-Add field to CommonDomainTypo called "domainName" with the name of the domain - Cancelled. *
+-Move the initiate of the common domains from the link service to the email address service. *
+-Create another array of common domains without their end. *
+-Create a function that split the domain from the last '.', and bring back only the domain name. *
+-Build another function called "fixMicromatchTypos". *
+-Build a function that gets a domain, and compare it with micromatch package to all of the domains without their endings. *
+-The "fixMicromatchTypos" function will contain 4 calls to other functions: compare pure domain with end, *
+ remove first letter, remove last letter, and remove all what is not 0-9a-z. After each of these functions *
+ will ba a call to the compare with micromatch. If in any step there is a match, replace the domain and *
+ resolve, don't continue with the rest of the functions. *
+-Crate another list with all the domain names and the domain end: *
+ ['gmail', 'com'], ['hotmail', 'com'], ['outlook', 'com'] (will be generated from the initiate link service). *
+-Use micromatch to try to get the domain name. *
+-Add the last step: *
+a. Compare the domain to a list of common domains. *
+b. If match - Resolve. The email address is OK. *
+c. If doesn't match to any domain, use a new function: *
+1. Split the domain to 2: domain name, domain end. *
+2. Remove first and last letters of the domain name and compare (without domain end). If match - Resolve. *
+3. Use micromatch with the list of all the domain names. If match - Resolve. *
+-Try to solve typos of end domain. *
+-Add another validation function - If email address ends with '.', remove last character. *
+-Build function that check that the domain part contains ',', replace it with '.'. *
+-Fix Common Typos: test@gmail,com *
+-Fix all typos bugs. *
+-Fix all email address validation bugs. *
+-Continue to fill common mistakes for the followings: walla.com | walla.co.il | bezeqint.net *
+-In the typo test - Add logic to change "isValid = false" if the domain don't match. *
+-Add another field to "CommonDomainDomainTypo" named "finalList". *
+-Fill the "finalList" for each domain. *
+-Build another final version of replace common mistakes according to the "finalList". *
+-After the new implementation - Add more typos to the "finalList" and re-check. *
+-Finish the email address mistakes - Cancelled. *
+-Remove duplicate cases in "validEmailAddresses" and "invalidEmailAddresses" and from the domainCommonTypos list (use online duplicate remover). *
+-Refactor all emailAddressValidation.service.js for common logic - Build functions. *
+-Build "testService" to all common functions in all .test.js files - Cancelled. *
+ (check if repeated logic exists in 'emailAddressValidation.service.js', if so, take from there) - Cancelled. *
+
+Tests: *
+====== *
+-Load all the valid domains list. *
+2 types of tests: *
+
+-Email Address Validation: *
+========================== *
+-a. Loop on the valid email addresses list and check. *
+-If invalid, put X. *
+-If valid, put V. *
+-If fix, put V. *
+
+-Log a score: 43/143 (34%). *
+
+-b. Loop on the invalid email addresses list and check. *
+-If invalid, put V. *
+-If valid, put X. *
+-If fix, put V. *
+-Add to console: '✅' : '❌' *
+
+-Log a score: 43/143 (34%). *
+-Fix bug with "undefined" in the end of the email address. *
+
+-Email Address Typo Fix: *
+======================== *
+-Pick on domain from the valid domains list. *
+-use the typo service to generate typos. *
+-Loop and check all the typos. *
+-If Fix - Log V. *
+-If not Fix - Log X. *
+-Test all fixes, and fix what need to be fixed. *
+
+Log a score: 43/143 (34%). *
+
+Tasks: *
+====== *
+-Remove 'request' package from the project - Not supported any more. *
+-Finish the tests of the valid email addresses. *
+-Clear symbols '()[]",:;<>\' from the local part of the email address. *
+-Add logic that lowercase the domain part. *
+-Break all the fix functions to separated functions. *
+-Add map key to each of the functions - Cancelled. *
+-Each functions that the email address changed, add the id of the function. *
+-Convert the name of of the colors enum to text enum and transfer the V and X to there. *
+-Move the V and X to enum. *
+-Move the clear space to a function in textUtils.js - Cancelled. *
+-Make sure that after email address declared as isValid = false, the function resolve, and not continue. *
+-Move the rest of the logic that's left to the email address service - Cancelled. *
+-Fix bug with invalid fixes between functions. *
+-Add a hyphen (as long it's not the first or the last character) to allowed special characters on the right side, according to the rules. *
+-Add more test cases of invalid with hyphen. *
+-Repeat the test of the valid email addresses again to verify no logic has been destroyed. *
+
+More Tasks: *
+=========== *
+-Change "generateTypo" to "typoGenerator.service". *
+-Find out which characters invalid for email address. *
+-Create function that initiate the validDomainsList, use it both on the logic and the tests. *
+-Find a list of all special characters. *
+-Random on the typo generator 1-3 (also random) special characters, in additional results. *
+-On typo generator - Add the typo special characters on the domain part. *
+-Add to CommonDomainTypos "isCommonDomain". *
+-All to the 5 < put false, the rest put true. *
+-From the "validDomainsList" add missing domains on commonDomainsTypos. *
+-Remove the "validDomainsList". *
+-Generate the list of domains dynamically when upload from all commonDomainTypos. *
+
+Fresh Tasks: *
+============ *
+-Convert all search process data into a class that will go back and forward from the logic crawl and the search service. *
+-Convert all the statistics and log data into a class that will be updated all the time. *
+-Add enum status: INITIATE | FETCH | CRAWL | FINISH. *
+-Move all settings in logic into classes. *
+-Create log service that will contain all the log function. *
+-New console structure: *
+===Time | Status=== *
+===Process | Page | Link | Links | Filter Links | Engine | Key + Break=== *
+===Total / Goal (0%) | Database | Exists | Invalid | Rename | Fix | Filter + Break=== *
+===Search Engine URL + Break=== *
+===URL + Break=== *
+
+Tasks:
+======
+-Console: *
+-Find a way to do multi console line. *
+-New console will be: *
+Time | Process | Page | Links | Link | Filtered Links | Key + Break *
+Total / Goal | Existed | Invalid | Renamed | Fixed | Filtered *
+
+Search Engine + URL service: *
+============================ *
+-Each link page that fetch email addresses - Log it into a separate file for better track on addresses. *
+-Add remove duplicates to the filter domains in the initiate step. *
+-Add remove of '/' if the link ends with it, and remove duplicates again. *
+-Move the remove duplicates to the text utils. *
+-Development mode on: If it's a search engine source - Send the search engine type. If it's a page source - The search engine type parameter will be null. *
+-Add each search engine source to dedicated directory and change the logic accordingly. The page sources are the same as today. *
+-Add logic to remove duplicates URLs before anything else. *
+-Create the filter list of each search engine according to the pages. *
+-Add logic to filter of URLs - Always filter the included all URLs that include the hostname. *
+-Remove the default search engine property. *
+-Move all URL stuff to the new service. *
+-Add logic to add to the console status lines "Filter Links" - All the links that have been filtered. *
+-Add the logic to generate the URL according to the selected search engine. *
+-Development mode off: Add logic to check that the each search engine that active, and remove it from random if it's not active. *
+-Add validation on all active search engines (make sure that they are online with simple request. If not active - Remove it from random even if it's active). *
+-Any URLs that ends with "." to filter - Except from html, asp, aspx - Build an array of allowed file extensions - Cancelled. *
+-Development mode off: in the initiate check for each search engine if it's online, and override the "active" property according to the result. *
+-Development mode off: Convert the internet connection check to a global function to check available URLs. *
+-Build the logic to random search engine, and to pull out all the filtered domains (if exists). *
+-Make a global filter of URLs - Merge with the specific search engine on the initiate step. *
+-Add another list of search engine name and the list of filtered links according to the domain (From the filterKeys - Remove it). *
+-On each process, random all active search engine (of course check that will work with one active. If no active at all - throw exception). *
+-Remove the filtered links in the current structure. *
+-Add logic to check all the search engines available before use it (before random search engine). *
+-Add another row, the bottom row - To display the current link (limit characters of course - Cancelled). *
+-Build an array of file extensions and check if any of the URLs contains them - If so, filter the URL - Cancelled. *
+-Remove the "SourceType" enum. The new logic will be - Enum of all search engines (will be inserted as "name" field in the search engine configurations). *
+-Merge create of search key, search engine, and templateSearchUrl into one service that do it all. *
+-Move all the dynamic keys to new directory - configurations. *
+-Create there the new search engine list objects. *
+-Change the enum of the search engine list to a list of objects according to the needs. *
+-Implement new search engine list: *
+name, active, template, query key, page key *
+(On first page don't need the page key - remember that). *
+
+Others:
+=======
+-Replace ' ' with '+' on the search key. *
+-Find a dynamic way to random each key from any list inside of a big list, according to the order of the list. *
+-Fix all spelling mistakes in all TXT tasks files. *
+Remove search engines: (here and in the misc/search_engines.txt) *
+yahoo *
+aol *
+swisscows *
+gigablast *
+Add search engine: *
+startpage *
+
+Old Tasks: *
+========== *
+-Refactor log process to have the keys colored in yellow - Cancelled. *
+-Refactor log process to receive 2 parameters: 1 object, 1 array of all the colors by the same order. *
+-Add colors to the status console line. *
+-Change the name of the database title in the pre process log. *
+-Remove the logic to empty the dist directory. *
+-Add to each file the date of today, and the time with milliseconds - Keep them before the operation starts. *
+-Separate the database name and the collection name to different settings, and replace all over the code. *
+-Add colors enum and replace it all over the code. *
+-Make sure in crawl.logic.js that all parameters declared in the *
+ constructor and set up in the setParameters function. *
+-Test invalid email address to detect. *
+-Write the invalid email addresses each one in a new line. *
+-Add line space between each invalid email addresses in the TXT file. *
+-Add more search engines. *
+-Add logic to support the paging in any search engine. *
+-When exit the program, manually or by exit, if any TXT file exists, *
+ remove the last comma (for the current session only) - Cancelled. *
+-Add validation service for: *
+-Add validation on settings parameters. *
+-Add the validation on the internet connection from previous project. *
+-Add validation on writing to directories and that directories exists (from previous project). *
+-Change "SEARCH_ENGINE_PAGES_COUNT_PER_PROCESS" to "MAXIMUM_SEARCH_ENGINE_PAGES_PER_PROCESS_COUNT". *
+-Change to "SEARCH_ENGINE_TYPE" to "DEFAULT_SEARCH_ENGINE_TYPE". *
+-Remove dots from titles. *
+-Upper case titles + colors. *
+-Convert "logProgress" to receive array of properties instead of 1 object today. *
+-Add colors to the status line: *
+-Statuses of validation / initiation - Blue. Exit - Red. Goal reached - Green. *
+-Add the search engine to the status line (and remove it from the pre-process log). *
+-Add all settings to the settings.js file. *
+-Add check with lower case and upper case email. If it's duplicate, and throw error, check how to fix it. *
+-In all places search for new parameter each line and re-format it. *
+-Edit the package.json file and the README.md file. *
+-In the README.md - Put simple guide how to run this script. *
+-Add all the settings of load time and timeout request in *
+ the settings.js (and validate it on validation service). *
+-Add delay between insert to the database. *
+-Fix bug of last process - Won't continue to the last page and last link. *
+-Fix bug when reach the maximum number of process it won't exit. *
+-Fix bug of the current process index finishes at 99 instead of 100. *
+-Move the interval to separate function. *
+-Set up GOALS (run until get to 1000 email address, for example). *
+-Add logic to log goal percentage. *
+-Add the reason of exit: Goal Reached / Processes Limit Exceeded. *
+-Add logic to skip process if no links were found. *
+-Add limit of key to display, substring to the maximum count length. *
+-Add log titles of statuses. *
+-In the initiate step - Add CRUD operations to test database status. *
+-Before start - Log the number of email addresses already exists in the database. *
+-Remove the percentage from the log function. *
+-Add pre-process log with general status and details. *
+-Fix default formatter on VS Code. *
+-Separate getSource functions to default and development modes. *
+-Do all the ToDo points. *
+-Initiate the 2 files (if theirs exists - delete and re-create them). *
+-Keep the logic of random search key. *
+-Keep the process and the paging. *
+-Keep the filter URL. *
+-When invalid email address (after try fix logic) - Log to a TXT file. *
+-Do the fix email address domain logic. *
+-Keep the maximum characters source validation - Cancelled. *
+-After insert to the database, log to a TXT file. *
+-The status need to be always on the screen: *
+-Time: 00:45:34 | Links: 3435 | Total: 3945 | Invalid: 34 | Key: *

@@ -1,0 +1,49 @@
+{
+    "cSpell.words": [
+        "Assayag",
+        "BING",
+        "DOGPILE",
+        "ECOSIA",
+        "EXALEAD",
+        "Hardcoded",
+        "METACRAWLER",
+        "NAVER",
+        "Sausagefingers",
+        "UNCHANGE",
+        "bezeqint",
+        "dirent",
+        "dirents",
+        "gmai",
+        "hotmail",
+        "jsbeautifyrc",
+        "micromatch",
+        "networkidle",
+        "preload",
+        "regexs",
+        "shiftflips",
+        "uneeded",
+        "unsave",
+        "uuidv",
+        "yandex"
+    ],
+    "search.exclude": {
+        "**/.vscode": true,
+        "**/dist": true,
+        "**/misc": true,
+        "**/misc/documents": true,
+        "**/misc/": true,
+        "/misc/": true,
+        "misc/**": true,
+        "**/misc/**": true,
+        "**/misc/documents/**": true,
+        "**/node_modules": true,
+        "**/sources": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "http.proxy": "",
+    "http.proxyAuthorization": null,
+    "http.proxyStrictSSL": false,
+    "editor.renderWhitespace": "none"
+}

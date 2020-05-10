@@ -1,0 +1,1350 @@
+<head>
+        <meta charset="UTF-8">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <link rel="pingback" href="https://www.taxman.co.il/xmlrpc.php">
+        <title>מנהלת חשבונות סוג 2,3 – טקסמן</title>
+<link rel="dns-prefetch" href="//s0.wp.com">
+<link rel="dns-prefetch" href="//secure.gravatar.com">
+<link rel="dns-prefetch" href="//s.w.org">
+<link rel="alternate" type="application/rss+xml" title="טקסמן « פיד‏" href="https://www.taxman.co.il/feed/">
+<link rel="alternate" type="application/rss+xml" title="טקסמן « פיד תגובות‏" href="https://www.taxman.co.il/comments/feed/">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.10.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script src="https://www.googletagservices.com/activeview/js/current/osd.js?cb=%2Fr20100101"></script><script src="https://pagead2.googlesyndication.com/pagead/js/r20200109/r20190131/show_ads_impl.js" 
+id="google_shimpl"></script><script src="https://connect.facebook.net/signals/config/221102122127576?v=2.9.15&amp;r=stable" async=""></script><script src="https://connect.facebook.net/signals/config/1580820295565679?v=2.9.15&amp;r=stable" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" data-cfasync="false">
+        var mi_version         = '7.10.0';
+        var mi_track_user      = true;
+        var mi_no_track_reason = '';
+
+        var disableStr = 'ga-disable-UA-67868932-1';
+
+        /* Function to detect opted out users */
+        function __gaTrackerIsOptedOut() {
+                return document.cookie.indexOf(disableStr + '=true') > -1;
+        }
+
+        /* Disable tracking if the opt-out cookie exists. */
+        if ( __gaTrackerIsOptedOut() ) {
+                window[disableStr] = true;
+        }
+
+        /* Opt-out function */
+        function __gaTrackerOptout() {
+          document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+          window[disableStr] = true;
+        }
+
+        if ( mi_track_user ) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+                __gaTracker('create', 'UA-67868932-1', 'auto');
+                __gaTracker('set', 'forceSSL', true);
+                __gaTracker('require', 'displayfeatures');
+                __gaTracker('send','pageview');
+        } else {
+                console.log( "" );
+                (function() {
+                        /* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+                        var noopfn = function() {
+                                return null;
+                        };
+                        var noopnullfn = function() {
+                                return null;
+                        };
+                        var Tracker = function() {
+                                return null;
+                        };
+                        var p = Tracker.prototype;
+                        p.get = noopfn;
+                        p.set = noopfn;
+                        p.send = noopfn;
+                        var __gaTracker = function() {
+                                var len = arguments.length;
+                                if ( len === 0 ) {
+                                        return;
+                                }
+                                var f = arguments[len-1];
+                                if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+                                        console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+                                        return;
+                                }
+                                try {
+                                        f.hitCallback();
+                                } catch (ex) {
+
+                                }
+                        };
+                        __gaTracker.create = function() {
+                                return new Tracker();
+                        };
+                        __gaTracker.getByName = noopnullfn;
+                        __gaTracker.getAll = function() {
+                                return [];
+                        };
+                        __gaTracker.remove = noopfn;
+                        window['__gaTracker'] = __gaTracker;
+                                        })();
+                }
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+                <script type="text/javascript">
+                        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.taxman.co.il\/wp-includes\/js\/wp-emoji-release.min.js"}};
+                        !function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+                </script><script src="https://www.taxman.co.il/wp-includes/js/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+                <style type="text/css">
+img.wp-smiley,
+img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 .07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+}
+</style>
+        <link rel="stylesheet" id="wp-block-library-rtl-css" href="https://www.taxman.co.il/wp-includes/css/dist/block-library/style-rtl.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-theme-rtl-css" href="https://www.taxman.co.il/wp-includes/css/dist/block-library/theme-rtl.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="https://www.taxman.co.il/wp-content/plugins/contact-form-7/includes/css/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-rtl-css" href="https://www.taxman.co.il/wp-content/plugins/contact-form-7/includes/css/styles-rtl.css" type="text/css" media="all">
+<link rel="stylesheet" id="globta-css" href="https://www.taxman.co.il/wp-content/plugins/globta/public/css/globta-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="math-captcha-frontend-css" href="https://www.taxman.co.il/wp-content/plugins/wp-math-captcha/css/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="bbp-default-css" href="https://www.taxman.co.il/wp-content/plugins/bbpress/templates/default/css/bbpress.css" type="text/css" media="screen">
+<link rel="stylesheet" id="bsp-css" href="https://www.taxman.co.il/wp-content/plugins/bbp-style-pack/css/bspstyle.css" type="text/css" media="screen">
+<link rel="stylesheet" id="tie-css-bbpress-css" href="https://www.taxman.co.il/wp-content/themes/jannah/assets/css/bbpress.css" type="text/css" media="all">
+<link rel="stylesheet" id="d4p-bbtools-css" href="https://www.taxman.co.il/wp-content/plugins/gd-bbpress-tools/css/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="d4p-bbattachments-css-css" href="https://www.taxman.co.il/wp-content/plugins/gd-bbpress-attachments/css/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="recent-posts-widget-with-thumbnails-public-style-css" href="https://www.taxman.co.il/wp-content/plugins/recent-posts-widget-with-thumbnails/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="cf7cf-style-css" href="https://www.taxman.co.il/wp-content/plugins/cf7-conditional-fields/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="taqyeem-styles-css" href="https://www.taxman.co.il/wp-content/themes/jannah/assets/css/taqyeem.css" type="text/css" media="all">
+<link rel="stylesheet" id="tie-css-styles-css" href="https://www.taxman.co.il/wp-content/themes/jannah/assets/css/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="tie-css-ilightbox-css" href="https://www.taxman.co.il/wp-content/themes/jannah/assets/css/ilightbox/dark-skin/skin.css" type="text/css" media="all">
+<style id="tie-css-ilightbox-inline-css" type="text/css">
+body{font-family: Arial,Helvetica,sans-serif;}.logo-text,h1,h2,h3,h4,h5,h6{font-family: Arial,Helvetica,sans-serif;}#main-nav .main-menu > ul > li > a{font-family: Arial,Helvetica,sans-serif;}blockquote p{font-family: Arial,Helvetica,sans-serif;}.entry-header h1.entry-title{line-height: 1.3;}#tie-wrapper .mag-box.big-post-left-box li:not(:first-child) .post-title,#tie-wrapper .mag-box.big-post-top-box li:not(:first-child) .post-title,#tie-wrapper .mag-box.half-box li:not(:first-child) .post-title,#tie-wrapper .mag-box.big-thumb-left-box li:not(:first-child) .post-title,#tie-wrapper .mag-box.scrolling-box .slide .post-title,#tie-wrapper .mag-box.miscellaneous-box li:not(:first-child) .post-title{font-weight: 500;}.brand-title,a:hover,#tie-popup-search-submit,#logo.text-logo a,.theme-header nav 
+.components #search-submit:hover,.theme-header .header-nav .components > li:hover > a,.theme-header .header-nav .components li a:hover,.main-menu ul.cats-vertical li a.is-active,.main-menu ul.cats-vertical li a:hover,.main-nav li.mega-menu .post-meta a:hover,.main-nav li.mega-menu .post-box-title a:hover,.main-nav-light .main-nav .menu ul li:hover > a,.main-nav-light .main-nav .menu ul li.current-menu-item:not(.mega-link-column) > a,.search-in-main-nav.autocomplete-suggestions a:hover,.top-nav .menu li:hover > a,.top-nav .menu > .tie-current-menu > a,.search-in-top-nav.autocomplete-suggestions .post-title a:hover,div.mag-box .mag-box-options .mag-box-filter-links a.active,.mag-box-filter-links .flexMenu-viewMore:hover > a,.stars-rating-active,body .tabs.tabs .active > a,.video-play-icon,.spinner-circle:after,#go-to-content:hover,.comment-list .comment-author .fn,.commentlist .comment-author .fn,blockquote::before,blockquote cite,blockquote.quote-simple p,.multiple-post-pages a:hover,#story-index li .is-current,.latest-tweets-widget .twitter-icon-wrap span,.wide-slider-nav-wrapper .slide,.wide-next-prev-slider-wrapper .tie-slider-nav li:hover span,#instagram-link:hover,.review-final-score h3,#mobile-menu-icon:hover .menu-text,.entry a,.entry .post-bottom-meta a[href]:hover,.widget.tie-weather-widget .icon-basecloud-bg:after,q a,blockquote a,.site-footer a:hover,.site-footer .stars-rating-active,.site-footer .twitter-icon-wrap span,.site-info a:hover{color: #1b98e0;}[type='submit'],.button,.generic-button a,.generic-button button,.theme-header .header-nav .comp-sub-menu a.button.guest-btn:hover,.theme-header .header-nav .comp-sub-menu a.checkout-button,nav.main-nav .menu > li.tie-current-menu > a,nav.main-nav .menu > li:hover > a,.main-menu .mega-links-head:after,.main-nav .mega-menu.mega-cat .cats-horizontal li a.is-active,.main-nav .mega-menu.mega-cat .cats-horizontal li a:hover,#mobile-menu-icon:hover .nav-icon,#mobile-menu-icon:hover .nav-icon:before,#mobile-menu-icon:hover .nav-icon:after,.search-in-main-nav.autocomplete-suggestions a.button,.search-in-top-nav.autocomplete-suggestions a.button,.spinner > div,.post-cat,.pages-numbers li.current span,.multiple-post-pages 
+> span,#tie-wrapper .mejs-container .mejs-controls,.mag-box-filter-links a:hover,.slider-arrow-nav a:not(.pagination-disabled):hover,.comment-list .reply a:hover,.commentlist .reply a:hover,#reading-position-indicator,#story-index-icon,.videos-block .playlist-title,.review-percentage .review-item span span,.tie-slick-dots li.slick-active button,.tie-slick-dots li button:hover,.digital-rating-static 
+strong,.timeline-widget li a:hover .date:before,#wp-calendar #today,.posts-list-counter li:before,.cat-counter a + span,.tie-slider-nav li span:hover,.fullwidth-area .widget_tag_cloud .tagcloud a:hover,.magazine2:not(.block-head-4) .dark-widgetized-area ul.tabs a:hover,.magazine2:not(.block-head-4) .dark-widgetized-area ul.tabs .active a,.magazine1 .dark-widgetized-area ul.tabs a:hover,.magazine1 .dark-widgetized-area ul.tabs .active a,.block-head-4.magazine2 .dark-widgetized-area .tabs.tabs .active a,.block-head-4.magazine2 .dark-widgetized-area .tabs > .active a:before,.block-head-4.magazine2 .dark-widgetized-area .tabs > .active a:after,.demo_store,.demo #logo:after,.widget.tie-weather-widget,span.video-close-btn:hover,#go-to-top,.latest-tweets-widget .slider-links .button:not(:hover){background-color: #1b98e0;color: #FFFFFF;}.tie-weather-widget .widget-title h4,.block-head-4.magazine2 #footer .tabs .active a:hover{color: #FFFFFF;}pre,code,.pages-numbers li.current span,.theme-header .header-nav .comp-sub-menu a.button.guest-btn:hover,.multiple-post-pages > span,.post-content-slideshow .tie-slider-nav li span:hover,#tie-body .tie-slider-nav li > span:hover,#instagram-link:before,#instagram-link:after,.slider-arrow-nav a:not(.pagination-disabled):hover,.main-nav .mega-menu.mega-cat .cats-horizontal li a.is-active,.main-nav .mega-menu.mega-cat .cats-horizontal li a:hover,.main-menu .menu > li > .menu-sub-content{border-color: #1b98e0;}.main-menu .menu > li.tie-current-menu{border-bottom-color: #1b98e0;}.top-nav .menu li.menu-item-has-children:hover > a:before{border-top-color: #1b98e0;}.main-nav .main-menu .menu > li.tie-current-menu > a:before,.main-nav .main-menu .menu > li:hover > a:before{border-top-color: #FFFFFF;}header.main-nav-light .main-nav .menu-item-has-children li:hover > a:before,header.main-nav-light .main-nav .mega-menu li:hover > a:before{border-left-color: #1b98e0;}.rtl header.main-nav-light .main-nav .menu-item-has-children li:hover > a:before,.rtl header.main-nav-light .main-nav .mega-menu li:hover > a:before{border-right-color: #1b98e0;border-left-color: transparent;}.top-nav ul.menu li .menu-item-has-children:hover > a:before{border-top-color: transparent;border-left-color: #1b98e0;}.rtl .top-nav ul.menu li .menu-item-has-children:hover > a:before{border-left-color: transparent;border-right-color: #1b98e0;}::-moz-selection{background-color: #1b98e0;color: #FFFFFF;}::selection{background-color: #1b98e0;color: #FFFFFF;}circle.circle_bar{stroke: #1b98e0;}#reading-position-indicator{box-shadow: 0 0 10px rgba( 27,152,224,0.7);}#tie-popup-search-submit:hover,#logo.text-logo a:hover,.entry a:hover,.block-head-4.magazine2 .site-footer .tabs li a:hover,q a:hover,blockquote a:hover{color: #0066ae;}.button:hover,input[type='submit']:hover,.generic-button a:hover,.generic-button button:hover,a.post-cat:hover,.site-footer .button:hover,.site-footer [type='submit']:hover,.search-in-main-nav.autocomplete-suggestions a.button:hover,.search-in-top-nav.autocomplete-suggestions a.button:hover,.theme-header .header-nav .comp-sub-menu a.checkout-button:hover{background-color: #0066ae;color: #FFFFFF;}.theme-header .header-nav .comp-sub-menu a.checkout-button:not(:hover),.entry a.button{color: #FFFFFF;}@media (max-width: 1600px){#story-index ul{background-color: #1b98e0;}#story-index ul li a,#story-index ul li .is-current{color: #FFFFFF;}}#tie-body .mag-box-title h3 a,#tie-body .block-more-button{color: #1b98e0;}#tie-body .mag-box-title h3 a:hover,#tie-body .block-more-button:hover{color: #0066ae;}#tie-body .mag-box-title{color: #1b98e0;}#tie-body .mag-box-title:before{border-top-color: #1b98e0;}#tie-body .mag-box-title:after,#tie-body #footer .widget-title:after{background-color: #1b98e0;}#top-nav,#top-nav .sub-menu,#top-nav .comp-sub-menu,#top-nav .ticker-content,#top-nav .ticker-swipe,.top-nav-boxed #top-nav .topbar-wrapper,.search-in-top-nav.autocomplete-suggestions,#top-nav .guest-btn{background-color : #f5f5f5;}#top-nav *,.search-in-top-nav.autocomplete-suggestions{border-color: rgba( 0,0,0,0.08);}#top-nav .icon-basecloud-bg:after{color: #f5f5f5;}#top-nav a,#top-nav input,#top-nav #search-submit,#top-nav .fa-spinner,#top-nav .dropdown-social-icons li a span,#top-nav .components > li .social-link:not(:hover) span,.search-in-top-nav.autocomplete-suggestions a{color: #444444;}#top-nav .menu-item-has-children > a:before{border-top-color: 
+#444444;}#top-nav li .menu-item-has-children > a:before{border-top-color: transparent;border-left-color: #444444;}.rtl #top-nav .menu li .menu-item-has-children > a:before{border-left-color: transparent;border-right-color: #444444;}#top-nav input::-moz-placeholder{color: #444444;}#top-nav input:-moz-placeholder{color: #444444;}#top-nav input:-ms-input-placeholder{color: #444444;}#top-nav input::-webkit-input-placeholder{color: #444444;}#top-nav .comp-sub-menu .button:hover,#top-nav .checkout-button,.search-in-top-nav.autocomplete-suggestions .button{background-color: #1b98e0;}#top-nav a:hover,#top-nav .menu li:hover > a,#top-nav .menu > .tie-current-menu > a,#top-nav .components > li:hover > a,#top-nav .components #search-submit:hover,.search-in-top-nav.autocomplete-suggestions .post-title a:hover{color: #1b98e0;}#top-nav .comp-sub-menu .button:hover{border-color: #1b98e0;}#top-nav .tie-current-menu > a:before,#top-nav .menu .menu-item-has-children:hover > a:before{border-top-color: #1b98e0;}#top-nav .menu li .menu-item-has-children:hover > a:before{border-top-color: transparent;border-left-color: #1b98e0;}.rtl #top-nav .menu li .menu-item-has-children:hover > a:before{border-left-color: transparent;border-right-color: #1b98e0;}#top-nav .comp-sub-menu .button:hover,#top-nav .comp-sub-menu .checkout-button,.search-in-top-nav.autocomplete-suggestions .button{color: #FFFFFF;}#top-nav .comp-sub-menu .checkout-button:hover,.search-in-top-nav.autocomplete-suggestions .button:hover{background-color: #007ac2;}#top-nav,#top-nav .comp-sub-menu,#top-nav .tie-weather-widget{color: #777777;}.search-in-top-nav.autocomplete-suggestions .post-meta,.search-in-top-nav.autocomplete-suggestions .post-meta a:not(:hover){color: rgba( 119,119,119,0.7 );}#footer{background-color: #444444;}#site-info{background-color: #ffffff;}#footer .posts-list-counter .posts-list-items li:before{border-color: #444444;}#footer .timeline-widget a .date:before{border-color: rgba(68,68,68,0.8);}#footer .footer-boxed-widget-area,#footer textarea,#footer input:not([type=submit]),#footer select,#footer code,#footer kbd,#footer pre,#footer samp,#footer .show-more-button,#footer .slider-links .tie-slider-nav span,#footer #wp-calendar,#footer #wp-calendar tbody td,#footer #wp-calendar thead th,#footer .widget.buddypress .item-options a{border-color: rgba(255,255,255,0.1);}#footer .social-statistics-widget .white-bg li.social-icons-item a,#footer .widget_tag_cloud .tagcloud a,#footer .latest-tweets-widget .slider-links .tie-slider-nav span,#footer .widget_layered_nav_filters a{border-color: rgba(255,255,255,0.1);}#footer .social-statistics-widget .white-bg li:before{background: rgba(255,255,255,0.1);}.site-footer #wp-calendar tbody td{background: rgba(255,255,255,0.02);}#footer .white-bg .social-icons-item a span.followers span,#footer .circle-three-cols .social-icons-item a .followers-num,#footer .circle-three-cols .social-icons-item a .followers-name{color: rgba(255,255,255,0.8);}#footer .timeline-widget ul:before,#footer .timeline-widget a:not(:hover) .date:before{background-color: #262626;}#footer .widget-title,#footer .widget-title a:not(:hover){color: #dddddd;}#footer,#footer textarea,#footer input:not([type='submit']),#footer select,#footer #wp-calendar tbody,#footer .tie-slider-nav li span:not(:hover),#footer .widget_categories li a:before,#footer .widget_product_categories li a:before,#footer .widget_layered_nav li a:before,#footer .widget_archive li a:before,#footer .widget_nav_menu li a:before,#footer .widget_meta li a:before,#footer .widget_pages li a:before,#footer .widget_recent_entries 
+li a:before,#footer .widget_display_forums li a:before,#footer .widget_display_views li a:before,#footer .widget_rss li a:before,#footer .widget_display_stats dt:before,#footer .subscribe-widget-content h3,#footer .about-author .social-icons a:not(:hover) span{color: #aaaaaa;}#footer post-widget-body .meta-item,#footer .post-meta,#footer .stream-title,#footer.dark-skin .timeline-widget .date,#footer .wp-caption .wp-caption-text,#footer .rss-date{color: rgba(170,170,170,0.7);}#footer input::-moz-placeholder{color: #aaaaaa;}#footer input:-moz-placeholder{color: #aaaaaa;}#footer input:-ms-input-placeholder{color: #aaaaaa;}#footer input::-webkit-input-placeholder{color: #aaaaaa;}#site-info,#site-info ul.social-icons li a:not(:hover) span{color: #999999;}#footer .site-info a:not(:hover){color: #666666;}
+</style>
+<link rel="stylesheet" id="jetpack_css-rtl-css" href="https://www.taxman.co.il/wp-content/plugins/jetpack/css/jetpack-rtl.css" type="text/css" media="all">
+<script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/www.taxman.co.il","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var tie = {"is_rtl":"1","ajaxurl":"https:\/\/www.taxman.co.il\/wp-admin\/admin-ajax.php","mobile_menu_active":"true","mobile_menu_top":"","mobile_menu_parent":"","lightbox_all":"true","lightbox_gallery":"true","lightbox_skin":"dark","lightbox_thumb":"horizontal","lightbox_arrows":"true","is_singular":"1","is_sticky_video":"1","reading_indicator":"true","lazyload":"","select_share":"","select_share_twitter":"","select_share_facebook":"","select_share_linkedin":"","select_share_email":"","facebook_app_id":"","twitter_username":"","responsive_tables":"true","ad_blocker_detector":"","sticky_behavior":"default","sticky_desktop":"true","sticky_mobile":"true","sticky_mobile_behavior":"default","ajax_loader":"<div class=\"loader-overlay\"><div class=\"spinner-circle\"><\/div><\/div>","type_to_search":"","lang_no_results":"Nothing Found"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/wp-hide-post/public/js/wp-hide-post-public.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/bbp-style-pack/js/bsp_enqueue_submit.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/jetpack/_inc/build/postmessage.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/jetpack/_inc/build/jquery.jetpack-resize.min.js"></script>
+<link rel="https://api.w.org/" href="https://www.taxman.co.il/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.taxman.co.il/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.taxman.co.il/wp-includes/wlwmanifest.xml">
+<link rel="next" title="החזר מס הכנסה לעוסק פטור" href="https://www.taxman.co.il/forums/topic/%d7%94%d7%97%d7%96%d7%a8-%d7%9e%d7%a1-%d7%94%d7%9b%d7%a0%d7%a1%d7%94-%d7%9c%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8/">
+<link rel="stylesheet" href="https://www.taxman.co.il/wp-content/themes/jannah/rtl.css" type="text/css" media="screen"><meta name="generator" content="WordPress 5.3.2">
+<link rel="alternate" type="application/json+oembed" href="https://www.taxman.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.taxman.co.il%2Fforums%2Ftopic%2F%25d7%259e%25d7%25a0%25d7%2594%25d7%259c%25d7%25aa-%25d7%2597%25d7%25a9%25d7%2591%25d7%2595%25d7%25a0%25d7%2595%25d7%25aa-%25d7%25a1%25d7%2595%25d7%2592-23%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.taxman.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.taxman.co.il%2Fforums%2Ftopic%2F%25d7%259e%25d7%25a0%25d7%2594%25d7%259c%25d7%25aa-%25d7%2597%25d7%25a9%25d7%2591%25d7%2595%25d7%25a0%25d7%2595%25d7%25aa-%25d7%25a1%25d7%2595%25d7%2592-23%2F&amp;format=xml">
+<script type="text/javascript">
+            /* <![CDATA[ */
+            var gdbbPressToolsInit = {
+                quote_method: "bbcode",
+                quote_wrote: "wrote",
+                bbpress_version: 25,
+                wp_version: 53,
+                wp_editor: 1            };
+            /* ]]> */
+        </script><script type="text/javascript">
+            /* <![CDATA[ */
+            var gdbbPressAttachmentsInit = {
+                max_files: 4            };
+            /* ]]> */
+        </script><meta name="generator" content="Site Kit by Google 1.0.2"><!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1580820295565679');
+fbq('track', "PageView");</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1580820295565679&amp;ev=PageView&amp;noscript=1"
+/&gt;</noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '221102122127576');
+  fbq('track', 'PageView');
+</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=221102122127576&amp;ev=PageView&amp;noscript=1"
+/&gt;</noscript>
+<!-- End Facebook Pixel Code --><script type="text/javascript" data-cfasync="false">var _mmunch = {'front': false, 'page': false, 'post': false, 'category': false, 'author': false, 'search': false, 'attachment': false, 'tag': false};_mmunch['post'] = true; _mmunch['postData'] = {"ID":28833,"post_name":"%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23","post_title":"\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 2,3","post_type":"topic","post_author":0,"post_status":"publish"}; _mmunch['postCategories'] = 
+[]; _mmunch['postTags'] = false; _mmunch['postAuthor'] = {"name":"","ID":""};</script><script data-cfasync="false" src="//a.mailmunch.co/app/v1/site.js" id="mailmunch-script" data-plugin="mailmunch" data-mailmunch-site-id="230164" async=""></script><script type="text/javascript">
+/* <![CDATA[ */
+var taqyeem = {"ajaxurl":"https://www.taxman.co.il/wp-admin/admin-ajax.php" , "your_rating":"Your Rating:"};
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+        window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+        window._wp_rp_wp_ajax_url = "https://www.taxman.co.il/wp-admin/admin-ajax.php";
+        window._wp_rp_plugin_version = '3.6.4';
+        window._wp_rp_post_id = '28833';
+        window._wp_rp_num_rel_posts = '7';
+        window._wp_rp_thumbnails = false;
+        window._wp_rp_post_title = '%D7%9E%D7%A0%D7%94%D7%9C%D7%AA+%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%95%D7%AA+%D7%A1%D7%95%D7%92+2%2C3';
+        window._wp_rp_post_tags = [];
+        window._wp_rp_promoted_content = true;
+</script>
+
+<link rel="dns-prefetch" href="//v0.wordpress.com">
+<link rel="dns-prefetch" href="//widgets.wp.com">
+<link rel="dns-prefetch" href="//s0.wp.com">
+<link rel="dns-prefetch" href="//0.gravatar.com">
+<link rel="dns-prefetch" href="//1.gravatar.com">
+<link rel="dns-prefetch" href="//2.gravatar.com">
+<link rel="dns-prefetch" href="//jetpack.wordpress.com">
+<link rel="dns-prefetch" href="//s1.wp.com">
+<link rel="dns-prefetch" href="//s2.wp.com">
+<link rel="dns-prefetch" href="//public-api.wordpress.com">
+
+<meta name="generator" content="Jannah 3.0.2">
+<meta name="theme-color" content="#1b98e0"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-1661626489126044",
+enable_page_level_ads: true,
+tag_partner: "site_kit"
+});
+</script>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="מנהלת חשבונות סוג 2,3">
+<meta property="og:url" content="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/">
+<meta property="og:description" content="הדיון הזה מכיל 2 תגובות, ויש לו משתתף 1, והוא עודכן לאחרונה ע״י Orit לפני 4 חודשים, 2 שבועות. מוצגות 3 תגובות – 1 עד 3 (מתוך 3 סה״כ) מאת תגובות 21 במרץ 2019 בשעה 8:20 #28833 תגובה לואיזה דרוש/ה מנה…">
+<meta property="article:published_time" content="2019-03-21T06:20:30+00:00">
+<meta property="article:modified_time" content="2019-03-21T06:20:30+00:00">
+<meta property="og:site_name" content="טקסמן">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:text:title" content="מנהלת חשבונות סוג 2,3">
+<meta name="twitter:card" content="summary">
+
+<!-- End Jetpack Open Graph Tags -->
+                        <script type="text/javascript">
+                                window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+                                ga('create', 'UA-36300227-1', 'auto');
+                                // Plugins
+
+                                ga('send', 'pageview');
+                        </script>
+                        <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+                        <link rel="preload" href="https://adservice.google.co.il/adsid/integrator.js?domain=www.taxman.co.il" as="script"><script type="text/javascript" src="https://adservice.google.co.il/adsid/integrator.js?domain=www.taxman.co.il"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.taxman.co.il" as="script"><script type="text/javascript" 
+src="https://adservice.google.com/adsid/integrator.js?domain=www.taxman.co.il"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="https://secure.gravatar.com/dist/css/hovercard.min.css?ver=20203"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="https://secure.gravatar.com/dist/css/services.min.css?ver=20203"><style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style><link rel="stylesheet" type="text/css" href="//a.mailmunch.co/app/v1/styles.css"></head>
+
+<body data-rsssl="1" id="tie-body" class="topic bbpress rtl topic-template-default single single-topic postid-28833 wrapper-has-shadow block-head-1 magazine1 is-thumb-overlay-disabled is-desktop is-header-layout-3 full-width post-layout-1">
+
+
+<div class="background-overlay">
+
+        <div id="tie-container" class="site tie-container">
+
+
+                <div id="tie-wrapper">
+
+
+<header id="theme-header" class="theme-header header-layout-3 main-nav-dark main-nav-below main-nav-boxed top-nav-active top-nav-light top-nav-above has-shadow mobile-header-centered">
+
+<nav id="top-nav" class="has-date-breaking-components top-nav header-nav has-breaking-news" aria-label="Secondary Navigation">
+        <div class="container">
+                <div class="topbar-wrapper">
+
+
+                                        <div class="topbar-today-date">
+                                                <span class="fa fa-clock-o" aria-hidden="true"></span>
+                                                <strong class="inner-text">יום שלישי, ינואר 14 2020</strong>
+                                        </div>
+
+                        <div class="tie-alignleft">
+
+<div class="breaking controls-is-active">
+
+        <span class="breaking-title">
+                <span class="fa fa-bolt" aria-hidden="true"></span>
+                <span class="breaking-title-text">חדשות</span>
+        </span>
+
+        <div id="ticker-wrapper-1579036384737" class="ticker-wrapper has-js ticker-dir-right"><div id="ticker-1579036384737" class="ticker"><p id="ticker-content-1579036384737" class="ticker-content" style="opacity: 1; display: block;">
+                                                                <a href="https://www.taxman.co.il/2019/11/%d7%90%d7%99%d7%9a-%d7%94%d7%99%d7%95%d7%a2%d7%a6%d7%99%d7%9d-%d7%a9%d7%9c-%d7%9e%d7%a9%d7%9b%d7%a0%d7%aa%d7%90-%d7%92%d7%95%d7%a8%d7%95-%d7%97%d7%95%d7%a1%d7%9b%d7%99%d7%9d-%d7%9c%d7%9b%d7%9d-%d7%a2/" title="איך היועצים של משכנתא גורו חוסכים לכם עד 100 אלף ש&quot;ח במשכנתא">איך היועצים של משכנתא גורו חוסכים לכם עד 100 אלף ש"ח במשכנתא</a>
+                                                        </p><div id="ticker-swipe-1579036384737" class="ticker-swipe" style="margin-right: 94.2px;"><span style="display: block;"><!-- --></span></div></div><ul id="ticker-controls-1579036384737" class="breaking-news-nav slider-arrow-nav "><li id="prev-1579036384737" class="jnt-prev controls"></li><li id="next-1579036384737" class="jnt-next controls"></li></ul></div>
+</div><!-- #breaking /-->
+                        </div><!-- .tie-alignleft /-->
+
+                        <div class="tie-alignright">
+                                <ul class="components"> <li class="side-aside-nav-icon menu-item custom-menu-link">
+                <a href="#">
+                        <span class="fa fa-navicon" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Sidebar</span>
+                </a>
+        </li>
+                <li class="popup-login-icon menu-item custom-menu-link">
+                <a href="#" class="lgoin-btn tie-popup-trigger">
+                        <span class="fa fa-lock" aria-hidden="true"></span>
+                        <span class="screen-reader-text">התחבר</span>
+                </a>
+        </li>
+                <li class="random-post-icon menu-item custom-menu-link">
+                <a href="/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/?bbp_reply_to=28834&amp;random-post=1" class="random-post" title="מאמר רנדומלי" rel="nofollow">
+                        <span class="fa fa-random" aria-hidden="true"></span>
+                        <span class="screen-reader-text">מאמר רנדומלי</span>
+                </a>
+        </li>
+        </ul><!-- Components -->                        </div><!-- .tie-alignright /-->
+
+                </div><!-- .topbar-wrapper /-->
+        </div><!-- .container /-->
+</nav><!-- #top-nav /-->
+
+<div class="container">
+        <div class="tie-row logo-row">
+
+
+                <div class="logo-wrapper" style="height: 34px;">
+                        <div class="tie-col-md-4 logo-container">
+                                <a href="#" id="mobile-menu-icon"><span class="nav-icon"></span></a>
+                <div id="logo" class="image-logo">
+
+
+                        <a title="טקסמן" href="https://www.taxman.co.il/">
+
+                                        <img src="https://www.taxman.co.il/wp-content/uploads/2018/09/logonew.jpg" alt="טקסמן" class="logo_normal" width="157" height="38" style="max-height:38px; width: auto;">
+                                        <img src="https://www.taxman.co.il/wp-content/uploads/2018/09/logonew.jpg" alt="טקסמן" class="logo_2x" width="157" height="38" style="max-height:38px; width: auto;">
+                                                        </a>
+
+
+                </div><!-- #logo /-->
+
+                                        </div><!-- .tie-col /-->
+                </div><!-- .logo-wrapper /-->
+
+
+        </div><!-- .tie-row /-->
+</div><!-- .container /-->
+
+<div class="main-nav-wrapper">
+        <nav id="main-nav" class="main-nav header-nav" aria-label="Primary Navigation">
+                <div class="container">
+
+                        <div class="main-menu-wrapper">
+
+
+                                <div id="menu-components-wrap">
+
+
+                                        <div class="main-menu main-menu-wrap tie-alignleft">
+                                                <div id="main-nav-menu" class="main-menu header-menu"><ul id="menu-%d7%a8%d7%90%d7%a9%d7%99" class="menu" role="menubar"><li id="menu-item-1992" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1992 menu-item-has-icon"><a href="https://www.taxman.co.il/"> <span aria-hidden="true" class="fa fa-home"></span> בית</a></li>
+<li id="menu-item-3420" class="menu-item menu-item-type-post_type_archive menu-item-object-forum menu-item-has-children menu-item-3420 menu-item-has-icon mega-menu mega-links mega-links-4col " aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="https://www.taxman.co.il/forums/"> <span aria-hidden="true" class="fa fa-users"></span> פורומים</a>
+<div class="mega-menu-block menu-sub-content" style="opacity: 0;">
+
+<ul class="sub-menu-columns">
+        <li id="menu-item-28420" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-28420 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/view/latest-topics/">דיונים אחרונים</a></li>
+        <li id="menu-item-3907" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3907 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%90%d7%9c-%d7%a8%d7%95%d7%90%d7%94-%d7%97%d7%a9%d7%91%d7%95%d7%9f/">פורום שאל רואה חשבון</a></li>
+        <li id="menu-item-3910" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3910 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8/">פורום עוסק פטור</a></li>
+        <li id="menu-item-4013" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4013 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%97%d7%91%d7%a8%d7%94-%d7%91%d7%a2%d7%9e/">פורום חברה בע"מ</a></li>
+        <li id="menu-item-3908" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3908 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%9e%d7%99%d7%99%d7%a6%d7%92%d7%99%d7%9d/">פורום מייצגים</a></li>
+        <li id="menu-item-3905" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3905 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a0%d7%98%d7%95-%d7%9c%d7%9e%d7%a9%d7%a4%d7%97%d7%94/">פורום נטו למשפחה</a></li>
+        <li id="menu-item-3906" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3906 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%99%d7%99%d7%a2%d7%95%d7%a5-%d7%a4%d7%a0%d7%a1%d7%99%d7%95%d7%a0%d7%99/">פורום ייעוץ פנסיוני</a></li>
+        <li id="menu-item-3909" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3909 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%9b%d7%99%d7%a8%d7%99%d7%9d/">פורום שכירים</a></li>
+        <li id="menu-item-4078" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4078 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%97%d7%96%d7%a8%d7%99-%d7%9e%d7%a1/">פורום החזרי מס</a></li>
+        <li id="menu-item-4080" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4080 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%a2%d7%9e/">פורום שע"מ</a></li>
+        <li id="menu-item-3945" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3945 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99/">פורום ביטוח לאומי</a></li>
+        <li id="menu-item-28868" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28868 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%91%d7%a2%d7%a1%d7%a7/">פורום הוצאות בעסק</a></li>
+        <li id="menu-item-4010" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4010 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a4%d7%99%d7%a6%d7%95%d7%99%d7%99%d7%9d/">פורום פיצויים</a></li>
+        <li id="menu-item-4079" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4079 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%a6%d7%94%d7%a8%d7%aa-%d7%94%d7%95%d7%9f/">פורום הצהרת הון</a></li>
+        <li id="menu-item-4011" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4011 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%93%d7%95%d7%97-%d7%a9%d7%a0%d7%aa%d7%99/">פורום דוח שנתי</a></li>
+        <li id="menu-item-4012" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4012 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%9b%d7%99%d7%a8%d7%95%d7%99%d7%95%d7%aa/">פורום שכירויות</a></li>
+        <li id="menu-item-28869" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28869 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%aa%d7%99%d7%90%d7%95%d7%9d-%d7%9e%d7%a1/">פורום תיאום מס</a></li>
+        <li id="menu-item-28870" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28870 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%aa%d7%a9%d7%9c%d7%95%d7%9e%d7%99-%d7%9e%d7%99%d7%a1%d7%99%d7%9d/">פורום תשלומי מיסים</a></li>
+        <li id="menu-item-28867" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28867 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">פורום זכויות עובדים</a></li>
+</ul>
+
+</div><!-- .mega-menu-block -->
+</li>
+<li id="menu-item-28745" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-28745" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">ברוטו נטו</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-28746" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28746"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-8000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 8000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li id="menu-item-28747" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28747"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-9000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 9000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li id="menu-item-28749" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28749"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-10000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 10000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li id="menu-item-28750" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28750"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-25000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 25000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li id="menu-item-28748" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28748"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-100000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 100000 ש"ח – חישוב ברוטו ונטו</a></li>
+</ul>
+</li>
+<li id="menu-item-28456" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-has-children menu-item-28456 menu-item-has-icon" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="https://www.taxman.co.il/forums/forum/drushim/"> <span aria-hidden="true" class="fa fa-certificate"></span> דרושים כספים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-28458" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28458"><a href="https://www.taxman.co.il/forums/forum/drushim/accounts-manager/">דרושים הנהלת חשבונות</a></li>
+        <li id="menu-item-28459" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28459"><a href="https://www.taxman.co.il/forums/forum/drushim/salary/">דרושים חשבי שכר</a></li>
+        <li id="menu-item-28457" class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28457"><a href="https://www.taxman.co.il/forums/forum/drushim/cpa/">דרושים רואי חשבון | יועצי מס | מתמחים</a></li>
+</ul>
+</li>
+<li id="menu-item-24461" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24461" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">מחשבונים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-3955" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3955"><a href="https://www.taxman.co.il/2015/12/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9e%d7%97%d7%99%d7%a8-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%a2%d7%9c%d7%95%d7%aa-%d7%a0%d7%99%d7%94%d7%95%d7%9c/">מחשבון מחיר עוסק פטור</a></li>
+        <li id="menu-item-3954" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3954"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99-%d7%9c%d7%a9%d7%9b%d7%99%d7%a8%d7%99%d7%9d/">מחשבון ביטוח לאומי לשכירים</a></li>
+        <li id="menu-item-3953" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3953"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99-%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99%d7%99%d7%9d/">מחשבון ביטוח לאומי לעצמאיים</a></li>
+        <li id="menu-item-3952" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3952"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%a4%d7%a0%d7%a1%d7%99%d7%94-%d7%97%d7%95%d7%91%d7%94-%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99/">מחשבון פנסיה חובה לעצמאי</a></li>
+        <li id="menu-item-3951" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3951"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9c%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%93%d7%9e%d7%99-%d7%94%d7%91%d7%a8%d7%90%d7%94-%d7%9c%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">דמי הבראה לעובדים – מחשבון לחישוב דמי הבראה</a></li>
+        <li id="menu-item-3950" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3950"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9c%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c-%d7%a4%d7%a8%d7%99%d7%99%d7%9d/">מחשבון לחישוב מסלול פריים</a></li>
+</ul>
+</li>
+<li id="menu-item-3018" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3018 menu-item-has-icon" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#"> <span aria-hidden="true" class="fa fa-thumbs-o-up"></span> מדריכים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-2544" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2544"><a href="https://www.taxman.co.il/2015/09/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%9c%d7%a4%d7%aa%d7%99%d7%97%d7%aa-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-%d7%91%d7%9e%d7%a2%d7%9e/">מדריך לפתיחת עוסק פטור</a></li>
+        <li id="menu-item-3019" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3019"><a href="https://www.taxman.co.il/2016/12/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%95%d7%a9%d7%9c%d7%9d-%d7%9c%d7%a4%d7%aa%d7%99%d7%97%d7%aa-%d7%a2%d7%95%d7%a1%d7%a7-%d7%9e%d7%95%d7%a8%d7%a9%d7%94/">מדריך לפתיחת עוסק מורשה</a></li>
+        <li id="menu-item-3949" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3949"><a href="https://www.taxman.co.il/2017/03/%d7%94%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%9e%d7%95%d7%9b%d7%a8%d7%95%d7%aa/">מדריך להוצאות מוכרות במס</a></li>
+        <li id="menu-item-28978" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28978"><a href="https://www.taxman.co.il/2019/04/%d7%a2%d7%9c-%d7%94%d7%94%d7%91%d7%93%d7%9c-%d7%91%d7%99%d7%9f-%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c-%d7%9c%d7%a7%d7%a6%d7%91%d7%94-%d7%9c%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c/">קופות גמל לקצבה או קופות גמל להשקעה</a></li></ul>
+</li>
+<li id="menu-item-3956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3956" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">מייצגים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-6452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6452"><a href="https://www.taxman.co.il/%d7%9c%d7%95%d7%97-%d7%9c%d7%a7%d7%95%d7%97%d7%95%d7%aa-%d7%9c%d7%a8%d7%95%d7%90%d7%99-%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%95%d7%9c%d7%99%d7%95%d7%a2%d7%a6%d7%99-%d7%9e%d7%a1/">לוח לקוחות לרואי חשבון וליועצי מס</a></li>
+        <li id="menu-item-6458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6458"><a target="_blank" href="https://www.taxman.co.il/wp-admin/">כניסה למנויים</a></li>       
+        <li id="menu-item-6451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6451"><a href="https://www.taxman.co.il/%d7%90%d7%a8%d7%92%d7%96-%d7%9b%d7%9c%d7%99%d7%9d-%d7%9c%d7%9e%d7%99%d7%99%d7%a6%d7%92%d7%99%d7%9d/">ארגז כלים למייצגים</a></li>
+</ul>
+</li>
+<li id="menu-item-24478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24478" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">זכויות עובדים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-5201" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5201"><a href="https://www.taxman.co.il/2017/12/%d7%a4%d7%99%d7%98%d7%95%d7%a8%d7%99%d7%9d/">התפטרות ופיטורים</a></li>
+        <li id="menu-item-5403" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5403"><a href="https://www.taxman.co.il/2017/11/%d7%97%d7%95%d7%a7%d7%99-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">חוקי עובדים – דיני עובדים</a></li>
+        <li id="menu-item-24479" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24479"><a href="https://www.taxman.co.il/2017/12/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%9c%d7%a4%d7%a0%d7%99-%d7%95%d7%90%d7%97%d7%a8%d7%99-%d7%94%d7%a8%d7%99%d7%95%d7%9f/">זכויות נשים לפני ואחרי הריון</a></li>
+        <li id="menu-item-4824" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4824"><a href="https://www.taxman.co.il/%D7%AA%D7%A0%D7%90%D7%99%D7%9D-%D7%A1%D7%95%D7%A6%D7%99%D7%90%D7%9C%D7%99%D7%99%D7%9D/">זכויות סוציאליות</a></li>
+        <li id="menu-item-24480" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24480"><a href="https://www.taxman.co.il/2017/12/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%9c%d7%93%d7%9e%d7%99-%d7%90%d7%91%d7%98%d7%9c%d7%94/">זכויות דמי אבטלה</a></li>
+        <li id="menu-item-24481" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24481"><a href="https://www.taxman.co.il/2017/11/%d7%a8%d7%a9%d7%99%d7%9e%d7%aa-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">רשימת זכויות עובדים</a></li>
+        <li id="menu-item-24482" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24482"><a href="https://www.taxman.co.il/2017/11/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%93%d7%9e%d7%99-%d7%90%d7%91%d7%98%d7%9c%d7%94/">זכויות דמי אבטלה</a></li>
+        <li id="menu-item-24483" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24483"><a href="https://www.taxman.co.il/2017/11/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%9e%d7%95%d7%9c-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99/">זכויות מול ביטוח לאומי</a></li>
+        <li id="menu-item-24484" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24484"><a href="https://www.taxman.co.il/2017/10/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%91%d7%a2%d7%91%d7%95%d7%93%d7%94/">זכויות נשים בעבודה</a></li>
+        <li id="menu-item-24485" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24485"><a href="https://www.taxman.co.il/2017/10/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">זכויות עובדים</a></li>
+</ul>
+</li>
+<li id="menu-item-5245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5245" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">ביטוחים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li id="menu-item-5246" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5246"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%90%d7%95%d7%91%d7%93%d7%9f-%d7%9b%d7%95%d7%a9%d7%a8-%d7%a2%d7%91%d7%95%d7%93%d7%94/">ביטוח אובדן כושר עבודה</a></li>
+        <li id="menu-item-5258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5258"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%97%d7%99%d7%99%d7%9d/">ביטוח חיים</a></li>
+        <li id="menu-item-5259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5259"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%91%d7%a8%d7%99%d7%90%d7%95%d7%aa-2/">ביטוח בריאות</a></li>
+        <li id="menu-item-5287" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5287"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9e%d7%97%d7%9c%d7%95%d7%aa-%d7%a7%d7%a9%d7%95%d7%aa/">ביטוח מחלות קשות</a></li>
+        <li id="menu-item-5283" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5283"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%aa%d7%90%d7%95%d7%a0%d7%95%d7%aa-%d7%90%d7%99%d7%a9%d7%99%d7%95%d7%aa/">ביטוח תאונות אישיות</a></li>
+        <li id="menu-item-5411" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5411"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%a4%d7%a0%d7%a1%d7%99%d7%95%d7%a0%d7%99/">ביטוח פנסיוני</a></li>
+        <li id="menu-item-5425" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5425"><a href="https://www.taxman.co.il/2017/12/%d7%a7%d7%a8%d7%9f-%d7%94%d7%a9%d7%aa%d7%9c%d7%9e%d7%95%d7%aa-%d7%9c%d7%a2%d7%95%d7%91%d7%93/">קרן השתלמות</a></li>
+        <li id="menu-item-5412" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5412"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97%d7%99-%d7%9e%d7%a0%d7%94%d7%9c%d7%99%d7%9d/">ביטוח מנהלים</a></li>
+        <li id="menu-item-5443" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5443"><a href="https://www.taxman.co.il/2017/12/%d7%a7%d7%95%d7%a4%d7%aa-%d7%92%d7%9e%d7%9c/">קופת גמל</a></li>
+        <li id="menu-item-5250" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5250"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%a1%d7%99%d7%a2%d7%95%d7%93%d7%99-2/">ביטוח סיעודי</a></li>
+        <li id="menu-item-5442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5442"><a href="https://www.taxman.co.il/2017/12/%d7%aa%d7%95%d7%9b%d7%a0%d7%99%d7%95%d7%aa-%d7%97%d7%a1%d7%9b%d7%95%d7%9f/">תוכניות חסכון</a></li>
+</ul>
+</li>
+<li id="menu-item-4434" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4434"><a href="https://www.taxman.co.il/%D7%94%D7%97%D7%96%D7%A8%D7%99-%D7%9E%D7%A1/">בדיקת החזרי מס</a></li>
+<li id="menu-item-29141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29141"><a href="https://www.taxman.co.il/whatsapp/">ווטסאפ מיסים</a></li>
+</ul></div>                                     </div><!-- .main-menu.tie-alignleft /-->
+
+
+                                </div><!-- #menu-components-wrap /-->
+                        </div><!-- .main-menu-wrapper /-->
+                </div><!-- .container /-->
+        </nav><!-- #main-nav /-->
+</div><!-- .main-nav-wrapper /-->
+
+</header>
+
+
+                        <div id="content" class="site-content container">
+                                <div class="tie-row main-content-row">
+
+
+<div class="main-content tie-col-md-12" role="main">
+
+
+        <article id="the-post" class="container-wrapper post-content">
+
+
+        <header class="entry-header-outer">
+
+                <nav id="breadcrumb" class="bbp-breadcrumb"><a href="https://www.taxman.co.il/" class="bbp-breadcrumb-home"><span class="bsp-home-icon"></span></a> <em class="delimiter">/</em> <a href="https://www.taxman.co.il/forums/" class="bbp-breadcrumb-root">פורומים</a> <em class="delimiter">/</em> <a href="https://www.taxman.co.il/forums/forum/drushim/" class="bbp-breadcrumb-forum">דרושים כספים</a> <em class="delimiter">/</em> <a href="https://www.taxman.co.il/forums/forum/drushim/accounts-manager/" class="bbp-breadcrumb-forum">דרושים הנהלת חשבונות</a> <em class="delimiter">/</em> <span class="current">מנהלת חשבונות סוג 2,3</span></nav>
+                <div class="entry-header">
+                        <h1 class="post-title entry-title">מנהלת חשבונות סוג 2,3</h1>
+                </div><!-- .entry-header /-->
+
+
+        </header><!-- .entry-header-outer /-->
+
+
+                <div class="entry-content entry clearfix">
+
+
+
+<div id="bbpress-forums">
+
+
+
+
+
+                <div class="bbp-template-notice info"><p class="bbp-topic-description">הדיון הזה מכיל 2 תגובות, ויש לו משתתף 1, והוא עודכן לאחרונה ע״י Orit <a href="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/#post-29037" title="מענה ל־מנהלת חשבונות סוג 2,3">לפני 4 חודשים, 2 שבועות</a>.</p></div>
+
+
+
+
+<div class="bbp-pagination">
+        <div class="bbp-pagination-count">
+
+                מוצגות 3 תגובות – 1 עד 3 (מתוך 3 סה״כ)
+        </div>
+
+        <div class="bbp-pagination-links">
+
+
+        </div>
+</div>
+
+
+
+
+<ul id="topic-28833-replies" class="forums bbp-replies">
+
+        <li class="bbp-header">
+
+                <div class="bbp-reply-author">מאת</div><!-- .bbp-reply-author -->
+
+                <div class="bbp-reply-content">
+
+
+                                תגובות
+
+
+
+                </div><!-- .bbp-reply-content -->
+
+        </li><!-- .bbp-header -->
+
+        <li class="bbp-body">
+
+
+
+
+<div id="post-28833" class="bbp-reply-header">
+
+        <div class="bbp-meta">
+
+                <span class="bbp-reply-post-date">21 במרץ 2019 בשעה 8:20</span>
+
+
+                <a href="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/#post-28833" class="bbp-reply-permalink">#28833</a>
+
+
+                <span class="bbp-admin-links"><a href="#new-post" class="bbp-topic-reply-link">תגובה</a></span>
+
+        </div><!-- .bbp-meta -->
+
+</div><!-- #post-28833 -->
+
+<div class="odd bbp-parent-forum-28445 bbp-parent-topic-28833 bbp-reply-position-1 user-id-0 topic-author post-28833 topic type-topic status-publish hentry">
+
+        <div class="bbp-reply-author">
+
+
+                לואיזה
+
+
+        </div><!-- .bbp-reply-author -->
+
+        <div class="bbp-reply-content">
+
+
+                <p>דרוש/ה מנהל/ת חשבונות- משרה מלאה<br>
+סוג 2,3- בעל/ת ניסיון.<br>
+אזור- ת”א, הרצליה.<br>
+<a href="mailto:luiza@qhr.co.il" rel="nofollow">luiza@qhr.co.il</a></p>
+
+
+        </div><!-- .bbp-reply-content -->
+
+</div><!-- .reply -->
+
+
+
+<div id="post-28834" class="bbp-reply-header">
+
+        <div class="bbp-meta">
+
+                <span class="bbp-reply-post-date">21 במרץ 2019 בשעה 8:21</span>
+
+
+                <a href="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/#post-28834" class="bbp-reply-permalink">#28834</a>
+
+
+                <span class="bbp-admin-links"><a href="/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/?bbp_reply_to=28834&amp;_wpnonce=f1346f2de7#new-post" class="bbp-reply-to-link">תגובה</a></span>
+
+        </div><!-- .bbp-meta -->
+
+</div><!-- #post-28834 -->
+
+<div class="even bbp-parent-forum-28445 bbp-parent-topic-28833 bbp-reply-position-2 user-id-0 topic-author post-28834 reply type-reply status-publish hentry">
+
+        <div class="bbp-reply-author">
+
+
+                לואיזה
+
+mason@日本.com
+        </div><!-- .bbp-reply-author -->
+
+        <div class="bbp-reply-content">
+
+
+                <p>מחפשים מנהל/ת חשבונותמשרה מלאה<br>
+סוג 2,3 בעל/ת ניסיון.<br>
+אזור ת”א, הרצליה.<br>
+<a href="mailto:luiza@qhr.co.il" rel="nofollow">luiza@qhr.co.il</a></p>
+
+
+        </div><!-- .bbp-reply-content -->
+
+</div><!-- .reply -->
+
+
+
+<div id="post-29037" class="bbp-reply-header">
+
+        <div class="bbp-meta">
+
+                <span class="bbp-reply-post-date">2 בספטמבר 2019 בשעה 11:47</span>
+
+
+                <a href="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/#post-29037" class="bbp-reply-permalink">#29037</a>
+
+
+                <span class="bbp-admin-links"><a href="/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/?bbp_reply_to=29037&amp;_wpnonce=fe3661cec0#new-post" class="bbp-reply-to-link">תגובה</a></span>
+
+        </div><!-- .bbp-meta -->
+
+</div><!-- #post-29037 -->
+
+<div class="odd bbp-parent-forum-28445 bbp-parent-topic-28833 bbp-reply-position-3 user-id-0 topic-author post-29037 reply type-reply status-publish hentry">
+
+        <div class="bbp-reply-author">
+
+
+                Orit
+
+
+        </div><!-- .bbp-reply-author -->
+
+        <div class="bbp-reply-content">
+
+
+                <p>לקרן הון סיכון בר”ג, דרושה מנהלת חשבונות סוג 3, סגירה עד מאזן – חצי משרה<br>
+תיאור<br>
+מנהלת חשבונות סוג 3<br>
+סגירה עד מאזן<br>
+הנה”ח ספקים ולקוחות<br>
+דרישות<br>
+מנהלת חשבונות מדופלמת<br>
+ניסיון עבודה בפריורטי – חובה<br>
+אנגלית ברמה טובה לניהול תכתובות ושיחות מול ספקים בעולם<br>
+א-ה 9-13 / פעם בשבוע או שבועיים יום עבודה במשרדים באזור רעננה<br>
+תנאים מצוינים!<br>
+זמינות מיידית.<br>
+*המשרה פונה לנשים וגברים כאחד.<br>
+קורות חיים יש לשלוח בקובץ וורד ל <a href="mailto:jobs@totaladmin.co.il" rel="nofollow">jobs@totaladmin.co.il</a></p>
+
+
+        </div><!-- .bbp-reply-content -->
+
+</div><!-- .reply -->
+
+
+
+        </li><!-- .bbp-body -->
+
+        <li class="bbp-footer">
+
+                <div class="bbp-reply-author">מאת</div>
+
+                <div class="bbp-reply-content">
+
+
+                                תגובות
+
+                </div><!-- .bbp-reply-content -->
+
+        </li><!-- .bbp-footer -->
+
+</ul><!-- #topic-28833-replies -->
+
+
+
+
+<div class="bbp-pagination">
+        <div class="bbp-pagination-count">
+
+                מוצגות 3 תגובות – 1 עד 3 (מתוך 3 סה״כ)
+        </div>
+
+        <div class="bbp-pagination-links">
+
+
+        </div>
+</div>
+
+
+
+
+
+
+        <div id="new-reply-28833" class="bbp-reply-form">
+
+                <form id="new-post" name="new-post" method="post" action="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/" enctype="multipart/form-data" encoding="multipart/form-data">
+
+
+                        <fieldset class="bbp-form">
+                                <legend>מענה ל־מנהלת חשבונות סוג 2,3</legend>
+
+                                <div class="bbp-template-notice"><p>מוזמנים ליצור דיון חדש<br>יש לבצע שמירה לאחר כתיבת המלל</p></div>
+
+
+
+                                <div>
+
+
+
+
+        <fieldset class="bbp-form">
+                <legend>פרטים:</legend>
+
+
+                <p>
+                        <label for="bbp_anonymous_author">שם (חובה):</label><br>
+                        <input type="text" id="bbp_anonymous_author" value="" tabindex="101" size="40" name="bbp_anonymous_name">
+                </p>
+
+                <p>
+                        <label for="bbp_anonymous_email">דוא"ל (לא יפורסם) (חובה):</label><br>
+                        <input type="text" id="bbp_anonymous_email" value="" tabindex="102" size="40" name="bbp_anonymous_email">
+                </p>
+
+                <p>
+                        <label for="bbp_anonymous_website">אתר:</label><br>
+                        <input type="text" id="bbp_anonymous_website" value="" tabindex="103" size="40" name="bbp_anonymous_website">
+                </p>
+
+
+        </fieldset>
+
+
+
+
+                                        <div class="bbp-the-content-wrapper"><div id="wp-bbp_reply_content-wrap" class="wp-core-ui wp-editor-wrap html-active"><link rel="stylesheet" id="dashicons-css" 
+href="https://www.taxman.co.il/wp-includes/css/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="editor-buttons-rtl-css" href="https://www.taxman.co.il/wp-includes/css/editor-rtl.min.css" type="text/css" media="all">
+<div id="wp-bbp_reply_content-editor-container" class="wp-editor-container"><div id="qt_bbp_reply_content_toolbar" class="quicktags-toolbar"><input type="button" id="qt_bbp_reply_content_strong" class="ed_button button button-small" aria-label="מודגש" value="b"><input type="button" id="qt_bbp_reply_content_em" class="ed_button button button-small" aria-label="נטוי" value="i"><input type="button" id="qt_bbp_reply_content_link" class="ed_button button button-small" aria-label="הוספת קישור" value="link"><input type="button" id="qt_bbp_reply_content_block" class="ed_button button button-small" aria-label="ציטוט" value="b-quote"><input type="button" id="qt_bbp_reply_content_del" class="ed_button button button-small" aria-label="קו חוצה" value="del"><input type="button" id="qt_bbp_reply_content_img" class="ed_button button button-small" aria-label="הוספת תמונה" value="img"><input type="button" id="qt_bbp_reply_content_ul" class="ed_button button button-small" aria-label="רשימת תבליטים" value="ul"><input type="button" id="qt_bbp_reply_content_ol" class="ed_button button button-small" aria-label="רשימה ממוספרת" value="ol"><input type="button" id="qt_bbp_reply_content_li" class="ed_button button 
+button-small" aria-label="רשימת פריטים" value="li"><input type="button" id="qt_bbp_reply_content_code" class="ed_button button button-small" value="code"><input type="button" id="qt_bbp_reply_content_close" class="ed_button button button-small" title="סגור את כל התגיות הפתוחות" value="סגור תגים"><input type="button" id="qt_bbp_reply_content_textdirection" class="ed_button button button-small" title="כיוון טקסט" value="כיוון טקסט"></div><textarea class="bbp-the-content wp-editor-area" rows="12" tabindex="104" cols="40" name="bbp_reply_content" id="bbp_reply_content"></textarea></div>
+</div>
+
+</div>
+
+                <p class="math-captcha-form">
+                        <label>אנא מלאו את הנוסחה<br></label>
+                        <span>71 + <input type="text" size="2" length="2" id="mc-input" class="mc-input" name="mc-value" value="" aria-required="true"> = 76</span>
+                </p>
+
+
+
+
+
+
+
+
+                                        <div class="bbp-submit-wrapper">
+
+                                                <div id="bsp-spinner-load"></div><button type="submit" id="bsp_reply_submit" name="bbp_reply_submit" class="button submit">שלח הודעה<span class="bsp-spinner"></span></button>
+
+                                                <button type="submit" tabindex="105" id="bbp_reply_submit" name="bbp_reply_submit" class="button submit">שליחה</button>
+
+
+                                        </div>
+
+
+                                </div>
+
+
+                <input type="hidden" name="bbp_topic_id" id="bbp_topic_id" value="28833">
+                <input type="hidden" name="bbp_reply_to" id="bbp_reply_to" value="28834">
+                <input type="hidden" name="action" id="bbp_post_action" value="bbp-new-reply">
+
+
+                <input type="hidden" id="_wpnonce" name="_wpnonce" value="65306859c8"><input type="hidden" name="_wp_http_referer" value="/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/?bbp_reply_to=28834"><input type="hidden" id="bbp_redirect_to" name="redirect_to" value="https://www.taxman.co.il/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/">
+                        </fieldset>
+
+
+                </form>
+        </div>
+
+
+
+
+
+</div>
+
+
+                </div><!-- .entry-content /-->
+
+                <script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Article","dateCreated":"2019-03-21T08:20:30+02:00","datePublished":"2019-03-21T08:20:30+02:00","dateModified":"2019-03-21T08:20:30+02:00","headline":"\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 2,3","name":"\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 2,3","keywords":[],"url":"https:\/\/www.taxman.co.il\/forums\/topic\/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23\/","description":"\u05d4\u05d3\u05d9\u05d5\u05df \u05d4\u05d6\u05d4 \u05de\u05db\u05d9\u05dc 2 \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea, \u05d5\u05d9\u05e9 \u05dc\u05d5 \u05de\u05e9\u05ea\u05ea\u05e3 
+1, \u05d5\u05d4\u05d5\u05d0 \u05e2\u05d5\u05d3\u05db\u05df \u05dc\u05d0\u05d7\u05e8\u05d5\u05e0\u05d4 \u05e2\u05f4\u05d9 Orit \u05dc\u05e4\u05e0\u05d9 4 \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd, 2 \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea. \u05de\u05d5\u05e6\u05d2\u05d5\u05ea 3 \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u2013 1 \u05e2\u05d3 3 (\u05de\u05ea\u05d5\u05da 3 \u05e1\u05d4\u05f4\u05db) \u05de\u05d0\u05ea \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea 21 \u05d1\u05de\u05e8\u05e5 2019 \u05d1\u05e9\u05e2\u05d4 8:20 #28833 \u05ea\u05d2\u05d5\u05d1\u05d4 \u05dc\u05d5\u05d0\u05d9\u05d6\u05d4 \u05d3\u05e8\u05d5\u05e9\/\u05d4 \u05de\u05e0\u05d4\u05dc\/\u05ea","copyrightYear":false,"articleSection":[],"articleBody":"\n\n\n\t\n\t\n\t\n\t\t\n\t\t\u05d4\u05d3\u05d9\u05d5\u05df \u05d4\u05d6\u05d4 \u05de\u05db\u05d9\u05dc 2 \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea, \u05d5\u05d9\u05e9 \u05dc\u05d5 \u05de\u05e9\u05ea\u05ea\u05e3 1, \u05d5\u05d4\u05d5\u05d0 \u05e2\u05d5\u05d3\u05db\u05df \u05dc\u05d0\u05d7\u05e8\u05d5\u05e0\u05d4 \u05e2\u05f4\u05d9 Orit \u05dc\u05e4\u05e0\u05d9 4 \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd, 2 \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea.\n\t\t\n\t\t\n\t\t\t\n\n\n\t\n\n\t\t\u05de\u05d5\u05e6\u05d2\u05d5\u05ea 3 \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u2013 1 \u05e2\u05d3 3 (\u05de\u05ea\u05d5\u05da 3 \u05e1\u05d4\u05f4\u05db)\n\t\n\n\t\n\n\t\t\n\t\n\n\n\n\t\t\t\n\n\n\n\t\n\n\t\t\u05de\u05d0\u05ea\n\n\t\t\n\n\t\t\t\n\t\t\t\t\u05ea\u05d2\u05d5\u05d1\u05d5\u05ea\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\n\t\n\n\t\n\n\t\t\n\t\t\t\n\t\t\t\t\n\n\n\t\n\n\t\t21 \u05d1\u05de\u05e8\u05e5 2019 \u05d1\u05e9\u05e2\u05d4 8:20\n\n\t\t\n\t\t#28833\n\n\t\t\n\t\t\u05ea\u05d2\u05d5\u05d1\u05d4\n\t\t\n\t\n\n\n\n\n\n\t\n\n\t\t\n\t\t\u05dc\u05d5\u05d0\u05d9\u05d6\u05d4\n\t\t\n\t\t\n\t\n\n\t\n\n\t\t\n\t\t\u05d3\u05e8\u05d5\u05e9\/\u05d4 \u05de\u05e0\u05d4\u05dc\/\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea- \u05de\u05e9\u05e8\u05d4 \u05de\u05dc\u05d0\u05d4\n\u05e1\u05d5\u05d2 2,3- \u05d1\u05e2\u05dc\/\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df.\n\u05d0\u05d6\u05d5\u05e8- \u05ea&#8221;\u05d0, \u05d4\u05e8\u05e6\u05dc\u05d9\u05d4.\nluiza@qhr.co.il\n\n\t\t\n\t\n\n\n\n\t\t\t\n\t\t\t\t\n\n\n\t\n\n\t\t21 \u05d1\u05de\u05e8\u05e5 2019 \u05d1\u05e9\u05e2\u05d4 8:21\n\n\t\t\n\t\t#28834\n\n\t\t\n\t\t\u05ea\u05d2\u05d5\u05d1\u05d4\n\t\t\n\t\n\n\n\n\n\n\t\n\n\t\t\n\t\t\u05dc\u05d5\u05d0\u05d9\u05d6\u05d4\n\t\t\n\t\t\n\t\n\n\t\n\n\t\t\n\t\t\u05de\u05d7\u05e4\u05e9\u05d9\u05dd \u05de\u05e0\u05d4\u05dc\/\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea\u05de\u05e9\u05e8\u05d4 \u05de\u05dc\u05d0\u05d4\n\u05e1\u05d5\u05d2 2,3 \u05d1\u05e2\u05dc\/\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df.\n\u05d0\u05d6\u05d5\u05e8 \u05ea&#8221;\u05d0, \u05d4\u05e8\u05e6\u05dc\u05d9\u05d4.\nluiza@qhr.co.il\n\n\t\t\n\t\n\n\n\n\t\t\t\n\t\t\t\t\n\n\n\t\n\n\t\t2 \u05d1\u05e1\u05e4\u05d8\u05de\u05d1\u05e8 2019 \u05d1\u05e9\u05e2\u05d4 11:47\n\n\t\t\n\t\t#29037\n\n\t\t\n\t\t\u05ea\u05d2\u05d5\u05d1\u05d4\n\t\t\n\t\n\n\n\n\n\n\t\n\n\t\t\n\t\tOrit\n\t\t\n\t\t\n\t\n\n\t\n\n\t\t\n\t\t\u05dc\u05e7\u05e8\u05df \u05d4\u05d5\u05df \u05e1\u05d9\u05db\u05d5\u05df \u05d1\u05e8&#8221;\u05d2, \u05d3\u05e8\u05d5\u05e9\u05d4 \u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 3, \u05e1\u05d2\u05d9\u05e8\u05d4 \u05e2\u05d3 \u05de\u05d0\u05d6\u05df &#8211; \u05d7\u05e6\u05d9 \u05de\u05e9\u05e8\u05d4\n\u05ea\u05d9\u05d0\u05d5\u05e8\n\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 3\n\u05e1\u05d2\u05d9\u05e8\u05d4 \u05e2\u05d3 \u05de\u05d0\u05d6\u05df\n\u05d4\u05e0\u05d4&#8221;\u05d7 \u05e1\u05e4\u05e7\u05d9\u05dd \u05d5\u05dc\u05e7\u05d5\u05d7\u05d5\u05ea\n\u05d3\u05e8\u05d9\u05e9\u05d5\u05ea\n\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05de\u05d3\u05d5\u05e4\u05dc\u05de\u05ea\n\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05e2\u05d1\u05d5\u05d3\u05d4 \u05d1\u05e4\u05e8\u05d9\u05d5\u05e8\u05d8\u05d9 &#8211; \u05d7\u05d5\u05d1\u05d4\n\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea \u05d1\u05e8\u05de\u05d4 \u05d8\u05d5\u05d1\u05d4 \u05dc\u05e0\u05d9\u05d4\u05d5\u05dc \u05ea\u05db\u05ea\u05d5\u05d1\u05d5\u05ea \u05d5\u05e9\u05d9\u05d7\u05d5\u05ea 
+\u05de\u05d5\u05dc \u05e1\u05e4\u05e7\u05d9\u05dd \u05d1\u05e2\u05d5\u05dc\u05dd\n\u05d0-\u05d4 9-13 \/ \u05e4\u05e2\u05dd \u05d1\u05e9\u05d1\u05d5\u05e2 \u05d0\u05d5 \u05e9\u05d1\u05d5\u05e2\u05d9\u05d9\u05dd \u05d9\u05d5\u05dd \u05e2\u05d1\u05d5\u05d3\u05d4 \u05d1\u05de\u05e9\u05e8\u05d3\u05d9\u05dd \u05d1\u05d0\u05d6\u05d5\u05e8 \u05e8\u05e2\u05e0\u05e0\u05d4\n\u05ea\u05e0\u05d0\u05d9\u05dd \u05de\u05e6\u05d5\u05d9\u05e0\u05d9\u05dd!\n\u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05de\u05d9\u05d9\u05d3\u05d9\u05ea.\n*\u05d4\u05de\u05e9\u05e8\u05d4 \u05e4\u05d5\u05e0\u05d4 \u05dc\u05e0\u05e9\u05d9\u05dd \u05d5\u05d2\u05d1\u05e8\u05d9\u05dd \u05db\u05d0\u05d7\u05d3.\n\u05e7\u05d5\u05e8\u05d5\u05ea \u05d7\u05d9\u05d9\u05dd \u05d9\u05e9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d1\u05e7\u05d5\u05d1\u05e5 \u05d5\u05d5\u05e8\u05d3 \u05dc jobs@totaladmin.co.il\n\n\t\t\n\t\n\n\n\n\t\t\t\n\t\t\n\t\n\n\t\n\n\t\t\u05de\u05d0\u05ea\n\n\t\t\n\n\t\t\t\n\t\t\t\t\u05ea\u05d2\u05d5\u05d1\u05d5\u05ea\n\t\t\t\n\t\t\n\n\t\n\n\n\n\n\t\t\t\n\n\n\t\n\n\t\t\u05de\u05d5\u05e6\u05d2\u05d5\u05ea 3 \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u2013 1 \u05e2\u05d3 3 (\u05de\u05ea\u05d5\u05da 3 \u05e1\u05d4\u05f4\u05db)\n\t\n\n\t\n\n\t\t\n\t\n\n\n\n\t\t\n\t\t\n\n\n\t\n\n\t\t\n\n\t\t\t\n\t\t\t\n\t\t\t\t\u05de\u05e2\u05e0\u05d4 \u05dc\u05be\u05de\u05e0\u05d4\u05dc\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05e1\u05d5\u05d2 2,3\n\n\t\t\t\t\u05de\u05d5\u05d6\u05de\u05e0\u05d9\u05dd \u05dc\u05d9\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05d7\u05d3\u05e9\u05d9\u05e9 \u05dc\u05d1\u05e6\u05e2 \u05e9\u05de\u05d9\u05e8\u05d4 \u05dc\u05d0\u05d7\u05e8 \u05db\u05ea\u05d9\u05d1\u05ea \u05d4\u05de\u05dc\u05dc\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\t\n\n\t\n\t\n\t\t\u05e4\u05e8\u05d8\u05d9\u05dd:\n\n\t\t\n\t\t\n\t\t\t\u05e9\u05dd (\u05d7\u05d5\u05d1\u05d4):\n\t\t\t\n\t\t\n\n\t\t\n\t\t\t\u05d3\u05d5\u05d0\"\u05dc (\u05dc\u05d0 \u05d9\u05e4\u05d5\u05e8\u05e1\u05dd) (\u05d7\u05d5\u05d1\u05d4):\n\t\t\t\n\t\t\n\n\t\t\n\t\t\t\u05d0\u05ea\u05e8:\n\t\t\t\n\t\t\n\n\t\t\n\t\n\n\t\n\n\t\t\t\t\t\n\t\t\t\t\t\n\n\n\n\n\n\t\t\t\t\t\n\t\t\n\t\t\t\u05d0\u05e0\u05d0 \u05de\u05dc\u05d0\u05d5 \u05d0\u05ea \u05d4\u05e0\u05d5\u05e1\u05d7\u05d4\n\t\t\t71 +  = 76\n\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\t\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4\n\t\t\t\t\t\t\n\t\t\t\t\t\t\u05e9\u05dc\u05d9\u05d7\u05d4\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\n\t\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\t\t\n\t\t\n\t\t\n\n\t\t\n\t\t\n\t\t\t\n\n\t\t\t\n\t\t\n\t\n\n\n\n\t\n\t\n\n","publisher":{"@id":"#Publisher","@type":"Organization","name":"\u05d8\u05e7\u05e1\u05de\u05df","logo":{"@type":"ImageObject","url":"https:\/\/www.taxman.co.il\/wp-content\/uploads\/2018\/09\/logonew.jpg"}},"sourceOrganization":{"@id":"#Publisher"},"copyrightHolder":{"@id":"#Publisher"},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.taxman.co.il\/forums\/topic\/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23\/","breadcrumb":{"@id":"#Breadcrumb"}},"author":{"@type":"Person","name":"","url":"https:\/\/www.taxman.co.il\/author\/"}}</script>
+        </article><!-- #the-post /-->
+
+
+        <div class="post-components">
+
+
+        </div><!-- .post-components /-->
+
+
+</div><!-- .main-content -->
+
+
+                                </div><!-- .main-content-row /-->
+                        </div><!-- #content /-->
+
+<footer id="footer" class="site-footer dark-skin dark-widgetized-area">
+
+
+                        <div id="footer-widgets-container">
+                                <div class="container">
+
+
+                <div class="footer-widget-area ">
+                        <div class="tie-row">
+
+                                                                        <div class="tie-col-sm-4 normal-side">
+                                                <div id="bbp_topics_widget-3" class="container-wrapper widget widget_display_topics"><div class="widget-title the-global-title"><h4>שאלות אחרונות בפורומים<span class="widget-title-icon fa"></span></h4></div>
+                <ul>
+
+
+                                <li>
+                                        <a class="bbp-forum-title" href="https://www.taxman.co.il/forums/topic/%d7%9e%d7%aa%d7%9e%d7%97%d7%99%d7%9d-%d7%9c%d7%9e%d7%a9%d7%a8%d7%94-%d7%91%d7%a8%d7%a9%d7%95%d7%aa-%d7%a9%d7%93%d7%95%d7%aa-%d7%94%d7%aa%d7%a2%d7%95%d7%a4%d7%94/">מתמחים למשרה ברשות שדות התעופה</a>
+
+
+
+                                </li>
+
+
+                                <li>
+                                        <a class="bbp-forum-title" href="https://www.taxman.co.il/forums/topic/%d7%94%d7%92%d7%93%d7%a8%d7%94-%d7%a9%d7%9c-%d7%a8%d7%9b%d7%91-%d7%aa%d7%a4%d7%a2%d7%95%d7%9c%d7%99/">הגדרה של רכב תפעולי</a>
+
+
+
+                                </li>
+
+
+                                <li>
+                                        <a class="bbp-forum-title" href="https://www.taxman.co.il/forums/topic/%d7%9c%d7%97%d7%91%d7%a8%d7%94-%d7%99%d7%91%d7%95%d7%90%d7%a0%d7%99%d7%aa-%d7%9e%d7%a6%d7%9c%d7%99%d7%97%d7%94-%d7%95%d7%91%d7%a6%d7%9e%d7%99%d7%97%d7%94-%d7%91%d7%a8%d7%9e%d7%aa-%d7%94%d7%97%d7%99/">לחברה יבואנית מצליחה ובצמיחה ברמת החייל דרו/שה מנהל/ת חשבונות סוג 2/3 עד מאזן</a>
+
+
+
+                                </li>
+
+
+                                <li>
+                                        <a class="bbp-forum-title" href="https://www.taxman.co.il/forums/topic/%d7%94%d7%90%d7%9d-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-%d7%a9%d7%94%d7%95%d7%90-%d7%91%d7%9e%d7%a7%d7%91%d7%99%d7%9c-%d7%a2%d7%95%d7%91%d7%93-%d7%a9%d7%9b%d7%99%d7%a8-%d7%a6%d7%a8%d7%99/">האם עוסק פטור שהוא במקביל עובד שכיר צריך לפתוח תיק בביטוח לאומי?</a>
+
+
+
+                                </li>
+
+
+                                <li>
+                                        <a class="bbp-forum-title" href="https://www.taxman.co.il/forums/topic/bookkeeper/">Bookkeeper</a>
+
+
+
+                                </li>
+
+
+                </ul>
+
+                <div class="clearfix"></div></div><!-- .widget /-->                                     </div><!-- .tie-col /-->
+
+                                                                        <div class="tie-col-sm-4 normal-side">
+                                                <div id="linkcat-2" class="container-wrapper widget widget_links"><div class="widget-title the-global-title"><h4>קישורים<span class="widget-title-icon fa"></span></h4></div>
+        <ul class="xoxo blogroll">
+<li><a href="https://www.taxman.co.il/%D7%90%D7%A8%D7%92%D7%96-%D7%9B%D7%9C%D7%99%D7%9D-%D7%9C%D7%9E%D7%99%D7%99%D7%A6%D7%92%D7%99%D7%9D/">ארגז כלים למייצגים</a></li>
+<li><a href="https://www.taxman.co.il/wp-login.php">כניסה למנויים</a></li>
+<li><a href="https://www.taxman.co.il/%D7%9C%D7%95%D7%97-%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA-%D7%9C%D7%A8%D7%95%D7%90%D7%99-%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%95%D7%9C%D7%99%D7%95%D7%A2%D7%A6%D7%99-%D7%9E%D7%A1/">לוח לקוחות לרואי חשבון וליועצי מס</a></li>
+<li><a href="https://www.taxman.co.il/%D7%A4%D7%A8%D7%A1%D7%95%D7%9D-%D7%9C%D7%A8%D7%95%D7%90%D7%99-%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%95%D7%9C%D7%99%D7%95%D7%A2%D7%A6%D7%99-%D7%9E%D7%A1/">פרסום לרואי 
+חשבון וליועצי מס</a></li>
+<li><a href="https://www.taxman.co.il/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%AA%D7%A0%D7%90%D7%99-%D7%A9%D7%99%D7%9E%D7%95%D7%A9-%D7%91%D7%90%D7%AA%D7%A8-%D7%95%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA/">תקנון תנאי שימוש באתר ומדיניות פרטיות</a></li>
+
+        </ul>
+<div class="clearfix"></div></div><!-- .widget /-->
+                                        </div><!-- .tie-col /-->
+
+                                                                        <div class="tie-col-sm-4 normal-side">
+                                                                <div id="recent-posts-2" class="container-wrapper widget widget_recent_entries">                <div class="widget-title the-global-title"><h4>פוסטים אחרונים<span class="widget-title-icon fa"></span></h4></div>               <ul>
+                                                                                        <li>
+                                        <a href="https://www.taxman.co.il/2020/01/%d7%a2%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-2020/">עוסק פטור 2020</a>
+                                                                        </li>
+                                                                                        <li>
+                                        <a href="https://www.taxman.co.il/2019/11/%d7%90%d7%99%d7%9a-%d7%94%d7%99%d7%95%d7%a2%d7%a6%d7%99%d7%9d-%d7%a9%d7%9c-%d7%9e%d7%a9%d7%9b%d7%a0%d7%aa%d7%90-%d7%92%d7%95%d7%a8%d7%95-%d7%97%d7%95%d7%a1%d7%9b%d7%99%d7%9d-%d7%9c%d7%9b%d7%9d-%d7%a2/">איך היועצים של משכנתא גורו חוסכים לכם עד 100 אלף ש"ח במשכנתא</a>
+                                                                        </li>
+                                                                                        <li>
+                                        <a href="https://www.taxman.co.il/2019/11/november2019/">דחיית מועד הדיווח והתשלום נובמבר 2011</a>
+                                                                        </li>
+                                                                                        <li>
+                                        <a href="https://www.taxman.co.il/2019/04/%d7%a2%d7%9c-%d7%94%d7%94%d7%91%d7%93%d7%9c-%d7%91%d7%99%d7%9f-%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c-%d7%9c%d7%a7%d7%a6%d7%91%d7%94-%d7%9c%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c/">על ההבדל בין קופות גמל לקצבה לקופות גמל להשקעה</a>
+                                                                        </li>
+                                                                                        <li>
+                                        <a href="https://www.taxman.co.il/2019/04/tfasim/">סט מסמכים לפתיחת עוסק פטור ומורשה</a>
+                                                                        </li>
+                                        </ul>
+                <div class="clearfix"></div></div><!-- .widget /-->                                     </div><!-- .tie-col /-->
+
+
+                        </div><!-- .tie-row /-->
+                </div><!-- .footer-widget-area /-->
+
+
+                                </div><!-- .container /-->
+                        </div><!-- #Footer-widgets-container /-->
+
+                        <div id="site-info" class="site-info site-info-layout-2">
+                                <div class="container">
+                                        <div class="tie-row">
+                                                <div class="tie-col-md-12">
+
+                                                        <div class="copyright-text copyright-text-first"><p style="direction: rtl;">טקסמן 2020, אין אישור לעשות שימוש בתוכן האתר ללא רשות בכתב - <a href="https://www.taxman.co.il/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%AA%D7%A0%D7%90%D7%99-%D7%A9%D7%99%D7%9E%D7%95%D7%A9-%D7%91%D7%90%D7%AA%D7%A8-%D7%95%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA/" target="_blank" rel="noopener">תקנון ותנאי שימוש&nbsp;</a></p></div><ul class="social-icons"></ul>
+
+                                                </div><!-- .tie-col /-->
+                                        </div><!-- .tie-row /-->
+                                </div><!-- .container /-->
+                        </div><!-- #site-info /-->
+
+</footer><!-- #footer /-->
+
+
+<a id="go-to-top" class="go-to-top-button" href="#go-to-tie-body"><span class="fa fa-angle-up"></span></a><div class="clear"></div>
+                </div><!-- #tie-wrapper /-->
+
+
+
+        <aside class="side-aside normal-side tie-aside-effect dark-skin dark-widgetized-area is-fullwidth" aria-label="Secondary Sidebar">
+                <div data-height="100%" class="side-aside-wrapper has-custom-scroll mCustomScrollbar _mCS_1 mCS-autoHide mCS-dir-rtl" style="height: 100%;"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="rtl">
+
+                        <a href="#" class="close-side-aside remove big-btn light-btn">
+                                <span class="screen-reader-text">Close</span>
+                        </a><!-- .close-side-aside /-->
+
+                        <div id="mobile-container">
+
+                                <ul class="components"> <li class="popup-login-icon menu-item custom-menu-link">
+                <a href="#" class="lgoin-btn tie-popup-trigger">
+                        <span class="fa fa-lock" aria-hidden="true"></span>
+                        <span class="screen-reader-text">התחבר</span>
+                </a>
+        </li>
+        </ul><!-- Components -->
+                                <div id="mobile-menu" class="hide-menu-icons">
+
+
+                                <ul class="menu" role="menubar"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1992 menu-item-has-icon"><a href="https://www.taxman.co.il/"> <span aria-hidden="true" class="fa fa-home"></span> בית</a></li>
+<li class="menu-item menu-item-type-post_type_archive menu-item-object-forum menu-item-has-children menu-item-3420 menu-item-has-icon mega-menu mega-links mega-links-4col " aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="https://www.taxman.co.il/forums/"> <span aria-hidden="true" class="fa fa-users"></span> פורומים</a>
+<div class="mega-menu-block menu-sub-content" style="opacity: 0;">
+
+<ul class="sub-menu-columns">
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-28420 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/view/latest-topics/">דיונים אחרונים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3907 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%90%d7%9c-%d7%a8%d7%95%d7%90%d7%94-%d7%97%d7%a9%d7%91%d7%95%d7%9f/">פורום שאל רואה חשבון</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3910 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8/">פורום עוסק פטור</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4013 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%97%d7%91%d7%a8%d7%94-%d7%91%d7%a2%d7%9e/">פורום חברה בע"מ</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3908 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%9e%d7%99%d7%99%d7%a6%d7%92%d7%99%d7%9d/">פורום מייצגים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3905 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a0%d7%98%d7%95-%d7%9c%d7%9e%d7%a9%d7%a4%d7%97%d7%94/">פורום נטו למשפחה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3906 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%99%d7%99%d7%a2%d7%95%d7%a5-%d7%a4%d7%a0%d7%a1%d7%99%d7%95%d7%a0%d7%99/">פורום ייעוץ פנסיוני</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3909 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%9b%d7%99%d7%a8%d7%99%d7%9d/">פורום שכירים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4078 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%97%d7%96%d7%a8%d7%99-%d7%9e%d7%a1/">פורום החזרי מס</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4080 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%a2%d7%9e/">פורום שע"מ</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-3945 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99/">פורום ביטוח לאומי</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28868 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%91%d7%a2%d7%a1%d7%a7/">פורום הוצאות בעסק</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4010 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a4%d7%99%d7%a6%d7%95%d7%99%d7%99%d7%9d/">פורום פיצויים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4079 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%94%d7%a6%d7%94%d7%a8%d7%aa-%d7%94%d7%95%d7%9f/">פורום הצהרת הון</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4011 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%93%d7%95%d7%97-%d7%a9%d7%a0%d7%aa%d7%99/">פורום דוח שנתי</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-4012 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%a9%d7%9b%d7%99%d7%a8%d7%95%d7%99%d7%95%d7%aa/">פורום שכירויות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28869 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%aa%d7%99%d7%90%d7%95%d7%9d-%d7%9e%d7%a1/">פורום תיאום מס</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28870 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%aa%d7%a9%d7%9c%d7%95%d7%9e%d7%99-%d7%9e%d7%99%d7%a1%d7%99%d7%9d/">פורום תשלומי מיסים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28867 mega-link-column "><a class="mega-links-head" href="https://www.taxman.co.il/forums/forum/%d7%a4%d7%95%d7%a8%d7%95%d7%9d-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">פורום זכויות עובדים</a></li>
+</ul>
+
+</div><!-- .mega-menu-block -->
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-28745" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">ברוטו נטו</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28746"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-8000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 8000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28747"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-9000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 9000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28749"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-10000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 10000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28750"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-25000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 25000 ש"ח – חישוב ברוטו ונטו</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28748"><a href="https://www.taxman.co.il/2019/01/%d7%9e%d7%a9%d7%9b%d7%95%d7%a8%d7%aa-100000-%d7%a9%d7%97-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%91%d7%a8%d7%95%d7%98%d7%95-%d7%95%d7%a0%d7%98%d7%95/">משכורת 100000 ש"ח – חישוב ברוטו ונטו</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-has-children menu-item-28456 menu-item-has-icon" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="https://www.taxman.co.il/forums/forum/drushim/"> <span aria-hidden="true" class="fa fa-certificate"></span> דרושים כספים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28458"><a href="https://www.taxman.co.il/forums/forum/drushim/accounts-manager/">דרושים הנהלת חשבונות</a></li>    
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28459"><a href="https://www.taxman.co.il/forums/forum/drushim/salary/">דרושים חשבי שכר</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-forum menu-item-28457"><a href="https://www.taxman.co.il/forums/forum/drushim/cpa/">דרושים רואי חשבון | יועצי מס | מתמחים</a></li></ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24461" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">מחשבונים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3955"><a href="https://www.taxman.co.il/2015/12/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9e%d7%97%d7%99%d7%a8-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%a2%d7%9c%d7%95%d7%aa-%d7%a0%d7%99%d7%94%d7%95%d7%9c/">מחשבון מחיר עוסק פטור</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3954"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99-%d7%9c%d7%a9%d7%9b%d7%99%d7%a8%d7%99%d7%9d/">מחשבון ביטוח לאומי לשכירים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3953"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99-%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99%d7%99%d7%9d/">מחשבון ביטוח לאומי לעצמאיים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3952"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%a4%d7%a0%d7%a1%d7%99%d7%94-%d7%97%d7%95%d7%91%d7%94-%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99/">מחשבון פנסיה חובה לעצמאי</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3951"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9c%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%93%d7%9e%d7%99-%d7%94%d7%91%d7%a8%d7%90%d7%94-%d7%9c%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">דמי הבראה לעובדים – מחשבון לחישוב דמי הבראה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3950"><a href="https://www.taxman.co.il/2017/07/%d7%9e%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%9c%d7%97%d7%99%d7%a9%d7%95%d7%91-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c-%d7%a4%d7%a8%d7%99%d7%99%d7%9d/">מחשבון לחישוב מסלול פריים</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3018 menu-item-has-icon" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#"> <span aria-hidden="true" class="fa fa-thumbs-o-up"></span> מדריכים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2544"><a href="https://www.taxman.co.il/2015/09/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%9c%d7%a4%d7%aa%d7%99%d7%97%d7%aa-%d7%a2%d7%95%d7%a1%d7%a7-%d7%a4%d7%98%d7%95%d7%a8-%d7%91%d7%9e%d7%a2%d7%9e/">מדריך לפתיחת עוסק פטור</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3019"><a href="https://www.taxman.co.il/2016/12/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%95%d7%a9%d7%9c%d7%9d-%d7%9c%d7%a4%d7%aa%d7%99%d7%97%d7%aa-%d7%a2%d7%95%d7%a1%d7%a7-%d7%9e%d7%95%d7%a8%d7%a9%d7%94/">מדריך לפתיחת עוסק מורשה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3949"><a href="https://www.taxman.co.il/2017/03/%d7%94%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%9e%d7%95%d7%9b%d7%a8%d7%95%d7%aa/">מדריך להוצאות מוכרות במס</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-28978"><a href="https://www.taxman.co.il/2019/04/%d7%a2%d7%9c-%d7%94%d7%94%d7%91%d7%93%d7%9c-%d7%91%d7%99%d7%9f-%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c-%d7%9c%d7%a7%d7%a6%d7%91%d7%94-%d7%9c%d7%a7%d7%95%d7%a4%d7%95%d7%aa-%d7%92%d7%9e%d7%9c/">קופות גמל לקצבה או קופות גמל להשקעה</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3956" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">מייצגים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6452"><a href="https://www.taxman.co.il/%d7%9c%d7%95%d7%97-%d7%9c%d7%a7%d7%95%d7%97%d7%95%d7%aa-%d7%9c%d7%a8%d7%95%d7%90%d7%99-%d7%97%d7%a9%d7%91%d7%95%d7%9f-%d7%95%d7%9c%d7%99%d7%95%d7%a2%d7%a6%d7%99-%d7%9e%d7%a1/">לוח לקוחות לרואי חשבון וליועצי מס</a></li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6458"><a target="_blank" href="https://www.taxman.co.il/wp-admin/">כניסה למנויים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6451"><a href="https://www.taxman.co.il/%d7%90%d7%a8%d7%92%d7%96-%d7%9b%d7%9c%d7%99%d7%9d-%d7%9c%d7%9e%d7%99%d7%99%d7%a6%d7%92%d7%99%d7%9d/">ארגז כלים למייצגים</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24478" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">זכויות עובדים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5201"><a href="https://www.taxman.co.il/2017/12/%d7%a4%d7%99%d7%98%d7%95%d7%a8%d7%99%d7%9d/">התפטרות ופיטורים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5403"><a href="https://www.taxman.co.il/2017/11/%d7%97%d7%95%d7%a7%d7%99-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">חוקי עובדים – דיני עובדים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24479"><a href="https://www.taxman.co.il/2017/12/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%9c%d7%a4%d7%a0%d7%99-%d7%95%d7%90%d7%97%d7%a8%d7%99-%d7%94%d7%a8%d7%99%d7%95%d7%9f/">זכויות נשים לפני ואחרי הריון</a></li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4824"><a href="https://www.taxman.co.il/%D7%AA%D7%A0%D7%90%D7%99%D7%9D-%D7%A1%D7%95%D7%A6%D7%99%D7%90%D7%9C%D7%99%D7%99%D7%9D/">זכויות סוציאליות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24480"><a href="https://www.taxman.co.il/2017/12/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%9c%d7%93%d7%9e%d7%99-%d7%90%d7%91%d7%98%d7%9c%d7%94/">זכויות דמי אבטלה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24481"><a href="https://www.taxman.co.il/2017/11/%d7%a8%d7%a9%d7%99%d7%9e%d7%aa-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">רשימת זכויות עובדים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24482"><a href="https://www.taxman.co.il/2017/11/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%93%d7%9e%d7%99-%d7%90%d7%91%d7%98%d7%9c%d7%94/">זכויות דמי אבטלה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24483"><a href="https://www.taxman.co.il/2017/11/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%9e%d7%95%d7%9c-%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9c%d7%90%d7%95%d7%9e%d7%99/">זכויות מול ביטוח לאומי</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24484"><a href="https://www.taxman.co.il/2017/10/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%91%d7%a2%d7%91%d7%95%d7%93%d7%94/">זכויות נשים בעבודה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-24485"><a href="https://www.taxman.co.il/2017/10/%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%9d/">זכויות עובדים</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5245" aria-haspopup="true" aria-expanded="false" tabindex="0"><a href="#">ביטוחים</a>
+<ul class="sub-menu menu-sub-content" style="opacity: 0;">
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5246"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%90%d7%95%d7%91%d7%93%d7%9f-%d7%9b%d7%95%d7%a9%d7%a8-%d7%a2%d7%91%d7%95%d7%93%d7%94/">ביטוח אובדן כושר עבודה</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5258"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%97%d7%99%d7%99%d7%9d/">ביטוח חיים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5259"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%91%d7%a8%d7%99%d7%90%d7%95%d7%aa-2/">ביטוח בריאות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5287"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%9e%d7%97%d7%9c%d7%95%d7%aa-%d7%a7%d7%a9%d7%95%d7%aa/">ביטוח מחלות קשות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5283"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%aa%d7%90%d7%95%d7%a0%d7%95%d7%aa-%d7%90%d7%99%d7%a9%d7%99%d7%95%d7%aa/">ביטוח תאונות אישיות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5411"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%a4%d7%a0%d7%a1%d7%99%d7%95%d7%a0%d7%99/">ביטוח פנסיוני</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5425"><a href="https://www.taxman.co.il/2017/12/%d7%a7%d7%a8%d7%9f-%d7%94%d7%a9%d7%aa%d7%9c%d7%9e%d7%95%d7%aa-%d7%9c%d7%a2%d7%95%d7%91%d7%93/">קרן השתלמות</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5412"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97%d7%99-%d7%9e%d7%a0%d7%94%d7%9c%d7%99%d7%9d/">ביטוח מנהלים</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5443"><a href="https://www.taxman.co.il/2017/12/%d7%a7%d7%95%d7%a4%d7%aa-%d7%92%d7%9e%d7%9c/">קופת גמל</a></li>    
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5250"><a href="https://www.taxman.co.il/2017/12/%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%a1%d7%99%d7%a2%d7%95%d7%93%d7%99-2/">ביטוח סיעודי</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5442"><a href="https://www.taxman.co.il/2017/12/%d7%aa%d7%95%d7%9b%d7%a0%d7%99%d7%95%d7%aa-%d7%97%d7%a1%d7%9b%d7%95%d7%9f/">תוכניות חסכון</a></li>
+</ul>
+<span class="mobile-arrows fa fa-chevron-down"></span></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4434"><a href="https://www.taxman.co.il/%D7%94%D7%97%D7%96%D7%A8%D7%99-%D7%9E%D7%A1/">בדיקת החזרי מס</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29141"><a href="https://www.taxman.co.il/whatsapp/">ווטסאפ מיסים</a></li>
+</ul></div><!-- #mobile-menu /-->
+
+                                <div class="mobile-social-search">
+                                                                                        <div id="mobile-social-icons" class="social-icons-widget solid-social-icons">
+                                                        <ul></ul>
+                                                </div><!-- #mobile-social-icons /-->
+                                                                                                <div id="mobile-search">
+                                                        <form role="search" method="get" class="search-form" action="https://www.taxman.co.il/">
+                                <label>
+                                        <span class="screen-reader-text">חיפוש:</span>
+                                        <input type="search" class="search-field" placeholder="חיפוש …" value="" name="s">
+                                </label>
+                                <input type="submit" class="search-submit" value="חיפוש">
+                        </form>                                         </div><!-- #mobile-search /-->
+                                                                                </div><!-- #mobile-social-search /-->
+
+                        </div><!-- #mobile-container /-->
+
+
+
+                                <div id="slide-sidebar-widgets">
+                                                                        </div>
+
+                </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 350px; top: 0px; display: block; max-height: 531px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div><!-- .side-aside-wrapper /-->
+        </aside><!-- .side-aside /-->
+
+
+        </div><!-- #tie-container /-->
+</div><!-- .background-overlay /-->
+
+        <div style="display:none">
+        </div>
+<div id="reading-position-indicator" style="width: 0%;"></div><div id="fb-root"></div>  <div id="tie-popup-login" class="tie-popup">
+                <a href="#" class="tie-btn-close remove big-btn light-btn">
+                        <span class="screen-reader-text">Close</span>
+                </a>
+                <div class="tie-popup-container">
+                        <div class="container-wrapper">
+                                <div class="widget login-widget">
+
+
+                                        <div class="widget-title the-global-title">
+                                                <h4>התחבר <span class="widget-title-icon fa "></span>
+                                                </h4>
+                                        </div>
+
+                                        <div class="widget-container">
+
+                        <div class="login-form">
+
+                                <form name="registerform" action="https://www.taxman.co.il/wp-login.php" method="post">
+                                        <input type="text" name="log" title="שם משתמש" placeholder="שם משתמש">
+                                        <div class="pass-container">
+                                                <input type="password" name="pwd" title="סיסמה" placeholder="סיסמה">
+                                                <a class="forget-text" href="https://www.taxman.co.il/wp-login.php?action=lostpassword&amp;redirect_to=https%3A%2F%2Fwww.taxman.co.il">Forget?</a>       
+                                        </div>
+
+                                        <input type="hidden" name="redirect_to" value="/forums/topic/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23/?bbp_reply_to=28834">
+                                        <label for="rememberme" class="rememberme">
+                                                <input id="rememberme" name="rememberme" type="checkbox" checked="checked" value="forever"> זכור אותי                                   </label>
+
+
+
+                                        <button type="submit" class="button fullwidth login-submit">התחבר</button>
+
+                                                                        </form>
+
+
+                        </div>
+                                                                </div><!-- .widget-container  /-->
+                                </div><!-- .login-widget  /-->
+                        </div><!-- .container-wrapper  /-->
+                </div><!-- .tie-popup-container /-->
+        </div><!-- .tie-popup /-->
+        <script type="text/javascript" id="sns_global_scripts"><script type='application/javascript'>
+        var element = document.createElement('script');
+        element.setAttribute('type', 'application/javascript');
+        element.setAttribute('src', 'https://resources.fortvision.com/staticfiles/fb-web/js/fortvision-fb-web.js');
+        element.setAttribute('publisher_id', '20302');
+        element.setAttribute('async','');
+        document.body.appendChild(element);
+</script><link rel="stylesheet" id="buttons-rtl-css" href="https://www.taxman.co.il/wp-includes/css/buttons-rtl.min.css" type="text/css" media="all">
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/bbpress/templates/default/js/editor.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var bbpTopicJS = {"bbp_ajaxurl":"https:\/\/www.taxman.co.il\/forums\/topic\/%d7%9e%d7%a0%d7%94%d7%9c%d7%aa-%d7%97%d7%a9%d7%91%d7%95%d7%a0%d7%95%d7%aa-%d7%a1%d7%95%d7%92-23\/?bbp-ajax=true","generic_ajax_error":"\u05dc\u05e4\u05e2\u05de\u05d9\u05dd \u05de\u05e9\u05d4\u05d5 \u05de\u05e9\u05ea\u05d1\u05e9. \u05d9\u05e9 \u05dc\u05e8\u05e2\u05e0\u05df \u05d0\u05ea \u05d4\u05e2\u05de\u05d5\u05d3 \u05d5\u05dc\u05e0\u05e1\u05d5\u05ea \u05e9\u05d5\u05d1.","is_user_logged_in":"","fav_nonce":"668c7b4c98","subs_nonce":"9a45ea41bf"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/bbpress/templates/default/js/topic.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.taxman.co.il\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/contact-form-7/includes/js/scripts.js"></script>
+<script type="text/javascript" src="https://s0.wp.com/wp-content/js/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="https://secure.gravatar.com/js/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/jetpack/modules/wpgroho.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/gd-bbpress-tools/js/front.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/gd-bbpress-attachments/js/front.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/jetpack/_inc/build/likes/queuehandler.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/www.taxman.co.il\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/cf7-conditional-fields/js/scripts.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/themes/jannah/assets/js/scripts.js"></script>
+<script type="text/javascript">
+                                        jQuery.ajax({
+                                                type : "GET",
+                                                url  : "https://www.taxman.co.il/wp-admin/admin-ajax.php",
+                                                data : "postviews_id=28833&action=tie_postviews",
+                                                cache: !1
+                                        });
+
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/imagesloaded.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/plugins/globta/public/js/globta-public.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/wp-embed.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-content/themes/jannah/assets/js/sliders.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"\u05e1\u05d2\u05d5\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05ea\u05d2\u05d9\u05d5\u05ea \u05d4\u05e4\u05ea\u05d5\u05d7\u05d5\u05ea","closeTags":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2\u05d9\u05dd","enterURL":"\u05d9\u05e9 \u05dc\u05d4\u05d6\u05d9\u05df \u05db\u05ea\u05d5\u05d1\u05ea","enterImageURL":"\u05d9\u05e9 \u05dc\u05d4\u05d6\u05d9\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05ea\u05de\u05d5\u05e0\u05d4","enterImageDescription":"\u05d9\u05e9 \u05dc\u05d4\u05d6\u05d9\u05df \u05ea\u05d9\u05d0\u05d5\u05e8 \u05ea\u05de\u05d5\u05e0\u05d4","textdirection":"\u05db\u05d9\u05d5\u05d5\u05df \u05d8\u05e7\u05e1\u05d8","toggleTextdirection":"\u05db\u05d9\u05d5\u05d5\u05df \u05d8\u05e7\u05e1\u05d8","dfw":"\u05de\u05e6\u05d1 \u05db\u05ea\u05d9\u05d1\u05d4 \u05e0\u05d8\u05d5\u05dc\u05ea \u05d4\u05e4\u05e8\u05e2\u05d5\u05ea","strong":"\u05de\u05d5\u05d3\u05d2\u05e9","strongClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05de\u05d5\u05d3\u05d2\u05e9","em":"\u05e0\u05d8\u05d5\u05d9","emClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e0\u05d8\u05d5\u05d9","link":"\u05d4\u05d5\u05e1\u05e4\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8","blockquote":"\u05e6\u05d9\u05d8\u05d5\u05d8","blockquoteClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e6\u05d9\u05d8\u05d5\u05d8","del":"\u05e7\u05d5 \u05d7\u05d5\u05e6\u05d4","delClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e7\u05d5 \u05d7\u05d5\u05e6\u05d4","ins":"\u05d4\u05d5\u05e1\u05e4\u05ea \u05d8\u05e7\u05e1\u05d8","insClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05d4\u05d5\u05e1\u05e4\u05ea \u05d8\u05e7\u05e1\u05d8","image":"\u05d4\u05d5\u05e1\u05e4\u05ea \u05ea\u05de\u05d5\u05e0\u05d4","ul":"\u05e8\u05e9\u05d9\u05de\u05ea \u05ea\u05d1\u05dc\u05d9\u05d8\u05d9\u05dd","ulClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 
+\u05e8\u05e9\u05d9\u05de\u05ea \u05e4\u05e8\u05d9\u05d8\u05d9\u05dd \u05dc\u05d0 \u05de\u05de\u05d5\u05e1\u05e4\u05e8\u05ea","ol":"\u05e8\u05e9\u05d9\u05de\u05d4 \u05de\u05de\u05d5\u05e1\u05e4\u05e8\u05ea","olClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e8\u05e9\u05d9\u05de\u05ea \u05e4\u05e8\u05d9\u05d8\u05d9\u05dd \u05de\u05de\u05d5\u05e1\u05e4\u05e8\u05ea","li":"\u05e8\u05e9\u05d9\u05de\u05ea \u05e4\u05e8\u05d9\u05d8\u05d9\u05dd","liClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e8\u05e9\u05d9\u05de\u05ea \u05e4\u05e8\u05d9\u05d8\u05d9\u05dd","code":"\u05e7\u05d5\u05d3","codeClose":"\u05e1\u05d2\u05d5\u05e8 \u05ea\u05d2 \u05e9\u05dc \u05e7\u05d5\u05d3","more":"\u05d4\u05d5\u05e1\u05e4\u05ea \u05ea\u05d2\u05d9\u05ea \u05e7\u05e8\u05d0 \u05e2\u05d5\u05d3"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/quicktags.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/dist/vendor/wp-polyfill.min.js"></script>
+<script type="text/javascript">
+( 'fetch' in window ) || document.write( '<script src="https://www.taxman.co.il/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js"></scr' + 'ipt>' );( document.contains ) || document.write( '<script 
+src="https://www.taxman.co.il/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.taxman.co.il/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.taxman.co.il/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js"></scr' + 'ipt>' );
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/dist/dom-ready.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/dist/a11y.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpLinkL10n = {"title":"\u05d4\u05d5\u05e1\u05e4\u05ea\/\u05e2\u05e8\u05d9\u05db\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8","update":"\u05e2\u05d3\u05db\u05d5\u05df","save":"\u05d4\u05d5\u05e1\u05e4\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8","noTitle":"(\u05dc\u05dc\u05d0 \u05db\u05d5\u05ea\u05e8\u05ea)","noMatchesFound":"\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea.","linkSelected":"\u05e7\u05d9\u05e9\u05d5\u05e8 \u05e0\u05d1\u05d7\u05e8.","linkInserted":"\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d5\u05d2\u05d3\u05e8."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/wplink.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/ui/core.min.js"></script><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: 
+none !important;"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;"></iframe></ins></ins></ins>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/ui/widget.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/ui/position.min.js"></script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/ui/menu.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var uiAutocompleteL10n = {"noResults":"\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea.","oneResult":"\u05e0\u05de\u05e6\u05d0 \u05ea\u05d5\u05e6\u05d0\u05d4 \u05d0\u05d7\u05ea. \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1\u05de\u05e7\u05e9\u05d9 \u05d4\u05d7\u05e6\u05d9\u05dd \u05dc\u05e0\u05d5\u05d5\u05d8 \u05dc\u05de\u05e2\u05dc\u05d4 \u05d5\u05dc\u05de\u05d8\u05d4.","manyResults":"\u05e0\u05de\u05e6\u05d0\u05d5 %d \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea. \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1\u05de\u05e7\u05e9\u05d9 \u05d4\u05d7\u05e6\u05d9\u05dd \u05dc\u05e0\u05d5\u05d5\u05d8 \u05dc\u05de\u05e2\u05dc\u05d4 \u05d5\u05dc\u05de\u05d8\u05d4.","itemSelected":"\u05e4\u05e8\u05d9\u05d8 \u05e0\u05d1\u05d7\u05e8."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.taxman.co.il/wp-includes/js/jquery/ui/autocomplete.min.js"></script>
+
+                <script type="text/javascript">
+                tinyMCEPreInit = {
+                        baseURL: "https://www.taxman.co.il/wp-includes/js/tinymce",
+                        suffix: ".min",
+                                                mceInit: {},
+                        qtInit: {'bbp_reply_content':{id:"bbp_reply_content",buttons:"strong,em,link,block,del,img,ul,ol,li,code,close"}},
+                        ref: {plugins:"",theme:"modern",language:""},
+                        load_ext: function(url,lang){var sl=tinymce.ScriptLoader;sl.markDone(url+'/langs/'+lang+'.js');sl.markDone(url+'/langs/'+lang+'_dlg.js');}
+                };
+                </script>
+                                <script type="text/javascript">
+                var ajaxurl = "/wp-admin/admin-ajax.php";
+                ( function() {
+                        var init, id, $wrap;
+
+                        if ( typeof tinymce !== 'undefined' ) {
+                                if ( tinymce.Env.ie && tinymce.Env.ie < 11 ) {
+                                        tinymce.$( '.wp-editor-wrap ' ).removeClass( 'tmce-active' ).addClass( 'html-active' );
+                                        return;
+                                }
+
+                                for ( id in tinyMCEPreInit.mceInit ) {
+                                        init = tinyMCEPreInit.mceInit[id];
+                                        $wrap = tinymce.$( '#wp-' + id + '-wrap' );
+
+                                        if ( ( $wrap.hasClass( 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( id ) ) && ! init.wp_skip_init ) {
+                                                tinymce.init( init );
+
+                                                if ( ! window.wpActiveEditor ) {
+                                                        window.wpActiveEditor = id;
+                                                }
+                                        }
+                                }
+                        }
+
+                        if ( typeof quicktags !== 'undefined' ) {
+                                for ( id in tinyMCEPreInit.qtInit ) {
+                                        quicktags( tinyMCEPreInit.qtInit[id] );
+
+                                        if ( ! window.wpActiveEditor ) {
+                                                window.wpActiveEditor = id;
+                                        }
+                                }
+                        }
+                }());
+                </script>
+                                <div id="wp-link-backdrop" style="display: none"></div>
+                <div id="wp-link-wrap" class="wp-core-ui" style="display: none" role="dialog" aria-labelledby="link-modal-title">
+                <form id="wp-link" tabindex="-1">
+                <input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="4f74d1bab3">            <h1 id="link-modal-title">הוספת/עריכת קישור</h1>
+                <button type="button" id="wp-link-close"><span class="screen-reader-text">סגור</span></button>
+                <div id="link-selector">
+                        <div id="link-options">
+                                <p class="howto" id="wplink-enter-url">יש להזין כתובת יעד</p>
+                                <div>
+                                        <label><span>כתובת אינטרנט</span>
+                                        <input id="wp-link-url" type="text" aria-describedby="wplink-enter-url"></label>
+                                </div>
+                                <div class="wp-link-text-field">
+                                        <label><span>טקסט לקישור</span>
+                                        <input id="wp-link-text" type="text"></label>
+                                </div>
+                                <div class="link-target">
+                                        <label><span></span>
+                                        <input type="checkbox" id="wp-link-target"> פתיחת קישור בטאב חדש</label>
+                                </div>
+                        </div>
+                        <p class="howto" id="wplink-link-existing-content">או קישור פנימי באתר</p>
+                        <div id="search-panel">
+                                <div class="link-search-wrapper">
+                                        <label>
+                                                <span class="search-label">חיפוש</span>
+                                                <input type="search" id="wp-link-search" class="link-search-field" autocomplete="off" aria-describedby="wplink-link-existing-content">
+                                                <span class="spinner"></span>
+                                        </label>
+                                </div>
+                                <div id="search-results" class="query-results" tabindex="0">
+                                        <ul></ul>
+                                        <div class="river-waiting">
+                                                <span class="spinner"></span>
+                                        </div>
+                                </div>
+                                <div id="most-recent-results" class="query-results" tabindex="0">
+                                        <div class="query-notice" id="query-notice-message">
+                                                <em class="query-notice-default">לא הוזנו מילים לחיפוש. מוצגים פריטים אחרונים.</em>
+                                                <em class="query-notice-hint screen-reader-text">חיפוש, או שימוש בחצי המקלדת כדי לבחור פריט.</em>
+                                        </div>
+                                        <ul></ul>
+                                        <div class="river-waiting">
+                                                <span class="spinner"></span>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="submitbox">
+                        <div id="wp-link-cancel">
+                                <button type="button" class="button">בטל</button>
+                        </div>
+                        <div id="wp-link-update">
+                                <input type="submit" value="הוספת קישור" class="button button-primary" id="wp-link-submit" name="wp-link-submit">
+                        </div>
+                </div>
+                </form>
+                </div>
+                <script type="text/javascript" src="https://stats.wp.com/e-202003.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+        _stq = window._stq || [];
+        _stq.push([ 'view', {v:'ext',j:'1:7.8.1',blog:'89345652',post:'28833',tz:'2',srv:'www.taxman.co.il'} ]);
+        _stq.push([ 'clickTrackerInit', '89345652', '28833' ]);
+</script>
+
+
+
+<!-- Page generated by LiteSpeed Cache 2.9.9 on 2020-01-14 23:12:48 --><div id="a11y-speak-polite" class="a11y-speak-region" style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;" aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div><div id="a11y-speak-assertive" class="a11y-speak-region" style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;" aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div><img src="https://pixel.wp.com/g.gif?v=ext&amp;j=1%3A7.8.1&amp;blog=89345652&amp;post=28833&amp;tz=2&amp;srv=www.taxman.co.il&amp;host=www.taxman.co.il&amp;ref=&amp;fcp=2055&amp;rand=0.7680464853697191" alt=":)" width="6" height="5" id="wpstats"><iframe id="google_osd_static_frame_4675361517412" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e7204f3d38" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e7204f3d38" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e7204f3d38"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e7204f3d38"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e7204f3d38" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 453px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e720563a5e" style="display: 
+none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e720563a5e" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e720563a5e"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e720563a5e"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e720563a5e" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 344px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e720624705" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e720624705" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e720624705"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e720624705"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e720624705" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 454px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e7206ce6dd" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e7206ce6dd" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e7206ce6dd"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e7206ce6dd"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e7206ce6dd" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 447px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e72074122ed" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e72074122ed" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e72074122ed"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e72074122ed"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e72074122ed" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 412px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e7207d74a5" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e7207d74a5" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e7207d74a5"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e7207d74a5"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e7207d74a5" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 412px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e72088d7e8" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e72088d7e8" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e72088d7e8"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e72088d7e8"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e72088d7e8" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 414px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e720921ff2" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e720921ff2" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e720921ff2"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e720921ff2"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e720921ff2" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 500px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e72099386" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e72099386" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e72099386"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e72099386"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e72099386" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 414px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e720a3f340" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div class="mailmunch-popover" id="mailmunch-popover-16fa5e720a3f340" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e720a3f340"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e720a3f340"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e720a3f340" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 465px;"></iframe></div></div></div></div><div class="mailmunch-overlay" id="mailmunch-overlay-16fa5e720ab11969" style="display: none; background: rgba(0, 0, 0, 0.7);"></div><div 
+class="mailmunch-popover" id="mailmunch-popover-16fa5e720ab11969" style="position: fixed; left: 0px; top: 0px; display: none;"><div class="mailmunch-popover-container" id="mailmunch-popover-container-16fa5e720ab11969"><div class="mailmunch-inner-overlay" id="mailmunch-inner-overlay-16fa5e720ab11969"></div><div class="mailmunch-popover-content" style="max-width: 500px;"><div class="mailmunch-popover-iframe-scaler" style="padding-top: 465px;"><iframe id="mailmunch-popover-frame-16fa5e720ab11969" class="mailmunch-popover-iframe" frameborder="0" scrolling="no" allowtransparency="true" style="height: 
+447px;"></iframe></div></div></div></div></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20200109/r20190131/zrt_lookup.html#" data-ad-client="ca-pub-1661626489126044" style="display: none;"></iframe>

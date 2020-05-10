@@ -1,0 +1,36 @@
+require('../services/files/initiate.service').initiate();
+const { emailAddressesGeneratorService, logService } = require('../services');
+const { PartType } = require('../core/enums/files/emailAddress.enum');
+
+(async () => {
+    const results = [];
+    await emailAddressesGeneratorService.initiate();
+    results.push({ name: 'createEmailAddress()', result: await emailAddressesGeneratorService.createEmailAddress() });
+    results.push({ name: 'createLocalPart()', result: await emailAddressesGeneratorService.createLocalPart() });
+    results.push({ name: 'createDomainPart()', result: await emailAddressesGeneratorService.createDomainPart() });
+    results.push({ name: 'createDatabaseEmailAddress()', result: await emailAddressesGeneratorService.createDatabaseEmailAddress() });
+    results.push({ name: 'createSimpleValidEmailAddress()', result: emailAddressesGeneratorService.createSimpleValidEmailAddress() });
+    results.push({ name: 'createEmailAddressNPMFaker()', result: emailAddressesGeneratorService.createEmailAddressNPMFaker() });
+    results.push({ name: 'createEmailAddressNPMRandomEmail()', result: emailAddressesGeneratorService.createEmailAddressNPMRandomEmail() });
+    results.push({ name: 'createEmailAddressNPMChance()', result: emailAddressesGeneratorService.createEmailAddressNPMChance() });
+    results.push({ name: 'createEmailAddressMispelledPartsListEnds()', result: emailAddressesGeneratorService.createEmailAddressMispelledPartsListEnds() });
+    results.push({ name: 'createDomainPartLists()', result: emailAddressesGeneratorService.createDomainPartLists() });
+    results.push({ name: 'createDomainPartDomainsDetails()', result: emailAddressesGeneratorService.createDomainPartDomainsDetails() });
+    results.push({ name: 'createDomainPartNPMFaker()', result: emailAddressesGeneratorService.createDomainPartNPMFaker() });
+    results.push({ name: 'createDomainPartNPMChance()', result: emailAddressesGeneratorService.createDomainPartNPMChance() });
+    results.push({ name: 'createRandomPartLists(PartType.LOCAL)', result: emailAddressesGeneratorService.createRandomPartLists(PartType.LOCAL) });
+    results.push({ name: 'createRandomPartLists(PartType.DOMAIN)', result: emailAddressesGeneratorService.createRandomPartLists(PartType.DOMAIN) });
+    results.push({ name: 'createRandomPartNPM(PartType.LOCAL)', result: emailAddressesGeneratorService.createRandomPartNPM(PartType.LOCAL) });
+    results.push({ name: 'createRandomPartNPM(PartType.DOMAIN)', result: emailAddressesGeneratorService.createRandomPartNPM(PartType.DOMAIN) });
+    results.push({ name: 'createRandomPartNPMLoremIpsum()', result: emailAddressesGeneratorService.createRandomPartNPMLoremIpsum() });
+    results.push({ name: 'createRandomPartNPMChance()', result: emailAddressesGeneratorService.createRandomPartNPMChance() });
+    results.push({ name: 'createRandomPartNPMFaker()', result: emailAddressesGeneratorService.createRandomPartNPMFaker() });
+    results.push({ name: 'createRandomPartTypo()', result: await emailAddressesGeneratorService.createRandomPartTypo() });
+    results.push({ name: 'createRandomPartUUID()', result: emailAddressesGeneratorService.createRandomPartUUID() });
+    results.push({ name: 'createRandomPartManually(PartType.LOCAL)', result: emailAddressesGeneratorService.createRandomPartManually(PartType.LOCAL) });
+    results.push({ name: 'createRandomPartManually(PartType.DOMAIN)', result: emailAddressesGeneratorService.createRandomPartManually(PartType.DOMAIN) });
+    results.push({ name: 'createRandomPartNPMRandomWords(PartType.LOCAL)', result: emailAddressesGeneratorService.createRandomPartNPMRandomWords(PartType.LOCAL) });
+    results.push({ name: 'createRandomPartNPMRandomWords(PartType.DOMAIN)', result: emailAddressesGeneratorService.createRandomPartNPMRandomWords(PartType.DOMAIN) });
+    await emailAddressesGeneratorService.done();
+    results.map(result => logService.logGeneratorResult(result));
+})();

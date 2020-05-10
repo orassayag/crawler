@@ -1,0 +1,69 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [
+    "links",
+    "emails",
+    "email addresses"
+  ],
+  "license": "UNLICENSED",
+  "author": "Or Assayag <orassayag@gmail.com>",
+  "contributors": [
+    {
+      "name": "Or Assayag",
+      "email": "orassayag@gmail.com",
+      "url": "https://github.com/orassayag"
+    }
+  ],
+  "main": "src/scripts/crawl.script.js",
+  "files": [
+    "src",
+    ".eslintignore",
+    ".eslintrc",
+    ".gitignore",
+    ".jsbeautifyrc",
+    ".npmignore",
+    "package-lock.json",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "backup": "node src/scripts/backup.script.js",
+    "start": "node src/scripts/crawl.script.js",
+    "domains": "node src/scripts/domains.script.js",
+    "delay": "node src/scripts/delay.script.js",
+    "pre_load": "node src/scripts/preload.script.js",
+    "cases": "node src/tests/emailAddressTestCases.test.js",
+    "generator": "node src/tests/emailAddressGenerator.test.js",
+    "val": "node src/tests/validateEmailAddress.test.js",
+    "valdebug": "node --inspect-brk src/tests/validateEmailAddress.test.js",
+    "typos": "node src/tests/emailAddressTypos.test.js",
+    "sand": "node src/tests/sandBox.test.js",
+    "link": "node src/tests/linkCrawl.test.js",
+    "preload": "npm run pre_load && npm i & npm run delay & npm i"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "chance": "^1.1.4",
+    "eslint": "^6.8.0",
+    "faker": "^4.1.0",
+    "fs-extra": "^9.0.0",
+    "log-update": "^4.0.0",
+    "lorem-ipsum": "^2.0.3",
+    "micromatch": "^4.0.2",
+    "mongoose": "^5.9.10",
+    "puppeteer": "^3.0.1",
+    "random-email": "^1.0.3",
+    "random-words": "^1.1.1",
+    "uuid": "^8.0.0",
+    "validator": "^13.0.0"
+  }
+}

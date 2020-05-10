@@ -1,0 +1,16 @@
+The local part can contain (before the '@'):
+============================================
+-Any alphanumeric character: a-zA-Z0-9
+-Punctuation: "(),:;<>@[\]
+-Special characters: !#$%&'*+-/=?^_{|}~
+-A dot ., if it’s not the first or last character. Also, it can’t be repeated.
+
+The domain part can contain (after the '@'):
+============================================
+-Any alphanumeric character: a-zA-Z0-9
+-The hyphen -, if it’s not the first or last character. It can be repeated.
+
+Email address length validation:
+================================
+'There is a length limit on email addresses. That limit is a maximum of 64 characters (octets) in the 'local part'
+(before the '@') and a maximum of 255 characters (octets) in the domain part (after the '@') for a total length of 320 characters'.

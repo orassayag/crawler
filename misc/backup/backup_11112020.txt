@@ -1,0 +1,239 @@
+/*             applicationData: this.applicationData, */
+
+    /*         this.applicationData = applicationData; */
+    /* applicationData,  */
+    /*         this.applicationData = null; */
+
+    /*             applicationData: this.applicationData, */
+
+    /* 	validateVersionDomainPart(validationResult) {
+		let { fixed } = this.getEmailAddressData(validationResult);
+		const regex1 =  new RegExp(regexUtils.findVersionRegex);
+		const regex2 = (/(\^|\~?)(\d|x|\*)+\.(\d|x|\*)+\.(\d|x|\*)+/g);
+		const matches = fixed.matchAll(regex1);
+		for (const match of matches) {
+			console.log(match);
+		  }
+		if (isScriptVersion) {
+			validationResult.isValid = false;
+			validationResult.functionIds.push(this.validationFunctionIdsMap['validateVersionDomainPart']);
+		}
+		return validationResult;
+	} */
+
+
+		//domainPart = domainPart.replace(regexUtils.cleanAllAlphaRegex, '');
+		//console.log(fixed);
+/* 	skipDomains(data) {
+		const { emailAddressesList, maximumUniqueDomainCount } = data;
+		if (!maximumUniqueDomainCount || emailAddressesList.length <= maximumUniqueDomainCount) {
+			return {
+				skipCount: 0,
+				emailAddressesList: emailAddressesList
+			};
+		}
+		let skipCount = 0;
+		const domainsList = [];
+		const updatedEmailAddressesList = [];
+		for (let i = 0; i < emailAddressesList.length; i++) {
+			const emailAddress = emailAddressesList[i];
+			const splitResult = emailAddressUtils.getEmailAddressParts(emailAddress);
+			if (!splitResult || splitResult.length < 2) {
+				continue;
+			}
+			let domainPart = textUtils.toLowerCase(splitResult[1]);
+			if (!domainPart) {
+				continue;
+			}
+			domainPart = domainPart.trim();
+			// Check if the domain is common domain. Not relevant is true.
+			const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+			if (isCommonDomain) {
+				updatedEmailAddressesList.push(emailAddress);
+				continue;
+			}
+			if (domainsList.filter((x) => { return x === domainPart; }).length >= maximumUniqueDomainCount) {
+				skipCount++;
+			}
+			else {
+				domainsList.push(domainPart);
+				updatedEmailAddressesList.push(emailAddress);
+			}
+		}
+		return {
+			skipCount: skipCount,
+			emailAddressesList: updatedEmailAddressesList
+		};
+	} */
+
+    /* 			applicationData: this.applicationData, */
+
+    /* 	doubleReplace(data) {
+		let { word } = data;
+		const { i, advanceCount, isPositive } = data;
+		word = textUtils.replaceAt({ text: word, position: i, newText: word[isPositive ? i + advanceCount : i - advanceCount] });
+		word = textUtils.replaceAt({ text: word, position: isPositive ? i + advanceCount : i - advanceCount, newText: word[i] });
+		return word;
+	} */
+
+    /* const { emailAddressUtils, textUtils } = require('../utils');
+const { crawlEmailAddressService } = require('../services');
+const { commonEmailAddressDomainsList } = require('../configurations/emailAddressDomainEndsList.configuration'); */
+/*     crawlEmailAddressService.initiateCommonEmailAddressDomains();
+
+    const skipDomains = (data) => {
+        const { emailAddressesList, maximumUniqueDomainCount } = data;
+        if (!maximumUniqueDomainCount || emailAddressesList.length <= maximumUniqueDomainCount) {
+            return {
+                skipCount: 0,
+                emailAddressesList: emailAddressesList
+            };
+        }
+        let skipCount = 0;
+        const emailAddressesGroupsList = [];
+        const updatedEmailAddressesList = [];
+        for (let i = 0; i < emailAddressesList.length; i++) {
+            const emailAddress = emailAddressesList[i];
+            const splitResult = emailAddressUtils.getEmailAddressParts(emailAddress);
+            if (!splitResult || splitResult.length < 2) {
+                continue;
+            }
+            const domainPart = textUtils.toLowerCaseTrim(splitResult[1]);
+            if (!domainPart) {
+                continue;
+            }
+            // Check if the domain is common domain. Not relevant is true.
+            const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+            if (isCommonDomain) {
+                updatedEmailAddressesList.push(emailAddress);
+                continue;
+            }
+            const groupIndex = emailAddressesGroupsList.findIndex(d => d.domainPart === domainPart);
+            // Insert / update the list.
+            if (groupIndex > -1) {
+                emailAddressesGroupsList[groupIndex].emailAddressesList.push(emailAddress);
+            }
+            else {
+                emailAddressesGroupsList.push({
+                    domainPart: domainPart,
+                    emailAddressesList: [emailAddress]
+                });
+            }
+        }
+        for (let i = 0; i < emailAddressesGroupsList.length; i++) {
+            const group = emailAddressesGroupsList[i];
+            let emailAddressesGroup = group.emailAddressesList;
+            if (emailAddressesGroup.length >= maximumUniqueDomainCount) {
+                skipCount += emailAddressesGroup.length - maximumUniqueDomainCount;
+                emailAddressesGroup = textUtils.getRandomUniqueKeysFromArray(group.emailAddressesList, maximumUniqueDomainCount);
+            }
+            updatedEmailAddressesList.push(...emailAddressesGroup);
+        }
+        return {
+            skipCount: skipCount,
+            emailAddressesList: updatedEmailAddressesList
+        };
+    };
+    const resultList = skipDomains({
+        emailAddressesList: list,
+        maximumUniqueDomainCount: 2
+    });
+    console.log('original');
+    console.log(list);
+    console.log('results');
+    console.log(resultList); */
+
+            /* 		for (let i = 0; i < emailAddressesList.length; i++) {
+const emailAddress = emailAddressesList[i];
+const splitResult = emailAddressUtils.getEmailAddressParts(emailAddress);
+if (!splitResult || splitResult.length < 2) {
+    continue;
+}
+let domainPart = textUtils.toLowerCase(splitResult[1]);
+if (!domainPart) {
+    continue;
+}
+domainPart = domainPart.trim();
+// Check if the domain is common domain. Not relevant is true.
+const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+if (isCommonDomain) {
+    updatedEmailAddressesList.push(emailAddress);
+    continue;
+}
+if (domainsList.filter((d) => d === domainPart).length >= maximumUniqueDomainCount) {
+}
+else {
+    domainsList.push(domainPart);
+}
+} */
+/*             return {
+                skipCount: skipCount,
+                emailAddressesList: updatedEmailAddressesList
+            };
+        };
+
+    })(); */
+
+    /* 		this.alphaNumericCharacters = this.numbersCharacters.concat(this.alphaCharacters); */
+
+    /* 		this.cleanAllAlphaRegex = /[^0-9.]/g; */
+/* 		this.cleanCommaRegex = /,/g; */
+
+/*     removeString(data) {
+        const { removeText } = data;
+        let { text } = data;
+        if (!validationUtils.isExists(text) || !validationUtils.isExists(removeText)) {
+            return '';
+        }
+        if (text.indexOf(removeText) > -1) {
+            text = text.split(removeText).join('');
+        }
+        return text;
+    } */
+
+/*     replaceContainString(data) {
+        const { targetText, replaceText } = data;
+        let { text } = data;
+        if (!validationUtils.isExists(text) || !validationUtils.isExists(targetText) || !validationUtils.isExists(replaceText)) {
+            return '';
+        }
+        if (text.indexOf(targetText) > -1) {
+            text = text.split(targetText).join(replaceText);
+        }
+        return text;
+    } */
+    /*
+    addSpaceLines(text) {
+        return `${text}\r\n=======\r\n`;
+    } */
+
+    /*     // This method creates a file name.
+    createFileName(data) {
+        const { fileName, fileKeyName, fileTXTName, isMBOX } = data;
+        if (!fileName) {
+            return '';
+        }
+        return `${fileName}${fileKeyName ? `_${fileKeyName}` : ''}${fileTXTName !== null ? `_${fileTXTName}` : ''}${isMBOX ? '' : '.txt'}`;
+    } */
+
+    /*     verifyCharactersLength(data) {
+        const { value, maximumCharactersLength } = data;
+        if (!value || !validationUtils.isValidNumber(maximumCharactersLength)) {
+            return '';
+        }
+        return value.length > maximumCharactersLength ? value.substring(0, maximumCharactersLength) : value;
+    } */
+
+    /*     countDuplicateStrings(list) {
+        if (!validationUtils.isExists(list)) {
+            return 0;
+        }
+        return list.filter((item, index) => list.indexOf(item) != index).length;
+    } */
+
+    /*     logError(error) {
+        console.error(error);
+    } */
+
+    /*const fs = require('fs');
+const path = require('path'); */

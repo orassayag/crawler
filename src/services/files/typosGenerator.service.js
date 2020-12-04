@@ -3,7 +3,6 @@ Credit to: https://github.com/yetzt/node-typojs
 Made some cosmetic changers to fit modern javascript.
 Added here special characters implementation.
 */
-
 const settings = require('../../settings/settings');
 const { characterUtils, textUtils } = require('../../utils');
 const { TestsData } = require('../../core/models/application');
@@ -24,18 +23,10 @@ class TyposGeneratorService {
 		return word;
 	}
 
-	doubleReplace(data) {
-		let { word } = data;
-		const { i, advanceCount, isPositive } = data;
-		word = textUtils.replaceAt({ text: word, position: i, newText: word[isPositive ? i + advanceCount : i - advanceCount] });
-		word = textUtils.replaceAt({ text: word, position: isPositive ? i + advanceCount : i - advanceCount, newText: word[i] });
-		return word;
-	}
-
 	generateTypos(word, callback) {
-		let _word = word.toLocaleLowerCase();
-		let _typos = [];
-		let _length = _word.length;
+		const _word = word.toLocaleLowerCase();
+		const _typos = [];
+		const _length = _word.length;
 		for (let i = 0; i < _length; i++) {
 			if (word[i] in characterUtils.keyMap) {
 				characterUtils.keyMap[word[i]].forEach((ch) => {
@@ -83,7 +74,11 @@ class TyposGeneratorService {
 			for (let y = 0; y < randomSpecialCharactersNumber; y++) {
 				const randomSpecialCharacter = textUtils.getRandomKeyFromArray(characterUtils.allSpecialCharacters);
 				const randomPositionIndex = textUtils.getRandomNumber(0, word.length);
-				typo = textUtils.replaceAt({ text: typo, position: randomPositionIndex, newText: randomSpecialCharacter });
+				typo = textUtils.replaceAt({
+					text: typo,
+					position: randomPositionIndex,
+					newText: randomSpecialCharacter
+				});
 			}
 			typos.push(typo);
 		}
@@ -102,9 +97,8 @@ class TyposGeneratorService {
 			this.generateTypos(text, (typos) => {
 				resolve(typos.join().split(','));
 			});
-		});
+		}).catch();
 	}
 }
 
-const typosGeneratorService = new TyposGeneratorService();
-module.exports = typosGeneratorService;
+module.exports = new TyposGeneratorService();

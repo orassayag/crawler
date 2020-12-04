@@ -12,7 +12,12 @@ class DomainsLogic {
 			targetPath: __dirname,
 			targetName: ''
 		});
-		await domainsCounterService.run({ sourceType: sourceType, sourcePath: sourcePath, isLogs: true });
+		await domainsCounterService.run({
+			sourceType: sourceType,
+			sourcePath: sourcePath,
+			isLogs: true,
+			isPartOfCrawLogic: false
+		});
 	}
 }
 

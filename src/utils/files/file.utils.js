@@ -10,20 +10,24 @@ class FileUtils {
         return await fs.readFile(targetPath, 'utf-8');
     }
 
-    // This method check if a receive target path is exist.
     async isPathExists(targetPath) {
         // Check if the path parameter was received.
         if (!targetPath) {
             throw new Error(`targetPath not received: ${targetPath} (1000025)`);
         }
         // Check if the path parameter exists.
-        return await fs.exists(targetPath);
+        try {
+            return await fs.stat(targetPath);
+        }
+        catch (error) {
+            return false;
+        }
     }
 
     // This method remove all files from a given target path.
     async emptyDirectory(targetPath) {
         // Verify that the path exists.
-        await globalUtils.isPathExistsError(targetPath);
+        globalUtils.isPathExistsError(targetPath);
         // Empty the directory.
         await fs.emptyDir(targetPath);
     }
@@ -37,14 +41,14 @@ class FileUtils {
     // This method return all the files in a given target path.
     async getDirectoryFiles(targetPath) {
         // Verify that the path exists.
-        await globalUtils.isPathExistsError(targetPath);
+        globalUtils.isPathExistsError(targetPath);
         // Get all the files.
         return await fs.readdir(targetPath);
     }
 
     async readFile(targetPath) {
         // Verify that the path exists.
-        await globalUtils.isPathExistsError(targetPath);
+        globalUtils.isPathExistsError(targetPath);
         // Return the file content.
         return await this.read(targetPath);
     }
@@ -53,7 +57,7 @@ class FileUtils {
         if (!targetPath) {
             return;
         }
-        if (!await fs.exists(targetPath)) {
+        if (!await this.isPathExists(targetPath)) {
             await fs.mkdir(targetPath, { recursive: true });
         }
     }
@@ -66,13 +70,16 @@ class FileUtils {
         if (!message) {
             throw new Error(`message not found: ${message} (1000027)`);
         }
+        if (!await this.isPathExists(targetPath)) {
+            await fs.promises.mkdir(pathUtils.getDirName(targetPath), { recursive: true }).catch();
+        }
         // Append the message to the file.
         await fs.appendFile(targetPath, message);
     }
 
     async removeFile(targetPath) {
         // Verify that the path exists.
-        await globalUtils.isPathExistsError(targetPath);
+        globalUtils.isPathExistsError(targetPath);
         // Remove the file.
         await fs.unlink(targetPath);
     }
@@ -95,13 +102,13 @@ class FileUtils {
     }
 
     async removeDirectoryIfExists(targetPath) {
-        if (await fs.exists(targetPath)) {
+        if (!await this.isPathExists(targetPath)) {
             await fs.remove(targetPath);
         }
     }
 
     async createDirectoryIfNotExists(targetPath) {
-        if (!await fs.exists(targetPath)) {
+        if (!await this.isPathExists(targetPath)) {
             await fs.mkdir(targetPath);
         }
     }
@@ -111,5 +118,4 @@ class FileUtils {
     }
 }
 
-const fileUtils = new FileUtils();
-module.exports = fileUtils;
+module.exports = new FileUtils();

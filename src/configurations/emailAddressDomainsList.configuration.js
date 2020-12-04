@@ -107,6 +107,7 @@ const emailAddressDomainsList = [
 			'gmahl.com',
 			'gmai8l.com',
 			'gmai9l.com',
+			'gma.com',
 			'gmai',
 			'gmai-.om',
 			'gmai..com',
@@ -3054,6 +3055,7 @@ const emailAddressDomainsList = [
 			'013net.com',
 			'013net.el',
 			'013net.il',
+			'013.net-ytaron',
 			'013net.met.net',
 			'013net.ne',
 			'013net.ner',
@@ -3451,6 +3453,7 @@ const emailAddressDomainsList = [
 		micromatchName: null,
 		isCommonDomain: false,
 		typosList: [
+			'inter.n',
 			'inter.com.il',
 			'inter.i',
 			'inter.net.mail',
@@ -3501,6 +3504,7 @@ const emailAddressDomainsList = [
 		micromatchName: null,
 		isCommonDomain: false,
 		typosList: [
+			'electra.c',
 			'electra.co.ol',
 			'electra.com.il'
 		]
@@ -3619,6 +3623,16 @@ const emailAddressDomainsList = [
 	}),
 
 	// ===SINGLES=== //
+	new EmailAddressDomain({ domain: 'manpower.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['manpower.c'] }),
+	new EmailAddressDomain({ domain: 'emsclub.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['emsclub.c'] }),
+	new EmailAddressDomain({ domain: 'wojo.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['wojo.c'] }),
+	new EmailAddressDomain({ domain: 'benhaim.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['benhaim.c'] }),
+	new EmailAddressDomain({ domain: 'mutagim.com', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['mutagim.c'] }),
+	new EmailAddressDomain({ domain: 'ellers.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['ellers.c'] }),
+	new EmailAddressDomain({ domain: 'mishan.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['mishan.c'] }),
+	new EmailAddressDomain({ domain: 'thecloudhr.com', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['thecloudhr.c'] }),
+	new EmailAddressDomain({ domain: 'top-hr.org', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['top-hr.o'] }),
+	new EmailAddressDomain({ domain: 'otot-il.org.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['otot-il.o'] }),
 	new EmailAddressDomain({ domain: '1gdd.com', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['1gdd.co'] }),
 	new EmailAddressDomain({ domain: '1to1landscape.com', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['1to1landscape.co'] }),
 	new EmailAddressDomain({ domain: '2yoramim.co.il', domainName: null, micromatchName: null, isCommonDomain: false, typosList: ['2yoramim.com.il'] }),

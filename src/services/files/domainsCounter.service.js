@@ -1,18 +1,19 @@
 const settings = require('../../settings/settings');
 const { emailAddressUtils, fileUtils, textUtils, logUtils, validationUtils } = require('../../utils');
 const logService = require('./log.service');
-const databaseService = require('./database.service');
-const { ApplicationData, DatabaseData, DomainCounter, CountsLimitsData, PathsData } = require('../../core/models/application');
+const mongoDatabaseService = require('./mongoDatabase.service');
+const { ApplicationData, DomainCounter, CountsLimitsData, MongoDatabaseData, PathsData } = require('../../core/models/application');
 const { ScriptType, DomainsCounterSourceType } = require('../../core/enums/files/script.enum');
 const { Color } = require('../../core/enums/files/text.enum');
+const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
 
 class DomainsCounterService {
 
 	constructor() {
 		// ===COUNTS & LIMITS DATA=== //
 		this.countsLimitsData = null;
-		// ===DATABASE DATA=== //
-		this.databaseData = null;
+		// ===MONGO DATABASE DATA=== //
+		this.mongoDatabaseData = null;
 		// ===PATHS DATA=== //
 		this.pathsData = null;
 		this.isLogs = null;
@@ -21,6 +22,7 @@ class DomainsCounterService {
 		this.sourceContent = null;
 		this.emailAddressesList = [];
 		this.domainsList = [];
+		this.isPartOfCrawLogic = null;
 	}
 
 	async run(data) {
@@ -30,30 +32,43 @@ class DomainsCounterService {
 		this.validation();
 		// Start the domains counter process.
 		await this.startCountDomains();
-		// Close database.
-		await databaseService.closeConnection();
+		// Close Mongo database.
+		await mongoDatabaseService.closeConnection();
 	}
 
 	async initiate(data) {
-		const { sourceType, sourcePath, isLogs } = data;
+		const { sourceType, sourcePath, isLogs, isPartOfCrawLogic } = data;
 		this.isLogs = isLogs;
+		this.isPartOfCrawLogic = isPartOfCrawLogic;
 		this.sourceType = sourceType;
 		this.sourcePath = sourcePath;
 		this.log('INITIATE THE SERVICES', Color.MAGENTA);
 		// ===APPLICATION DATA=== //
-		this.applicationData = new ApplicationData({ settings: settings, status: null });
+		this.applicationData = new ApplicationData({
+			settings: settings,
+			activeSearchEngineNames: activeSearchEngineNames,
+			status: null,
+			method: null,
+			restartsCount: 0
+		});
 		// ===COUNTS & LIMITS DATA=== //
 		this.countsLimitsData = new CountsLimitsData(settings);
-		// ===DATABASE DATA=== //
-		this.databaseData = new DatabaseData(settings);
+		// ===MONGO DATABASE DATA=== //
+		this.mongoDatabaseData = new MongoDatabaseData(settings);
 		// ===PATHS DATA=== //
 		this.pathsData = new PathsData(settings);
-		// Initiate the database service.
-		await databaseService.initiate({ applicationData: this.applicationData, countsLimitsData: this.countsLimitsData, databaseData: this.databaseData });
+		// Initiate the Mongo database service.
+		await mongoDatabaseService.initiate({
+			countsLimitsData: this.countsLimitsData,
+			mongoDatabaseData: this.mongoDatabaseData
+		});
 	}
 
 	validation() {
-		if (!validationUtils.isValidEnum({ enum: DomainsCounterSourceType, value: this.sourceType })) {
+		if (!validationUtils.isValidEnum({
+			enum: DomainsCounterSourceType,
+			value: this.sourceType
+		})) {
 			throw new Error('Invalid sourceType selected (1000008)');
 		}
 	}
@@ -78,19 +93,23 @@ class DomainsCounterService {
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000009)');
 				}
-				this.sourceContent = await fileUtils.readFile(this.sourcePath);
+				if (await fileUtils.isPathExists(this.sourcePath)) {
+					this.sourceContent = await fileUtils.readFile(this.sourcePath);
+				}
 				break;
 			case DomainsCounterSourceType.DIRECTORY:
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000010)');
 				}
-				filePaths = await fileUtils.getFilesRecursive(this.sourcePath);
+				if (await fileUtils.isPathExists(this.sourcePath)) {
+					filePaths = await fileUtils.getFilesRecursive(this.sourcePath);
+				}
 				for (let i = 0, length = filePaths.length; i < length; i++) {
 					this.sourceContent += await fileUtils.readFile(filePaths[i]);
 				}
 				break;
 			case DomainsCounterSourceType.DATABASE:
-				this.emailAddressesList = await databaseService.getAllEmailAddresses();
+				this.emailAddressesList = await mongoDatabaseService.getAllEmailAddresses();
 				if (validationUtils.isExists(this.emailAddressesList)) {
 					this.emailAddressesList = this.emailAddressesList.map(e => e.emailAddress);
 				}
@@ -102,7 +121,7 @@ class DomainsCounterService {
 		switch (this.sourceType) {
 			case DomainsCounterSourceType.FILE:
 			case DomainsCounterSourceType.DIRECTORY:
-				if (!this.sourceContent) {
+				if (!this.isPartOfCrawLogic && !this.sourceContent) {
 					throw new Error('Empty sourceContent was provided (1000011)');
 				}
 				this.emailAddressesList = emailAddressUtils.getEmailAddresses(this.sourceContent);
@@ -122,7 +141,7 @@ class DomainsCounterService {
 			return;
 		}
 		domainPart = textUtils.toLowerCaseTrim(domainPart);
-		let domainCounterIndex = this.domainsList.findIndex(d => d.domainPart === domainPart);
+		const domainCounterIndex = this.domainsList.findIndex(d => d.domainPart === domainPart);
 		// Insert / update the list.
 		if (domainCounterIndex > -1) {
 			this.domainsList[domainCounterIndex].counter++;
@@ -142,7 +161,7 @@ class DomainsCounterService {
 		}
 	}
 
-	async sortDomains() {
+	sortDomains() {
 		// Sort by count and then by alphabetic.
 		this.log('SORT THE DOMAINS', Color.MAGENTA);
 		return new Promise((resolve) => {
@@ -162,7 +181,7 @@ class DomainsCounterService {
 				}
 			});
 			resolve(this.domainsList);
-		});
+		}).catch();
 	}
 
 	async logDomainsCounter() {
@@ -184,10 +203,12 @@ class DomainsCounterService {
 
 	log(message, color) {
 		if (this.isLogs) {
-			logUtils.logColorStatus({ status: message, color: color });
+			logUtils.logColorStatus({
+				status: message,
+				color: color
+			});
 		}
 	}
 }
 
-const domainsCounterService = new DomainsCounterService();
-module.exports = domainsCounterService;
+module.exports = new DomainsCounterService();

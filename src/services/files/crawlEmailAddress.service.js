@@ -4,7 +4,7 @@ let { commonEmailAddressDomainsList } = require('../../configurations/emailAddre
 const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
 const { filterEmailAddressDomains, filterEmailAddresses } = require('../../configurations/filterEmailAddress.configuration');
 const { CommonEmailAddressDomain, EmailAddressesResult, EmailAddressStatus } = require('../../core/models/application');
-const databaseService = require('./database.service');
+const mongoDatabaseService = require('./mongoDatabase.service');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const logService = require('./log.service');
 const sourceService = require('./source.service');
@@ -16,12 +16,14 @@ class CrawlEmailAddressService {
 	constructor() {
 		this.totalSaveCount = 0;
 		this.goalValue = 0;
+		this.isSkipLogic = null;
 		this.countsLimitsData = null;
 	}
 
 	initiate(data) {
 		const { applicationData, countsLimitsData } = data;
 		this.goalValue = applicationData.goalType === GoalType.EMAIL_ADDRESSES ? applicationData.goalValue : null;
+		this.isSkipLogic = applicationData.isSkipLogic;
 		this.countsLimitsData = countsLimitsData;
 		// Initiate the common email address domains lists.
 		this.initiateCommonEmailAddressDomains();
@@ -32,7 +34,12 @@ class CrawlEmailAddressService {
 		for (let i = 0, length = emailAddressDomainsList.length; i < length; i++) {
 			const { domain, domainName, micromatchName, isCommonDomain } = emailAddressDomainsList[i];
 			if (isCommonDomain) {
-				commonEmailAddressDomainsList.push(new CommonEmailAddressDomain({ domain: domain, domainName: domainName, micromatchName: micromatchName }));
+				commonEmailAddressDomainsList.push(new CommonEmailAddressDomain({
+					domain: domain,
+					flipDomain: textUtils.flipDotParts(domain),
+					domainName: domainName,
+					micromatchName: micromatchName
+				}));
 			}
 		}
 		commonEmailAddressDomainsList = textUtils.removeDuplicates(commonEmailAddressDomainsList);
@@ -42,34 +49,66 @@ class CrawlEmailAddressService {
 		return this.goalValue ? this.goalValue === this.totalSaveCount : false;
 	}
 
-	async getEmailAddressesFromPage(data) {
-		const { link, totalSaveCount } = data;
-		this.totalSaveCount = totalSaveCount;
-		let emailAddressesResult = new EmailAddressesResult();
-		if (this.checkGoalComplete()) {
-			return emailAddressesResult;
-		}
-		// Get the source of the specific link to fetch from it's email addresses.
-		const { isValidPage, pageSource } = await sourceService.getPageSource({ sourceType: SourceType.PAGE, searchEngine: null, link: link });
-		if (!isValidPage) {
-			await logService.logErrorLink(link);
-		}
-		emailAddressesResult.isValidPage = isValidPage;
-		// Get all the email addresses from the page source.
-		let emailAddressesList = emailAddressUtils.getEmailAddresses(pageSource);
-		if (!validationUtils.isExists(emailAddressesList)) {
-			return emailAddressesResult;
-		}
-		emailAddressesResult.totalCount = emailAddressesList.length;
-		// Remove duplicate email addresses.
-		emailAddressesList = textUtils.removeDuplicates(emailAddressesList);
-		// Scan all the email addresses.
-		emailAddressesResult = await this.validateEmailAddresses(emailAddressesList, emailAddressesResult);
-		return emailAddressesResult;
+	getEmailAddressesFromPage(data) {
+		return new Promise(async (resolve, reject) => {
+			if (reject) { }
+			// Limit the runtime of this function in case of stuck URL crawling process.
+			const abortTimeout = setTimeout(() => {
+				resolve(null);
+				return;
+			}, this.countsLimitsData.millisecondsTimeoutSourceRequestCount);
+			const { linkData, totalSaveCount } = data;
+			this.totalSaveCount = totalSaveCount;
+			let emailAddressesResult = new EmailAddressesResult();
+			if (this.checkGoalComplete()) {
+				clearTimeout(abortTimeout);
+				resolve(emailAddressesResult);
+				return;
+			}
+			// Get the source of the specific link to fetch from it's email addresses.
+			const pageResults = await sourceService.getPageSource({
+				sourceType: SourceType.PAGE,
+				searchEngine: null,
+				linkData: linkData
+			});
+			if (!pageResults) {
+				clearTimeout(abortTimeout);
+				resolve(emailAddressesResult);
+				return;
+			}
+			const { isValidPage, pageSource } = pageResults;
+			if (!isValidPage) {
+				await logService.logErrorLink(linkData.link);
+			}
+			emailAddressesResult.isValidPage = isValidPage;
+			// Get all the email addresses from the page source.
+			let emailAddressesList = emailAddressUtils.getEmailAddresses(pageSource);
+			if (!validationUtils.isExists(emailAddressesList)) {
+				clearTimeout(abortTimeout);
+				resolve(emailAddressesResult);
+				return;
+			}
+			emailAddressesResult.totalCount = emailAddressesList.length;
+			// Remove duplicate email addresses.
+			emailAddressesList = textUtils.removeDuplicates(emailAddressesList);
+			if (this.isSkipLogic) {
+				// Skip email addresses with domain that repeats itself too many times.
+				const skipResults = emailAddressValidationService.skipDomains({
+					emailAddressesList: emailAddressesList,
+					maximumUniqueDomainCount: this.countsLimitsData.maximumUniqueDomainCount
+				});
+				emailAddressesResult.skipCount = skipResults.skipCount;
+				emailAddressesList = skipResults.emailAddressesList;
+			}
+			// Scan all the email addresses.
+			emailAddressesResult = await this.validateEmailAddresses(emailAddressesList, emailAddressesResult);
+			clearTimeout(abortTimeout);
+			resolve(emailAddressesResult);
+		}).catch();
 	}
 
-	async saveEmailAddressToDatabase(emailAddressStatus, emailAddress) {
-		const saveStatus = await databaseService.saveEmailAddress(emailAddress);
+	async saveEmailAddressToMongoDatabase(emailAddressStatus, emailAddress) {
+		const saveStatus = await mongoDatabaseService.saveEmailAddress(emailAddress);
 		switch (saveStatus) {
 			case SaveStatus.SAVE: emailAddressStatus.isSave = true; emailAddressStatus.logStatus = LogStatus.VALID; break;
 			case SaveStatus.EXISTS: emailAddressStatus.isExists = true; break;
@@ -97,8 +136,8 @@ class CrawlEmailAddressService {
 		// Check if the email address is filtered.
 		emailAddressStatus = this.filterEmailAddress(emailAddress, emailAddressStatus);
 		if (!emailAddressStatus.isFilter) {
-			// Save to database.
-			emailAddressStatus = await this.saveEmailAddressToDatabase(emailAddressStatus, emailAddress);
+			// Save to Mongo database.
+			emailAddressStatus = await this.saveEmailAddressToMongoDatabase(emailAddressStatus, emailAddress);
 			isSave = emailAddressStatus.isSave;
 		}
 		// Check if goal is complete.
@@ -112,7 +151,7 @@ class CrawlEmailAddressService {
 	async handleEmailAddress(emailAddress, emailAddressesResult) {
 		// Get the status of the email address.
 		const validationResult = await emailAddressValidationService.validateEmailAddress(emailAddress);
-		let emailAddressStatus = new EmailAddressStatus(validationResult);
+		const emailAddressStatus = new EmailAddressStatus(validationResult);
 		const { original, fix, isValid } = validationResult;
 		let trendingSaveEmailAddress = null;
 		if (fix) {
@@ -150,7 +189,10 @@ class CrawlEmailAddressService {
 		}
 		// Log the email address to the relevant TXT file.
 		await logService.logEmailAddress(emailAddressStatus);
-		return { emailAddressesResult: emailAddressesResult, emailAddressStatus: emailAddressStatus };
+		return {
+			emailAddressesResult: emailAddressesResult,
+			emailAddressStatus: emailAddressStatus
+		};
 	}
 
 	addTrendingSave(emailAddress, emailAddressesResult, isValidFix) {
@@ -201,5 +243,4 @@ class CrawlEmailAddressService {
 	}
 }
 
-const crawlEmailAddressService = new CrawlEmailAddressService();
-module.exports = crawlEmailAddressService;
+module.exports = new CrawlEmailAddressService();

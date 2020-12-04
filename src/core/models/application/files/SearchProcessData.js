@@ -7,6 +7,7 @@ class SearchProcessData {
 		this.searchEngine = null;
 		this.searchEngineLinkTemplate = null;
 		this.pageLink = null;
+		this.pageUserAgent = null;
 		if (data) {
 			const { pageIndex, searchKey, displaySearchKey, searchEngine, searchEngineLinkTemplate } = data;
 			this.pageIndex = pageIndex;

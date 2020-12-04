@@ -9,5 +9,4 @@ class ApplicationUtils {
     }
 }
 
-const applicationUtils = new ApplicationUtils();
-module.exports = applicationUtils;
+module.exports = new ApplicationUtils();

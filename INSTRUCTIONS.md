@@ -1,3 +1,4 @@
+/* cSpell:disable */
 INDEX:
 ======
 1. FAST & BASIC START.
@@ -30,7 +31,7 @@ INDEX:
 	the console status line appear.
 11. If you see any error - Need to check what's change. Current to 03/16/2020,
 	It works fine.
-12. If you see the console status line but the 'Saved' or 'Total' not progressing
+12. If you see the console status line but the 'Save' or 'Total' not progressing
 	- Need to check what's wrong.
     Maybe on the active search engines - The URL parameters has been changed?
     Maybe the crawling puppeteer has been changed?
@@ -55,13 +56,13 @@ randomly from fake search engines page and fake links, all from the sources dire
 located on the root (/sources/engine + /sources/page).
 
 IS_DROP_COLLECTION:
-If true, before each start of the crawling process, the database will be dropped
-(deleted) automatically. If false, no action will be taken related to the database in
+If true, before each start of the crawling process, the Mongo database will be dropped
+(deleted) automatically. If false, no action will be taken related to the Mongo database in
 the beginning.
 
 GOAL_TYPE:
 The options are EMAIL_ADDRESSES / MINUTES / LINKS. EMAIL_ADDRESSES - Saved email addresses
-in the database, not total or filtered or other category. MINUTES - Total minutes from the
+in the Mongo database, not total or filtered or other category. MINUTES - Total minutes from the
 start of the application. LINKS - Total crawl links, not total links, or filtered links.
 
 GOAL_VALUE:
@@ -76,17 +77,12 @@ the desired search key in this value, and in all the process this will be the se
 
 IS_LINKS_STEP:
 If true, the step of fetching links within a search engine search by query string will be take place.
-This step not include other logic, such as crawling email addresses or sending email address attached
-with the CV file. If it false, it will not do any logic, and en error will be throwen.
+This step not include other logic. If it false, it will not do any logic, and en error will be throwen.
 
 IS_CRAWL_STEP:
 If true, and the links step is also true, a full crawl operation will take place, include fetch links
 from search engine search, and for each link fetched - Preform a crawling action to fetch all the email
 addresses from each link. If this step is mark as false, no crawling email addresses will take place.
-
-IS_SEND_STEP:
-This flag currently does nothing, but in the future plans, this flag will determine if the step of
-sending email addresses with CV file attached to the fetched email addresses will be sent.
 
 MAXIMUM_SEARCH_PROCESSES_COUNT:
 This parameter determine the number of process to run in the entire application lifetime. If the process
@@ -148,7 +144,7 @@ in some of the tests.
 
 filterEmailAddress.configuration.js:
 filterEmailAddressDomains - A list of domain parts of email addresses which once matched when
-fetched from the source - Will be counted as filtered and will not be saved in the database and
+fetched from the source - Will be counted as filtered and will not be saved in the Mongo database and
 will not be logged to any TXT file.
 unfixEmailAddressDomains - A list of domain parts of email addresses which once they will be fixed,
 for example, from '.co' to '.co.il' the fix will cause the email address to be invalid, so from this
@@ -203,13 +199,13 @@ This service preform the crawling logic of all the links from a search engine HT
 a given built link, and return all the links to continue the logic to crawl from each one of them
 all the email addresses by the crawlEmailAddress.service.
 
-database.service:
-This service controls on all the things relate to the database, all CRUD operations,
-test the database before start crawling, configure the connection, and so on.
+mongoDatabase.service:
+This service controls on all the things relate to the Mongo database, all CRUD operations,
+test the Mongo database before start crawling, configure the connection, and so on.
 
 domainsCounter.service.js:
 This service contains all the logic of the domains counter script,
-that counts the domains of all sources by specific file path, directory or database.
+that counts the domains of all sources by specific file path, directory or Mongo database.
 
 emailAddressesGenerator.service.js:
 This service contains all the logic to generate random email addresses for the test cases tests.
@@ -268,8 +264,8 @@ file. Can be run by terminal: 'npm run backup'.
 
 crawl.script.js:
 This script is the main script of the application, it runs the crawling logic. Fetch links by building
-dynamic links to search engines, and for each link - Crawl the email address and save them to the database
-and log them to a TXT file.
+dynamic links to search engines, and for each link - Crawl the email address and save them to the Mongo
+database and log them to a TXT file.
 Can be run by terminal: 'npm start'.
 
 delay.script.js:
@@ -336,7 +332,6 @@ GOAL_VALUE: 5
 SEARCH_KEY: null
 IS_LINKS_STEP: true
 IS_CRAWL_STEP: true
-IS_SEND_STEP: false
 IS_LOG_VALID_EMAIL_ADDRESSES: true
 IS_LOG_FIX_EMAIL_ADDRESSES: true
 IS_LOG_INVALID_EMAIL_ADDRESSES: true
@@ -358,14 +353,10 @@ y
 ===[PAGE (5/8)] https://www.ortal-hr.co.il/%D7%94%D7%A6%D7%A2%D7%95%D7%AA_%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%91%D7%9E%D7%A9%D7%A8%D7%94_%D7%9E%D7%===
 ===[SEARCH (1/3)] https://www.google.com/search?q=דרושה+מוקדנית+ערב+בבני+ציון+אי+מייל&ei=PGo5XqvTJpCT8gKAyo3gDw&start=10&sa=N&ved=2ahUKEwir4a6q-bfnA===
 
-INSTRUCTIONS.md + README.md Tasks:
-==================================
--Add description about each script and each test.
--Go through the settings and mention the important ones.
--Add reminder to update both development and production package.json files when
- doing some changes / update packages / update scripts.
--On the INSTRUCTIONS.md file write explanation on each parameter on the console line.
--Add to the INSTRUCTIONS.md file all the new options and settings that needs to be configured.
--Create in the and a list of all credits inside to put inside the README.md file.
--Add the 'IMPORTANT' messages to the INSTRUCTIONS.md file.
--Fix misspells mistakes in all documents.
+## Author
+
+* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
+* Or Assayag <orassayag@gmail.com>
+* GitHub: https://github.com/orassayag
+* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* LinkedIn: https://il.linkedin.com/in/orassayag

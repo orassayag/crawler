@@ -8,7 +8,7 @@ const { PartType } = require('../core/enums/files/emailAddress.enum');
     results.push({ name: 'createEmailAddress()', result: await emailAddressesGeneratorService.createEmailAddress() });
     results.push({ name: 'createLocalPart()', result: await emailAddressesGeneratorService.createLocalPart() });
     results.push({ name: 'createDomainPart()', result: await emailAddressesGeneratorService.createDomainPart() });
-    results.push({ name: 'createDatabaseEmailAddress()', result: await emailAddressesGeneratorService.createDatabaseEmailAddress() });
+    results.push({ name: 'createMongoDatabaseEmailAddress()', result: await emailAddressesGeneratorService.createMongoDatabaseEmailAddress() });
     results.push({ name: 'createSimpleValidEmailAddress()', result: emailAddressesGeneratorService.createSimpleValidEmailAddress() });
     results.push({ name: 'createEmailAddressNPMFaker()', result: emailAddressesGeneratorService.createEmailAddressNPMFaker() });
     results.push({ name: 'createEmailAddressNPMRandomEmail()', result: emailAddressesGeneratorService.createEmailAddressNPMRandomEmail() });

@@ -56,7 +56,10 @@ const sortResults = (isValidTest, validationResults) => {
 
 (async () => {
     // Validation on enum.
-    if (!validationUtils.isValidEnum({ enum: TestType, value: testType })) {
+    if (!validationUtils.isValidEnum({
+        enum: TestType,
+        value: testType
+    })) {
         throw new Error('Invalid or no testType parameter was found (1000024)');
     }
     await emailAddressesGeneratorService.initiate();

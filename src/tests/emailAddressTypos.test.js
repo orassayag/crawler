@@ -17,7 +17,7 @@ const logValidationTestResult = (validationResult) => {
 const setValidationTestResult = (validationResult, score) => {
     const { original, fix } = validationResult;
     let { isValid } = validationResult;
-    let fixed = fix ? fix : original;
+    const fixed = fix ? fix : original;
     const fixedDomainPart = emailAddressUtils.getEmailAddressParts(fixed)[1];
     const isMatch = fixedDomainPart === domainPart;
     if (fix) {
@@ -26,7 +26,10 @@ const setValidationTestResult = (validationResult, score) => {
     if (isValid) {
         score++;
     }
-    return { score: score, isValid: isValid };
+    return {
+        score: score,
+        isValid: isValid
+    };
 };
 
 // Sort the results.
@@ -45,7 +48,10 @@ const sortResults = (validationResults) => {
     // Initiate the common email address domains lists.
     crawlEmailAddressService.initiateCommonEmailAddressDomains();
     // Get random typos and test them.
-    const emailAddressesResults = await emailAddressesGeneratorService.getTypos({ localPart: localPart, domainPart: domainPart });
+    const emailAddressesResults = await emailAddressesGeneratorService.getTypos({
+        localPart: localPart,
+        domainPart: domainPart
+    });
     let validationResults = [];
     domainPart = emailAddressesResults.domainPart;
     for (let i = 0, length = emailAddressesResults.emailAddresses.length; i < length; i++) {

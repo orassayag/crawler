@@ -13,5 +13,4 @@ class ColorUtils {
     }
 }
 
-const colorUtils = new ColorUtils();
-module.exports = colorUtils;
+module.exports = new ColorUtils();

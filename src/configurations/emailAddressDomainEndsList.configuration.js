@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const { EmailAddressDomainEnd } = require('../core/models/application');
+const { CommonEmailAddressDomainEnd, EmailAddressDomainEnd } = require('../core/models/application');
 const { emailAddressUtils } = require('../utils');
 
 const extraCultureEndsList = [
@@ -26,6 +26,7 @@ let emailAddressDomainEndsList = [
         typosList: [
             '.c.coo..iill',
             '.c.coo.iill',
+            '.co.i.l',
             '.c.il',
             '.c.ill',
             '.c.l',
@@ -130,6 +131,7 @@ let emailAddressDomainEndsList = [
         domainEndGroupName: 'org',
         isSingleWord: false,
         typosList: [
+            '.org.i1',
             '.or.gil',
             '.or.l',
             '.org.i',
@@ -151,6 +153,7 @@ let emailAddressDomainEndsList = [
         isSingleWord: false,
         typosList: [
             '.muni.i',
+            '.muni.l',
             '.muni.io',
             '.muni.iol'
         ]
@@ -222,6 +225,7 @@ let emailAddressDomainEndsList = [
     emailAddressDomainEndsList = emailAddressDomainEndsList.concat(extraCultureEndsList.map(cultureKey => {
         return new EmailAddressDomainEnd({ domainEnd: `${domainEnd}.${cultureKey}`, domainEndGroupName: 'co', isSingleWord: false, typosList: [] });
     })));
+
 const domainEndsList = emailAddressDomainEndsList.map(d => d.domainEnd);
 const domainEndsDotsList = emailAddressDomainEndsList.map(d => `.${d.domainEnd}`);
 const domainEndsHyphenList = emailAddressDomainEndsList.map(d => `-${d.domainEnd}`);
@@ -229,11 +233,16 @@ const domainEndsCommaList = emailAddressDomainEndsList.map(d => `,${d.domainEnd}
 const validDomainEndsList = emailAddressUtils.getDomainEndsGroups(emailAddressDomainEndsList, 'domainEndGroupName');
 const validOneWordDomainEndsList = emailAddressDomainEndsList.filter(domain => domain.isSingleWord).map(domain => domain.domainEnd);
 const emailAddressEndFixTypos = emailAddressUtils.getDomainsFixTyposList(emailAddressDomainEndsList);
+const commonDomainEndsList = [
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.com', isAllowDotAfter: true }),
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.co.il', isAllowDotAfter: false }),
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.org.il', isAllowDotAfter: false })
+];
 // Don't delete this array or change it to const, will auto filled dynamically.
 let commonEmailAddressDomainsList = [];
 
 module.exports = {
     domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList,
-    validDomainEndsList, validOneWordDomainEndsList, emailAddressEndFixTypos, commonEmailAddressDomainsList,
-    emailAddressDomainEndsList
+    validDomainEndsList, validOneWordDomainEndsList, emailAddressEndFixTypos, emailAddressDomainEndsList,
+    commonDomainEndsList, commonEmailAddressDomainsList
 };

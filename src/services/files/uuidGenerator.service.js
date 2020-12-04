@@ -14,5 +14,4 @@ class UUIDGeneratorService {
 	}
 }
 
-const uuidGeneratorService = new UUIDGeneratorService();
-module.exports = uuidGeneratorService;
+module.exports = new UUIDGeneratorService();

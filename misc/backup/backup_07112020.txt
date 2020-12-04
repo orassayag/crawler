@@ -1,0 +1,670 @@
+/* , */
+/*     ['SEND', 'SEND'] */
+//such as crawling email addresses or sending email address attached
+//with the CV file.
+
+/* IS_SEND_STEP, */
+//this.isSendStep = IS_SEND_STEP;
+
+         /*  && !this.applicationData.isSendStep; */
+/*         const isNoLinksNoSend = !this.applicationData.isLinksStep && this.applicationData.isCrawlStep && !this.applicationData.isSendStep; */
+/* isNoLinksNoSend ||  */
+            //throw new Error('page timeout');
+        //const timeNow = new Date();
+        //this.startTime = timeNow;
+/* monitorData, */
+/*         // ===MONITOR DATA=== //
+        this.monitorData = monitorData; */
+        // Let the user confirm all the IMPORTANT settings before you start.
+        //await this.confirm();
+        //this.
+            //return;
+/*     async initiateRun() {
+// Initiate all the settings, configurations, services, ect.
+await this.initiate();
+// Validate internet connection.
+await this.validateInternetConnection();
+// Validate active steps.
+this.validateActiveSteps();
+} */
+/* debugger;
+debugger; */
+/*         console.log(process.argv); */
+
+                //console.log(milliseconds);
+/*         endDateTime += endDateTime + milliseconds;
+        endDateTime = new Date(endDateTime); */
+//console.log(settings.maximumRestartsCount);
+//        console.log(settings.MAXIMUM_RESTARTS_COUNT);
+/*         child.on('restart', () => {
+            this.restartsCount++;
+        }); */
+/* child.on('restart', () => {
+});
+logUtils.logError(`Forever detected script exited with code ${code}`);
+logUtils.logError(`Forever restarting script for ${child.times} time`); */
+/*         child.on('SIGINT', () => {
+            console.log('1');
+        }); */
+/* async cleanup() {
+    sourceService.close();
+    await puppeteerService.close();
+    sourceService, puppeteerService
+} */
+            //await this.cleanup();
+//systemUtils.exit('ABORTED BY THE USER', Color.RED);
+/* 	const sourceService = require('./source.service');
+    const puppeteerService = require('./puppeteerService'); */
+
+/* 	async cleanup() {
+        sourceService.close();
+        await puppeteerService.close();
+    } */
+
+/* 		// Do something when app is closing.
+    process.on('exit', async () => {
+        await this.cleanup();
+    }); */
+/* 		// Catches ctrl+c event.
+        process.on('SIGINT', async () => {
+            await this.cleanup();
+        }); */
+/* 		// catches "kill pid" (for example: nodemon restart)
+        process.on('SIGUSR1', async () => {
+            await this.cleanup();
+        });
+        process.on('SIGUSR2', async () => {
+            await this.cleanup();
+        }); */
+
+        //                throw new Error('test');
+                //await this.sleep(61000);
+                //throw new Error('test');
+                //logUtils.logError(error);
+                //logUtils.logError(error);
+/*                 logUtils.log(`
+                `);
+                console.error(error); */
+                //await this.wait(61000);
+/* const logUtils = require('../../utils/files/log.utils'); */
+                //await this.page.waitUntil(61000);
+                //'--no-sandbox',
+                //await this.page.waitForSelector('html');
+//                await this.page.waitFor(61000);
+/*             this.page = null;
+            this.browser = null; */
+    // Simulate wait if needed: await this.wait(120000);
+   // wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+// =======================================
+
+/* const puppeteerExtra = require('puppeteer-extra');
+const pluginStealth = require('puppeteer-extra-plugin-stealth');
+const { crawlUtils } = require('../../utils');
+
+class PuppeteerService {
+
+    constructor() {
+        this.countsLimitsData = null;
+        this.browser = null;
+        this.page = null;
+        this.pageOptions = null;
+        this.waitForFunction = 'document.querySelector("body")';
+        this.isLinkCrawlTest = null;
+    }
+
+    async initiate(countsLimitsData, isLinkCrawlTest) {
+        this.countsLimitsData = countsLimitsData;
+        this.pageOptions = {
+            waitUntil: 'networkidle2',
+            timeout: this.countsLimitsData.millisecondsTimeoutSourceRequestCount
+        };
+        puppeteerExtra.use(pluginStealth());
+        this.browser = await puppeteerExtra.launch({ headless: false });
+        const browserWSEndpoint = await this.browser.wsEndpoint();
+        puppeteerExtra.connect({ browserWSEndpoint: browserWSEndpoint });
+        this.page = await this.browser.newPage();
+        await this.page.setRequestInterception(true);
+        this.page.on('request', (request) => {
+            if (['image', 'stylesheet', 'font', 'script'].indexOf(request.resourceType()) !== -1) {
+                request.abort();
+            } else {
+                request.continue();
+            }
+        });
+        this.page.on('dialog', async dialog => {
+            await dialog.dismiss();
+        });
+        this.isLinkCrawlTest = isLinkCrawlTest;
+    }
+
+    // Simulate wait if needed.
+    wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+    crawl(link, userAgent) {
+        return new Promise(async (resolve, reject) => {
+            if (reject) { }
+            // Limit the runtime of this function in case of stuck URL crawling process.
+            setTimeout(async () => {
+                await this.restart();
+                resolve(null);
+                return;
+            }, this.countsLimitsData.millisecondsTimeoutSourceRequestCount);
+            if (!userAgent) {
+                userAgent = crawlUtils.getRandomUserAgent();
+            }
+            const crawlResults = { isValidPage: true, pageSource: null };
+            if (!this.page) {
+                await this.wait(1000);
+                resolve(null);
+                return;
+            }
+            try {
+                await this.page.setUserAgent(userAgent);
+                await this.page.goto(link, this.pageOptions);
+                await this.page.waitForFunction(this.waitForFunction);
+                crawlResults.pageSource = await this.page.content();
+            }
+            catch (error) {
+                crawlResults.isValidPage = false;
+            }
+            if (this.isLinkCrawlTest) {
+                await this.close();
+            }
+            resolve(crawlResults);
+        });
+    }
+
+    async restart() {
+        await this.close();
+        await this.wait(1000);
+        this.initiate(this.countsLimitsData, this.isLinkCrawlTest);
+    }
+
+    async close() {
+        if (this.browser) {
+            await this.page.close();
+            await this.browser.close();
+            this.browser = null;
+            this.page = null;
+            this.pageOptions = null;
+        }
+    }
+}
+
+const puppeteerService = new PuppeteerService();
+module.exports = puppeteerService; */
+
+//=============================
+
+
+/*         this.timeout = null; */
+        //this.testCount = 0;
+                //this.browser.on('disconnected', this.initiate.bind(this.countsLimitsData, false));
+                        //this.timeout = countsLimitsData.millisecondsTimeoutSourceRequestCount;
+/*                 if (this.testCount === 0) {
+this.testCount++;
+await this.wait(61000);
+} */
+                                //console.log(error);
+        //await this.page.setCacheEnabled(false);
+            //const userAgent = randomUseragent.getRandom();
+//const puppeteer = require('puppeteer');
+    // Refactor restart and initiate functions - Duplicate code.
+/*     async restart() {
+        await this.close();
+        this.browser = null;
+        this.browser = await puppeteerExtra.launch({ headless: false });
+        this.page = await this.browser.newPage();
+        await this.page.setRequestInterception(true);
+        this.page.on('request', (request) => {
+            if (['image', 'stylesheet', 'font', 'script'].indexOf(request.resourceType()) !== -1) {
+                request.abort();
+            } else {
+                request.continue();
+            }
+        });
+    } */
+    //this.restart();
+        //const browser = await puppeteerExtra.launch({ headless: false });
+            //const browser = await puppeteerExtra.launch({ headless: false });
+/*     this.restart();
+    async restart() {
+        await this.close();
+        this.browser = null;
+        this.browser = await puppeteerExtra.launch({ headless: false });
+    } */
+
+    		//for (let i = 0, length = characterUtils.commonInvalidCharacters.length; i < length; i++) {
+		/* 			part = textUtils.removeFirstCharacterLoop({
+						text: part,
+						character: character
+					});
+					part = textUtils.removeLastCharacterLoop({
+						text: part,
+						character: character
+					}); */
+		/* 		if (part !== originalPart) {
+					return this.fixCommonInvalidPartCharacters(part);
+				} */
+		//}
+		//return part;
+/* 		if (!validationResult.isValid) {
+			return false;
+		} */
+/* 		let invalidPart = null;
+		if (!this.validatePartFileName(localPart)) {
+			invalidPart = 'Local';
+		} */
+/* 		if (!this.validatePartFileName(domainPart)) {
+			invalidPart = 'Domain';
+		} */
+/* 		if (invalidPart) {
+			const isValid = domainEndsDotsList.filter(d => domainPart.indexOf(d) > -1).length > 0;
+			if (!isValid) {
+				validationResult.isValid = false;
+				validationResult.functionIds.push(this.validationFunctionIdsMap[`validateFileName${invalidPart}Part`]);
+			}
+		} */
+		//return validationResult;
+/* 			// Try to recover.
+			resolve(this.tryRecover(validationResult)); */
+				//console.log(domainPart);
+/* 				console.log(index);
+console.log(compareItem);
+console.log(domainPart.length);
+console.log('---'); */
+/* 	// Replace by domain end - Overall manually.
+	fixOverallCleanDomainEnd(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		const originalDomainPart = domainPart;
+		let domainSplits = textUtils.getSplitDotParts(domainPart);
+		const originalDomainSplit = domainSplits;
+		if (domainSplits.length <= 1) {
+			return validationResult;
+		}
+		const isLongEnd = domainSplits.length > 2;
+		const number = isLongEnd ? domainSplits.length - 1 : 1;
+		let longDomainIndex = -1;
+		const domainEnd = textUtils.sliceJoinDots(domainSplits, number);
+		const splitOneDomainEnd = isLongEnd ? textUtils.sliceJoinDots(domainSplits, 1) : null;
+		let matchKey = null;
+		let matchIndex = -1;
+		for (let i = 0, length = validDomainEndsList.length; i < length; i++) {
+			const keys = validDomainEndsList[i];
+			let pointer = 0;
+			let index = -1;
+			while (pointer < keys.length) {
+				const key = keys[pointer];
+				index = domainEnd.indexOf(key);
+				if (index > -1) {
+					matchIndex = index;
+					matchKey = key;
+					if (isLongEnd) {
+						longDomainIndex = domainSplits.findIndex(s => s.includes(key));
+					}
+				}
+				if (isLongEnd) {
+					index = splitOneDomainEnd.indexOf(key);
+					if (index > -1) {
+						matchIndex = index;
+						matchKey = key;
+					}
+				}
+				pointer++;
+			}
+			if (matchIndex === 0) {
+				break;
+			}
+		}
+		if (matchKey && matchIndex + matchKey.length + 1 <= domainEnd.length) {
+			domainPart = textUtils.addMiddleDot(longDomainIndex > -1 ? domainSplits.slice(0, longDomainIndex).join('.') : domainSplits[0], matchKey);
+		}
+		else if (splitOneDomainEnd && matchKey && matchIndex + matchKey.length + 1 <= splitOneDomainEnd.length) {
+			domainPart = textUtils.addMiddleDot(domainSplits[0], matchKey);
+		}
+		// Validate the fix.
+		domainSplits = textUtils.getSplitDotParts(domainPart);
+		if (originalDomainSplit.length > domainSplits.length) {
+			if (domainEndsDotsList.includes(`.${originalDomainSplit[originalDomainSplit.length - 1]}`)) {
+				// Cancel the fix.
+				domainPart = originalDomainPart;
+			}
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixOverallCleanDomainEnd'
+		});
+		return validationResult;
+	} */
+
+/* 	// Replace by domain end - Overall manually.
+	fixOverallCleanDomainEnd(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		const originalDomainPart = domainPart;
+		let domainSplits = textUtils.getSplitDotParts(domainPart);
+		const originalDomainSplit = domainSplits;
+		if (domainSplits.length <= 1) {
+			return validationResult;
+		}
+		const isLongEnd = domainSplits.length > 2;
+		const number = isLongEnd ? domainSplits.length - 1 : 1;
+		let longDomainIndex = -1;
+		const domainEnd = textUtils.sliceJoinDots(domainSplits, number);
+		const splitOneDomainEnd = isLongEnd ? textUtils.sliceJoinDots(domainSplits, 1) : null;
+		let matchKey = null;
+		let matchIndex = -1;
+		for (let i = 0, length = validDomainEndsList.length; i < length; i++) {
+			const keys = validDomainEndsList[i];
+			let pointer = 0;
+			let index = -1;
+			while (pointer < keys.length) {
+				const key = keys[pointer];
+				index = domainEnd.indexOf(key);
+				if (index > -1) {
+					matchIndex = index;
+					matchKey = key;
+					if (isLongEnd) {
+						longDomainIndex = domainSplits.findIndex(s => s.includes(key));
+					}
+				}
+				if (isLongEnd) {
+					index = splitOneDomainEnd.indexOf(key);
+					if (index > -1) {
+						matchIndex = index;
+						matchKey = key;
+					}
+				}
+				pointer++;
+			}
+			if (matchIndex === 0) {
+				break;
+			}
+		}
+		if (matchKey && matchIndex + matchKey.length + 1 <= domainEnd.length) {
+			domainPart = textUtils.addMiddleDot(longDomainIndex > -1 ? domainSplits.slice(0, longDomainIndex).join('.') : domainSplits[0], matchKey);
+		}
+		else if (splitOneDomainEnd && matchKey && matchIndex + matchKey.length + 1 <= splitOneDomainEnd.length) {
+			domainPart = textUtils.addMiddleDot(domainSplits[0], matchKey);
+		}
+		// Validate the fix.
+		domainSplits = textUtils.getSplitDotParts(domainPart);
+		if (originalDomainSplit.length > domainSplits.length) {
+			if (domainEndsDotsList.includes(`.${originalDomainSplit[originalDomainSplit.length - 1]}`)) {
+				// Cancel the fix.
+				domainPart = originalDomainPart;
+			}
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixOverallCleanDomainEnd'
+		});
+		return validationResult;
+	} */
+
+    /* 			console.log(skipCount);
+			debugger; */
+
+            //const logUtils = require('../../utils/files/log.utils');
+            //logUtils.logError(error);
+/*             IS_SEND_STEP:
+This flag currently does nothing, but in the future plans, this flag will determine if the step of
+sending email addresses with CV file attached to the fetched email addresses will be sent. */
+
+/* 			const { name, templateAddress } = searchEngines[i];
+			// Set the domains in the search engines.
+			let isActive = true;
+			const domainAddress = this.getDomainFromLink({
+				link: templateAddress,
+				isRemovePrefix: true
+			}); */
+				//reject(null);
+				//IS_SEND_STEP: false
+
+                            //let { templatesList } = searchEngine;
+/*     createSearchEngineLinkTemplate(data) {
+        const { searchKey, searchEngine, pageIndex } = data;
+        const { startIndex, advanceBy } = searchEngine;
+        let { templateAddress } = searchEngine;
+        const newIndex = (pageIndex === 0 ? startIndex : pageIndex) + advanceBy;
+        templateAddress = templateAddress.split(SearchPlaceHolder.QUERY).join(searchKey);
+        templateAddress = templateAddress.split(SearchPlaceHolder.PAGER).join(newIndex);
+        return templateAddress;
+    } */
+    /*     const SearchKeyGender = enumUtils.createEnum([
+    ['MALE', 'male'],
+    ['FEMALE', 'female'],
+    ['BOTH', 'both']
+]); */
+
+    //		const { keyType, isMiddleReplace, isNoSpaceAfter, isMultiFemaleKey, globalKey, maleKey, femaleKey, bothKey } = data;
+
+
+//console.log('test');
+//const { textUtils } = require('../utils');
+/* let domainPart = 'eca.gov.il072-3907840';
+
+const character = domainPart.substr(domainPart.length - 1);
+if (!textUtils.isCharacterALetter(character)) {
+	domainPart = textUtils.removeLastCharacterNotALetterLoop(domainPart);
+}
+console.log(domainPart); */
+	//console.log(process.env.USERPROFILE + '\\Downloads');
+/* const { emailAddressUtils, textUtils } = require('../utils');
+let { commonEmailAddressDomainsList } = require('../configurations/emailAddressDomainEndsList.configuration');
+const { crawlEmailAddressService } = require('../services'); */
+
+/* 	// Initiate the common email address domains lists.
+	crawlEmailAddressService.initiateCommonEmailAddressDomains();
+
+	// Not related to the validation process.
+	const skipManyDomains = (data) => {
+		const { emailAddressesList, maximumUniqueDomainCount } = data;
+		if (emailAddressesList.length <= maximumUniqueDomainCount) {
+			return {
+				skippedCount: 0,
+				emailAddressesList: emailAddressesList
+			};
+		}
+		let skippedCount = 0;
+		const domainsList = [];
+		const updatedEmailAddressesList = [];
+		for (let i = 0; i < emailAddressesList.length; i++) {
+			const emailAddress = emailAddressesList[i];
+			const splitResult = emailAddressUtils.getEmailAddressParts(emailAddress);
+			if (!splitResult || splitResult.length < 2) {
+				continue;
+			}
+			let domainPart = textUtils.toLowerCase(splitResult[1]);
+			if (!domainPart) {
+				continue;
+			}
+			domainPart = domainPart.trim();
+			// Check if the domain is common domain. Not relevant is true.
+			const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+			if (isCommonDomain) {
+				updatedEmailAddressesList.push(emailAddress);
+				continue;
+			}
+			if (domainsList.filter((x) => { return x === domainPart; }).length >= maximumUniqueDomainCount) {
+				console.log(domainPart);
+				skippedCount++;
+			}
+			else {
+				domainsList.push(domainPart);
+				updatedEmailAddressesList.push(emailAddress);
+			}
+		}
+		return {
+			skippedCount: skippedCount,
+			emailAddressesList: updatedEmailAddressesList
+		};
+	};
+ */
+/* 	});
+	console.log(result); */
+	//console.log(commonEmailAddressDomainsList);
+/* 	let fixedLink = 'http://googleweblight.com/fp%3Fu%3Dhttps://www.bis.org.il/';
+	const replaceGoogleInit = 'googleweblight.com/fp%3Fu%3D';
+	if (fixedLink.indexOf(replaceGoogleInit) > -1) {
+		fixedLink = fixedLink.substring(fixedLink.indexOf(replaceGoogleInit) + replaceGoogleInit.length);
+	} */
+
+/* 	const replaceGoogleweblight = 'googleweblight.com/fp%3Fu%3D';
+	let fixedLink = 'http://googleweblight.com/fp%3Fu%3Dhttps://www.bis.org.il/';
+	const googleweblightIndex = fixedLink.indexOf(replaceGoogleweblight);
+	if (googleweblightIndex > -1) {
+		fixedLink = fixedLink.substring(googleweblightIndex + replaceGoogleweblight.length);
+	} */
+			//this.replaceGoogleInit = 'http://googleweblight.com/fp%3Fu%3D';
+/* 				if (fixedLink.indexOf(this.replaceGoogleInit) > -1) {
+		fixedLink = fixedLink.replace(this.replaceGoogleInit', '');
+	} */
+						//fixedLink = fixedLink.substring(fixedLink.indexOf(googleweblightIndex + this.replaceGoogleweblight.length));
+	//console.log(fixedLink);
+
+            /*         text = this.logColorStatus({
+                    status: text,
+                    color: Color.MAGENTA
+                });
+                text = textUtils.setLogStatusColored(text, Color.MAGENTA);
+                logUpdate(text); */
+        /*         logUpdate(this.logColorStatus({
+                    status: text,
+                    color: Color.MAGENTA
+                })); */
+        /*         console.log(results);
+        console.clear(); */
+        //logUpdate.clear();
+        //logUpdate(results);
+
+        	/* 	const linksList = [
+			{
+				link: 'https://www.danel-jobs.co.il/&amp',
+				userAgent: null
+			},
+			{
+				link: 'https://www.taasuka.gov.il/he/Applicants/pages/jobs.aspx&amp',
+				userAgent: null
+			},
+			{
+				link: 'https://www.ivory.co.il/&amp',
+				userAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
+			},
+			{
+				link: 'https://www.jobkarov.com/Search/?role=1716&amp',
+				userAgent: null
+			},
+			{
+				link: 'https://www.facebook.com/groups/Jobs.in.Israel/permalink/2370813359798591',
+				userAgent: null
+			},
+			{
+				link: 'https://geo.hevra.haifa.ac.il/index.php',
+				userAgent: null
+			}
+		]; */
+		/* 	// ===COUNTS & LIMITS DATA=== //
+	const countsLimitsData = new CountsLimitsData(settings);
+	await puppeteerService.initiate(countsLimitsData, true);
+	const pageSource = await puppeteerService.crawl('');
+	logUtils.log(pageSource); */
+/* require('../services/files/initiate.service').initiate();
+const settings = require('../settings/settings');
+const puppeteerService = require('../services/files/puppeteerService');
+const { logUtils } = require('../utils');
+const { CountsLimitsData } = require('../core/models/application'); */
+
+/* const isNightRun = true; */
+/*     // Determine if to do the logic of send email addresses to the crawled email addresses.
+    IS_SEND_STEP: false, */
+
+    /* 	await puppeteerService.restart();
+	setTimeout(async () => {
+		pageSource = await puppeteerService.crawl('https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_img_onload');
+		logUtils.log(pageSource);
+	}, this.countsLimitsData.millisecondsTimeoutSourceRequestCount); */
+	/* 	setTimeout(async () => {
+		await puppeteerService.restart();
+		pageSource = await puppeteerService.crawl('https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_img_onload');
+		logUtils.log(pageSource);
+	}, this.countsLimitsData.millisecondsTimeoutSourceRequestCount); */
+
+//			'IS_DEBUG_MONITOR',
+/* 'IS_SEND_STEP', */
+
+	//		errorText += error.stack;
+/* 'IS_SEND_STEP', */
+/* , */
+/* this.applicationData.isSendStep ? Step.SEND : '' */
+
+			//logUtils.logError(error);
+//const logUtils = require('../../utils/files/log.utils');
+/* 	async getEmailAddressesFromPage(data) {
+		const { link, totalSaveCount } = data;
+		this.totalSaveCount = totalSaveCount;
+		let emailAddressesResult = new EmailAddressesResult();
+		if (this.checkGoalComplete()) {
+			return emailAddressesResult;
+		}
+		// Get the source of the specific link to fetch from it's email addresses.
+		const { isValidPage, pageSource } = await sourceService.getPageSource({
+			sourceType:
+			SourceType.PAGE,
+			 searchEngine: null,
+			 link: link
+		});
+		if (!isValidPage) {
+			await logService.logErrorLink(link);
+		}
+		emailAddressesResult.isValidPage = isValidPage;
+		// Get all the email addresses from the page source.
+		let emailAddressesList = emailAddressUtils.getEmailAddresses(pageSource);
+		if (!validationUtils.isExists(emailAddressesList)) {
+			return emailAddressesResult;
+		}
+		emailAddressesResult.totalCount = emailAddressesList.length;
+		// Remove duplicate email addresses.
+		emailAddressesList = textUtils.removeDuplicates(emailAddressesList);
+		// Scan all the email addresses.
+		emailAddressesResult = await this.validateEmailAddresses(emailAddressesList, emailAddressesResult);
+		return emailAddressesResult;
+	} */
+
+/* const monitorData = require('./files/MonitorData'); */
+/* monitorData,  */
+
+/* 	getDomainEndsGroups(array, key) {
+		const group = array.reduce((result, currentValue) => {
+			(result[currentValue[key]] = result[currentValue[key]] || []).push(
+				currentValue.domainEnd
+			);
+			return result;
+		}, {});
+		return Array.from(Object.values(group)).map(list => list.sort((a, b) => b.length - a.length));
+	} */
+
+    /*         let { text, character } = data; */
+/*         const character = part.substr(part.length - 1);
+        if (!textUtils.isCharacterALetter(character))
+        {
+            text = this.removeLastCharacter(text);
+        } */
+
+/*         if (await fs.exists(targetPath)) {
+            await fs.remove(targetPath);
+        } */
+
+        /*     getFullDateNoSpaces() {
+        const date = new Date();
+        return `${[date.getFullYear(), (textUtils.addLeadingZero(date.getMonth() + 1)), textUtils.addLeadingZero(date.getDate())].join('')}_${[textUtils.addLeadingZero(date.getHours()), textUtils.addLeadingZero(date.getMinutes()), textUtils.addLeadingZero(date.getSeconds())].join('')}`;
+    } */
+        //console.log(endDateTime);
+                //const nowTime = now.getTime();
+
+				        //await this.page.setDefaultTimeout(this.timeout);

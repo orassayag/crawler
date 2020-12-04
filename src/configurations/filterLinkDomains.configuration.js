@@ -17,7 +17,10 @@ const globalFilterLinkDomains = [
 	'runner.co.il',
 	'schema.org',
 	'schemas.live.com',
-	'w3.org'
+	'w3.org',
+	'wapforum.org',
+	'sentrylabs.indeed.com',
+	'app.getsentry.com'
 ];
 
 const filterLinkDomains = [

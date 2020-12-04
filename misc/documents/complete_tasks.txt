@@ -1,3 +1,752 @@
+Maintenance:
+============
+-Check all functions in use. Remove the unused functions. *
+-Change all 'saved' to 'save'. *
+-Clean all the comments from the project. *
+-Convert to TXT files in all places. *
+-Check spelling mistakes in all TXT files + MD files + all places. *
+-Add LinkedIn, GitHub, StackOverFlow to all README.MD files. *
+-Format all documents. *
+-Update GitHub project. *
+-Clean test Mongo database. *
+-Fixed bug with NPM package regex. *
+-Need to be fixed right: test@013.net-ytaron. *
+-Refactor basic validations. *
+-Needs to add logic to detect junk email addresses like this: yyyyyyyy@gggg.ggg.ggg | 222@333.com | s@s.com (this, I think, needs to be invalid). *
+-Add logic to fix this: if contains a common domain and more then one @, *
+ convert all @ to . except the one of the common domain. *
+test@test.007@gmail.com => test.test.007@gmail.com *
+-Manually fix: ---@test.some-domain.co.il | fix: @test.some-domain.co.il | functionIds: 11,-10 => test@some-domain.co.il. *
+-Gracefully close the program: *
+1. When Ctrl+c, detect the exit event and call the close function on crawl.logic.js in order to kill the puppeeter service gracefully. *
+2. This will cause the chromium instances to be eliminated without the need to close them manually via task manager. *
+-Remove all after '.co.il': test@test-test.co.ilwww.test-test.co.il. *
+-Check why invalid: www.test6768@.co.il | functionIds: 5,-8. *
+-Add logic to fix this: if starts with flip end domains, flip all the email: *
+com.gmail@test.test => test.test@gmail.com *
+com.gmail@test.test => test.test@gmail.com *
+com.gmail@test.test => test.test@gmail.com *
+com.gmail@test.test => test.test@gmail.com *
+com.gmail@test78.test => test78.test@gmail.com *
+Fix manually: il.org.test@F.B-test => test-b.f@test.org.il. *
+-Need to fixed: test@childrenatrisk.org.i1 => test@childrenatrisk.org.il. *
+-Find a way to fix: test@rishonlezion.muni.l03-00000000 | fix: test@rishonlezion.muni.l => test@rishonlezion.muni.il | functionIds: 27,-16. *
+-Add 'test@walkout.co' not to be fixed to '.co.il'. *
+-Add to invalids list: test.test@template.index, test.test.test-test@template.product, test@template.account.plans. *
+-Need to fix: test@test.comhttps, test@test.co.il.html. *
+-Need to be fixed right: test@test.org.il-Michrazim. *
+Build logic that after .com, .co.il - Remove all the rest (If this logic already exists, fix it). *
+(Also check how 03-000000.test.test@gmail.comhttp fixed to 03-000000.test.test@gmail.com - It's valid and good). *
+-Make sure both needs to be removed if start with: u003e / u003E / u003. *
+(need both logic for u003Etest@natoon-group.co.il (big E in u003E) and for u003etest@crystal-law.co.il (only u003e)). *
+(also like this: u003Etest@nadlancenter.co.il). *
+-Need to be invalid: Asset-2@4x-1-e1599926525135.d110a0.webp. *
+-Convert text@gma.com => text@gmail.com. *
+-Need to be invalid: imagesloaded@4.1, flickity@2.0, webflow-util@1.0 =>. *
+https://stackoverflow.com/questions/64880479/a-regex-for-npm-or-any-other-package-both-for-name-and-any-version-number. *
+-Add to filter domains: court.gov.il. *
+-Need to be invalid: 0c99r8uvcpd4ikah5kt16h7igk@group.calendar.google.com. *
+-Need to be fixed: test@manpower.co.i.l. *
+-Build need logic that if ends with 'muni.l' convert it to 'muni.il'. *
+(test@rishonlezion.muni.l03-0000000 => test@rishonlezion.muni.il). *
+-Need to be invalid: 2649acf65e0c47afba547cc0ea1f4846@sentry.indeed.com, 251383661830465f98a4aac04e1c2111@sentry.indeed.com, 658ba2886a9642c2b8c035add5a02b63@sentry.indeed.com. *
+-Add new script test to validate array of emails.
+-Find manually fix for: test@otot-il.o | test@top-hr.o | test@thecloudhr.c | test@mishan.c. *
+-Find the fixed domains for this:. *
+test@ellers.c, test@thecloudhr.c, test@mutagim.c, test@benhaim.c, test@ellers.c, test.p@wojo.c, test@electra.c, test@inter.n. *
+test@emsclub.c. *
+-Add to known domain endings: test@manpower.c => test@manpower.co.il. *
+-Update packages. *
+-Add catch to all return promises. *
+-Merge between pause and sleep function if exists. *
+-Change all databaseService to mongoDataBaseService. *
+-Refactor all one instance class to module.export = new Class(); *
+-Take the 'cutText' function from Sender project. *
+-Change // ===UNCHANGED EMAIL ADDRESS=== // to // ===UNCHANGED SETTINGS=== // in initiate service to the identical from settings. *
+-Convert all 'APIKey' to 'apiKey' and 'URLAddress' to 'urlAddress'. *
+-Remove BackupType and all logic of it. *
+-Remove secondary backup logic. *
+-Check which parameters are used in the Mongo database. Not all of them in use. *
+-Need to be invalid: info@p6658-119-1339.s119.upress.link - Cancelled. *
+-Fixed bug with clearInterval. *
+-Scan the emails from night run. *
+-Update packages. *
+1. Fix the bug that if no browser, restart the application. *
+2. Find a way to close all chromium instances by name (terminate process by name). *
+3. Terninate all chromium process by name. *
+-Increase the maximum restarts to 50. *
+-Fix UnhandledPromiseRejectionWarning with try catch on close function. *
+(node:2656) UnhandledPromiseRejectionWarning: Error: Protocol error: Connection closed. Most likely the page has been closed. *
+    at Object.exports.assert (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\assert.js:26:15) *
+    at Page.close (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:1198:21) *
+    at PuppeteerService.close (C:\Or\Web\Crawler\Crawler\src\services\files\puppeteerService.js:78:29) *
+    at CrawlLogic.endProcesses (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:426:32) *
+    at runMicrotasks (<anonymous>) *
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) *
+    at async CrawlLogic.checkStatus (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:351:13) *
+    at async Timeout._onTimeout (C:\Or\Web\Crawler\Crawler\src\logics\crawl.logic.js:199:13) *
+-Add logic of error in a row. If more then 10 (settings.js), restart the application (Update existing error-in-a-row logic). *
+-Add flags for single process with chromium instances. *
+-Solve case when browser suddenly close, unexpected reason. Need to restart the program. *
+-Fix the crawl function - Add 'await' to All promises and convert them back to async await. *
+ MAKE SURE ALL STILL WORKS. You can reffer to send function in Sender project. *
+-Add the enums logic like in the Sender project - Canccelled. *
+-Add inner flag IS_TEST_PRODUCTION_MONGO_DATABASE. Relevant only in production mode. If it's true, *
+ change the name of the Mongo database something elses, to enable the crawler to run not on the production Mongo database. *
+-Verify it works. *
+-Add comment in the crawler project that if you change the "email_addresses_" file name, change it also in this project. *
+-Fix bug with UnhandledPromiseRejectionWarning. *
+-Ask in StackOverFlow about the rejection warning: - Cancelled. *
+(node:12544) UnhandledPromiseRejectionWarning: Error: Protocol error (Runtime.callFunctionOn): Target closed. *
+    at C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:208:63 *
+    at new Promise (<anonymous>) *
+    at CDPSession.send (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:207:16) *
+    at next (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer-extra-plugin-stealth\evasions\sourceurl\index.js:30:43) *
+    at CDPSession.send (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer-extra-plugin-stealth\evasions\sourceurl\index.js:54:16) *
+    at ExecutionContext._evaluateInternal (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:200:50) *
+    at ExecutionContext.evaluate (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:106:27) *
+    at DOMWorld.evaluate (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:91:24) *
+(mention you already have unhandled in other code). *
+-Add 'knesset.gov.il' to filter domains. *
+-Update packages. *
+-Upgrade the skip logic - Take random X of email address, not the first ones. *
+-Check why not invalid: 'font-awesome@5.11.2', 'react-dom@16.13.1', 'bootstrap@4.5.2', 'moment-duration-format@2.3.2'. Suppose to be invalid by function: -4 *
+-Check why not filtered: 'u002F736e443433c3403396572cc0526bba2d@sentrylabs.indeed.com'. *
+-On monitor use file and path utils. *
+-Do the "ToDo" points from the Sender project. *
+-Remove unused functions. *
+-Limit the user agent by characters count. *
+-Remove all comments. *
+-Fix all spell mistakes in all TXT files. *
+-Fix stuck bug. Put wtfnode and figure out whats the problem. *
+-Roll back to version of 3/11/2020 and make sure not stuck.*
+-Fix UnhandledPromiseRejectionWarning once and for all - Cancelled. Fix this may cause the node to get stuck. - Fixed. *
+-Add catch to all return promise. *
+-Added "stop" on package.json. *
+-ReImplement all the logic of: Fix in validations, * Skip, * Restarts count, * Schedule, * and test again for 1 hour watch. *
+-Remove all comments. *
+-Add search files to compare logics and implement the rest of the logic. *
+-Test again for 1 hour watch. *
+-Roll back again and found out that the while loop hangs the node process. *
+-Replace all the while loops in the application with a for loop. *
+-Clear all console.error from the application. *
+-Check 'u002F736e443433c3403396572cc0526bba2d@sentrylabs.indeed.com' again. *
+-Add 'c40e683360e443f79871f173e06164b5@app.getsentry.com' to invalid domains. *
+-Add 'http://www.wapforum.org/DTD/xhtml-mobile10.dtd' to filter domains. *
+-Clear all comments and reformat all documents. *
+-Add '736e443433c3403396572cc0526bba2d@sentrylabs.indeed.com' to invalid domains. *
+-Add log files interval to settings.js *
+-Add flag to debug log mode (implement wtfnode). *
+-Remove timeout after crawler stuck. *
+-Add schedule settings - Start the crawl process in X minutes (If 0 - No schedule). *
+-The schedule logic will take place in the monitor. *
+-The schedule will displayed in a down clock counter: ===Starts in 00:34:23 [-]=== *
+-Watch 1 hour of crawl process. *
+ (isLongRun ? 120 minutes : 0 - If 0 - No schedule) - Cancelled. *
+-Change the format of the folder name and txt files to be ddMMyyyy. *
+-Remove all comments around the project (make a folder in misc called backup and put there all comments). *
+-Format all files. *
+-Add missing dots in the end for comments. *
+-Add for Google and Bing a list of query string domains, and add base domain, and randomly creates a new url each request process. *
+ Build it as an array so that other search engine will take the single if not more than one. *
+-Update packages. *
+-Add 'u002F' to remove from start. *
+-Add timeout options to wait for function + await page.setDefaultTimeout(45000); *
+-Add check on error parameters. *
+-Add line space + '======' + line space between errors on error log. *
+-Change reject to resolve. *
+-Make this invalid: a7c692d0c1ed48af83840708a08e5005@o296891.ingest.sentry.io *
+-Make this valid: test-test@test.gov.il011-1111111 (if ends with numbers, remove all numbers). *
+ Logic: if not end with a letter, remove last charecter until it will be a letter). *
+ Put this new logic to be in the end. *
+-Remove the "Step-Send" step, it will be a different project (and from any documention file in the project). *
+-Add max retries to settings. *
+-Add "skip" logic as a flag to settings. *
+-Remove the messages: *
+"Forever detected script exited with code 1 *
+Forever restarting script for 2 time" *
+-Instead add parameters to general with new colum: Restarts: 1 *
+(Take from NodeRestart project the code for passing parameter to process child). *
+-Add random to wait for html or wait for function, each request - Cancelled. Keep the wait for html in comments. *
+-Fix bug of UnhandledPromiseRejectionWarning: Error: Protocol error (Runtime.callFunctionOn): Target closed: *
+(node:14700) UnhandledPromiseRejectionWarning: Error: Protocol error (Runtime.callFunctionOn): Target closed. *
+    at C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:208:63 *
+    at new Promise (<anonymous>) *
+    at CDPSession.send (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\Connection.js:207:16) *
+    at next (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer-extra-plugin-stealth\evasions\sourceurl\index.js:30:43) *
+    at CDPSession.send (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer-extra-plugin-stealth\evasions\sourceurl\index.js:54:16) *
+    at ExecutionContext._evaluateInternal (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:200:50) *
+    at ExecutionContext.evaluate (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\ExecutionContext.js:106:27) *
+    at DOMWorld.evaluate (C:\Or\Web\Crawler\Crawler\node_modules\puppeteer\lib\cjs\puppeteer\common\DOMWorld.js:91:24) *
+    at runNextTicks (internal/process/task_queues.js:62:5) *
+    at listOnTimeout (internal/timers.js:523:9) *
+    at processTimers (internal/timers.js:497:7) *
+(node:14700) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 3) *
+-Check validation for this: 'mayo pikuach1@k-8.co.il' *
+-Add debug mode - inner parameter - the monitor will exit after 1 minute - Cancelled. *
+-Add cleanup when exit. *
+-Add errors log. *
+-Add stacktrace log. *
+-Add stop command to package.json. *
+-Restore the logic and try to close the page instead of initiate all. *
+-Clear all timeouts all places on exit. *
+-Merge wait/pause functions. *
+-Add forever-monitor with a hard restart of the application (pass parameter of restart to avoid confirmation) (timeout from the settings). *
+-Check that the monitor works. *
+-Fix forever-monitor clash withlog-update package. *
+-Check session test still works. *
+-Watch a live session of 1 hour to make sure all working. *
+-Update packages and make sure all works good. *
+-Fix stuck bug back again - Consider restart browser. *
+-Fix the bug on "skip" is NaN. *
+-Do all the ToDo points. *
+-Fix all bugs of compiler * (Add Eslint settings from WorldCovid project *, and use WorldCovid project from backup script with new syntax). *
+-Change all places needed from let to const. *
+-Remove unused async/await. *
+-Move on all files, check if there is inner call, use 'this' key and no the class name. *
+-Add justice.gov.il and police.gov.il and taxes.gov.il. *
+-Add logic to remove 'u003, u00a0' on the start of the email address. *
+-If from a URL there is the same email domain part over 5 (from settings.js) times, *
+ take only the first one and ignore the rest (don't insert them to the database) - Add skipped colum for that. *
+ Important: Exclude popular domains, like gmail, outlook, hotmail, ect. *
+-In the console status, add line of "Saved Statistics", and add counter of email addresses saved for each search engine. *
+-Add path to remove all files after each process (in my case, downloads folder) (and in the end of all processes). *
+-Fix bug on the domains counter log. *
+-Update all the packages to latest version and check that everything works good. *
+-Fix bugs session: *
+-Update all the packages to latest version and check that everything works good. *
+-Add new line under page - [USER AGENT] with the user agent of the current search. *
+-Add new test - called session.test.js, will contain a list URL/user-agent and test a session in the console. *
+-If the user agent is empty on the session item - Random one. *
+-Fix bug of dismiss dialog box - Stuck. *
+-Fix bug of 'http://googleweblight.com/fp%3Fu%3D' in the start of the URL. *
+-Fix bug of duplicates status rows. *
+-The next time you run the crawler, write here all the tasks needed to improve. *
+-Format object syntax to multiline. *
+-Add the settings - Method: "Normal/SessionTest" | IsLongRun: true/false (Add both to confirmation). *
+-Implement the logic of night run logic, different goal parameters. *
+-Find more elegant way to declare the night run, why outside of settings? (Add it to confirmation). *
+-In the search key - If implement static key, prefer it on basic / advance search logic. Today it works only if basic. *
+-For each search process, make an URL array, to avoid search in duplicate URLS - Cancelled. *
+-Fix bugs with alert notifications. *
+-Fix bug on stuck on a search process. *
+-Fix bug of stuck on URL. *
+-Solve again issues with recaptcha with extra plugins. *
+-Solve recaptcha by random user agent. *
+-Fix bug of replacing date on midnight. *
+-Take the crawler and copy to new directory as 'TextFileConvert'. *
+-First script: Build a script that read all files: txt, bak, xlsx, csv, and others, and convert all the files to TXT. *
+-Change the name of the 'TextFileConvert' to 'TempCrawlerLogics'. *
+-Inside of this directory, will be the sources and the backups. *
+-After finish the first script, do a backup with specific name (without the sources). *
+-Move the finished directory from the project, to sources directory, along with the temp_sources. *
+-Second script: Build a script that reads all the data from the TXT files and do the following for each email address: *
+1. Check if the email address already found in the database. *
+2. If not found - Do validation on the email address. *
+3. Add the domain part of the email address to a new table, domains (will be name and count) - If not exists add, if exists add to count. *
+-Run the script. *
+-While the script running, take back from the sources the implement to fix documents. *
+-Merge all domains into one TXT file and delete the rest. *
+-After the script finish, save the results in the end in another place. *
+-Once the script end, Do a backup. *
+-Delete all places that can drop the table. *
+-Build a script that scan all the email addresses - Validate all the email addresses. Only log of fix and invalid. *
+-Since over 20M rows, log only important fixes and invalid. Check the function ids. *
+-Run the script. *
+-After the script finish, save the results in the end in another place. *
+-Do a backup. *
+-Change the database name + insert a few dummy data. *
+-Third script: Build a script that runs on the domains merged document and add it to existing table. *
+-Test with dummy data on the other database. *
+-Change the database to destination and run the script. *
+-Once the script end, Do a backup. *
+-Four script: Build a script thatlog the domain counts by 2 TXT files: *
+A. Domain counter by the most count. *
+B. All exists domain by order name ascending. *
+-Run the script. *
+-After the script finish, save the results in the end in another place (same place of the first results). *
+-Do a backup. *
+-Build new script that pull all the domains from the database, for each domain attach 'test', and validates it - Canccelled. *
+-Save the results for somewhere else - Canccelled. *
+-Save all the new data (saved in another place) in the sources directory - Canccelled. *
+-Do a backup - Canccelled. *
+-After 2 scripts done, go back to the original Crawler (this project). *
+-Merge the Logics with the Crawler projects. *
+-Delete all the old sources. *
+-Bring back the logic of the Crawler before start the loading of all the data. *
+-Go over all the bugs and list them in this document - Move them into one document. *
+-Merge all the bugs need to be fixed - into one document. *
+-Before any change made - Check for duplicates in the new document - Canccelled. *
+-For that, create agagin the "CrawlerLogic", and build a script that find domains  - Canccelled. *
+ (from email addresses or not) in the sources document and count the duplicate domains and check why they are duplicated - Canccelled. *
+-Remove the duplicate domains from the sources document - Canccelled. *
+-Scan all the invalid email addresses / fixes and list them in the new document. *
+-Scan the domains alfabethic log, get the popular domain mistakes. *
+-After finish to fix all - Build a script to validate all email addresses from original validation email addresses - Cancelled. *
+ Compare between the old fixed and the new ones - Make sure all fixed and correct - Cancelled. *
+-Do a backup of the sources_tasks.txt. *
+-To get the real domain counts - Most popular domains, need to scan all the files and count the domains. *
+ 1. For that, need to scan all of the sources again (found in backup in iomega sources) - Scan all files to 1 file of total domain counts. *
+ 2. For the sources of pflogsummarymailrelay.txt - Find a way to add them. *
+-Most common domains: C:\Or\Web\Crawler\Sources\FixesToImplement\pflogsummarymailrelay.txt + pflogsummarymailrelay2.txt (Implement in common domains?). *
+-Identical endings (need to think what to do about what to do with it - maybe for each one of them - it's one typos). *
+-Take all the typos of the popular domains - Merge them in the source document by typos / global fix / singles (not need fix / co.il / com). *
+-Do a backup of the crawler before any change. *
+-Check in the alphabetic domains count - Check all typos of popular domains. *
+-Check in the domains list - Check all with the numbers of 0. *
+-Add this to "commonEmailAddressDomainsList.configuration" before each relevant domain - Canccelled. *
+-Check for duplicates in all places! *
+-Test some of the typos. *
+-Check that everything works ok (development) and check test cases results + typos of all popular domains. *
+-Move all the tasks completed to complete document. *
+-Implement all typos of the most popular domains and singles. *
+-Make sure for each popular domain there is no duplicates. *
+-Test some of the typos. *
+-Check that everything works ok (development / production) and check test cases results + typos of all popular domains. *
+-Test some of the filtered. *
+-Check that everything works ok (development) and check test cases results + typos of all popular domains. *
+-Move all the tasks completed to complete document. *
+-Do backup before changeing any .com /.co.il *
+-Add all of theses to singles.
+-ToDo: After finish all the singles - Check for duplicates and remove them. *
+-Do backup before unfixed. *
+-ToDo: Make sure that the 'unfixEmailAddressDomains' list is only in case of domain end change, not in any other fix. *
+-Implement 1-2 and test them. If OK, implement all. *
+-Implement all unfixed. *
+-Test some of them. *
+-Check that everything works ok (development) and check test cases results + typos of all popular domains. *
+-Move all the tasks completed to complete document. *
+-Test some of the unfixed. *
+-Check that everything works ok (development) and check test cases results + typos of all popular domains. *
+-Move all the tasks completed to complete document. *
+-Check all working before going to GLOBAL tasks and co.il / com tasks. *
+-Make sure for each popular domain there is no duplicates. *
+-Update the backup script: *
+1. Add option to write comment. *
+2. Remove specific files from specific directories. *
+-BEFORE start with global functions, DO BACKUP! *
+-Add new enum to cases: 'updates'. *
+-Add case for it. *
+-Pull a new list. *
+-The updates list will always serve for changes and updates. *
+-Change the emailAddressSandBox.test.js to validateEmailAddress.test.js (also change it on package.json). *
+-Change the freeStyle.test.js to sandBox.test.js (also change it on package.json). *
+-Add logic: *
+-1. Change 'emailAddressDomainDetailsList' to 'commonEmailAddressDomainsList'. *
+-2. Search in the domain part for any sing of a popular domain (gmail, yahoo, walla, ect). *
+-3. If contain the word, it will be automatically assign to be the popular domain. *
+-4. Make sure it will be the last fix before validation. *
+-5. Need to test any cases like: *
+-gmail.com2gmail.com  | 5 *
+-gmail.com5326535- | 4 *
+-gmail.coma-   | 206 *
+-gmail.coma7175213gmail.com | 1 *
+-dlfksjkdgmail.comasjhdk *
+-wejklwewalla.co.ilwekhfjwk *
+-original: test2@gmail.comtest2 | fix: test2@undefined.comtest2 | functionIds: 12,-10 (all the rest after gmail.com should be removed). *
+-original: test@gmail.comtest | fix: test@undefined.comtest | functionIds: 12 (all the rest after gmail.com should be removed). *
+-test@1973.gmail.coml | fix: test@1973.gmail.com | functionIds: 12 => when have addition in the domain part and it's popular domain, take the addition and move it to the local part. *
+-original: test43@gmail.comw_test-69hotmail.com | fix: test43@gmail.comwtest-69hotmail.com | functionIds: 3 => gmail.com (first popular domain wins). *
+-original: mail.huji.ac.iltest.test@gmail.comaharonbaime | fix: mail.huji.ac.iltest.test@undefined.comaharonbaime | functionIds: 12 (first popular domain wins). *
+-original: gmail.comtest@gmail.comb7baime | fix: gmail.comtest@undefined.comb7baime | functionIds: 12,-11 => (first popular domain wins). *
+-original: sh.test@gmail.comdavid.baime | fix: sh.test@gmail.comtest.i | functionIds: 12,-11 => (first popular domain wins). *
+-original: test@yahoo.comsam_yutcis.com | fix: test@yahoo.comtest.com | functionIds: 3 (if after yahoo.com - no dot, remove the rest). *
+-Add logic: *
+1. Make a list of popular domain ends (.com, .co.il, .org.il, .net, .net.il, ect... - Scan the domains list for all common domain ends). *
+2. Search for the domain end. *
+3. After detection of the domain end - Remove anything else after the domain end. *
+-original: test@test.comtzlil | fix: igale@undefined.comtzlil | functionIds: 12 => (check this). *
+-original: test@te.compol.comb | fix: alintco@test.compol.com | functionIds: 12 => (after .com remove the rest). *
+-test.comtestesfdfljs@asdasmomab.comilan => all after .com (and not yahoo) need to be removed. *
+-original: skjdf.comddsfjk@test.muni.iltranslation | fix: dklsjflsdflks | functionIds: 12,-10 => (if contains .muni.il => remove the rest). *
+-original: test_te@dklsjfl.comhahin_s | fix: test_te@dklsjfsdfsfs | functionIds: 3  => (if not specific domains like yahoo.com.uk - remove rest after .com). *
+-original: test@testest.compmilan | fix: ameneghetti@undefined.comdsfs | functionIds: 12 => (if not specific domains like yahoo.com.uk - remove rest after .com). *
+-original: test@test.comshai | fix: shai@undefined.comshai | functionIds: 12 => (check why undefined). *
+-original: test@test-test.comshai | fix: shai@undefined.comshai | functionIds: 12 =>  (check why undefined). *
+-original: test@gmail.com.lior | fix: test@gmail.com.o | functionIds: 12,-11 => (after gmail.com remove the rest). *
+-original: test@nana10.co.il.hili | fix: test@nana10.co.il.l | functionIds: 12,-11 => .co.il (all the rest after co.il should be removed). *
+-original: test@te_test.como | fix: test@test.como | functionIds: 3 => (if not specific domains like yahoo.com.uk - remove rest after .com). *
+-original: test@test.co.ilola.gru | fix: test@test.co.ilola.u | functionIds: 12,-11 => (remove all after .co.il). *
+-Fix logic of typos between walla.co.il and walla.com. *
+-Add logic: *
+-Add field of domain name, another field of Micromatch without the * sign. By the new field name, loop on start and add * to a new field - Cancelled. *
+-Change the logic that if only contains the name of a popular domain, it will automatically replaced by the domain. *
+-Change the common domain structure: domain, domainName (without end), micromatchName. Do the changes accordingly in the code. *
+-Remove the 'initiateEmailAddressDomainDetails', the Micromatch will be determine manually. *
+-When loop, first compare the full domain name with end, than compare only the name without end. *
+-original: test@test.gmail | fix: test@undefined.gmail | functionIds: 12 => (if the domain name contains gmail (even if without.com) and have addition before - move the addition to the local part and it will be gmail.com). *
+-original: test@test23d.gmail | fix: test@undefined.gmail | functionIds: 12 => (if the domain name contains gmail (even if without.com) and have addition before - move the addition to the local part and it will be gmail.com). *
+-original: test@test-law.gmail | fix: test@undefined.gmail | functionIds: 12 => (if the domain name contains gmail (even if without.com) and have addition before - move the addition to the local part and it will be gmail.com). *
+-Time: 12:32:31 | isValid: false | original: test@walla.ciom | fix: test@walla.io | functionIds: 14 *
+-original: test@test_walla.co.il | fix: test@testwalla.co.il | functionIds: 3 *
+-Add logic: all test.com.com | test.com (.co.il.co.il, .com.com.com.com, .org.il, => need to remove duplicates). *
+-original: test@test...test.com | fix: test@test..test.com | functionIds: 4,-10 => shrink to 1 dot, no matter how many dots have. *
+-test@test...com | fix: test@test..com | functionIds: 4,-10 => ...com => .com. *
+-Add logic: Remove the logic of invalid email address from specific words like 'mailto'. *
+-Add logic: *
+-The list 'emailAddressEndFixTypos' repeats the replace all the time. *
+-Need to convert to class with name and list of typos, like common email addresses domain. *
+1. Rename the file 'commonEmailAddressDomainTyposList.configuration' to 'emailAddressDomainsList.configuration'. Change in all places. *
+2. Inside the file, change the array from 'commonEmailAddressDomainTyposList' to 'emailAddressDomainsList'. Change this in all places. *
+3. Change the class name from 'CommonEmailAddressDomainTypos' to 'EmailAddressDomain'. Change in all places. *
+4. Inside the 'EmailAddressDomain' class, change the 'list' field to 'typosList'. Change in all places. *
+-Now it's time to build the new class for the domainEnd: *
+1. Build class EmailAddressDomainEnd: domainEnd, domainEndGroupName, isSingleWord, typosList. *
+2. Create new file called 'emailAddressDomainEndsList.configuration'. *
+3. Inside the file create new array called 'emailAddressDomainEndsList'. *
+4. Fill the file with all the domain ends according to the existing lists and the typos. *
+5. Generate all the lists that exists today. Test them to see it they are correct in the sandbox.test file. *
+6. Replace 'emailAddressConfigurations.configuration.js' file with 'emailAddressDomainEndsList.configuration' in all places. *
+8. Verify it all works. *
+9. After all works, remove the all lists from 'emailAddressConfigurations.configuration.js' (except from the first one). *
+-Rename all 'commonEmailAddressDomainTyposList' to commonEmailAddressDomainsList - Canccelled. *
+-Rename all 'CommonEmailAddressDomainTypos' to 'CommonEmailAddressDomain' - Canccelled. *
+-Build class CommonEmailAddressDomainEnd: domainEnd, isSingleWord, domainEndGroupName, list - Canccelled. *
+-Fill all the domain in a new file called 'commonEmailAddressDomainEndsList.configuration' - Canccelled. *
+-Move there all the lists - Canccelled. *
+-Generate the lists according to the logic today, from one list - 'commonEmailAddressDomainEndsList' - Canccelled. *
+7. Need to change the logic with 'emailAddressEndFixTypos' to fit the new list - Canccelled. *
+-original: test_b@live.vom | fix: test_b@livecom.com | functionIds: 11,13 => live.com *
+-original: test@testl.vom | fix: test@testlcom.com | functionIds: 11,13 => avivil.com *
+-original: testa@test-law.co.cil | fix: test@test-law.co.l | functionIds: 12,-11 => .co.cil => .co.il *
+-Add logic: .co.ol => .co.il *
+-Add logic to convert ending: .com.il  => .co.il *
+-original: test.a@test.comil | fix: test.a@undefined.comil | functionIds: 12 => .co.il *
+-test@test.c.ill | fix: test@test.c.il | functionIds: 12 => .co.il *
+-original: test@test.co.lil | fix: test@test.co.l | functionIds: 12,-11 => .co.il *
+-original: test@test.co.olil | fix: test@test.co. | functionIds: 12,-11 => .co.il *
+-original: test@test.co.kil | fix: test@test.co.l | functionIds: 12,-11 => .co.il *
+-original: test@test-ur.co.uil | fix: test@test-ur.co.l | functionIds: 12,-11 => .co.il *
+-original: test@test.co.iil | fix: test@test.co.l | functionIds: 12,-11 => .co.il *
+-original: or@netbiz.co.uil | fix: or@netbiz.co.l | functionIds: 12,-11 => .co.il *
+-original: test@test-test.c.oil | fix: test@test-test.c.l | functionIds: 12,-11 => .co.il *
+-original: test@test.co.iol | fix: test@test.co.io | functionIds: 12 => .co.il *
+-original: test@test.co.ail | fix: test@test.ai | functionIds: 12 => .co.il *
+-original: test.test@test.co.dil | fix: test.test@test.co.l | functionIds: 12,-11 => .co.il *
+-original: testa@a.gmail.coma | fix: testa@a.gmail.com | functionIds: 12 => if contains popular domain, it should be replaced to be the popular domain. *
+-original: test@test.or.gil | fix: test@test.or.l | functionIds: 12,-11 => .org.il *
+-original: test@test.org.oil | fix: test@test.org.l | functionIds: 12,-11 => .org.il *
+-original: test@test.org.oil | fix: test@test.org.l | functionIds: 12,-11 => .org.il *
+-Add logic: test.org.oil => .org.il *
+-original: test@test.org.iol | fix: test@test.org.io | functionIds: 12 => .org.il *
+-original: test@test.go.vil | fix: test@test.go.l | functionIds: 12,-11 => .gov.il *
+-original: test@test.go.vil | fix: test@test.go.l | functionIds: 12,-11 => mot.gov.il *
+-original: test@test.muni.iol | fix: test@test.muni.io | functionIds: 12 => .muni.il *
+-original: test-4@test.net.iil | fix: test-4@test.net.l | functionIds: 12,-11 => .net.il *
+-Test: test@nrl.navy.mil *
+-Test: test@navsta.rota.navy.mil *
+-Test: test@hill.af.mil *
+-Test: test@mnd-b.army.mil *
+-Test: test@med.navy.mil *
+-Test: test@g-a-t.mail *
+-Test: test@ffg56.navy.mil *
+-Test: test@ffg.55.navy.mil *
+-Test: test@fe.navy.mil *
+-Test: test@eu.navy.mil *
+-Test: test@eur.army.mil *
+-Test: test@conus.army.mil *
+-Test: test@arnold.af.mil *
+-Test: test@us.af.mil *
+-Test: test@us.army.mil *
+-Test: test@usace.army.mil *
+-Test: test@usace.arny.mil *
+-Test: test@usu.army.mil *
+-Test: test@tq.mnf-iraq.usmc.mil *
+-Add logic: .mil => .l - Cancelled. *
+-Add logic: .vom => .com *
+-Fix: test@test.comtzlil *
+-Fix: test.a@test.email *
+-Fix: test.a@jumboemail.me@#$@#dfs *
+-Fix: test@narnir.mail *
+-Fix: test@g-a-t.mail *
+-Fix: test@betaeng.mail *
+-Fix: test@orange.mail *
+-Fix: test@tiscali.mail *
+-Fix: test@Time: 17:43:36 | isValid: true | original: test@g-a-t.mail | fix: test@undefined.ai | functionIds: 12,13 => need to stay original. *
+-original: test@te.mail | fix: test@undefined.mail | functionIds: 12 => fix it. *
+-original: test.a@test.email | fix: test.a@undefined.email | functionIds: 12 => all .email - ignore (if not popular domain). *
+-Fix: test@.jambo.mail *
+-original: g.test@libero.mail | fix: g.test@undefined.mail | functionIds: 12 => libero.mail.it *
+-original: test@.jambo.mail | fix: test@undefined.mail | functionIds: 7,12 => (check if @. => @ works). *
+-Fix all new invalid singles common domains - Mistake replace between the domain and the typo. *
+-Fix: test@mail.rustudiofx *
+-Add logic: - Canccelled. *
+-When unfix, need to mark it in a new functionId - Canccelled. *
+-Add logic: i.ua is a valid domain. Make a list of valid domains, and unfix it. *
+-Fix: test@sce.ac.i *
+-Fix: test@sce.ac.i *
+-Fix: test@wisemail.weizmann.ac.i *
+-Fix: test@post.tau.ac.i *
+-Fix: test@macam.ac.i *
+-Fix: test@bgu.ac.i *
+-Fix: test700@gmail.c *
+-Fix: test@post.tau.ac.l *
+-original: test.test@mail.huji.acil | fix: test.test@mail.huji. | functionIds: 12,-11 => mail.huji.ac.il *
+-original: test1@univ.haifa.acil | fix: test1@univ.haifa. | functionIds: 12,-11 => .ac.il *
+-original: test@camous.technion.acil | fix: test@camous.technion. | functionIds: 12,-11 => .ac.il *
+-original: test@ekmd.huji.a.cil | fix: test@ekmd.huji.a.l | functionIds: 12,-11 => ekmd.huji.ac.il *
+-original: test.test@msil.huji.acil | fix: test.test@msil.huji. | functionIds: 12,-11 => .huji.ac.il *
+-original: test@test.huji.ac.iol | fix: test@test.huji.ac.io | functionIds: 12 => .ac.il *
+-original: test@post.bgu.acil | fix: test@post.bgu. | functionIds: 12,-11 => .bgu.ac.il *
+-Need to add to common domains fix: huji.ac.il, all hugi.ax.cil and all of it's kinds, need to be replaced. *
+-original: test@test.ac.ail | fix: test@test.ai | functionIds: 12 => .ac.il *
+-original: test.test@mail.huji.agil | fix: test.test@mail.huji. | functionIds: 12,-11 => mail.huji.ac.il *
+-Need fix: mail.hugi.ac.il | mail.huj.ac.il => mail.huji.ac.il *
+-original: test@agri.huji.a. | fix: test@agri.huji.a | functionIds: 7,-11 => .huji.ac.il *
+-original: test@mail.tau.ail | fix: test@mail.ai | functionIds: 12 => .tau.ac.il *
+-original: test.test@mail.huji. | fix: test.test@mail.huji | functionIds: 7 => .ac.il *
+-original: test1@univ.haifa. | fix: test1@univ.ai | functionIds: 7,14 => .ac.il *
+-original: test.test@msil.huji. | fix: test.test@msil.huji | functionIds: 1,7,11 => .ac.il *
+-original: test@post.bgu. | fix: test@post.bgu | functionIds: 7 => .ac.il *
+-original: test.test@mail.huji. | fix: test.test@mail.huji | functionIds: 7 => .ac.il *
+-Fix: test@013.n *
+-Fix: test@012.net.l *
+-Fix: test@walla.co0
+-Fix: -original: 'test.s@shapira.ort.org.oil', fix: 'test.s@shapira.org', isValid: true, functionIds: [ 13 ] => .org.il *
+-original: test.test@moh.health.gov.iol | fix: test.test@moh.health.gov.io | functionIds: 12 => .gov.il => gov.il *
+-original: test.ab@ok.mail | fix: test.ab@undefined.mail | functionIds: 12 => okmail.co.il *
+-original: -test@kfahoum.co.il | fix: test@kfahoum.com | functionIds: 7,18 => (check why changed to .com from .co.il). *
+-Fix: test@test-.co.il *
+-Fix: test@test-y-r-.co.il *
+-Fix: test@test-.test.com *
+-Fix: test@test-s-.com *
+-Fix: test@test.-eng.co.il *
+-Fix: test@internet.-zahav.net *
+-Fix: test@test.-eng.co.il *
+-Fix: test@test-.pro.com *
+-Fix: test@test-test-.co.il *
+-Fix: test@test-.net *
+-Fix: test@t-t-t-.co.il *
+-Fix: test@t-t-t-.com *
+-Fix: test@test-.co.il *
+-Fix: test@t-.co.il *
+-Fix: test@test-.co.il *
+-Fix: test@3.-test.co.il *
+-Fix: test_t@mail.tel-.aviv.gov.il *
+-Fix: test.test@test.-tv.com *
+-Fix: test@test-t-t-.co.il *
+-Fix: test@test-.t.com *
+-Fix: test@test-.eng.co.il *
+-Fix: test@test-.net *
+-Fix: test_a@test-.org.il *
+-Fix: test@t-.t.co.il *
+-Fix: test@t-.co.il *
+-Fix: test@test-.co.il *
+-Fix: test@t-t-.com *
+-Fix: test@test-.com *
+-Fix: test@test-.co.il *
+-Fix: test.test@s-.org.il *
+-Fix: test@test-.co.il *
+-Fix: test_t@test-.co.il *
+-Fix: test@t-.co.il *
+-Fix: test@t-t-.org.il *
+-Fix: test_t@test-.co.il *
+-Fix: test@t-.co.il *
+-Fix: test.test@test-test-.co.il *
+-Fix: test@t-t-.com *
+-Fix: test@test-test-.co.il *
+-Fix: test@test-.co.il *
+-Fix: test@t-t-.co.il *
+-Fix: test@t-t-.co.il *
+-Fix: test@test_test_.co.il *
+-Fix: test@_test_test.co.il *
+-Fix: test@test_co.il *
+-Fix: test@test_gov.il *
+-Fix: test@test_test.com *
+-Fix: test@.gail.com *
+-Fix: test@test-.pro.com *
+-Fix: test2@test_test.co.il *
+-Fix: test@-gmail.com *
+-Fix: test@gmail-.com *
+-Fix: test@-gmail-.com
+-Add edge cases logic: *
+-THIS IS BEFORE REMOVE SPECIAL CHARECTERS. *
+-Comment the function of 'fixDomainReplaceCommonMistakes'. *
+-Comment all references all over the application of 'emailAddressReplaceTypos'. *
+-Remove the file of 'emailAddressConfigurations.configuration.js' from all application - Cancelled. *
+-Group all edge cases that require surgical logic to the a new function. *
+-Group of replace, Group of special logic, ect... *
+-Implement all in the 'Here' section. Call the new function 'fixEdgeCases'. *
+-In the generator test script, in the section of 'mayMisspellEmailAddress', *
+ implement all of the above in random email addresses. *
+ (in emailAddressConfigurations.configuration - Make a list there of all the above). *
+-Groups: (Do the logic in the following order - A MUST) - *
+#. Replace with @: - *
+@. - *
+@_ - *
+//@@@@----DOMAIN PART ONLY----@@@@// - *
+-Replace all '_' with '-'. in the domain part only. - *
+.- - *
+#. If the second word is not a domain end, replace with '-'. - *
+#. If the second word is a domain end, Remove the '-'. - *
+-. - *
+#. Replace '-.' => If the second word is not a domain end, replace with '-'. - *
+#. Replace '-.' => If the second word is a domain end, Remove the '-'. - *
+-co.il - *
+If the domain end seperated by -, replace it with . - *
+-the replace of the '_' with '-' need to be first logic, since need to remove '-.' *
+-(if after the @ there is '-' or '_', remove it (only the first one)). *
+-.co.il (check if the end is seperated by _). *
+-.gov.il (check if the end is seperated by _). *
+-all places where '_' in domain part - replace with '-'. *
+-It's OK, but move the logic into higher scope of functions: EdgeCaseFix. Inside this functions insert all the edge cases. *
+-Add logic: *
+-1. In domain part, if contains '_' in the middle - Convert it to '-'. *
+-2. All the rest of the special charecters - Remove. *
+ (test2@test_test.co.il => test2@test-test.co.il). *
+-3. Check also: test@-gmail.com | test@gmail-.com | test@-gmail-.com *
+-Fix: original: t.test@libero.mail | fix: t.test@undefined.mail | functionIds: 12 => libero.mail.it *
+-Fix: test@4test.co.il7840_test_test_test_86033401-016_test4.pdf *
+-Fix: test1.test@t.test.te.test *
+-Fix: test@gilad-shiff.c => .com *
+-Fix: test@1.tv => 10.tv *
+-Fix: test@1.tv => 10.tv *
+-Add Logic: *
+-Fix: --------------------------------------------------------------------------------test220220@gmail.com *
+-Move all the length validations to the end, just before the email address validations. *
+-Then test: *
+-Fix: -783.jpg1005.3mb-788.jpg1005.7mb-799.jpg1002.5mb-801.jpg1007mb-792.jpg1005.8mb-808.jpg1006.3mb-811.jpg1002.8mb-812.jpg1004.1mb-825.jpg1005.3mb-835.jpg1005.8mb-860.jpg1002.7mb-938.jpg1006.5mb-962.jpg1006.9mb-970.jpg1006.1mb-1169.jpg1006.7mb-1171.jpg1006.6mb-1182.jpg1004.6mb-1189.jpg1006.9mb-1211.jpg1006.2mb-1212.jpg1006.3mb-1229.jpg1007.4mb-1238.jpg1007.3mb-1242.jpg1007.3mb-1246.jpg1002.2mb-1247.jpg1006.3mb-1249.jpg1005.9mb-1250.jpg1006.2mb-1251.jpg1006.1mb-1254.jpg1006.4mb-1255.jpg1006.1mb-1263.jpg1006.6mb-1278.jpg1004.2mb-1310.jpg1006.1mb-1312.jpg1003.1mb-1313.jpg1002.2mb-1314.jpg10023.2mb-1315.jpg10023.5mb-1316.jpg10020.4mb-1317.jpg10019.2mb-3.jpg10013.8mb-5.jpg1004.1mb-8.jpg10019.4mb-16.jpg1003.1mb-20.jpg10017.1mb-80.jpg7213.5mb-23.jpg03.9mb-54.jpg03.6mb-75.jpg013.4mb-132.jpg04.8mb-422.jpgtest@013net.net *
+-Fix: tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt2015tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt________________________________________19ttttttttt2015ttttttttttttttttttttttttttttttttttttttttttttttttttt________________________________________20tttttttttttttttttttttttttttttttttttttttttttttttttttttttttest@test-test.de *
+-Fix: tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-2016.tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.testtt-2016ttttttttttt20tttttttttttttttttttttttttt2tttttttttttttttttttttttt1ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.ttttttttttttttttttttttt140tttttttttttttttttttttttttttttttttttttt.tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.tttttttttttttttttttttttttttttttttttttttttttttttttttttt.tttttttttttttttt.tttttttttttttt@test.sn *
+-Fix: 36-16-23.39-16912.12-25.36-16-23.39-16912.12-25.36-16-23.39-16912.12-25.ramishani@gmail.com *
+-Fix: tttttttttttttttttt8.0tttttttttttttttttttttttttt24ttttttttttt960tttttttttttt373tttttttttttttttttttttt1ttttttttttttttttttttt1ttttttttttttttttttttttttttttttttttttttttttt07373101.38947636386.3014test@testtesttest.com *
+-Fix: tesett-ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt@gmail.com *
+-Fix: tttttttttttttttttttttttt200ttttttttt.tttttttt.tttttttt.ttttt175tttttttttttttttttttttt.ttttttttttttttttttttttttttttttttttttt@testtest.com *
+-Fix: tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt1@hotmail.com *
+-Fix: 0467942520467942770505662481www.ttttttttttt.co.il0467942520467942770505662481www.testtesttest.co.ilte_test@netvision.net.il *
+-Fix: googlereplytocin6mti1ew5nawv1yjvpcdv0zjiya3pqyzr1bmzqc2phegiwnbdejrsa_a8qi3oxmzjncmy0cnvym2qzdde1mjjrempjnhvuzmpzamf4yja0ai3v7_uaaaaau3yk8ikg6l1uyykgkqt1xrnv9test@plus.google.com *
+-Fix: test0031-03test0031-90test0032-01test0033-02test0035-01test0037-02test0038-01test@netvision.net.il *
+-Fix: tttttttttttttttttttttttt-ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-test@test.test.gov.il *
+-Fix: ttttttttttttbezeqint.netilttttttttttt-tttttttttgmail.comhtttttttttgmail.comgtttttttttttttttttttttt.health.gov.iltestt-tttttttttt.edu.auiltttttttttttttt.technion.ac.ilttttttttttttttttttttt77@gmail.com *
+-Fix: tttttttttt-ttttttttttttttttttt-ttttttttttttttttttttttttttt.testt-ttttttttt@weizmann.ac.il *
+-Fix: 22.2.07-17.4.07-23.4.07-23.4.07---25.6.07-..26.6.07-3.7.07-.-.5.9.07-.6.9.07-20.9.07-.23.9.07-.24.9.07-.25.9.07-.19.10.07-.21.10.07-.22.10.07-.23.10.07-.424.10.07-.test@te-test.co.il *
+-Fix: ttttttttttttttttttttttt............9..tttttttttttttttttttttt.test.test.test.t@gmail.com *
+-Fix: original: test@gov.ill | fix: test@gov.il | functionIds: 11 => if the domain is only a popular domain, it's invalid. *
+-Fix: original: test@co..il | fix: test@co.il | functionIds: 4 => If after fix contain only the domain end - Invalid email. *
+-Need to be invalid: test_t@co.il | test1604@com.il (Need to do logic that if the domain part contain only common domain end, it's invalid). *
+-Fix: original: test.test@il.ey.bcom | fix: test.test@il.ey.om | functionIds: 12 => @il.ey.com *
+-Clear all backups from validation test left of real email addresses. *
+-Fix: test@ymail.co | fix: test@ymail.co.il | functionIds: 11 => yahoo.com (change the logic for ymail.co/com => yahoo. rest gmail.com) - Cancelled. *
+-Fix: original: test@usu.army.mil | fix: test@usu.my | functionIds: 13 => .mil *
+-Fix: original: test@tq.mnf-iraq.usmc.mil | fix: test@tq.us | functionIds: 13 => .mil *
+-Fix: 19870914014@014.html - Need to be invalid. *
+-Fix: original: something@something.name.com | fix: something@.me | functionIds: 14,-5 - Cancelled. *
+-Fix: a.b@example,com. *
+-Fix: test@test...test.com *
+-Fix: test@test-.netvision.net.il => test@netvision.net.il *
+-LAST Add logic: *
+-Do a list of all possible extentions after .com. - Found in \all_domains\com.txt *
+-Check if exists. If exists, don't change it to .com *
+-Then test: *
+-Fix: test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: te@test.com.ps *
+-Fix: test.test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: test.test@test.com.ps *
+-Fix: test.test@test.com.ps *
+-Fix: test@test.com.ps *
+-Fix: te-test.doc@test.com.vn *
+-Fix: test.test@test.com.ps *
+-Fix: original: test.test@2d.t.-com.hr | fix: test.test@2d.t-com.hr | functionIds: 33 *
+-Fix: original: test.test@test.-com.hr | fix: test.test@test-com.hr | functionIds: 33 *
+-Fix: test@test.co.illia.k *
+-Do all the ToDo points. *
+-Fix: bidur.index.co.iluploadinfocenterinfo_images20022012104713@fesaishaweb.jpg *
+-Left invalid email addresses - Add to the invalid email addresses list. *
+-Fix Email Addresses generator script. *
+-Do backup. *
+-Check for duplicates in all domain typos / domain ends typos / all cases email address list. *
+-Check duplicates in all lists in the application. *
+-Remove duplicates. *
+-Add logic: *
+-Do backup. *
+-Change the logic of the log functionIds. Need to mark the name of the function *
+  to not include in the log. By the names, get the ids and do the logic. *
+-Check why there is no functionsIds logged when the email address is detected as invalid. *
+-Check it works on development. *
+-Fix: JOBS.OSEM@IL.NESTLE.COM | fix: JOBS.OSEM@il.es | functionIds: 3,24 *
+-Check that production works. *
+-Remove comment of new ValidEmailAddress(''), *
+-Make sure that in validateEmailAddress.test.js it's empty. *
+-Uncomment in the sand script. *
+-After all fix - Check that everything works ok (development) and check test cases results + typos of all popular domains. *
+-Do backup. *
+-Check if updates are available. If so, install them. *
+-Recheck that everything works ok (development / production) and check test cases results + typos of all popular domains. *
+-Check if any updates available. *
+-If so, do backup and update all. *
+-Recheck that everything works ok (development / production) and check test cases results + typos of all popular domains. *
+-Move to 'todo_tasks' to continue. *
+-Implement all logic of "global" / "special logic". *
+-Fix all invalid email addresses. *
+-Fix all the bugs with the fastest way. Tasks that require much time - List them to future tasks. *
+-Check that everything works ok (development / production) and check test cases results + typos of all popular domains. *
+================ *
+BEFORE each fix: *
+================ *
+DO BACKUP! *
+=============== *
+AFTER each fix: *
+=============== *
+-Add a case to the 'updates' list. *
+-Check updates / invalid / valid cases. *
+=================== *
+-Step 1: *
+-ZIP all the sources into one file, with password. *
+-ZIP it with password, and save the password on keypass. *
+-Test it's work with valid and invalid password. *
+-Do a backup. *
+-Change the logic here to load all the email addresses from the database into a single TXT file - Cancelled. *
+-In the start, before it gets big, check to see if it's ok - Cancelled. *
+-Once the file complete, save it on sources - Cancelled. *
+-Put all the domains and this file into on place - Cancelled. *
+-Add a readme file of the count of email addresses and seperated by comma - Cancelled. *
+-From the sources, delete all uneeded sources, except the domains and the ZIP file - Cancelled. *
+-Copy the sources inside the crawler to the global sources (if not exists already - check it) - Cancelled. *
+=================== *
+-Step 2: *
+-Copy the 25 function to a notepad. *
+-Copy this document. *
+-Do a backup. *
+=================== *
+-Step 3: *
+-Go back to the version before the second scan. *
+-Implement all the tasks there. *
+-Implement the 25 function. *
+-ToDo: Refactor - Build a function that already return a split of the domain part when needed - Cancelled. *
+-On the todo tasks write conclusions and future tasks. *
+-Continue with the todo_tasks document. *
+=================== *
+-ToDo: *
+-1. All cases of rest of .co.il (add new list that contains only the long domains) - If indexOf > 1, define as the domainpart. *
+-2. .com - If not contains . after, aka .com., assign to .com . *
+-After finish to fix all - Go back to the "CrawlerLogic" and validate again all the email addresses from the database. *
+-Compare between the old fixed and the new ones - Make sure all fixed and correct. *
+-Make sure to keep only the 2 logs of the domain counts, all the rest of the sources - Delete. *
+-Identical endings (listed here) - Move them to the file of the common domains. *
+-Change the script name from 'domain counts' to 'fileCrawl' in all places - Cancelled. *
+-When finish to list all the bugs, delete all the sources of the email addresses (finished). *
+-Check that everything works ok (development / production) and check test cases results. *
+-Make sure to drop all database tables (email addresses and domains). *
+-After finish with fixing all, drop the tables from the database. *
+-After all finish, change all the email addresses in the source tasks.txt to (test) - the local part. *
+-Move all completed tasks to complete tasks.txt under "sources tasks". *
+-Delete the backup of the sources tasks. *
+-Keep only the sources of the domain counts - The rest you should delete. *
+-Change back the name of the connection string (remove the 'test'). *
+-Remove from 'settings.js' the IGNORE_FILES - Leave the array empty - Cancelled. *
+-Copy the sources in the project to the outside source directory - Cancelled. *
+-Add the 'sources' directory to ignore in backups - Cancelled. *
+-Add logic that if development and no sources directory - Log an error about it (include where the files found) - Cancelled. *
+-Verify it works - Cancelled. *
+-Delete all 'sources' directories in all the backup directory (scan all the backups) - Cancelled. *
+-Do all the "INSTRUCTIONS.md + README.md" tasks - Cancelled. *
+-Fix all spell mistakes in all misc documents. *
+
 Tests Sources Tasks: *
 ==================== *
 -On the 'C:\Or\Web\Crawler\Sources\FixesToImplement' path there is more fixes to implement. *

@@ -1,4 +1,4 @@
-const logUpdate = require('log-update');
+const logUpdate = require('../../log-update');
 const colorUtils = require('./color.utils');
 const textUtils = require('./text.utils');
 const validationUtils = require('./validation.utils');
@@ -13,7 +13,10 @@ class LogUtils {
     }
 
     logColor(message, color) {
-        return colorUtils.createColorMessage({ message: message, color: color });
+        return colorUtils.createColorMessage({
+            message: message,
+            color: color
+        });
     }
 
     logStatus(status, object) {
@@ -31,14 +34,20 @@ class LogUtils {
         if (!status || !color) {
             return '';
         }
-        this.log(colorUtils.createColorMessage({ message: textUtils.setLogStatus(status), color: color }));
+        this.log(colorUtils.createColorMessage({
+            message: textUtils.setLogStatus(status),
+            color: color
+        }));
     }
 
     logMagentaStatus(text) {
         if (!text) {
             return '';
         }
-        return this.logColorStatus({ status: text, color: Color.MAGENTA });
+        return this.logColorStatus({
+            status: text,
+            color: Color.MAGENTA
+        });
     }
 
     logProgress(data) {
@@ -48,7 +57,10 @@ class LogUtils {
             let result = '';
             // Group title.
             const title = `[${titlesList[i]}] `;
-            const keyTitle = colorUtils.createColorMessage({ message: title, color: colorsTitlesList[i] });
+            const keyTitle = colorUtils.createColorMessage({
+                message: title,
+                color: colorsTitlesList[i]
+            });
             result += keyTitle;
             // Group keys.
             const keysList = keysLists[i];
@@ -58,14 +70,20 @@ class LogUtils {
                 const color = colorsList ? colorsList[y] : null;
                 let keyParameter = keys[y];
                 if (color) {
-                    keyParameter = colorUtils.createColorMessage({ message: keys[y], color: color });
+                    keyParameter = colorUtils.createColorMessage({
+                        message: keys[y],
+                        color: color
+                    });
                 }
                 const value = keysList[keys[y]];
                 const displayValue = value && validationUtils.isValidNumber(value) ? textUtils.getNumberWithCommas(value) : value;
                 const message = `${keyParameter === '#' ? '' : `${keyParameter}: `}${displayValue} | `;
                 result += message;
             }
-            result = textUtils.removeLastCharacters({ value: result, charactersCount: 3 });
+            result = textUtils.removeLastCharacters({
+                value: result,
+                charactersCount: 3
+            });
             results += textUtils.setLogStatusColored(result, statusColor);
             if (i < (lengthX - 1)) {
                 results += '\n';
@@ -73,7 +91,12 @@ class LogUtils {
         }
         logUpdate(results);
     }
+
+    logSchedule(text) {
+        text = textUtils.setLogStatus(text);
+        text = this.logColor(text, Color.MAGENTA);
+        logUpdate(text);
+    }
 }
 
-const logUtils = new LogUtils();
-module.exports = logUtils;
+module.exports = new LogUtils();

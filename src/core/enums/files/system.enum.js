@@ -5,6 +5,11 @@ const Mode = enumUtils.createEnum([
     ['DEVELOPMENT', 'DEVELOPMENT']
 ]);
 
+const Method = enumUtils.createEnum([
+    ['STANDARD', 'STANDARD'],
+    ['SESSION_TEST', 'SESSION_TEST']
+]);
+
 const Status = enumUtils.createEnum([
     ['INITIATE', 'INITIATE'],
     ['FETCH', 'FETCH'],
@@ -21,13 +26,7 @@ const GoalType = enumUtils.createEnum([
 
 const Step = enumUtils.createEnum([
     ['LINKS', 'LINKS'],
-    ['CRAWL', 'CRAWL'],
-    ['SEND', 'SEND']
+    ['CRAWL', 'CRAWL']
 ]);
 
-const BackupType = enumUtils.createEnum([
-    ['STANDARD', 'STANDARD'],
-    ['SECONDARY', 'Secondary']
-]);
-
-module.exports = { Mode, Status, GoalType, Step, BackupType };
+module.exports = { Mode, Method, Status, GoalType, Step };

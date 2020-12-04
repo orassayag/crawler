@@ -14,5 +14,4 @@ class EnumUtils {
     }
 }
 
-const enumUtils = new EnumUtils();
-module.exports = enumUtils;
+module.exports = new EnumUtils();

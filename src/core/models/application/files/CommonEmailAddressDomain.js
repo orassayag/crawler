@@ -1,8 +1,9 @@
 class CommonEmailAddressDomain {
 
 	constructor(data) {
-		const { domain, domainName, micromatchName } = data;
+		const { domain, flipDomain, domainName, micromatchName } = data;
 		this.domain = domain;
+		this.flipDomain = flipDomain;
 		this.domainName = domainName;
 		this.micromatchName = micromatchName;
 	}

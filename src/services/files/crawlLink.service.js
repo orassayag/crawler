@@ -1,6 +1,6 @@
 const url = require('url');
 const dns = require('dns');
-const { validationUtils, regexUtils, textUtils } = require('../../utils');
+const { crawlUtils, validationUtils, regexUtils, textUtils } = require('../../utils');
 const sourceService = require('./source.service');
 const searchService = require('./search.service');
 const logService = require('./log.service');
@@ -13,11 +13,16 @@ const { GoalType } = require('../../core/enums/files/system.enum');
 class CrawlLinkService {
 
 	constructor() {
+		this.countsLimitsData = null;
 		this.totalCrawlCount = 0;
 		this.goalValue = 0;
+		this.replaceGoogleweblight = 'googleweblight.com/fp%3Fu%3D';
+		this.timeout = null;
 	}
 
-	async initiate(applicationData) {
+	async initiate(data) {
+		const { applicationData, countsLimitsData } = data;
+		this.timeout = countsLimitsData.millisecondsTimeoutSourceRequestCount;
 		this.goalValue = applicationData.goalType === GoalType.LINKS ? applicationData.goalValue : null;
 		// Initiate the search engines.
 		await this.initiateSearchEngines(applicationData);
@@ -30,15 +35,22 @@ class CrawlLinkService {
 	async initiateSearchEngines(applicationData) {
 		const searchEngines = searchService.getAllActiveSearchEngines();
 		for (let i = 0, length = searchEngines.length; i < length; i++) {
-			const { name, templateAddress } = searchEngines[i];
+			const { name, baseURL } = searchEngines[i];
 			// Set the domains in the search engines.
 			let isActive = true;
-			const domainAddress = this.getDomainFromLink({ link: templateAddress, isRemovePrefix: true });
+			const domainAddress = this.getDomainFromLink({
+				link: baseURL,
+				isRemovePrefix: true
+			});
 			if (applicationData.isProductionMode) {
 				// Validate the search engine activity.
 				isActive = await this.validateSearchEngineActive(domainAddress);
 			}
-			searchService.updateSearchEngineData({ name: name, domainAddress: domainAddress, isActive: isActive });
+			searchService.updateSearchEngineData({
+				name: name,
+				domainAddress: domainAddress,
+				isActive: isActive
+			});
 		}
 	}
 
@@ -60,7 +72,7 @@ class CrawlLinkService {
 			dns.lookup(searchEngineLink, (error) => {
 				resolve(error ? false : true);
 			});
-		});
+		}).catch();
 	}
 
 	async validateSearchEngineActive(searchEngineLink) {
@@ -103,10 +115,20 @@ class CrawlLinkService {
 
 	fixLinks(linksList) {
 		linksList = linksList.map(link => {
-			if (link && link.endsWith('/')) {
-				return textUtils.removeLastCharacters({ value: link, charactersCount: 1 });
+			let fixedLink = link;
+			if (link) {
+				if (link.endsWith('/')) {
+					fixedLink = textUtils.removeLastCharacters({
+						value: link,
+						charactersCount: 1
+					});
+				}
+				const googleweblightIndex = fixedLink.indexOf(this.replaceGoogleweblight);
+				if (googleweblightIndex > -1) {
+					fixedLink = fixedLink.substring(googleweblightIndex + this.replaceGoogleweblight.length);
+				}
 			}
-			return link;
+			return fixedLink;
 		});
 		linksList = textUtils.removeDuplicates(linksList);
 		return linksList;
@@ -136,7 +158,11 @@ class CrawlLinkService {
 		for (let i = 0, length = linksList.length; i < length; i++) {
 			const originalLink = linksList[i];
 			const link = textUtils.toLowerCase(originalLink);
-			const isFilter = this.isFilterLink({ link: link, searchEngine: searchEngine, filterLinkDomainsList: filterLinkDomainsList });
+			const isFilter = this.isFilterLink({
+				link: link,
+				searchEngine: searchEngine,
+				filterLinkDomainsList: filterLinkDomainsList
+			});
 			if (isFilter) {
 				continue;
 			}
@@ -163,43 +189,87 @@ class CrawlLinkService {
 		return this.goalValue ? this.goalValue === this.totalCrawlCount : false;
 	}
 
-	async getSearchEnginePageLinks(data) {
-		const { searchProcessData, totalCrawlCount } = data;
+	getSessionTestPageLinks(linksList) {
 		const linksResult = new LinksResult();
-		this.totalCrawlCount = totalCrawlCount;
-		if (this.checkGoalComplete()) {
-			return linksResult;
-		}
-		// Get the engine page source by the search key and the links list within the source.
-		const { isValidPage, pageSource } = await sourceService.getPageSource({
-			sourceType: SourceType.ENGINE,
-			searchEngine: searchProcessData.searchEngine.name,
-			link: searchProcessData.searchEngineLinkTemplate
-		});
-		if (!isValidPage) {
-			await logService.logErrorLink(searchProcessData.searchEngineLinkTemplate);
-		}
-		linksResult.isValidPage = isValidPage;
-		// Get all the links from the search engine source.
-		let linksList = this.getLinks(pageSource);
-		if (!validationUtils.isExists(linksList)) {
-			return linksResult;
-		}
+		linksResult.isValidPage = true;
 		linksResult.totalCount = linksList.length;
-		// Remove duplicate links.
-		linksList = textUtils.removeDuplicates(linksList);
-		// Remove last '/' if exists and remove duplicates again.
-		linksList = this.fixLinks(linksList);
-		// Filter links.
-		linksList = this.filterLinks({ linksList: linksList, searchEngine: searchProcessData.searchEngine });
-		// Log the links to TXT file.
-		await this.logLinks(linksList);
 		linksResult.crawlCount = linksList.length;
 		linksResult.filterCount = linksResult.totalCount - linksList.length;
-		linksResult.crawlLinksList = linksList;
+		linksResult.crawlLinksList = linksList.map(l => {
+			const { link, userAgent } = l;
+			return {
+				link: link,
+				userAgent: userAgent ? userAgent : crawlUtils.getRandomUserAgent()
+			};
+		});
 		return linksResult;
+	}
+
+	getSearchEnginePageLinks(data) {
+		return new Promise(async (resolve, reject) => {
+			// Limit the runtime of this function in case of stuck URL crawling process.
+			const abortTimeout = setTimeout(() => {
+				reject(null);
+				return;
+			}, this.timeout);
+			const { searchProcessData, totalCrawlCount } = data;
+			const linksResult = new LinksResult();
+			this.totalCrawlCount = totalCrawlCount;
+			if (this.checkGoalComplete()) {
+				clearTimeout(abortTimeout);
+				resolve(linksResult);
+				return;
+			}
+			// Get the engine page source by the search key and the links list within the source.
+			const pageResults = await sourceService.getPageSource({
+				sourceType: SourceType.ENGINE,
+				searchEngine: searchProcessData.searchEngine.name,
+				linkData: {
+					link: searchProcessData.searchEngineLinkTemplate,
+					userAgent: null
+				}
+			});
+			if (!pageResults) {
+				clearTimeout(abortTimeout);
+				resolve(linksResult);
+				return;
+			}
+			const { isValidPage, pageSource } = pageResults;
+			if (!isValidPage) {
+				await logService.logErrorLink(searchProcessData.searchEngineLinkTemplate);
+			}
+			linksResult.isValidPage = isValidPage;
+			// Get all the links from the search engine source.
+			let linksList = this.getLinks(pageSource);
+			if (!validationUtils.isExists(linksList)) {
+				clearTimeout(abortTimeout);
+				resolve(linksResult);
+				return;
+			}
+			linksResult.totalCount = linksList.length;
+			// Remove duplicate links.
+			linksList = textUtils.removeDuplicates(linksList);
+			// Remove last '/' if exists and remove duplicates again.
+			linksList = this.fixLinks(linksList);
+			// Filter links.
+			linksList = this.filterLinks({
+				linksList: linksList,
+				searchEngine: searchProcessData.searchEngine
+			});
+			// Log the links to TXT file.
+			await this.logLinks(linksList);
+			linksResult.crawlCount = linksList.length;
+			linksResult.filterCount = linksResult.totalCount - linksList.length;
+			linksResult.crawlLinksList = linksList.map(l => {
+				return {
+					link: l,
+					userAgent: crawlUtils.getRandomUserAgent()
+				};
+			});
+			clearTimeout(abortTimeout);
+			resolve(linksResult);
+		}).catch();
 	}
 }
 
-const crawlLinkService = new CrawlLinkService();
-module.exports = crawlLinkService;
+module.exports = new CrawlLinkService();

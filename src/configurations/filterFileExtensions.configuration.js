@@ -37,7 +37,8 @@ const filterLinkFileExtensions = [
 const filterEmailAddressFileExtensions = [
 	...filterLinkFileExtensions,
 	// ===WEB=== //
-	'.html'
+	'.html',
+	'.webp'
 ];
 
 module.exports = { filterLinkFileExtensions, filterEmailAddressFileExtensions };

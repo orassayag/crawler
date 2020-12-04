@@ -50,10 +50,8 @@ class CharacterUtils {
 		this.alphaCharacters = 'abcdefghijklmnopqrstuvwxyzABCEDEFGHIJKLMNOPQRSTUVWXYZ';
 		this.specialCharacters = ' "#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
 		this.verySpecialCharacters = '¡¢£¤¥₹¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿŒœŠšŸƒˆ˜ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρςστυφχψωϑϒϖ–—‘’‚“”„†‡‰‹›•…′″‾⁄℘ℑℜ™ℵ←↑→↓↔↵⇐⇑⇒⇓⇔◄►▲▼∀∂∃∅∇∈∉∋∏∑−∗√∝∞∠∧∨∩∪∫∴∼≅≈≠≡≤≥⊂⊃⊄⊆⊇⊕⊗⊥⋅⌈⌉⌊⌋〈〉◊♠♣♥♦';
-		this.alphaNumericCharacters = this.numbersCharacters.concat(this.alphaCharacters);
 		this.allSpecialCharacters = this.specialCharacters.concat(this.verySpecialCharacters);
 	}
 }
 
-const characterUtils = new CharacterUtils();
-module.exports = characterUtils;
+module.exports = new CharacterUtils();

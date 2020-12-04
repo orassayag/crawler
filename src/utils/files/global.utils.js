@@ -5,11 +5,11 @@ class GlobalUtils {
 
     constructor() { }
 
-    async sleep(millisecondsCount) {
+    sleep(millisecondsCount) {
         if (!millisecondsCount) {
             return;
         }
-        return new Promise(resolve => setTimeout(resolve, millisecondsCount));
+        return new Promise(resolve => setTimeout(resolve, millisecondsCount)).catch();
     }
 
     // This method check if a receive target path is exist.
@@ -71,6 +71,4 @@ class GlobalUtils {
         }
     }
 }
-
-const globalUtils = new GlobalUtils();
-module.exports = globalUtils;
+module.exports = new GlobalUtils();

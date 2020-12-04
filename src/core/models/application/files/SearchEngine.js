@@ -1,12 +1,13 @@
 class SearchEngine {
 
     constructor(data) {
-        const { name, startIndex, advanceBy, templateAddress } = data;
+        const { name, baseURL, startIndex, advanceBy, templatesList } = data;
         this.name = name;
+        this.baseURL = baseURL;
         this.startIndex = startIndex;
         this.advanceBy = advanceBy;
-        this.templateAddress = templateAddress;
         this.domainAddress = null;
+        this.templatesList = templatesList;
     }
 }
 

@@ -6,11 +6,10 @@ class ConfirmationService {
 
     constructor() { }
 
-    async confirm(settings) {
+    confirm(settings) {
         if (!settings.IS_PRODUCTION_MODE) {
             return true;
         }
-
         const readLine = readline.createInterface(process.stdin, process.stdout);
         logUtils.log(logService.createConfirmSettingsTemplate(settings));
         return new Promise((resolve, reject) => {
@@ -25,9 +24,8 @@ class ConfirmationService {
                 }).on('close', () => { resolve(false); });
             }
             catch (error) { reject(false); }
-        });
+        }).catch();
     }
 }
 
-const confirmationService = new ConfirmationService();
-module.exports = confirmationService;
+module.exports = new ConfirmationService();

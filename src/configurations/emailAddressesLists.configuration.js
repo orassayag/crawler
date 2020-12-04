@@ -376,6 +376,7 @@ const invalidEmailAddresses = [
 	new InvalidEmailAddress('invalid@about.museum-'),
 	new InvalidEmailAddress('itai@mo1k8e0d-0o-r8y0ar0o-k9.c1o0m', '‪itai@moked-oryarok.com'),
 	new InvalidEmailAddress('jobs@theisraelproject.org-tip', 'tip-jobs@theisraelproject.org'),
+	new InvalidEmailAddress('il.org.insurance@F.B-Hamichlala', 'hamichlala-b.f@insurance.org.il'),
 	new InvalidEmailAddress('Joe Smith < email@domain.com>'),
 	new InvalidEmailAddress('Joe Smith < email@example.com>'),
 	new InvalidEmailAddress('Joe.\Blow@iana.org'),

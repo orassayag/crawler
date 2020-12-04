@@ -38,16 +38,6 @@ class EmailAddressUtils {
 		return Array.from(Object.values(group));
 	}
 
-/* 	getDomainEndsGroups(array, key) {
-		const group = array.reduce((result, currentValue) => {
-			(result[currentValue[key]] = result[currentValue[key]] || []).push(
-				currentValue.domainEnd
-			);
-			return result;
-		}, {});
-		return Array.from(Object.values(group)).map(list => list.sort((a, b) => b.length - a.length));
-	} */
-
 	getDomainsFixTyposList(emailAddressDomainEndsList) {
 		return emailAddressDomainEndsList.filter(domain => domain.typosList.length)
 			.map(domain => { return { domainEnd: domain.domainEnd, typosList: domain.typosList }; }).reduce((obj, item) => {
@@ -58,5 +48,4 @@ class EmailAddressUtils {
 	}
 }
 
-const emailAddressUtils = new EmailAddressUtils();
-module.exports = emailAddressUtils;
+module.exports = new EmailAddressUtils();

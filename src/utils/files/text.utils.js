@@ -13,7 +13,10 @@ class TextUtils {
         if (!text) {
             return '';
         }
-        return text.substring(0, count);
+        if (text.length > count) {
+            return text.substring(0, count);
+        }
+        return text;
     }
 
     reverseText(text) {
@@ -36,16 +39,7 @@ class TextUtils {
     }
 
     upperCaseFirstLetter(text, index) {
-        return index === 0 ? textUtils.toUpperCase(text.slice(0, 1)).concat(text.slice(1)) : text;
-    }
-
-    // This method creates a file name.
-    createFileName(data) {
-        const { fileName, fileKeyName, fileTXTName, isMBOX } = data;
-        if (!fileName) {
-            return '';
-        }
-        return `${fileName}${fileKeyName ? `_${fileKeyName}` : ''}${fileTXTName !== null ? `_${fileTXTName}` : ''}${isMBOX ? '' : '.txt'}`;
+        return index === 0 ? this.toUpperCase(text.slice(0, 1)).concat(text.slice(1)) : text;
     }
 
     removeLastCharacters(data) {
@@ -64,19 +58,14 @@ class TextUtils {
         return number < 10 ? `0${number}` : number;
     }
 
-    verifyCharactersLength(data) {
-        const { value, maximumCharactersLength } = data;
-        if (!value || !validationUtils.isValidNumber(maximumCharactersLength)) {
-            return '';
-        }
-        return value.length > maximumCharactersLength ? value.substring(0, maximumCharactersLength) : value;
-    }
-
     setLogStatusColored(status, color) {
         if (!status || !color) {
             return '';
         }
-        const delimiter = colorUtils.createColorMessage({ message: this.b, color: color });
+        const delimiter = colorUtils.createColorMessage({
+            message: this.b,
+            color: color
+        });
         return `${delimiter}${status}${delimiter}`;
     }
 
@@ -85,13 +74,6 @@ class TextUtils {
             return '';
         }
         return `${this.b}${status}${this.b}`;
-    }
-
-    countDuplicateStrings(list) {
-        if (!validationUtils.isExists(list)) {
-            return 0;
-        }
-        return list.filter((item, index) => list.indexOf(item) != index).length;
     }
 
     calculatePercentageDisplay(data) {
@@ -127,6 +109,25 @@ class TextUtils {
         return list[Math.floor(Math.random() * list.length)];
     }
 
+    getRandomUniqueKeysFromArray(list, itemsCount) {
+        if (list.length === itemsCount) {
+            return list;
+        }
+        const numbersList = [];
+        const resultList = [];
+        for (let i = 0; i < 20; i++) {
+            const number = this.getRandomNumber(0, list.length);
+            if (numbersList.indexOf(number) === -1) {
+                numbersList.push(number);
+                resultList.push(list[number]);
+                if (resultList.length >= itemsCount) {
+                    break;
+                }
+            }
+        }
+        return resultList;
+    }
+
     getRandomNumber(min, max) {
         return min + Math.floor((max - min) * Math.random());
     }
@@ -139,12 +140,16 @@ class TextUtils {
         return regexUtils.englishCharactersRegex.test(key);
     }
 
+    isCharacterALetter(character) {
+        return regexUtils.detectLetter.test(character);
+    }
+
     getNumberOfNumber(data) {
         const { number1, number2 } = data;
         if (!validationUtils.isValidNumber(number1) || !validationUtils.isValidNumber(number2)) {
             return '';
         }
-        return `${textUtils.getNumberWithCommas(number1)}/${textUtils.getNumberWithCommas(number2)}`;
+        return `${this.getNumberWithCommas(number1)}/${this.getNumberWithCommas(number2)}`;
     }
 
     addBreakLine(text) {
@@ -163,30 +168,6 @@ class TextUtils {
             return [];
         }
         return Array.from(new Set(list));
-    }
-
-    removeString(data) {
-        const { removeText } = data;
-        let { text } = data;
-        if (!validationUtils.isExists(text) || !validationUtils.isExists(removeText)) {
-            return '';
-        }
-        if (text.indexOf(removeText) > -1) {
-            text = text.split(removeText).join('');
-        }
-        return text;
-    }
-
-    replaceContainString(data) {
-        const { targetText, replaceText } = data;
-        let { text } = data;
-        if (!validationUtils.isExists(text) || !validationUtils.isExists(targetText) || !validationUtils.isExists(replaceText)) {
-            return '';
-        }
-        if (text.indexOf(targetText) > -1) {
-            text = text.split(targetText).join(replaceText);
-        }
-        return text;
     }
 
     replaceAt(data) {
@@ -223,8 +204,28 @@ class TextUtils {
         if (!text) {
             return '';
         }
-        while (text.charAt(text.length - 1) === character) {
-            text = this.removeLastCharacter(text);
+        for (let i = 0; i < 10; i++) {
+            if (text.charAt(text.length - 1) === character) {
+                text = this.removeLastCharacter(text);
+            }
+            else {
+                break;
+            }
+        }
+        return text;
+    }
+
+    removeLastCharacterNotALetterLoop(text) {
+        if (!text) {
+            return '';
+        }
+        for (let i = 0; i < 10; i++) {
+            if (!this.isCharacterALetter(text.charAt(text.length - 1))) {
+                text = this.removeLastCharacter(text);
+            }
+            else {
+                break;
+            }
         }
         return text;
     }
@@ -234,8 +235,13 @@ class TextUtils {
         if (!text) {
             return '';
         }
-        while (text.charAt(0) === character) {
-            text = this.removeFirstCharacter(text);
+        for (let i = 0; i < 10; i++) {
+            if (text.charAt(0) === character) {
+                text = this.removeFirstCharacter(text);
+            }
+            else {
+                break;
+            }
         }
         return text;
     }
@@ -284,7 +290,7 @@ class TextUtils {
 
     getBackupName(data) {
         const { applicationName, date, title, index } = data;
-        return `${applicationName}${title ? `_${title}` : ''}_${date}-${(index + 1)}`;
+        return `${applicationName}_${date}-${(index + 1)}${title ? `-${title}` : ''}`;
     }
 
     sliceJoinDots(array, number) {
@@ -304,7 +310,37 @@ class TextUtils {
         a[text.lastIndexOf(charecter)] = replace;
         return a.join('');
     }
+
+    getObjectKeyValues(obj) {
+        let result = '';
+        const keys = Object.keys(obj);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const value = obj[key];
+            result += `${this.upperCaseFirstLetter(key, 0)}: ${value} | `;
+        }
+        result = this.removeLastCharacters({
+            value: result,
+            charactersCount: 3
+        });
+        return result;
+    }
+
+    flipDotParts(text) {
+        return text.split('.').reverse().join('.');
+    }
+
+    isCharactersEqual(text) {
+        if (text.length === 1) {
+            return true;
+        }
+        for (let i = 1; i < text.length; i++) {
+            if (text[i] !== text[0]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
-const textUtils = new TextUtils();
-module.exports = textUtils;
+module.exports = new TextUtils();

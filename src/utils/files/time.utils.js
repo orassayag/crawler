@@ -41,9 +41,24 @@ class TimeUtils {
         // What's left is seconds.
         // In theory the modulus is not required.
         const seconds = textUtils.getFloorPositiveNumber(delta % 60);
-        return { time: `${days}.${hours}:${minutes}:${seconds}`, minutes: parseInt(totalTime / 60000) };
+        return {
+            time: `${days}.${hours}:${minutes}:${seconds}`,
+            minutes: parseInt(totalTime / 60000)
+        };
+    }
+
+    getRemainingTime(endDateTime) {
+        const now = new Date().getTime();
+        const timeleft = endDateTime - now;
+        const days = textUtils.getFloorPositiveNumber(timeleft / (1000 * 60 * 60 * 24));
+        const hours = textUtils.getFloorPositiveNumber((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = textUtils.getFloorPositiveNumber((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = textUtils.getFloorPositiveNumber((timeleft % (1000 * 60)) / 1000);
+        return {
+            timeleft: timeleft,
+            time: `${days}.${hours}:${minutes}:${seconds}`
+        };
     }
 }
 
-const timeUtils = new TimeUtils();
-module.exports = timeUtils;
+module.exports = new TimeUtils();

@@ -1,14 +1,23 @@
+const kill = require('tree-kill');
 const logUtils = require('./log.utils');
 
 class SystemUtils {
 
     constructor() { }
 
-    exit(exitReason, color) {
-        logUtils.logColorStatus({ status: `EXIT: ${exitReason}`, color: color });
-        process.exit(0);
+    exit(exitReason, color, code) {
+        logUtils.logColorStatus({
+            status: `EXIT: ${exitReason}`,
+            color: color
+        });
+        process.exit(code);
+    }
+
+    killProcess(pid) {
+        if (pid) {
+            kill(pid);
+        }
     }
 }
 
-const systemUtils = new SystemUtils();
-module.exports = systemUtils;
+module.exports = new SystemUtils();

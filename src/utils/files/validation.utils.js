@@ -39,7 +39,7 @@ class ValidationUtils {
     }
 
     isValidMongoConnectionString(mongoConnectionString) {
-        return regexUtils.MongoConnectionStringRegex.test(mongoConnectionString);
+        return regexUtils.mongoConnectionStringRegex.test(mongoConnectionString);
     }
 
     isExists(list) {
@@ -60,9 +60,8 @@ class ValidationUtils {
         if (!text) {
             return false;
         }
-        return regexUtils.findVersionRegex.test(text);
+        return regexUtils.findPackageNameRegex.test(text);
     }
 }
 
-const validationUtils = new ValidationUtils();
-module.exports = validationUtils;
+module.exports = new ValidationUtils();

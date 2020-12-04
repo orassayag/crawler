@@ -12,7 +12,12 @@ const filterEmailAddressDomains = [
 	'no_such_domain.com',
 	'nosuchdomain.com',
 	'test.com',
-	'yourdomain.com'
+	'yourdomain.com',
+	'justice.gov.il',
+	'police.gov.il',
+	'taxes.gov.il',
+	'knesset.gov.il',
+	'court.gov.il'
 ];
 
 const unfixEmailAddressDomains = [
@@ -457,7 +462,8 @@ const unfixEmailAddressDomains = [
 	'yuster',
 	'zeekit',
 	'zepra',
-	'zoomanalytics'
+	'zoomanalytics',
+	'walkout'
 ];
 
 const filterEmailAddresses = [

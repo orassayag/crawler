@@ -44,7 +44,10 @@ class PathUtils {
     getBasename(source) {
         return path.basename(source);
     }
+
+    getDirName(targetPath) {
+        return path.dirname(targetPath);
+    }
 }
 
-const pathUtils = new PathUtils();
-module.exports = pathUtils;
+module.exports = new PathUtils();

@@ -23,7 +23,7 @@ class SourceService {
 
         if (this.isProductionMode) {
             // On production, load puppeteer service and initiate it.
-            puppeteerService = require('./puppeteerService');
+            puppeteerService = require('./puppeteer.service');
             await puppeteerService.initiate(this.countsLimitsData, false);
         }
         else {
@@ -36,20 +36,34 @@ class SourceService {
     async loadAllDevelopmentModeSources() {
         const searchEngines = searchService.getAllActiveSearchEngines();
         for (let i = 0, length = searchEngines.length; i < length; i++) {
-            await this.loadDevelopmentModeSourcesByType({ sourceType: SourceType.ENGINE, searchEngine: searchEngines[i].name });
+            await this.loadDevelopmentModeSourcesByType({
+                sourceType: SourceType.ENGINE,
+                searchEngine: searchEngines[i].name
+            });
         }
-        await this.loadDevelopmentModeSourcesByType({ sourceType: SourceType.PAGE });
+        await this.loadDevelopmentModeSourcesByType({
+            sourceType: SourceType.PAGE
+        });
     }
 
     async loadDevelopmentModeSourcesByType(data) {
         const { sourceType, searchEngine } = data;
         let sourcePath = sourceType;
         if (searchEngine) {
-            sourcePath = pathUtils.getJoinPath({ targetPath: this.sourcesPath, targetName: sourceType });
-            sourcePath = pathUtils.getJoinPath({ targetPath: sourcePath, targetName: searchEngine });
+            sourcePath = pathUtils.getJoinPath({
+                targetPath: this.sourcesPath,
+                targetName: sourceType
+            });
+            sourcePath = pathUtils.getJoinPath({
+                targetPath: sourcePath,
+                targetName: searchEngine
+            });
         }
         else {
-            sourcePath = pathUtils.getJoinPath({ targetPath: this.sourcesPath, targetName: sourceType });
+            sourcePath = pathUtils.getJoinPath({
+                targetPath: this.sourcesPath,
+                targetName: sourceType
+            });
         }
         // Get all the files.
         let files = await fileUtils.getDirectoryFiles(sourcePath);
@@ -59,17 +73,26 @@ class SourceService {
         }
         // Filter only the TXT files.
         files = files.filter(f => {
-            return pathUtils.isTypeFile({ fileName: f, fileExtension: 'txt' });
+            return pathUtils.isTypeFile({
+                fileName: f,
+                fileExtension: 'txt'
+            });
         });
         // Validate that there is at least 1 TXT file in the source directory.
         if (!validationUtils.isExists(files)) {
             throw new Error(`No TXT files exists in ${sourcePath} (1000023)`);
         }
         for (let i = 0, length = files.length; i < length; i++) {
-            const pageSource = await fileUtils.readFile(pathUtils.getJoinPath({ targetPath: sourcePath, targetName: files[i] }));
+            const pageSource = await fileUtils.readFile(pathUtils.getJoinPath({
+                targetPath: sourcePath,
+                targetName: files[i]
+            }));
             switch (sourceType) {
                 case SourceType.ENGINE:
-                    this.searchEngineSourcesList.push({ name: searchEngine, pageSource: pageSource });
+                    this.searchEngineSourcesList.push({
+                        name: searchEngine,
+                        pageSource: pageSource
+                    });
                     break;
                 case SourceType.PAGE:
                     this.pageSourcesList.push(pageSource);
@@ -78,19 +101,20 @@ class SourceService {
         }
     }
 
-    async getPageSource(data) {
-        const { link } = data;
-        return this.isProductionMode ? this.getPageSourceProduction(link) : this.getPageSourceDevelopment(data);
+    getPageSource(data) {
+        return this.isProductionMode ? this.getPageSourceProduction(data) : this.getPageSourceDevelopment(data);
     }
 
-    async getPageSourceProduction(link) {
+    async getPageSourceProduction(data) {
+        const { linkData } = data;
+        const { link, userAgent } = linkData;
         if (!link) {
             return '';
         }
-        return await puppeteerService.crawl(link);
+        return await puppeteerService.crawl(link, userAgent);
     }
 
-    async getPageSourceDevelopment(data) {
+    getPageSourceDevelopment(data) {
         const { sourceType, searchEngine } = data;
         const crawlResults = { isValidPage: textUtils.getRandomBoolean(), pageSource: null };
         switch (sourceType) {
@@ -105,11 +129,10 @@ class SourceService {
     }
 
     close() {
-        if (this.isProductionMode && !puppeteerService) {
+        if (this.isProductionMode && puppeteerService) {
             puppeteerService.close();
         }
     }
 }
 
-const sourceService = new SourceService();
-module.exports = sourceService;
+module.exports = new SourceService();

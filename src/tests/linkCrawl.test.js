@@ -1,6 +1,6 @@
 require('../services/files/initiate.service').initiate();
 const settings = require('../settings/settings');
-const puppeteerService = require('../services/files/puppeteerService');
+const puppeteerService = require('../services/files/puppeteer.service');
 const { logUtils } = require('../utils');
 const { CountsLimitsData } = require('../core/models/application');
 
@@ -8,6 +8,6 @@ const { CountsLimitsData } = require('../core/models/application');
 	// ===COUNTS & LIMITS DATA=== //
 	const countsLimitsData = new CountsLimitsData(settings);
 	await puppeteerService.initiate(countsLimitsData, true);
-	const pageSource = await puppeteerService.crawl('http://www.jobcrawler.co.il/jobs?ts=go&amp');
+	const pageSource = await puppeteerService.crawl('');
 	logUtils.log(pageSource);
 })();

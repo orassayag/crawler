@@ -31,18 +31,21 @@
   ],
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
-    "start": "node src/scripts/crawl.script.js",
+    "start": "node src/monitor/monitor.js",
     "domains": "node src/scripts/domains.script.js",
     "delay": "node src/scripts/delay.script.js",
     "pre_load": "node src/scripts/preload.script.js",
     "cases": "node src/tests/emailAddressTestCases.test.js",
     "generator": "node src/tests/emailAddressGenerator.test.js",
     "val": "node src/tests/validateEmailAddress.test.js",
+    "valmany": "node src/tests/validateEmailAddresses.test.js",
     "valdebug": "node --inspect-brk src/tests/validateEmailAddress.test.js",
     "typos": "node src/tests/emailAddressTypos.test.js",
     "sand": "node src/tests/sandBox.test.js",
     "link": "node src/tests/linkCrawl.test.js",
-    "preload": "npm run pre_load && npm i & npm run delay & npm i"
+    "session": "node src/tests/linksSession.test.js",
+    "preload": "npm run pre_load && npm i & npm run delay & npm i",
+    "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [
     ">0.2%",
@@ -51,19 +54,27 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "ansi-escapes": "^4.3.1",
     "babel-eslint": "^10.1.0",
-    "chance": "^1.1.4",
-    "eslint": "^6.8.0",
-    "faker": "^4.1.0",
-    "fs-extra": "^9.0.0",
-    "log-update": "^4.0.0",
+    "chance": "^1.1.7",
+    "cli-cursor": "^3.1.0",
+    "eslint": "^7.14.0",
+    "faker": "^5.1.0",
+    "forever-monitor": "^3.0.3",
+    "fs-extra": "^9.0.1",
     "lorem-ipsum": "^2.0.3",
     "micromatch": "^4.0.2",
-    "mongoose": "^5.9.10",
-    "puppeteer": "^3.0.1",
+    "mongoose": "^5.11.1",
+    "puppeteer": "^5.5.0",
+    "puppeteer-extra": "^3.1.15",
+    "puppeteer-extra-plugin-stealth": "^2.6.3",
     "random-email": "^1.0.3",
+    "random-useragent": "^0.5.0",
     "random-words": "^1.1.1",
-    "uuid": "^8.0.0",
-    "validator": "^13.0.0"
+    "slice-ansi": "^4.0.0",
+    "tree-kill": "^1.2.2",
+    "uuid": "^8.3.1",
+    "validator": "^13.5.1",
+    "wrap-ansi": "^7.0.0"
   }
 }

@@ -10,6 +10,7 @@ class EmailAddressesResult {
         this.invalidFixCount = 0;
         this.unsaveCount = 0;
         this.filterCount = 0;
+        this.skipCount = 0;
         this.trendingSaveList = [];
         this.isValidPage = true;
     }

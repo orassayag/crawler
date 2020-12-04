@@ -4,14 +4,13 @@ https://medium.com/hackernoon/how-to-reduce-incorrect-email-addresses-df3b70cb15
 https://flaviocopes.com/how-to-validate-email-address-javascript/
 Made some cosmetic changers to fit modern javascript.
 */
-
 const validator = require('validator');
 const micromatch = require('micromatch');
 const settings = require('../../settings/settings');
-const { removeAtCharectersList } = require('../../configurations/emailAddressConfigurations.configuration');
+const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
 const { characterUtils, emailAddressUtils, regexUtils, textUtils } = require('../../utils');
 const { domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList, emailAddressDomainEndsList, validOneWordDomainEndsList,
-	emailAddressEndFixTypos, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
+	emailAddressEndFixTypos, commonDomainEndsList, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
 const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
 const { filterEmailAddressFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
 const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
@@ -39,7 +38,9 @@ class EmailAddressValidationService {
 			validateMaximumLocalPartLength: -13,
 			validateMaximumDomainPartLength: -14,
 			validateByRegex: -15,
-			validateByNPMValidator: -16
+			validateByNPMValidator: -16,
+			validateContainDomainPart: -17,
+			validateRepeatCharacters: -18
 		};
 		this.fixFunctionIdsMap = {
 			fixRemoveWhiteSpaces: 1,
@@ -66,7 +67,12 @@ class EmailAddressValidationService {
 			fixMicromatchTyposSpecial: 22,
 			finalRenameEmailAddressManuallyTypo: 23,
 			fixOverallCleanDomainEnd: 24,
-			tryRecover: 25
+			tryRecover: 25,
+			fixLocalPartStartWithKey: 26,
+			fixEndsNotWithALetter: 27,
+			fixEqualCommonDomainEnd: 28,
+			fixFlipDomain: 29,
+			fixAtFirstCharacter: 30
 		};
 		this.ignoreFunctionIds = [1, 3, 11];
 		this.logFunctionIds = [...Object.values(this.validationFunctionIdsMap), ...Object.values(this.fixFunctionIdsMap)].filter(id => this.ignoreFunctionIds.indexOf(id) == -1);
@@ -81,19 +87,15 @@ class EmailAddressValidationService {
 			let validationResult = new ValidationResult(emailAddress);
 			// First Step - First validations.
 			if (!this.firstValidations(validationResult, resolve)) { return; }
-
 			// Second Step - Try to fix the email address.
 			validationResult = this.tryToFix(validationResult);
-
 			// Third Step - More validation, after try to fix the email address (second validations).
 			if (!this.secondValidations(validationResult, resolve)) { return; }
-
 			// Fourth Step - The final validations.
 			if (!this.finalValidations(validationResult, resolve)) { return; }
-
 			// If all good and the email address is valid - Resolve.
 			resolve(validationResult);
-		});
+		}).catch();
 	}
 
 	firstValidations(validationResult, resolve) {
@@ -102,6 +104,9 @@ class EmailAddressValidationService {
 		if (!this.validateResults(validationResult, resolve)) { return false; }
 		// First advance validation it to validate that the domain part is not something like 'angular.js@1.3.9'.
 		validationResult = this.validateVersionDomainPart(validationResult);
+		if (!this.validateResults(validationResult, resolve)) { return false; }
+		// Validate contain invalid domains.
+		validationResult = this.validateContainDomainPart(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
 		// Second advance validation is to check if the email address is a file name,
 		// like 'image0002.gif@gmail.com' or 'dave@image.jpg'.
@@ -114,6 +119,8 @@ class EmailAddressValidationService {
 		// Try to detect typo with the email address and fix it.
 		// Try manually fix - For future cases (manually remove one or more invalid characters).
 		validationResult = this.fixEmailAddressTypo(validationResult);
+		// Fix email address if not ends with a letter (like test@test.com038722).
+		validationResult = this.fixEndsNotWithALetter(validationResult);
 		// Try auto typo fix - Maybe multi typo.
 		validationResult = this.renameEmailAddressAutoTypo(validationResult);
 		// Try fix typo with 'micromatch' NPM package.
@@ -122,6 +129,8 @@ class EmailAddressValidationService {
 		validationResult = this.finalRenameEmailAddressManuallyTypo(validationResult);
 		// Clean rest of the domain end (like test@gmail.comword).
 		validationResult = this.fixOverallCleanDomainEnd(validationResult);
+		// Try fix cases of @ as first characters (like @test.some-domain.co.il).
+		validationResult = this.fixAtFirstCharacter(validationResult);
 		return validationResult;
 	}
 
@@ -132,10 +141,25 @@ class EmailAddressValidationService {
 		// Validate that the domain part not equal only to '.com' and others.
 		validationResult = this.validateDomainAsDomainEnd(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
+		// Validate cases like xxxxxxx@zzzzzz.com.
+		validationResult = this.validateRepeatCharacters(validationResult);
+		if (!this.validateResults(validationResult, resolve)) { return false; }
 		// Validate length after try fixes.
 		validationResult = this.lengthValidations(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
 		return true;
+	}
+
+	validateContainDomainPart(validationResult) {
+		const { domainPart } = this.getEmailAddressData(validationResult);
+		for (let i = 0; i < invalidDomains.length; i++) {
+			if (domainPart.indexOf(invalidDomains[i]) > -1) {
+				validationResult.isValid = false;
+				validationResult.functionIds.push(this.validationFunctionIdsMap['validateContainDomainPart']);
+				return validationResult;
+			}
+		}
+		return validationResult;
 	}
 
 	finalValidations(validationResult, resolve) {
@@ -333,13 +357,35 @@ class EmailAddressValidationService {
 		const originalPart = part;
 		for (let i = 0, length = characterUtils.commonInvalidCharacters.length; i < length; i++) {
 			const character = characterUtils.commonInvalidCharacters[i];
-			part = textUtils.removeFirstCharacterLoop({ text: part, character: character });
-			part = textUtils.removeLastCharacterLoop({ text: part, character: character });
+			part = textUtils.removeFirstCharacterLoop({
+				text: part,
+				character: character
+			});
+			part = textUtils.removeLastCharacterLoop({
+				text: part,
+				character: character
+			});
 			if (part !== originalPart) {
 				return this.fixCommonInvalidPartCharacters(part);
 			}
 		}
 		return part;
+	}
+
+	fixEndsNotWithALetter(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		const character = domainPart.substr(domainPart.length - 1);
+		if (!textUtils.isCharacterALetter(character)) {
+			domainPart = textUtils.removeLastCharacterNotALetterLoop(domainPart);
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixEndsNotWithALetter'
+		});
+		return validationResult;
 	}
 
 	// Remove from the local & domain parts invalid characters from the start and the end.
@@ -485,8 +531,17 @@ class EmailAddressValidationService {
 		const originalDomainPart = domainPart;
 		const domainSplits = textUtils.getSplitDotParts(domainPart);
 		const isLongEnd = domainSplits.length > 2;
-		const number = isLongEnd ? domainSplits.length - 2 : 1;
-		const compareSplitLong = isLongEnd ? `.${domainSplits[domainSplits.length - 1]}` : null;
+		let number = null;
+		let compareSplitLong = null;
+		let longDomainEnd = null;
+		if (isLongEnd) {
+			number = domainSplits.length - 2;
+			compareSplitLong = `.${domainSplits[domainSplits.length - 1]}`;
+			longDomainEnd = textUtils.addStartDot(textUtils.sliceJoinDots(domainSplits, 1));
+		}
+		else {
+			number = 1;
+		}
 		let isEqualToDomainEnd = false;
 		// Check if domain end exists.
 		if (domainSplits.length < 1) {
@@ -505,6 +560,10 @@ class EmailAddressValidationService {
 					domainSplits.splice(-2, 2);
 					domainPart = `${domainSplits.join('.')}${domainEnd}`;
 				}
+				break;
+			}
+			if (isLongEnd && longDomainEnd === key) {
+				domainPart = `${domainSplits[0]}${emailAddressEndFixTypos[key]}`;
 				break;
 			}
 			if (isLongEnd && compareSplitLong === key) {
@@ -536,6 +595,39 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
+	// Fix emails like test@test.comhttps, test@test.co.il.html
+	fixEqualCommonDomainEnd(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		const domainSplits = textUtils.getSplitDotParts(domainPart);
+		// Check if domain end exists.
+		if (domainSplits.length < 1) {
+			return validationResult;
+		}
+		const lastDomainEndPart = textUtils.addStartDot(textUtils.sliceJoinDots(domainSplits, 1));
+		for (let i = 0; i < commonDomainEndsList.length; i++) {
+			const { commonDomainEnd, isAllowDotAfter } = commonDomainEndsList[i];
+			const index = lastDomainEndPart.indexOf(commonDomainEnd);
+			if (index === 0 && lastDomainEndPart.length > commonDomainEnd.length) {
+				if (!isAllowDotAfter) {
+					domainPart = `${domainSplits[0]}${commonDomainEnd}`;
+					break;
+				}
+				else if (lastDomainEndPart[commonDomainEnd.length] !== '.') {
+					domainPart = `${domainSplits[0]}${commonDomainEnd}`;
+					break;
+				}
+			}
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixEqualCommonDomainEnd'
+		});
+		return validationResult;
+	}
+
 	// Replace by domain end clear extra unneeded charecters - Manually.
 	fixCleanDomainEnd(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
@@ -545,7 +637,7 @@ class EmailAddressValidationService {
 		if (domainSplits.length <= 1) {
 			return validationResult;
 		}
-		let domainEnd = textUtils.sliceJoinDots(domainSplits, number);
+		const domainEnd = textUtils.sliceJoinDots(domainSplits, number);
 		for (let i = 0, length = validOneWordDomainEndsList.length; i < length; i++) {
 			const key = validOneWordDomainEndsList[i];
 			const index = domainEnd.indexOf(key);
@@ -581,10 +673,6 @@ class EmailAddressValidationService {
 			const compareItem = compareMode ? compareMode : fullDomainEnd;
 			index = originalDomainPart.indexOf(compareItem);
 			if (index > -1) {
-				/* 				console.log(index);
-								console.log(compareItem);
-								console.log(domainPart.length);
-								console.log('---'); */
 				domainPart = domainPart.substring(0, index + compareItem.length + charsAfterDot);
 				break;
 			}
@@ -600,150 +688,43 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	/* 	// Replace by domain end - Overall manually.
-		fixOverallCleanDomainEnd(validationResult) {
-			let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-			const originalDomainPart = domainPart;
-			let domainSplits = textUtils.getSplitDotParts(domainPart);
-			const originalDomainSplit = domainSplits;
-			if (domainSplits.length <= 1) {
-				return validationResult;
-			}
-			const isLongEnd = domainSplits.length > 2;
-			const number = isLongEnd ? domainSplits.length - 1 : 1;
-			let longDomainIndex = -1;
-			const domainEnd = textUtils.sliceJoinDots(domainSplits, number);
-			const splitOneDomainEnd = isLongEnd ? textUtils.sliceJoinDots(domainSplits, 1) : null;
-			let matchKey = null;
-			let matchIndex = -1;
-			for (let i = 0, length = validDomainEndsList.length; i < length; i++) {
-				const keys = validDomainEndsList[i];
-				let pointer = 0;
-				let index = -1;
-				while (pointer < keys.length) {
-					const key = keys[pointer];
-					index = domainEnd.indexOf(key);
-					if (index > -1) {
-						matchIndex = index;
-						matchKey = key;
-						if (isLongEnd) {
-							longDomainIndex = domainSplits.findIndex(s => s.includes(key));
-						}
-					}
-					if (isLongEnd) {
-						index = splitOneDomainEnd.indexOf(key);
-						if (index > -1) {
-							matchIndex = index;
-							matchKey = key;
-						}
-					}
-					pointer++;
-				}
-				if (matchIndex === 0) {
-					break;
-				}
-			}
-			if (matchKey && matchIndex + matchKey.length + 1 <= domainEnd.length) {
-				domainPart = textUtils.addMiddleDot(longDomainIndex > -1 ? domainSplits.slice(0, longDomainIndex).join('.') : domainSplits[0], matchKey);
-			}
-			else if (splitOneDomainEnd && matchKey && matchIndex + matchKey.length + 1 <= splitOneDomainEnd.length) {
-				domainPart = textUtils.addMiddleDot(domainSplits[0], matchKey);
-			}
-			// Validate the fix.
-			domainSplits = textUtils.getSplitDotParts(domainPart);
-			if (originalDomainSplit.length > domainSplits.length) {
-				if (domainEndsDotsList.includes(`.${originalDomainSplit[originalDomainSplit.length - 1]}`)) {
-					// Cancel the fix.
-					domainPart = originalDomainPart;
-				}
-			}
-			validationResult = this.checkEmailAddressUpdate({
-				validationResult: validationResult,
-				fixed: fixed,
-				localPart: localPart,
-				domainPart: domainPart,
-				functionName: 'fixOverallCleanDomainEnd'
-			});
+	// Fix @ as first character (like @test.some-domain.co.il).
+	fixAtFirstCharacter(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		if (localPart.length) {
 			return validationResult;
-		} */
-
-	/* 	// Replace by domain end - Overall manually.
-		fixOverallCleanDomainEnd(validationResult) {
-			let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-			const originalDomainPart = domainPart;
-			let domainSplits = textUtils.getSplitDotParts(domainPart);
-			const originalDomainSplit = domainSplits;
-			if (domainSplits.length <= 1) {
-				return validationResult;
-			}
-			const isLongEnd = domainSplits.length > 2;
-			const number = isLongEnd ? domainSplits.length - 1 : 1;
-			let longDomainIndex = -1;
-			const domainEnd = textUtils.sliceJoinDots(domainSplits, number);
-			const splitOneDomainEnd = isLongEnd ? textUtils.sliceJoinDots(domainSplits, 1) : null;
-			let matchKey = null;
-			let matchIndex = -1;
-			for (let i = 0, length = validDomainEndsList.length; i < length; i++) {
-				const keys = validDomainEndsList[i];
-				let pointer = 0;
-				let index = -1;
-				while (pointer < keys.length) {
-					const key = keys[pointer];
-					index = domainEnd.indexOf(key);
-					if (index > -1) {
-						matchIndex = index;
-						matchKey = key;
-						if (isLongEnd) {
-							longDomainIndex = domainSplits.findIndex(s => s.includes(key));
-						}
-					}
-					if (isLongEnd) {
-						index = splitOneDomainEnd.indexOf(key);
-						if (index > -1) {
-							matchIndex = index;
-							matchKey = key;
-						}
-					}
-					pointer++;
-				}
-				if (matchIndex === 0) {
-					break;
-				}
-			}
-			if (matchKey && matchIndex + matchKey.length + 1 <= domainEnd.length) {
-				domainPart = textUtils.addMiddleDot(longDomainIndex > -1 ? domainSplits.slice(0, longDomainIndex).join('.') : domainSplits[0], matchKey);
-			}
-			else if (splitOneDomainEnd && matchKey && matchIndex + matchKey.length + 1 <= splitOneDomainEnd.length) {
-				domainPart = textUtils.addMiddleDot(domainSplits[0], matchKey);
-			}
-			// Validate the fix.
-			domainSplits = textUtils.getSplitDotParts(domainPart);
-			if (originalDomainSplit.length > domainSplits.length) {
-				if (domainEndsDotsList.includes(`.${originalDomainSplit[originalDomainSplit.length - 1]}`)) {
-					// Cancel the fix.
-					domainPart = originalDomainPart;
-				}
-			}
-			validationResult = this.checkEmailAddressUpdate({
-				validationResult: validationResult,
-				fixed: fixed,
-				localPart: localPart,
-				domainPart: domainPart,
-				functionName: 'fixOverallCleanDomainEnd'
-			});
+		}
+		const domainSplits = textUtils.getSplitDotParts(domainPart);
+		if (domainSplits.length < 2) {
 			return validationResult;
-		} */
+		}
+		localPart = domainSplits[0];
+		domainSplits.splice(0, 1);
+		domainPart = domainSplits.join('.');
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixAtFirstCharacter'
+		});
+		return validationResult;
+	}
 
 	fixEmailAddressTypo(validationResult) {
 		validationResult = this.fixRemoveWhiteSpaces(validationResult);
+		// Fix cases like: test@test.007@gmail.com => test@gmail.com.
 		validationResult = this.fixMultiAtCharacters(validationResult);
 		validationResult = this.fixDomainLowercase(validationResult);
 		validationResult = this.fixDots(validationResult);
 		validationResult = this.fixEdgeCases(validationResult);
 		validationResult = this.fixCommonInvalidCharacters(validationResult);
 		validationResult = this.fixCommonDomain(validationResult);
+		validationResult = this.fixFlipDomain(validationResult);
 		validationResult = this.fixLocalPartStartWithCommonDomain(validationResult);
+		validationResult = this.fixLocalPartStartWithKey(validationResult);
 		validationResult = this.fixEqualDomainEnd(validationResult);
+		validationResult = this.fixEqualCommonDomainEnd(validationResult);
 		validationResult = this.fixCleanDomainEnd(validationResult);
 		validationResult = this.fixCleanDomainInvalidCharacters(validationResult);
 		validationResult = this.fixCleanLocalInvalidCharacters(validationResult);
@@ -906,12 +887,39 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
+	fixFlipDomain(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		for (let i = 0, length = commonEmailAddressDomainsList.length; i < length; i++) {
+			const { flipDomain } = commonEmailAddressDomainsList[i];
+			if (localPart === flipDomain) {
+				const updatedLocalPart = textUtils.flipDotParts(localPart);
+				const updatedDomainPart = textUtils.flipDotParts(domainPart);
+				localPart = updatedDomainPart;
+				domainPart = updatedLocalPart;
+				break;
+			}
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixFlipDomain'
+		});
+		return validationResult;
+	}
+
 	fixLocalPartStartWithCommonDomain(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		for (let i = 0, length = commonEmailAddressDomainsList.length; i < length; i++) {
 			const { domain } = commonEmailAddressDomainsList[i];
-			while (localPart.indexOf(domain) === 0 && localPart.length > domain.length) {
-				localPart = localPart.replace(domain, '');
+			for (let y = 0; y < 20; y++) {
+				if (localPart.indexOf(domain) === 0 && localPart.length > domain.length) {
+					localPart = localPart.replace(domain, '');
+				}
+				else {
+					break;
+				}
 			}
 		}
 		validationResult = this.checkEmailAddressUpdate({
@@ -920,6 +928,25 @@ class EmailAddressValidationService {
 			localPart: localPart,
 			domainPart: domainPart,
 			functionName: 'fixLocalPartStartWithCommonDomain'
+		});
+		return validationResult;
+	}
+
+	fixLocalPartStartWithKey(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		for (let i = 0, length = removeStartKeysList.length; i < length; i++) {
+			const key = removeStartKeysList[i];
+			if (localPart.indexOf(key) === 0) {
+				localPart = localPart.replace(key, '');
+				break;
+			}
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixLocalPartStartWithKey'
 		});
 		return validationResult;
 	}
@@ -981,7 +1008,7 @@ class EmailAddressValidationService {
 	}
 
 	validateDomainAsDomainEnd(validationResult) {
-		let { domainPart } = this.getEmailAddressData(validationResult);
+		const { domainPart } = this.getEmailAddressData(validationResult);
 		for (let i = 0, length = domainEndsList.length; i < length; i++) {
 			if (domainPart === domainEndsList[i]) {
 				validationResult.isValid = false;
@@ -992,32 +1019,54 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	validateExistence(fixed) {
-		if (!fixed) {
-			return false;
+	validatePartRepeat(partSplits) {
+		let isRepeat = null;
+		for (let i = 0; i < partSplits.length; i++) {
+			const isCharactersEqual = textUtils.isCharactersEqual(partSplits[i]);
+			if (isRepeat === null && isCharactersEqual) {
+				isRepeat = isCharactersEqual;
+			}
+			else if (!isCharactersEqual) {
+				isRepeat = isCharactersEqual;
+			}
 		}
-		return true;
+		return isRepeat;
+	}
+
+	// Validate cases like yyyyyyyy@gggg.ggg.ggg | 222@333.com | s@s.com.
+	validateRepeatCharacters(validationResult) {
+		const { localPart, domainPart } = this.getEmailAddressData(validationResult);
+		const domainSplits = textUtils.getSplitDotParts(domainPart);
+		// Check if domain end exists.
+		if (domainSplits.length < 1) {
+			return validationResult;
+		}
+		domainSplits.splice(-1, 1);
+		const localSplits = textUtils.getSplitDotParts(localPart);
+		const isLocalRepeat = this.validatePartRepeat(localSplits);
+		const isDomainRepeat = this.validatePartRepeat(domainSplits);
+		if (isLocalRepeat && isDomainRepeat) {
+			validationResult.isValid = false;
+			validationResult.functionIds.push(this.validationFunctionIdsMap['validateRepeatCharacters']);
+			return validationResult;
+		}
+		return validationResult;
+	}
+
+	validateExistence(fixed) {
+		return fixed !== null && fixed !== undefined;
 	}
 
 	validateAtCharacterExistence(fixed) {
-		if (fixed.indexOf('@') === -1) {
-			return false;
-		}
-		return true;
+		return fixed.indexOf('@') !== -1;
 	}
 
 	validateDotCharacterExistence(fixed) {
-		if (fixed.indexOf('.') === -1) {
-			return false;
-		}
-		return true;
+		return fixed.indexOf('.') !== -1;
 	}
 
 	validateMinimumTotalLength(fixed) {
-		if (fixed.length < this.emailAddressData.minimumEmailAddressCharactersCount) {
-			return false;
-		}
-		return true;
+		return fixed.length > this.emailAddressData.minimumEmailAddressCharactersCount;
 	}
 
 	validateMinimumLocalPartLength(localPart) {
@@ -1058,7 +1107,7 @@ class EmailAddressValidationService {
 	}
 
 	validateMaximumCommonDomainLocalPartLength(validationResult) {
-		let { localPart, domainPart } = this.getEmailAddressData(validationResult);
+		const { localPart, domainPart } = this.getEmailAddressData(validationResult);
 		const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
 		if (!isCommonDomain) {
 			return validationResult;
@@ -1115,15 +1164,68 @@ class EmailAddressValidationService {
 
 	validateVersionDomainPart(validationResult) {
 		let { domainPart } = this.getEmailAddressData(validationResult);
-		domainPart = domainPart.replace(regexUtils.cleanAllAlphaRegex, '');
-		const isScriptVersion = regexUtils.findVersionRegex.test(domainPart);
-		if (isScriptVersion) {
+		const isPackageName = regexUtils.createRegex(regexUtils.findPackageNameRegex).test(domainPart);
+		if (isPackageName) {
 			validationResult.isValid = false;
 			validationResult.functionIds.push(this.validationFunctionIdsMap['validateVersionDomainPart']);
 		}
 		return validationResult;
 	}
+
+	// Not related to the validation process.
+	skipDomains(data) {
+		const { emailAddressesList, maximumUniqueDomainCount } = data;
+		if (!maximumUniqueDomainCount || emailAddressesList.length <= maximumUniqueDomainCount) {
+			return {
+				skipCount: 0,
+				emailAddressesList: emailAddressesList
+			};
+		}
+		let skipCount = 0;
+		const emailAddressesGroupsList = [];
+		const updatedEmailAddressesList = [];
+		for (let i = 0; i < emailAddressesList.length; i++) {
+			const emailAddress = emailAddressesList[i];
+			const splitResult = emailAddressUtils.getEmailAddressParts(emailAddress);
+			if (!splitResult || splitResult.length < 2) {
+				continue;
+			}
+			const domainPart = textUtils.toLowerCaseTrim(splitResult[1]);
+			if (!domainPart) {
+				continue;
+			}
+			// Check if the domain is common domain. Not relevant is true.
+			const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+			if (isCommonDomain) {
+				updatedEmailAddressesList.push(emailAddress);
+				continue;
+			}
+			const groupIndex = emailAddressesGroupsList.findIndex(d => d.domainPart === domainPart);
+			// Insert / update the list.
+			if (groupIndex > -1) {
+				emailAddressesGroupsList[groupIndex].emailAddressesList.push(emailAddress);
+			}
+			else {
+				emailAddressesGroupsList.push({
+					domainPart: domainPart,
+					emailAddressesList: [emailAddress]
+				});
+			}
+		}
+		for (let i = 0; i < emailAddressesGroupsList.length; i++) {
+			const group = emailAddressesGroupsList[i];
+			let emailAddressesGroup = group.emailAddressesList;
+			if (emailAddressesGroup.length >= maximumUniqueDomainCount) {
+				skipCount += emailAddressesGroup.length - maximumUniqueDomainCount;
+				emailAddressesGroup = textUtils.getRandomUniqueKeysFromArray(group.emailAddressesList, maximumUniqueDomainCount);
+			}
+			updatedEmailAddressesList.push(...emailAddressesGroup);
+		}
+		return {
+			skipCount: skipCount,
+			emailAddressesList: updatedEmailAddressesList
+		};
+	}
 }
 
-const emailAddressValidationService = new EmailAddressValidationService();
-module.exports = emailAddressValidationService;
+module.exports = new EmailAddressValidationService();

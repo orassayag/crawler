@@ -1,6 +1,6 @@
 /* cSpell:disable */
 const filterLinkFileExtensions = [
-	// ===IMAGES=== //
+	// ===IMAGE=== //
 	'.ai',
 	'.bmp',
 	'.fav',
@@ -14,7 +14,7 @@ const filterLinkFileExtensions = [
 	'.svg',
 	'.tif',
 	'.tiff',
-	// ===DOCUMNETS=== //
+	// ===DOCUMNET=== //
 	'.doc',
 	'.docx',
 	'.log',

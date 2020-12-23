@@ -1,4 +1,4 @@
-class TestsData {
+class TestData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -24,4 +24,4 @@ class TestsData {
 	}
 }
 
-module.exports = TestsData;
+module.exports = TestData;

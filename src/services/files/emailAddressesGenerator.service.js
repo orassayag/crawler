@@ -6,8 +6,8 @@ const LoremIpsum = require('lorem-ipsum').LoremIpsum;
 const chance = new Chance();
 const settings = require('../../settings/settings');
 const { characterUtils, emailAddressUtils, textUtils, validationUtils } = require('../../utils');
-const { ApplicationData, CountsLimitsData, EmailAddressData, MongoDatabaseData, TestsData } = require('../../core/models/application');
-const { PartType } = require('../../core/enums/files/emailAddress.enum');
+const { ApplicationData, CountLimitData, EmailAddressData, MongoDatabaseData, TestData } = require('../../core/models/application');
+const { PartType } = require('../../core/enums');
 const crawlEmailAddressService = require('./crawlEmailAddress.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
 const typosGeneratorService = require('./typosGenerator.service');
@@ -32,14 +32,14 @@ class EmailAddressesGeneratorService {
         this.emailAddressEndFixTyposKeys = Object.keys(emailAddressEndFixTypos);
         // ===APPLICATION DATA=== //
         this.applicationData = null;
-        // ===COUNTS & LIMITS DATA=== //
-        this.countsLimitsData = null;
+        // ===COUNT & LIMIT DATA=== //
+        this.countLimitData = null;
         // ===MONGO DATABASE DATA=== //
         this.mongoDatabaseData = null;
         // ===EMAIL ADDRESS DATA=== //
         this.emailAddressData = null;
-        // ===TESTS DATA=== //
-        this.testsData = null;
+        // ===TEST DATA=== //
+        this.testData = null;
     }
 
     async initiate() {
@@ -51,19 +51,19 @@ class EmailAddressesGeneratorService {
             method: null,
             restartsCount: 0
         });
-        // ===COUNTS & LIMITS DATA=== //
-        this.countsLimitsData = new CountsLimitsData(settings);
+        // ===COUNT & LIMIT DATA=== //
+        this.countLimitData = new CountLimitData(settings);
         // ===MONGO DATABASE DATA=== //
         this.mongoDatabaseData = new MongoDatabaseData(settings);
         // ===EMAIL ADDRESS DATA=== //
         this.emailAddressData = new EmailAddressData(settings);
-        // ===TESTS DATA=== //
-        this.testsData = new TestsData(settings);
+        // ===TEST DATA=== //
+        this.testData = new TestData(settings);
         // Initiate the email address domain details lists.
         crawlEmailAddressService.initiateCommonEmailAddressDomains();
         // Initiate the Mongo database service.
         await mongoDatabaseService.initiate({
-            countsLimitsData: this.countsLimitsData,
+            countLimitData: this.countLimitData,
             mongoDatabaseData: this.mongoDatabaseData
         });
     }
@@ -74,7 +74,7 @@ class EmailAddressesGeneratorService {
     }
 
     async getRandomEmailAddresses() {
-        const count = textUtils.getRandomNumber(this.testsData.minimumCreateRandomEmailAddressesCount, this.testsData.maximumCreateRandomEmailAddressesCount);
+        const count = textUtils.getRandomNumber(this.testData.minimumCreateRandomEmailAddressesCount, this.testData.maximumCreateRandomEmailAddressesCount);
         const emailAddresses = [];
         for (let i = 0; i < count; i++) {
             const emailAddress = await this.createEmailAddress();
@@ -106,7 +106,7 @@ class EmailAddressesGeneratorService {
         // Get random typos and test them.
         const typos = await typosGeneratorService.generateTyposAsync(domainPart);
         if (!validationUtils.isExists(typos)) {
-            throw new Error('No typos generated (1000012)');
+            throw new Error('No typos generated (1000010)');
         }
         if (!localPart) {
             localPart = 'test';
@@ -195,9 +195,9 @@ class EmailAddressesGeneratorService {
 
     createSimpleValidEmailAddress() {
         let emailAddress = '';
-        emailAddress = this.getRandomString(emailAddress, this.testsData.maximumLocalTestSimpleCharactersCount);
+        emailAddress = this.getRandomString(emailAddress, this.testData.maximumLocalTestSimpleCharactersCount);
         emailAddress = `${emailAddress}@`;
-        emailAddress = this.getRandomString(emailAddress, this.testsData.maximumDomainTestSimpleCharactersCount);
+        emailAddress = this.getRandomString(emailAddress, this.testData.maximumDomainTestSimpleCharactersCount);
         emailAddress = `${emailAddress}.com`;
         return this.mayMisspellEmailAddress(emailAddress);
     }
@@ -342,7 +342,7 @@ class EmailAddressesGeneratorService {
         const isVerySpecialCharacters = textUtils.getRandomBoolean();
         const randomWordsSettings = {
             exactly: 1,
-            wordsPerString: textUtils.getRandomNumber(this.testsData.minimumTestRandomWordsCount, this.testsData.maximumTestRandomWordsCount),
+            wordsPerString: textUtils.getRandomNumber(this.testData.minimumTestRandomWordsCount, this.testData.maximumTestRandomWordsCount),
             separator: isSeparator ? textUtils.getRandomKeyFromArray(characterUtils.separatorsCharacters) : '',
             formatter: isFormatter ? textUtils.getRandomBoolean() ? this.formatter1 : this.formatter2 : null
         };
@@ -402,7 +402,7 @@ class EmailAddressesGeneratorService {
     }
 
     replaceRandomPositions(part, list) {
-        const count = textUtils.getRandomNumber(this.testsData.minimumReplaceRandomPositionsCount, this.testsData.maximumReplaceRandomPositionsCount);
+        const count = textUtils.getRandomNumber(this.testData.minimumReplaceRandomPositionsCount, this.testData.maximumReplaceRandomPositionsCount);
         for (let i = 0; i < count; i++) {
             const charecter = textUtils.getRandomKeyFromArray(list);
             const index = textUtils.getRandomNumber(0, part.length);

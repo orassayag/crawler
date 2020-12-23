@@ -1,5 +1,5 @@
 const { emailAddressUtils, validationUtils, textUtils } = require('../../utils');
-const { SourceType } = require('../../core/enums/files/search.enum');
+const { GoalType, LogStatus, SaveStatus, SourceType } = require('../../core/enums');
 let { commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
 const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
 const { filterEmailAddressDomains, filterEmailAddresses } = require('../../configurations/filterEmailAddress.configuration');
@@ -8,8 +8,6 @@ const mongoDatabaseService = require('./mongoDatabase.service');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const logService = require('./log.service');
 const sourceService = require('./source.service');
-const { LogStatus, SaveStatus } = require('../../core/enums/files/emailAddress.enum');
-const { GoalType } = require('../../core/enums/files/system.enum');
 
 class CrawlEmailAddressService {
 
@@ -17,14 +15,14 @@ class CrawlEmailAddressService {
 		this.totalSaveCount = 0;
 		this.goalValue = 0;
 		this.isSkipLogic = null;
-		this.countsLimitsData = null;
+		this.countLimitData = null;
 	}
 
 	initiate(data) {
-		const { applicationData, countsLimitsData } = data;
+		const { applicationData, countLimitData } = data;
 		this.goalValue = applicationData.goalType === GoalType.EMAIL_ADDRESSES ? applicationData.goalValue : null;
 		this.isSkipLogic = applicationData.isSkipLogic;
-		this.countsLimitsData = countsLimitsData;
+		this.countLimitData = countLimitData;
 		// Initiate the common email address domains lists.
 		this.initiateCommonEmailAddressDomains();
 	}
@@ -32,13 +30,15 @@ class CrawlEmailAddressService {
 	initiateCommonEmailAddressDomains() {
 		// Set the commonEmailAddressDomains list.
 		for (let i = 0, length = emailAddressDomainsList.length; i < length; i++) {
-			const { domain, domainName, micromatchName, isCommonDomain } = emailAddressDomainsList[i];
+			const { domain, domainName, micromatchName, ignoreList, isCommonDomain } = emailAddressDomainsList[i];
 			if (isCommonDomain) {
 				commonEmailAddressDomainsList.push(new CommonEmailAddressDomain({
 					domain: domain,
 					flipDomain: textUtils.flipDotParts(domain),
 					domainName: domainName,
-					micromatchName: micromatchName
+					firstDotSplit: textUtils.getSplitDotParts(domain)[0],
+					micromatchName: micromatchName,
+					ignoreList: ignoreList
 				}));
 			}
 		}
@@ -56,7 +56,7 @@ class CrawlEmailAddressService {
 			const abortTimeout = setTimeout(() => {
 				resolve(null);
 				return;
-			}, this.countsLimitsData.millisecondsTimeoutSourceRequestCount);
+			}, this.countLimitData.millisecondsTimeoutSourceRequestCount);
 			const { linkData, totalSaveCount } = data;
 			this.totalSaveCount = totalSaveCount;
 			let emailAddressesResult = new EmailAddressesResult();
@@ -95,7 +95,7 @@ class CrawlEmailAddressService {
 				// Skip email addresses with domain that repeats itself too many times.
 				const skipResults = emailAddressValidationService.skipDomains({
 					emailAddressesList: emailAddressesList,
-					maximumUniqueDomainCount: this.countsLimitsData.maximumUniqueDomainCount
+					maximumUniqueDomainCount: this.countLimitData.maximumUniqueDomainCount
 				});
 				emailAddressesResult.skipCount = skipResults.skipCount;
 				emailAddressesList = skipResults.emailAddressesList;
@@ -199,7 +199,7 @@ class CrawlEmailAddressService {
 		if (emailAddressesResult.trendingSaveList.includes(emailAddress)) {
 			return emailAddressesResult;
 		}
-		if (emailAddressesResult.trendingSaveList.length < this.countsLimitsData.maximumTrendingSaveCount) {
+		if (emailAddressesResult.trendingSaveList.length < this.countLimitData.maximumTrendingSaveCount) {
 			emailAddressesResult.trendingSaveList.push(isValidFix ? `Fix: ${emailAddress}` : emailAddress);
 		}
 		return emailAddressesResult;

@@ -1,28 +1,15 @@
 const enumUtils = require('../enum.utils');
 
-const LogStatus = enumUtils.createEnum([
-    ['FIX', 'fix'],
-    ['VALID', 'valid'],
-    ['INVALID', 'invalid'],
-    ['UNSAVE', 'unsave']
-]);
-
-const SaveStatus = enumUtils.createEnum([
-    ['SAVE', 'save'],
-    ['EXISTS', 'exists'],
-    ['ERROR', 'error']
-]);
-
 const PartType = enumUtils.createEnum([
     ['LOCAL', 'local'],
     ['DOMAIN', 'domain']
 ]);
 
-const TestType = enumUtils.createEnum([
+const LogStatus = enumUtils.createEnum([
+    ['FIX', 'fix'],
     ['VALID', 'valid'],
     ['INVALID', 'invalid'],
-    ['RANDOM', 'random'],
-    ['UPDATES', 'updates']
+    ['UNSAVE', 'unsave']
 ]);
 
 const MicromatchAction = enumUtils.createEnum([
@@ -32,4 +19,17 @@ const MicromatchAction = enumUtils.createEnum([
     ['SPECIAL', 'special']
 ]);
 
-module.exports = { LogStatus, SaveStatus, PartType, TestType, MicromatchAction };
+const SaveStatus = enumUtils.createEnum([
+    ['SAVE', 'save'],
+    ['EXISTS', 'exists'],
+    ['ERROR', 'error']
+]);
+
+const TestType = enumUtils.createEnum([
+    ['VALID', 'valid'],
+    ['INVALID', 'invalid'],
+    ['RANDOM', 'random'],
+    ['UPDATES', 'updates']
+]);
+
+module.exports = { PartType, LogStatus, MicromatchAction, SaveStatus, TestType };

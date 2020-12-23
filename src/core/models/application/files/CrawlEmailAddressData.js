@@ -1,4 +1,4 @@
-class CrawlEmailAddressesData {
+class CrawlEmailAddressData {
 
 	constructor(activeSearchEngineNames) {
 		this.saveCount = 0;
@@ -32,4 +32,4 @@ class CrawlEmailAddressesData {
 	}
 }
 
-module.exports = CrawlEmailAddressesData;
+module.exports = CrawlEmailAddressData;

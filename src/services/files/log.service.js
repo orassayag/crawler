@@ -1,9 +1,5 @@
 const { fileUtils, pathUtils, logUtils, mongoDatabaseUtils, textUtils, timeUtils, validationUtils } = require('../../utils');
-const { Color } = require('../../core/enums/files/text.enum');
-const { LogStatus } = require('../../core/enums/files/emailAddress.enum');
-const { StatusIcon } = require('../../core/enums/files/text.enum');
-const { Placeholder } = require('../../core/enums/files/placeholder.enum');
-const { Step } = require('../../core/enums/files/system.enum');
+const { Color, LogStatus, Method, Placeholder, StatusIcon } = require('../../core/enums');
 const searchService = require('./search.service');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const puppeteerService = require('./puppeteer.service');
@@ -12,13 +8,13 @@ const { invalidEmailAddresses } = require('../../configurations/emailAddressesLi
 class LogService {
 
 	constructor() {
-		this.logsData = null;
+		this.logData = null;
 		this.applicationData = null;
 		this.mongoDatabaseData = null;
 		this.searchProcessData = null;
-		this.countsLimitsData = null;
-		this.pathsData = null;
-		// ===PATHS=== //
+		this.countLimitData = null;
+		this.pathData = null;
+		// ===PATH=== //
 		this.baseSessionPath = null;
 		this.sessionDirectoryPath = null;
 		this.emailAddressesPath = null;
@@ -30,30 +26,49 @@ class LogService {
 		this.frames = ['-', '\\', '|', '/'];
 		this.i = 0;
 		this.y = 0;
+		this.isLog = true;
 	}
 
 	async initiate(data) {
-		const { logsData, applicationData, mongoDatabaseData, countsLimitsData, pathsData } = data;
-		this.logsData = logsData;
+		const { logData, applicationData, mongoDatabaseData, countLimitData, pathData } = data;
+		this.logData = logData;
 		this.applicationData = applicationData;
 		this.mongoDatabaseData = mongoDatabaseData;
-		this.countsLimitsData = countsLimitsData;
-		this.pathsData = pathsData;
+		this.countLimitData = countLimitData;
+		this.pathData = pathData;
+		this.isLogs = (this.logData.isLogValidEmailAddresses || this.logData.isLogFixEmailAddresses ||
+			this.logData.isLogInvalidEmailAddresses || this.logData.isLogUnsaveEmailAddresses || this.logData.isLogCrawlLinks ||
+			this.logData.isLogCrawlErrorLinks);
 		await this.initiateDirectories();
 	}
 
 	async initiateDirectories() {
-		// ===PATHS=== //
+		if (!this.isLogs) {
+			return;
+		}
+		// ===PATH=== //
 		await this.createModeDirectory();
 		await this.clearLogFiles();
 		await this.createSessionDirectory();
 		// If you change the "email_addresses_" file name, change it also in Sender project.
-		this.emailAddressesPath = this.createFilePath(`email_addresses_${Placeholder.DATE}`);
-		this.fixedEmailAddressesPath = this.createFilePath(`fixed_email_addresses_${Placeholder.DATE}`);
-		this.invalidEmailAddressesPath = this.createFilePath(`invalid_email_addresses_${Placeholder.DATE}`);
-		this.unsaveEmailAddressesPath = this.createFilePath(`unsave_email_addresses_${Placeholder.DATE}`);
-		this.crawlLinksPath = this.createFilePath(`crawl_links_${Placeholder.DATE}`);
-		this.crawlErrorLinksPath = this.createFilePath(`crawl_error_links_${Placeholder.DATE}`);
+		if (this.logData.isLogValidEmailAddresses) {
+			this.emailAddressesPath = this.createFilePath(`email_addresses_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogFixEmailAddresses) {
+			this.fixedEmailAddressesPath = this.createFilePath(`fixed_email_addresses_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogInvalidEmailAddresses) {
+			this.invalidEmailAddressesPath = this.createFilePath(`invalid_email_addresses_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogUnsaveEmailAddresses) {
+			this.unsaveEmailAddressesPath = this.createFilePath(`unsave_email_addresses_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogCrawlLinks) {
+			this.crawlLinksPath = this.createFilePath(`crawl_links_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogCrawlErrorLinks) {
+			this.crawlErrorLinksPath = this.createFilePath(`crawl_error_links_${Placeholder.DATE}`);
+		}
 	}
 
 	getNextDirectoryIndex() {
@@ -66,7 +81,7 @@ class LogService {
 
 	async createModeDirectory() {
 		this.baseSessionPath = pathUtils.getJoinPath({
-			targetPath: this.pathsData.distPath,
+			targetPath: this.pathData.distPath,
 			targetName: textUtils.toLowerCase(this.applicationData.mode)
 		});
 		await fileUtils.createDirectory(this.baseSessionPath);
@@ -83,26 +98,26 @@ class LogService {
 	createFilePath(fileName) {
 		const isDate = fileName.indexOf(Placeholder.DATE) > -1;
 		return pathUtils.getJoinPath({
-			targetPath: this.sessionDirectoryPath ? this.sessionDirectoryPath : this.pathsData.distPath,
+			targetPath: this.sessionDirectoryPath ? this.sessionDirectoryPath : this.pathData.distPath,
 			targetName: `${isDate ? fileName.replace(Placeholder.DATE, this.applicationData.logDateTime) : fileName}.txt`
 		});
 	}
 
 	async clearLogFiles() {
-		if (this.logsData.isEmptyDistDirectory) {
+		if (this.logData.isEmptyDistDirectory) {
 			await fileUtils.emptyDirectory(this.baseSessionPath);
 		}
 	}
 
-	getSteps() {
-		return [this.applicationData.isLinksStep ? Step.LINKS : '',
-		this.applicationData.isCrawlStep ? Step.CRAWL : ''].join(',');
+	getMethods() {
+		return [this.applicationData.isLinksMethodActive ? Method.LINKS : '',
+		this.applicationData.isCrawlMethodActive ? Method.CRAWL : ''].join(',');
 	}
 
 	logStatus(applicationData) {
 		const time = `Time: ${applicationData.time}`;
-		const processIndex = `processIndex: ${applicationData.processIndex}/${this.countsLimitsData.maximumSearchProcessesCount - 1}`;
-		const pageIndex = `pageIndex: ${applicationData.pageIndex}/${this.countsLimitsData.maximumSearchEnginePagesPerProcessCount - 1}`;
+		const processIndex = `processIndex: ${applicationData.processIndex}/${this.countLimitData.maximumSearchProcessesCount - 1}`;
+		const pageIndex = `pageIndex: ${applicationData.pageIndex}/${this.countLimitData.maximumSearchEnginePagesPerProcessCount - 1}`;
 		const pageLinksIndex = `pageLinksIndex: ${applicationData.pageLinksIndex}/${applicationData.pageLinksCount - 1}`;
 		logUtils.log(`${time} | ${processIndex} | ${pageIndex} | ${pageLinksIndex}`);
 	}
@@ -115,23 +130,23 @@ class LogService {
 		this.applicationData = applicationData;
 		this.searchProcessData = searchProcessData;
 		const time = `${this.applicationData.time} [${this.frames[this.i = ++this.i % this.frames.length]}]`;
-		const steps = textUtils.removeLastCharacterLoop({ text: this.getSteps(), character: ',' });
+		const methods = textUtils.removeLastCharacterLoop({ text: this.getMethods(), character: ',' });
 		const goal = textUtils.replaceCharacter(this.applicationData.goalType, '_', ' ');
 		const progress = textUtils.getNumberOfNumber({ number1: this.applicationData.progressValue, number2: this.applicationData.goalValue });
 		const percentage = textUtils.calculatePercentageDisplay({ partialValue: this.applicationData.progressValue, totalValue: this.applicationData.goalValue });
-		const process = textUtils.getNumberOfNumber({ number1: this.applicationData.processIndex + 1, number2: this.countsLimitsData.maximumSearchProcessesCount });
-		const crawlLinks = `${StatusIcon.V}  ${this.applicationData.crawlLinksData.crawlCount}`;
-		const saveEmailAddress = `${StatusIcon.V}  ${textUtils.getNumberWithCommas(this.applicationData.crawlEmailAddressesData.saveCount)}`;
-		const invalidEmailAddress = `${StatusIcon.X}  ${this.applicationData.crawlEmailAddressesData.invalidCount}`;
-		const pageIndex = textUtils.getNumberOfNumber({ number1: this.applicationData.pageIndex + 1, number2: this.countsLimitsData.maximumSearchEnginePagesPerProcessCount });
+		const process = textUtils.getNumberOfNumber({ number1: this.applicationData.processIndex + 1, number2: this.countLimitData.maximumSearchProcessesCount });
+		const crawlLinks = `${StatusIcon.V}  ${this.applicationData.crawlLinkData.crawlCount}`;
+		const saveEmailAddress = `${StatusIcon.V}  ${textUtils.getNumberWithCommas(this.applicationData.crawlEmailAddressData.saveCount)}`;
+		const invalidEmailAddress = `${StatusIcon.X}  ${this.applicationData.crawlEmailAddressData.invalidCount}`;
+		const pageIndex = textUtils.getNumberOfNumber({ number1: this.applicationData.pageIndex + 1, number2: this.countLimitData.maximumSearchEnginePagesPerProcessCount });
 		const link = this.applicationData.pageLinksCount ?
 			textUtils.getNumberOfNumber({ number1: this.applicationData.pageLinksIndex + 1, number2: this.applicationData.pageLinksCount }) : '(-)';
-		const trending = textUtils.cutText({ text: this.applicationData.trendingSaveList.join(' | '), count: this.countsLimitsData.maximumConsoleLineCharacters });
-		const page = textUtils.cutText({ text: this.searchProcessData.pageLink, count: this.countsLimitsData.maximumConsoleLineCharacters });
+		const trending = textUtils.cutText({ text: this.applicationData.trendingSaveList.join(' | '), count: this.countLimitData.maximumConsoleLineCharacters });
+		const page = textUtils.cutText({ text: this.searchProcessData.pageLink, count: this.countLimitData.maximumConsoleLineCharacters });
 		const engine = textUtils.upperCaseFirstLetter(this.searchProcessData.searchEngine.name, 0);
-		const userAgent = this.searchProcessData.pageUserAgent ? textUtils.cutText({ text: this.searchProcessData.pageUserAgent, count: this.countsLimitsData.maximumConsoleLineCharacters }) : '';
-		const search = textUtils.cutText({ text: this.searchProcessData.searchEngineLinkTemplate, count: this.countsLimitsData.maximumConsoleLineCharacters });
-		const statistices = textUtils.getObjectKeyValues(this.applicationData.crawlEmailAddressesData.statistics);
+		const userAgent = this.searchProcessData.pageUserAgent ? textUtils.cutText({ text: this.searchProcessData.pageUserAgent, count: this.countLimitData.maximumConsoleLineCharacters }) : '';
+		const search = textUtils.cutText({ text: this.searchProcessData.searchEngineLinkTemplate, count: this.countLimitData.maximumConsoleLineCharacters });
+		const statistices = textUtils.getObjectKeyValues(this.applicationData.crawlEmailAddressData.statistics);
 		logUtils.logProgress({
 			titlesList: ['SETTINGS', 'GENERAL', 'PROCESS', 'LINK', 'EMAIL ADDRESS', `PAGE (${link})`,
 				'USER AGENT', `SEARCH (${pageIndex})`, 'TRENDING', 'STATISTICS'],
@@ -139,11 +154,11 @@ class LogService {
 			Color.BLUE, Color.BLUE, Color.BLUE, Color.BLUE, Color.BLUE],
 			keysLists: [{
 				'Mode': this.applicationData.mode,
-				'Method': this.applicationData.method,
+				'Plan': this.applicationData.plan,
 				'Database': this.mongoDatabaseData.mongoDatabaseModeName,
 				'Drop': this.mongoDatabaseData.isDropCollection,
 				'Long': this.applicationData.isLongRun,
-				'Steps': steps
+				'Active Methods': methods
 			}, {
 				'Time': time,
 				'Goal': goal,
@@ -157,22 +172,22 @@ class LogService {
 				'Key': this.searchProcessData.displaySearchKey
 			}, {
 				'Crawl': crawlLinks,
-				'Total': this.applicationData.crawlLinksData.totalCount,
-				'Filter': this.applicationData.crawlLinksData.filterCount,
-				'Error': this.applicationData.crawlLinksData.errorCount,
+				'Total': this.applicationData.crawlLinkData.totalCount,
+				'Filter': this.applicationData.crawlLinkData.filterCount,
+				'Error': this.applicationData.crawlLinkData.errorCount,
 				'Error In A Row': puppeteerService.errorInARowCounter,
 				'Current': link
 			}, {
 				'Save': saveEmailAddress,
-				'Total': this.applicationData.crawlEmailAddressesData.totalCount,
-				'Database': this.applicationData.crawlEmailAddressesData.databaseCount,
-				'Exists': this.applicationData.crawlEmailAddressesData.existsCount,
+				'Total': this.applicationData.crawlEmailAddressData.totalCount,
+				'Database': this.applicationData.crawlEmailAddressData.databaseCount,
+				'Exists': this.applicationData.crawlEmailAddressData.existsCount,
 				'Invalid': invalidEmailAddress,
-				'Valid Fix': this.applicationData.crawlEmailAddressesData.validFixCount,
-				'Invalid Fix': this.applicationData.crawlEmailAddressesData.invalidFixCount,
-				'Unsave': this.applicationData.crawlEmailAddressesData.unsaveCount,
-				'Filter': this.applicationData.crawlEmailAddressesData.filterCount,
-				'Skip': this.applicationData.crawlEmailAddressesData.skipCount
+				'Valid Fix': this.applicationData.crawlEmailAddressData.validFixCount,
+				'Invalid Fix': this.applicationData.crawlEmailAddressData.invalidFixCount,
+				'Unsave': this.applicationData.crawlEmailAddressData.unsaveCount,
+				'Filter': this.applicationData.crawlEmailAddressData.filterCount,
+				'Skip': this.applicationData.crawlEmailAddressData.skipCount
 			}, {
 				'#': page
 			}, {
@@ -205,9 +220,9 @@ class LogService {
 	}
 
 	async logScript(data) {
-		const { applicationData, pathsData, scriptData, scriptType } = data;
+		const { applicationData, pathData, scriptData, scriptType } = data;
 		this.applicationData = applicationData;
-		this.pathsData = pathsData;
+		this.pathData = pathData;
 		await this.createModeDirectory();
 		const scriptPath = pathUtils.getJoinPath({
 			targetPath: this.baseSessionPath,
@@ -227,34 +242,37 @@ class LogService {
 	// Check if to log the fixed email address according to the function id.
 	isLogFixEmailAddress(validationResult) {
 		const { functionIds } = validationResult;
-		return emailAddressValidationService.logFunctionIds.filter(element => functionIds.includes(element)).length > 0;
+		return validationUtils.isExists(emailAddressValidationService.logFunctionIds.filter(element => functionIds.includes(element)));
 	}
 
 	async logEmailAddress(emailAddressStatus) {
+		if (!this.isLogs) {
+			return;
+		}
 		const { validationResult, logStatus } = emailAddressStatus;
 		const { original, fix } = validationResult;
 		let path, message = '';
 		switch (logStatus) {
 			case LogStatus.VALID:
-				if (this.logsData.isLogValidEmailAddresses) {
+				if (this.logData.isLogValidEmailAddresses) {
 					path = this.emailAddressesPath;
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), fix ? fix : original);
 				}
 				break;
 			case LogStatus.FIX:
-				if (this.logsData.isLogFixEmailAddresses && this.isLogFixEmailAddress(validationResult)) {
+				if (this.logData.isLogFixEmailAddresses && this.isLogFixEmailAddress(validationResult)) {
 					path = this.fixedEmailAddressesPath;
 					message = textUtils.addBreakLine(this.createFixResultTemplate(validationResult));
 				}
 				break;
 			case LogStatus.INVALID:
-				if (this.logsData.isLogInvalidEmailAddresses && this.isLogInvalidEmailAddress(validationResult)) {
+				if (this.logData.isLogInvalidEmailAddresses && this.isLogInvalidEmailAddress(validationResult)) {
 					path = this.invalidEmailAddressesPath;
 					message = textUtils.addBreakLine(this.createInvalidResultTemplate(validationResult));
 				}
 				break;
 			case LogStatus.UNSAVE:
-				if (this.logsData.isLogUnsaveEmailAddresses) {
+				if (this.logData.isLogUnsaveEmailAddresses) {
 					path = this.unsaveEmailAddressesPath;
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), original);
 				}
@@ -270,7 +288,7 @@ class LogService {
 	}
 
 	async logLinks(links) {
-		if (links && this.logsData.isLogCrawlLinks) {
+		if (links && this.logData.isLogCrawlLinks) {
 			await fileUtils.appendFile({
 				targetPath: this.crawlLinksPath,
 				message: links
@@ -279,7 +297,7 @@ class LogService {
 	}
 
 	async logErrorLink(link) {
-		if (link && this.logsData.isLogCrawlErrorLinks) {
+		if (link && this.logData.isLogCrawlErrorLinks) {
 			await fileUtils.appendFile({
 				targetPath: this.crawlErrorLinksPath,
 				message: textUtils.addBreakLine(link)
@@ -299,7 +317,7 @@ class LogService {
 
 	createDomainCounterTemplate(domainCounter) {
 		const { domainPart, counter } = domainCounter;
-		const fixedDomainPart = domainPart + new Array(Math.abs(domainPart.length - this.logsData.maximumFixLogSpacesCharactersCount)).join(' ');
+		const fixedDomainPart = domainPart + new Array(Math.abs(domainPart.length - this.logData.maximumFixLogSpacesCharactersCount)).join(' ');
 		return `${fixedDomainPart} | ${textUtils.getNumberWithCommas(counter)}`;
 	}
 
@@ -310,7 +328,7 @@ class LogService {
 	createConfirmSettingsTemplate(settings) {
 		const searchEngines = searchService.getAllActiveSearchEngines().map(engine => engine.name).join(', ');
 		const parameters = ['IS_PRODUCTION_MODE', 'IS_DROP_COLLECTION', 'IS_STATUS_MODE', 'IS_EMPTY_DIST_DIRECTORY',
-			'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN', 'GOAL_TYPE', 'GOAL_VALUE', 'SEARCH_KEY', 'IS_LINKS_STEP', 'IS_CRAWL_STEP',
+			'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN', 'GOAL_TYPE', 'GOAL_VALUE', 'SEARCH_KEY', 'IS_LINKS_METHOD_ACTIVE', 'IS_CRAWL_METHOD_ACTIVE',
 			'IS_SKIP_LOGIC', 'MAXIMUM_MINUTES_WITHOUT_UPDATE', 'IS_LOG_VALID_EMAIL_ADDRESSES', 'IS_LOG_FIX_EMAIL_ADDRESSES',
 			'IS_LOG_INVALID_EMAIL_ADDRESSES', 'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS'];
 		let settingsText = this.createLineTemplate('SEARCH ENGINES', searchEngines);
@@ -321,7 +339,7 @@ class LogService {
 		return `${textUtils.setLogStatus('IMPORTANT SETTINGS')}
 ${settingsText}
 ========================
-OK to run? y/n`;
+OK to run? (y = yes)`;
 	}
 
 	logScore(emailAddressesList, score, domain) {

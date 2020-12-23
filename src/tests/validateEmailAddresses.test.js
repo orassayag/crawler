@@ -1,4 +1,4 @@
-require('../services/files/initiate.service').initiate();
+require('../services/files/initiate.service').initiate('test');
 const { crawlEmailAddressService, emailAddressValidationService } = require('../services');
 const { logUtils } = require('../utils');
 

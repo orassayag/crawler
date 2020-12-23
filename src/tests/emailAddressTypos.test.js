@@ -1,7 +1,7 @@
-require('../services/files/initiate.service').initiate();
+require('../services/files/initiate.service').initiate('test');
 const { crawlEmailAddressService, logService, emailAddressesGeneratorService, emailAddressValidationService } = require('../services');
 const { logUtils, emailAddressUtils } = require('../utils');
-const { StatusIcon } = require('../core/enums/files/text.enum');
+const { StatusIcon } = require('../core/enums');
 
 // If NULL or empty - Will be filled randomly.
 const localPart = '';

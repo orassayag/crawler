@@ -1,21 +1,20 @@
 const { regexUtils, textUtils, validationUtils } = require('../../utils');
 const { basicSearchKeys, advanceSearchKeys } = require('../../configurations/searchKeys.configuration');
 const { searchEngineStatuses, searchEngines } = require('../../configurations/searchEngines.configuration');
-const { SearchPlaceHolder } = require('../../core/enums/files/search.enum');
 const { SearchProcessData } = require('../../core/models/application');
-const { SearchKeyGender } = require('../../core/enums/files/search.enum');
+const { SearchKeyGender, SearchPlaceHolder } = require('../../core/enums');
 
 class SearchService {
 
     constructor() {
         this.searchData = null;
-        this.countsLimitsData = null;
+        this.countLimitData = null;
     }
 
     initiate(data) {
-        const { searchData, countsLimitsData } = data;
+        const { searchData, countLimitData } = data;
         this.searchData = searchData;
-        this.countsLimitsData = countsLimitsData;
+        this.countLimitData = countLimitData;
     }
 
     getAllActiveSearchEngines() {
@@ -43,7 +42,7 @@ class SearchService {
             searchKey += `${textUtils.getRandomKeyFromArray(l)} `;
         });
         searchKey = searchKey.trim();
-        if (searchKey.length > this.countsLimitsData.maximumSearchKeyCharactersCount || searchKey.length < this.countsLimitsData.minimumSearchKeyCharactersCount) {
+        if (searchKey.length > this.countLimitData.maximumSearchKeyCharactersCount || searchKey.length < this.countLimitData.minimumSearchKeyCharactersCount) {
             searchKey = '';
         }
         return searchKey;
@@ -53,7 +52,7 @@ class SearchService {
         let searchKey = '';
         const randomGander = Object.values(SearchKeyGender)[textUtils.getRandomNumber(0, 2)];
         advanceSearchKeys.map(l => {
-            const item = l.length > 0 ? textUtils.getRandomKeyFromArray(l) : l[0];
+            const item = validationUtils.isExists(l) ? textUtils.getRandomKeyFromArray(l) : l[0];
             let word = item[`${randomGander}Key`];
             if (word) {
                 if (item.isMultiFemaleKey) {
@@ -84,8 +83,8 @@ class SearchService {
             }
         });
         displaySearchKey = `${validationUtils.isExists(englishKeys) ? `${englishKeys.join(' ')}` : ''} ${hebrewKeys.reverse().join(' ')}`.trim();
-        if (displaySearchKey.length > this.countsLimitsData.maximumDisplaySearchKeyCharactersCount) {
-            displaySearchKey = displaySearchKey.substring(0, this.countsLimitsData.maximumDisplaySearchKeyCharactersCount);
+        if (displaySearchKey.length > this.countLimitData.maximumDisplaySearchKeyCharactersCount) {
+            displaySearchKey = displaySearchKey.substring(0, this.countLimitData.maximumDisplaySearchKeyCharactersCount);
         }
         return displaySearchKey;
     }
@@ -97,7 +96,7 @@ class SearchService {
             resultSearchKey = this.searchData.searchKey;
         }
         else {
-            for (let i = 0; i < this.countsLimitsData.maximumRetriesGenerateSearchKeyCount; i++) {
+            for (let i = 0; i < this.countLimitData.maximumRetriesGenerateSearchKeyCount; i++) {
                 resultSearchKey = this.searchData.isAdvanceSearchKeys ? this.generateAdvanceKey() : this.generateBasicKey();
                 if (resultSearchKey) {
                     break;
@@ -105,7 +104,7 @@ class SearchService {
             }
         }
         if (!resultSearchKey) {
-            throw new Error('No valid resultSearchKey was created (1000021)');
+            throw new Error('No valid resultSearchKey was created (1000025)');
         }
         // Generate the search key for display by reverse only the UTF-8 keys.
         const resultDisplaySearchKey = this.generateDisplaySearchKey(resultSearchKey);

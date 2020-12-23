@@ -1,4 +1,4 @@
-const { Mode } = require('../../core/enums/files/system.enum');
+const { Mode } = require('../../core/enums');
 
 class ApplicationUtils {
 

@@ -1,14 +1,14 @@
 const { applicationUtils, timeUtils } = require('../../../../utils');
-const CrawlEmailAddressesData = require('./CrawlEmailAddressesData');
-const CrawlLinksData = require('./CrawlLinksData');
+const CrawlEmailAddressData = require('./CrawlEmailAddressData');
+const CrawlLinkData = require('./CrawlLinkData');
 
 class ApplicationData {
 
 	constructor(data) {
 		// Set the parameters from the settings file.
-		const { settings, activeSearchEngineNames, status, method, restartsCount } = data;
+		const { settings, activeSearchEngineNames, status, plan, restartsCount } = data;
 		const { IS_PRODUCTION_MODE, IS_STATUS_MODE, IS_RUN_DOMAINS_COUNTER, IS_LONG_RUN, GOAL_VALUE,
-			GOAL_TYPE, IS_LINKS_STEP, IS_CRAWL_STEP, IS_SKIP_LOGIC, MAXIMUM_MINUTES_WITHOUT_UPDATE,
+			GOAL_TYPE, IS_LINKS_METHOD_ACTIVE, IS_CRAWL_METHOD_ACTIVE, IS_SKIP_LOGIC, MAXIMUM_MINUTES_WITHOUT_UPDATE,
 			VALIDATION_CONNECTION_LINK } = settings;
 		this.isProductionMode = IS_PRODUCTION_MODE;
 		this.validationConnectionLink = VALIDATION_CONNECTION_LINK;
@@ -19,12 +19,12 @@ class ApplicationData {
 		this.restartsCount = restartsCount || 0;
 		this.goalType = GOAL_TYPE;
 		this.goalValue = GOAL_VALUE;
-		this.isLinksStep = IS_LINKS_STEP;
-		this.isCrawlStep = IS_CRAWL_STEP;
+		this.isLinksMethodActive = IS_LINKS_METHOD_ACTIVE;
+		this.isCrawlMethodActive = IS_CRAWL_METHOD_ACTIVE;
 		this.isSkipLogic = IS_SKIP_LOGIC;
 		this.maximumMinutesWithoutUpdate = MAXIMUM_MINUTES_WITHOUT_UPDATE;
 		this.status = status;
-		this.method = method;
+		this.plan = plan;
 		this.startDateTime = null;
 		this.time = null;
 		this.minutesCount = 0;
@@ -34,13 +34,9 @@ class ApplicationData {
 		this.pageLinksIndex = 0;
 		this.pageLinksCount = 0;
 		this.progressValue = 0;
-		this.crawlLinksData = new CrawlLinksData();
-		this.crawlEmailAddressesData = new CrawlEmailAddressesData(activeSearchEngineNames);
+		this.crawlLinkData = new CrawlLinkData();
+		this.crawlEmailAddressData = new CrawlEmailAddressData(activeSearchEngineNames);
 		this.trendingSaveList = [];
-	}
-
-	setCrawlStart() {
-		this.startDateTime = new Date();
 	}
 }
 

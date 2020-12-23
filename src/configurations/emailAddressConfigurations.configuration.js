@@ -24,7 +24,8 @@ const invalidDomains = [
     'group.calendar.google.com',
     'template.index',
     'template.product',
-    'template.account.plans'
+    'template.account.plans',
+    'sentry.wixpress.com'
 ];
 
 module.exports = {

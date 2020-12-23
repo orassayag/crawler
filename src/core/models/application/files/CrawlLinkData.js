@@ -1,4 +1,4 @@
-class CrawlLinksData {
+class CrawlLinkData {
 
 	constructor() {
 		this.crawlCount = 0;
@@ -21,4 +21,4 @@ class CrawlLinksData {
 	}
 }
 
-module.exports = CrawlLinksData;
+module.exports = CrawlLinkData;

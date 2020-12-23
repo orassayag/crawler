@@ -1,26 +1,24 @@
 const settings = require('../settings/settings');
-const { CountsLimitsData, ApplicationData, LogsData, MongoDatabaseData, PathsData, SearchData } = require('../core/models/application');
-const { logUtils, timeUtils, systemUtils, fileUtils } = require('../utils');
+const { CountLimitData, ApplicationData, LogData, MongoDatabaseData, PathData, SearchData } = require('../core/models/application');
+const { logUtils, timeUtils, systemUtils, fileUtils, validationUtils } = require('../utils');
 const globalUtils = require('../utils/files/global.utils');
+const { Color, DomainsCounterSourceType, GoalType, Plan, Status } = require('../core/enums');
 const { domainsCounterService, crawlEmailAddressService, crawlLinkService,
     logService, mongoDatabaseService, searchService, sourceService } = require('../services');
-const { Color } = require('../core/enums/files/text.enum');
-const { Method, Status, GoalType } = require('../core/enums/files/system.enum');
-const { DomainsCounterSourceType } = require('../core/enums/files/script.enum');
 const { activeSearchEngineNames } = require('../configurations/searchEngines.configuration');
 const puppeteerService = require('../services/files/puppeteer.service');
 
 class CrawlLogic {
 
     constructor() {
-        // ===LOGS=== //
-        this.logsData = null;
+        // ===LOG=== //
+        this.logData = null;
         // ==SEARCH DATA=== //
         this.searchData = null;
-        // ===COUNTS & LIMITS DATA=== //
-        this.countsLimitsData = null;
-        // ===PATHS DATA=== //
-        this.pathsData = null;
+        // ===COUNT & LIMIT DATA=== //
+        this.countLimitData = null;
+        // ===PATH DATA=== //
+        this.pathData = null;
         // ===MONGO DATABASE DATA=== //
         this.mongoDatabaseData = null;
         // ===APPLICATION DATA=== //
@@ -29,8 +27,8 @@ class CrawlLogic {
         this.searchProcessData = null;
         // ===LINKS LIST DATA (SESSION TEST)=== //
         this.linksList = null;
-        this.isSessionTestMethod = false;
-        this.methodName = Method.STANDARD;
+        this.isSessionTestPlan = false;
+        this.planName = Plan.STANDARD;
         // ===MONITOR DATA=== //
         this.lastUpdateTime = new Date();
     }
@@ -41,18 +39,18 @@ class CrawlLogic {
         await this.initiate();
         // Validate internet connection.
         await this.validateInternetConnection();
-        // Validate active steps.
-        this.validateActiveSteps();
+        // Validate active methods.
+        this.validateActiveMethods();
         // Start the crawling processes.
         this.startCrawl();
     }
 
     validateSessionTest(linksList) {
         // In case of session test - Assign the session links list.
-        if (linksList && linksList.length > 0) {
+        if (validationUtils.isExists(linksList)) {
             this.linksList = linksList;
-            this.isSessionTestMethod = true;
-            this.methodName = Method.SESSION_TEST;
+            this.isSessionTestPlan = true;
+            this.planName = Plan.SESSION_TEST;
         }
     }
 
@@ -82,44 +80,44 @@ class CrawlLogic {
             settings: settings,
             activeSearchEngineNames: activeSearchEngineNames,
             status: Status.INITIATE,
-            method: this.methodName,
+            plan: this.planName,
             restartsCount: process.argv[2]
         });
-        // ===LOGS=== //
-        this.logsData = new LogsData(settings);
+        // ===LOG=== //
+        this.logData = new LogData(settings);
         // ==SEARCH DATA=== //
         this.searchData = new SearchData(settings);
-        // ===COUNTS & LIMITS DATA=== //
-        this.countsLimitsData = new CountsLimitsData(settings);
-        // ===PATHS DATA=== //
-        this.pathsData = new PathsData(settings);
+        // ===COUNT & LIMIT DATA=== //
+        this.countLimitData = new CountLimitData(settings);
+        // ===PATH DATA=== //
+        this.pathData = new PathData(settings);
         // ===MONGO DATABASE DATA=== //
         this.mongoDatabaseData = new MongoDatabaseData(settings);
         // ===SEARCH PROCESS DATA=== //
         this.searchProcessData = null;
         // ===SESSION TEST=== //
-        if (this.isSessionTestMethod) {
-            this.countsLimitsData.maximumSearchProcessesCount = 2;
-            this.countsLimitsData.maximumSearchEnginePagesPerProcessCount = 1;
+        if (this.isSessionTestPlan) {
+            this.countLimitData.maximumSearchProcessesCount = 2;
+            this.countLimitData.maximumSearchEnginePagesPerProcessCount = 1;
         }
     }
 
     async initiateMongoDatabaseService() {
         // Initiate the Mongo database service.
         await mongoDatabaseService.initiate({
-            countsLimitsData: this.countsLimitsData,
+            countLimitData: this.countLimitData,
             mongoDatabaseData: this.mongoDatabaseData
         });
         // Load all the previous existing email addresses from the Mongo database.
-        this.applicationData.crawlEmailAddressesData.databaseCount = await mongoDatabaseService.getEmailAddressesCount();
+        this.applicationData.crawlEmailAddressData.databaseCount = await mongoDatabaseService.getEmailAddressesCount();
     }
 
     async initiateSourceService() {
         // Initiate the source service.
         await sourceService.initiate({
             applicationData: this.applicationData,
-            pathsData: this.pathsData,
-            countsLimitsData: this.countsLimitsData
+            pathData: this.pathData,
+            countLimitData: this.countLimitData
         });
     }
 
@@ -127,7 +125,7 @@ class CrawlLogic {
         // Initiate the search service.
         searchService.initiate({
             searchData: this.searchData,
-            countsLimitsData: this.countsLimitsData
+            countLimitData: this.countLimitData
         });
     }
 
@@ -135,7 +133,7 @@ class CrawlLogic {
         // Initiate the crawl link service.
         await crawlLinkService.initiate({
             applicationData: this.applicationData,
-            countsLimitsData: this.countsLimitsData
+            countLimitData: this.countLimitData
         });
     }
 
@@ -143,30 +141,30 @@ class CrawlLogic {
         // Initiate the crawl email address service.
         crawlEmailAddressService.initiate({
             applicationData: this.applicationData,
-            countsLimitsData: this.countsLimitsData
+            countLimitData: this.countLimitData
         });
     }
 
     async initiateLogService() {
         // Initiate the log service.
         await logService.initiate({
-            logsData: this.logsData,
+            logData: this.logData,
             applicationData: this.applicationData,
             mongoDatabaseData: this.mongoDatabaseData,
-            countsLimitsData: this.countsLimitsData,
-            pathsData: this.pathsData
+            countLimitData: this.countLimitData,
+            pathData: this.pathData
         });
     }
 
-    validateActiveSteps() {
-        const isNoActiveSteps = !this.applicationData.isLinksStep && !this.applicationData.isCrawlStep;
-        if (isNoActiveSteps) {
-            systemUtils.exit('NO ACTIVE STEPS', Color.RED);
+    validateActiveMethods() {
+        const isNoActiveMethods = !this.applicationData.isLinksMethodActive && !this.applicationData.isCrawlMethodActive;
+        if (isNoActiveMethods) {
+            systemUtils.exit(Status.NO_ACTIVE_METHODS, Color.RED);
         }
-        const isNoLinksNoCrawl = !this.applicationData.isLinksStep && !this.applicationData.isCrawlStep;
-        const isNoLinks = !this.applicationData.isLinksStep;
+        const isNoLinksNoCrawl = !this.applicationData.isLinksMethodActive && !this.applicationData.isCrawlMethodActive;
+        const isNoLinks = !this.applicationData.isLinksMethodActive;
         if (isNoLinksNoCrawl || isNoLinks) {
-            systemUtils.exit('LINKS STEP IS NOT ACTIVE', Color.RED);
+            systemUtils.exit(Status.LINKS_METHOD_IS_NOT_ACTIVE, Color.RED);
         }
     }
 
@@ -174,7 +172,7 @@ class CrawlLogic {
         const crawlInterval = setInterval(async () => {
             // Start the process for the first interval round.
             if (!this.applicationData.startDateTime) {
-                this.applicationData.setCrawlStart();
+                this.applicationData.startDateTime = new Date();
                 await this.startProcesses();
             }
             // Update the current time of the process.
@@ -197,7 +195,7 @@ class CrawlLogic {
             }
             // Check if need to exit the interval.
             await this.checkStatus(crawlInterval);
-        }, this.countsLimitsData.millisecondsIntervalCount);
+        }, this.countLimitData.millisecondsIntervalCount);
     }
 
     async pause(milliseconds) {
@@ -206,12 +204,12 @@ class CrawlLogic {
     }
 
     async startProcesses() {
-        for (let i = 0; i < this.countsLimitsData.maximumSearchProcessesCount; i++) {
+        for (let i = 0; i < this.countLimitData.maximumSearchProcessesCount; i++) {
             this.searchProcessData = null;
             this.applicationData.processIndex = i;
             await this.runProcess();
-            await fileUtils.emptyDirectory(this.pathsData.downloadsPath);
-            await this.pause(this.countsLimitsData.millisecondsDelayBetweenProcessCount);
+            await fileUtils.emptyDirectory(this.pathData.downloadsPath);
+            await this.pause(this.countLimitData.millisecondsDelayBetweenProcessCount);
         }
     }
 
@@ -221,7 +219,7 @@ class CrawlLogic {
         try {
             searchEngineResults = await crawlLinkService.getSearchEnginePageLinks({
                 searchProcessData: this.searchProcessData,
-                totalCrawlCount: this.applicationData.crawlLinksData.crawlCount
+                totalCrawlCount: this.applicationData.crawlLinkData.crawlCount
             });
         }
         catch (error) {
@@ -244,8 +242,8 @@ class CrawlLogic {
     }
 
     async runProcess() {
-        for (let i = 0; i < this.countsLimitsData.maximumSearchEnginePagesPerProcessCount; i++) {
-            if (!this.applicationData.isLinksStep) {
+        for (let i = 0; i < this.countLimitData.maximumSearchEnginePagesPerProcessCount; i++) {
+            if (!this.applicationData.isLinksMethodActive) {
                 break;
             }
             this.searchProcessData = searchService.getSearchProcessData(this.searchProcessData, i);
@@ -254,13 +252,13 @@ class CrawlLogic {
             this.applicationData.pageLinksCount = 0;
             this.applicationData.status = Status.FETCH;
             // Get all valid links from the search engine source page.
-            const { isError, searchEngineResults } = this.isSessionTestMethod ? this.getSessionTestSearchEngineResults() : await this.getSearchEngineResults();
+            const { isError, searchEngineResults } = this.isSessionTestPlan ? this.getSessionTestSearchEngineResults() : await this.getSearchEngineResults();
             if (isError) {
                 break;
             }
             // Update the crawl data.
             const crawlLinksList = searchEngineResults.crawlLinksList;
-            this.applicationData.crawlLinksData.updateLinksData(searchEngineResults);
+            this.applicationData.crawlLinkData.updateLinksData(searchEngineResults);
             this.applicationData.pageLinksCount = crawlLinksList.length;
             if (this.applicationData.pageLinksCount > 0) {
                 await this.crawlLinks(crawlLinksList);
@@ -268,7 +266,7 @@ class CrawlLogic {
             else {
                 this.applicationData.pageLinksIndex = -1;
             }
-            this.pause(this.countsLimitsData.millisecondsDelayBetweenSearchPagesCount);
+            this.pause(this.countLimitData.millisecondsDelayBetweenSearchPagesCount);
         }
     }
 
@@ -282,7 +280,7 @@ class CrawlLogic {
             catch (error) {
                 continue;
             }
-            await this.pause(this.countsLimitsData.millisecondsDelayBetweenCrawlPagesCount);
+            await this.pause(this.countLimitData.millisecondsDelayBetweenCrawlPagesCount);
         }
     }
 
@@ -296,20 +294,20 @@ class CrawlLogic {
         this.applicationData.status = Status.CRAWL;
         this.searchProcessData.pageLink = link;
         this.searchProcessData.pageUserAgent = userAgent;
-        if (!this.applicationData.isCrawlStep) {
+        if (!this.applicationData.isCrawlMethodActive) {
             return;
         }
         // Handle all the email addresses from the page's source.
         const emailAddressesResult = await crawlEmailAddressService.getEmailAddressesFromPage({
             linkData: data,
-            totalSaveCount: this.applicationData.crawlEmailAddressesData.saveCount
+            totalSaveCount: this.applicationData.crawlEmailAddressData.saveCount
         });
         if (!emailAddressesResult) {
             throw new Error('page timeout');
         }
-        this.applicationData.crawlEmailAddressesData.updateEmailAddressData(emailAddressesResult, this.searchProcessData.searchEngine.name);
+        this.applicationData.crawlEmailAddressData.updateEmailAddressData(emailAddressesResult, this.searchProcessData.searchEngine.name);
         this.applicationData.trendingSaveList = emailAddressesResult.trendingSaveList;
-        this.applicationData.crawlLinksData.updateErrorLink(emailAddressesResult.isValidPage);
+        this.applicationData.crawlLinkData.updateErrorLink(emailAddressesResult.isValidPage);
         // Update monitor data.
         if (emailAddressesResult.saveCount || emailAddressesResult.totalCount) {
             this.lastUpdateTime = new Date();
@@ -320,13 +318,13 @@ class CrawlLogic {
         // Update the progress data.
         switch (this.applicationData.goalType) {
             case GoalType.EMAIL_ADDRESSES:
-                this.applicationData.progressValue = this.applicationData.crawlEmailAddressesData.saveCount;
+                this.applicationData.progressValue = this.applicationData.crawlEmailAddressData.saveCount;
                 break;
             case GoalType.MINUTES:
                 this.applicationData.progressValue = this.applicationData.minutesCount;
                 break;
             case GoalType.LINKS:
-                this.applicationData.progressValue = this.applicationData.crawlLinksData.crawlCount;
+                this.applicationData.progressValue = this.applicationData.crawlLinkData.crawlCount;
                 break;
         }
         // Check if complete the goal value - Exit the interval.
@@ -348,7 +346,7 @@ class CrawlLogic {
         if (this.checkMonitor()) {
             await this.endProcesses({
                 crawlInterval: crawlInterval,
-                exitReason: 'APPLICATION STUCK. RESTARTING',
+                exitReason: Status.APPLICATION_STUCK,
                 color: Color.YELLOW,
                 code: 1
             });
@@ -357,24 +355,24 @@ class CrawlLogic {
         if (this.checkGoalComplete()) {
             await this.endProcesses({
                 crawlInterval: crawlInterval,
-                exitReason: 'GOAL COMPLETE',
+                exitReason: Status.GOAL_COMPLETE,
                 color: Color.GREEN,
                 code: 66
             });
         }
         // If it's the last process, last page, and last link - Exit the interval.
-        if (this.applicationData.processIndex === (this.countsLimitsData.maximumSearchProcessesCount - 1) &&
-            this.applicationData.pageIndex === (this.countsLimitsData.maximumSearchEnginePagesPerProcessCount - 1) &&
+        if (this.applicationData.processIndex === (this.countLimitData.maximumSearchProcessesCount - 1) &&
+            this.applicationData.pageIndex === (this.countLimitData.maximumSearchEnginePagesPerProcessCount - 1) &&
             this.applicationData.pageLinksIndex === (this.applicationData.pageLinksCount - 1)) {
-            await this.exitError(crawlInterval, 'PROCESSES LIMIT', 66);
+            await this.exitError(crawlInterval, Status.PROCESSES_LIMIT, 66);
         }
         // Check if error pages in a row exceeded the limit.
-        if (puppeteerService.errorInARowCounter >= this.countsLimitsData.maximumErrorPageInARowCount) {
-            await this.exitError(crawlInterval, 'ERROR PAGE IN A ROW', 1);
+        if (puppeteerService.errorInARowCounter >= this.countLimitData.maximumErrorPageInARowCount) {
+            await this.exitError(crawlInterval, Status.ERROR_PAGE_IN_A_ROW, 1);
         }
         // Check if unsave email addresses exceeded the limit.
-        if (this.applicationData.crawlEmailAddressesData.unsaveCount >= this.countsLimitsData.maximumUnsaveEmailAddressesCount) {
-            await this.exitError(crawlInterval, 'ERROR UNSAVE EMAIL ADDRESSES', 66);
+        if (this.applicationData.crawlEmailAddressData.unsaveCount >= this.countLimitData.maximumUnsaveEmailAddressesCount) {
+            await this.exitError(crawlInterval, Status.ERROR_UNSAVE_EMAIL_ADDRESSES, 66);
         }
     }
 

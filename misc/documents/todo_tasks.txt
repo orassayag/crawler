@@ -8,15 +8,36 @@ c. Keep the maintenance - Every change you do - Make sure to update in this docu
 d. Keep the backup update - Every change you do - Update in iOmega (each couple of days do backup there).
 =================================
 
-ToDo Tasks:
+ToDo tasks:
 ===========
 
-Complete + Canccelled Tasks:
-============================
+Complete + Canceled tasks:
+==========================
 
 ===========================================================================
 
-Try Again To Fix:
+Unsolved email cases:
+=====================
+-Fix: WWW.TEST.COMtest@test.com => test@test.com | Add validation that if starts with www / http: / https:
+  => Remove all until the end of the URL address (search domain end, if not found, abort)).
+-Add this to the flip function: original: il.ac.biu.mail@law.comcenter | fix: il.ac.biu.mail@law.com | functionIds: 28 => comcenter.law@mail.biu.ac.il
+-Do specific fix for: 012b00000009VaI-info@ibi.co.il, 0120N0000001XS7-maor@ibi.co.il, 012b00000009VaN-ibitrade@ibi.co.il
+
+Gibberish task:
+===============
+-Try to build function to detect spam. If not working, ask in StackOverFlow for suggestion to detect spam.
+-In Sandbox.test.js there are test to solve.
+-Add new log file of spam detect:
+14370afcdc17429f9e418d5ffbd0334a@domain.com
+ce06e817-2149-6cfd-dd24-51b31e93ea1a@domain.org.il
+87c0d782-e09f-056f-f544-c6ec9d17943c@domain.org.il
+root@ns3160176.ip-151-106-35.eu
+ds4-f1g-54-h5-dfg-yk-4gd-htr5-fdg5h@domain.com
+h-rt-dfg4-sv6-fg32-dsv5-vfd5-ds312@domain.com
+test@454-fs-ns-dff4-xhh-43d-frfs.com
+=> Asked question: https://stackoverflow.com/questions/65393659/javascript-script-to-detect-gibberish - Give it bounty tomorrow.
+
+Try again to fix:
 =================
 -The main conclusion from 30-40 days of try refactoring - There is no specific logic.
 -There is a need to place a new logic that just to replace.
@@ -26,7 +47,7 @@ Try Again To Fix:
 -Start the logic by loading all the email addresses from the backup 'TempCrawlerLogics-26042020_After_Load_All_To_Database'.
 -Good luck!
 
-INSTRUCTIONS.md + README.md Tasks:
+INSTRUCTIONS.md + README.md tasks:
 ==================================
 -Implement the logic with puppeteer.js and build alternative package.json for development and for production - *
  Don't forget to write about it on INSTRUCTIONS.md file - Cancelled. *
@@ -49,7 +70,7 @@ Move out all the data:
 -Create one file that will contain all the lists and from there all the exports will be.
 -After all done - Make sure everything works as before.
 
-Smart Fix Tasks:
+Smart fix tasks:
 ================
 -Create a copy of the crawler.
 -Install fuse.js.
@@ -69,8 +90,9 @@ The JSON file needs to be like in the example page: https://fusejs.io/demo.html
 -Build a script Create a json file, like in the example page: https://fusejs.io/demo.html - Canccelled. *
 -Build a script - Canccelled. *
 
-Future Tasks:
+Future tasks:
 =============
+Test and maybe implement the package: https://www.npmjs.com/package/email-misspelled.
 -Add time pasted of search process, and for page process.
 -On the regex utils - Convert all the "new RegExp" to use the bottom function "createRegex".
 -For each run, make an array of (search queries + search engine) to void duplicate search for
@@ -89,11 +111,11 @@ Future Tasks:
  the time / any error / repeated 0 email addresses for a few processes /
  Or update request id's of the search engine.
 
-Other Scripts Tasks:
+Other scripts tasks:
 ====================
 -Add script to add email addresses from a TXT file to the Mongo database (in case failed to save - 'unsave' status).
 
-Extra Super Bonus Tasks:
+Extra super bonus tasks:
 ========================
 TYPOS IMPORT:
 -All existing typos, move to a seperated special directory inside the sources directory for each file - Different typo.
@@ -128,7 +150,7 @@ WORK WITH TXT FILES AS MONGO DATABASE:
 -Load all email addresses from TXT files before start and delete all if needed.
 -All invalid / typos will also be loaded from TXT files.
 
-Performance Tasks:
+Performance tasks:
 ==================
 -Check if any logic of domain filter (links and email addresses) if faster with micromatch or with the current logic.
 -To improve performance on the typos search & replace, split the entire array to arrays by length. Then, the search could be

@@ -33,9 +33,11 @@ let emailAddressDomainEndsList = [
             '.c.oil',
             '.co',
             '.co.',
+            '.ci.il',
             '.co.ail',
             '.co.cil',
             '.co.dil',
+            '.ov.il',
             '.co.i',
             '.co.iil',
             '.co.il1',
@@ -119,7 +121,10 @@ let emailAddressDomainEndsList = [
             '.go.l',
             '.go.vil',
             '.gov.i',
-            '.gov.io'
+            '.gov.io',
+            '.govil',
+            '.gov-il',
+            '.gov_.il'
         ]
     }),
     new EmailAddressDomainEnd({ domainEnd: 'gov.uk', domainEndGroupName: 'gov', isSingleWord: false, typosList: [] }),
@@ -135,12 +140,16 @@ let emailAddressDomainEndsList = [
             '.or.gil',
             '.or.l',
             '.org.i',
+            '.oirg.il',
             '.org.ill',
             '.org.io',
             '.org.iol',
             '.org.l',
+            '.otg.il',
             '.org.oil',
-            'org.i'
+            'org.i',
+            '.orgl',
+            '.il.org'
         ]
     }),
     new EmailAddressDomainEnd({ domainEnd: 'org.ps', domainEndGroupName: 'org', isSingleWord: false, typosList: [] }),
@@ -152,6 +161,7 @@ let emailAddressDomainEndsList = [
         domainEndGroupName: 'muni',
         isSingleWord: false,
         typosList: [
+            '.ni.il',
             '.muni.i',
             '.muni.l',
             '.muni.io',
@@ -234,9 +244,10 @@ const validDomainEndsList = emailAddressUtils.getDomainEndsGroups(emailAddressDo
 const validOneWordDomainEndsList = emailAddressDomainEndsList.filter(domain => domain.isSingleWord).map(domain => domain.domainEnd);
 const emailAddressEndFixTypos = emailAddressUtils.getDomainsFixTyposList(emailAddressDomainEndsList);
 const commonDomainEndsList = [
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.com', isAllowDotAfter: true }),
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.co.il', isAllowDotAfter: false }),
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.org.il', isAllowDotAfter: false })
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.com', isAllowDotAfter: true, excludeWords: ['community', 'company'] }),
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.co.il', isAllowDotAfter: false, excludeWords: null }),
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.org.il', isAllowDotAfter: false, excludeWords: null }),
+    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.ac.il', isAllowDotAfter: false, excludeWords: null })
 ];
 // Don't delete this array or change it to const, will auto filled dynamically.
 let commonEmailAddressDomainsList = [];

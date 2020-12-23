@@ -1,4 +1,4 @@
-require('../services/files/initiate.service').initiate();
+require('../services/files/initiate.service').initiate('test');
 const CrawlLogic = require('../logics/crawl.logic');
 
 (async () => {

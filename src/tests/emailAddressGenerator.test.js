@@ -1,6 +1,6 @@
-require('../services/files/initiate.service').initiate();
+require('../services/files/initiate.service').initiate('test');
 const { emailAddressesGeneratorService, logService } = require('../services');
-const { PartType } = require('../core/enums/files/emailAddress.enum');
+const { PartType } = require('../core/enums');
 
 (async () => {
     const results = [];

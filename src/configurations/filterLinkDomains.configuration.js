@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const { SearchEngineType } = require('../core/enums/files/search.enum');
+const { SearchEngineType } = require('../core/enums');
 const { FilterLinkDomain } = require('../core/models/application');
 
 const globalFilterLinkDomains = [

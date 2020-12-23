@@ -1,8 +1,7 @@
 const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
-const { crawlUtils } = require('../../utils');
-const systemUtils = require('../../utils/files/system.utils');
-const { Color } = require('../../core/enums/files/text.enum');
+const { crawlUtils, systemUtils } = require('../../utils');
+const { Color, Status } = require('../../core/enums');
 
 class PuppeteerService {
 
@@ -17,9 +16,9 @@ class PuppeteerService {
         this.errorInARowCounter = null;
     }
 
-    async initiate(countsLimitsData, isLinkCrawlTest) {
+    async initiate(countLimitData, isLinkCrawlTest) {
         this.errorInARowCounter = 0;
-        this.timeout = countsLimitsData.millisecondsTimeoutSourceRequestCount;
+        this.timeout = countLimitData.millisecondsTimeoutSourceRequestCount;
         this.pageOptions = {
             waitUntil: 'networkidle2',
             timeout: this.timeout
@@ -30,9 +29,6 @@ class PuppeteerService {
             headless: false,
             args: [
                 '--no-sandbox',
-                '--single-process',
-                '--no-zygote',
-                '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage'
             ]
@@ -40,9 +36,13 @@ class PuppeteerService {
         this.pid = this.browser.process().pid;
         this.browser.on('disconnected', () => {
             systemUtils.killProcess(this.pid);
-            systemUtils.exit('EXCEEDED THE LIMIT', Color.RED, 1);
+            systemUtils.exit(Status.EXCEEDED_THE_LIMIT, Color.RED, 1);
         });
         this.page = await this.browser.newPage();
+        const pages = await this.browser.pages();
+        if (pages.length > 1) {
+            await pages[0].close();
+        }
         await this.page.setRequestInterception(true);
         await this.page.setJavaScriptEnabled(false);
         await this.page.setDefaultNavigationTimeout(this.timeout);

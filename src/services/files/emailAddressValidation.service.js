@@ -8,7 +8,7 @@ const validator = require('validator');
 const micromatch = require('micromatch');
 const settings = require('../../settings/settings');
 const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
-const { characterUtils, emailAddressUtils, regexUtils, textUtils } = require('../../utils');
+const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
 const { domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList, emailAddressDomainEndsList, validOneWordDomainEndsList,
 	emailAddressEndFixTypos, commonDomainEndsList, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
 const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
@@ -17,7 +17,7 @@ const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAd
 const shortEmailAddressDomainsList = require('../../configurations/shortEmailAddressDomainsList.configuration');
 const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
 const { EmailAddressData, ValidationResult } = require('../../core/models/application');
-const { MicromatchAction } = require('../../core/enums/files/emailAddress.enum');
+const { MicromatchAction, PartType } = require('../../core/enums');
 
 class EmailAddressValidationService {
 
@@ -72,8 +72,11 @@ class EmailAddressValidationService {
 			fixEndsNotWithALetter: 27,
 			fixEqualCommonDomainEnd: 28,
 			fixFlipDomain: 29,
-			fixAtFirstCharacter: 30
+			fixAtFirstCharacter: 30,
+			fixDefaultDomainEnd: 31,
+			fixTypoFileName: 32
 		};
+		this.defaultDonainEnd = 'com';
 		this.ignoreFunctionIds = [1, 3, 11];
 		this.logFunctionIds = [...Object.values(this.validationFunctionIdsMap), ...Object.values(this.fixFunctionIdsMap)].filter(id => this.ignoreFunctionIds.indexOf(id) == -1);
 		this.emailAddressEndFixTyposKeys = Object.keys(emailAddressEndFixTypos);
@@ -131,6 +134,8 @@ class EmailAddressValidationService {
 		validationResult = this.fixOverallCleanDomainEnd(validationResult);
 		// Try fix cases of @ as first characters (like @test.some-domain.co.il).
 		validationResult = this.fixAtFirstCharacter(validationResult);
+		// Try add last dot if not exists any dot in the domain part (like test@test-is).
+		validationResult = this.fixDefaultDomainEnd(validationResult);
 		return validationResult;
 	}
 
@@ -257,27 +262,54 @@ class EmailAddressValidationService {
 	}
 
 	validatePartFileName(part) {
+		part = textUtils.toLowerCase(part);
 		const result = filterEmailAddressFileExtensions.filter(file => part.startsWith(file) || part.endsWith(file));
 		return result.length === 0;
 	}
 
 	// Validate that the email address is not a file name.
 	validateFileName(validationResult) {
-		const { localPart, domainPart } = this.getEmailAddressData(validationResult);
+		const { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		let invalidPart = null;
+		let isInvalid = false;
 		if (!this.validatePartFileName(localPart)) {
-			invalidPart = 'Local';
+			invalidPart = PartType.LOCAL;
 		}
 		if (!this.validatePartFileName(domainPart)) {
-			invalidPart = 'Domain';
+			invalidPart = PartType.DOMAIN;
 		}
 		if (invalidPart) {
-			const isValid = domainEndsDotsList.filter(d => domainPart.indexOf(d) > -1).length > 0;
-			if (!isValid) {
-				validationResult.isValid = false;
-				validationResult.functionIds.push(this.validationFunctionIdsMap[`validateFileName${invalidPart}Part`]);
+			isInvalid = invalidPart === PartType.DOMAIN;
+			const domainEndsDots = domainEndsDotsList.filter(d => domainPart.indexOf(d) > -1);
+			if (validationUtils.isExists(domainEndsDots)) {
+				isInvalid = false;
+				validationResult = this.fixTypoFileName({
+					fixed: fixed,
+					localPart: localPart,
+					domainPart: domainPart,
+					domainEnd: domainEndsDots[domainEndsDots.length - 1],
+					invalidPart: invalidPart,
+					validationResult: validationResult
+				});
 			}
 		}
+		if (isInvalid) {
+			validationResult.isValid = false;
+			validationResult.functionIds.push(this.validationFunctionIdsMap[`validateFileName${textUtils.upperCaseFirstLetter(invalidPart, 0)}Part`]);
+		}
+		return validationResult;
+	}
+
+	fixTypoFileName(data) {
+		let { fixed, localPart, domainPart, domainEnd, validationResult } = data;
+		domainPart = domainPart.slice(0, domainPart.indexOf(domainEnd) + domainEnd.length);
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixTypoFileName'
+		});
 		return validationResult;
 	}
 
@@ -605,9 +637,14 @@ class EmailAddressValidationService {
 		}
 		const lastDomainEndPart = textUtils.addStartDot(textUtils.sliceJoinDots(domainSplits, 1));
 		for (let i = 0; i < commonDomainEndsList.length; i++) {
-			const { commonDomainEnd, isAllowDotAfter } = commonDomainEndsList[i];
+			const { commonDomainEnd, isAllowDotAfter, excludeWords } = commonDomainEndsList[i];
 			const index = lastDomainEndPart.indexOf(commonDomainEnd);
 			if (index === 0 && lastDomainEndPart.length > commonDomainEnd.length) {
+				const isExcluded = validationUtils.isExists(excludeWords) &&
+					excludeWords.findIndex(w => domainSplits[domainSplits.length - 1] === w) > -1;
+				if (isExcluded) {
+					break;
+				}
 				if (!isAllowDotAfter) {
 					domainPart = `${domainSplits[0]}${commonDomainEnd}`;
 					break;
@@ -711,6 +748,22 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
+	// Try add last dot if not exists any dot in the domain part (like test@test-is).
+	fixDefaultDomainEnd(validationResult) {
+		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
+		if (domainPart.indexOf('.') === -1) {
+			domainPart = textUtils.addMiddleDot(domainPart, this.defaultDonainEnd);
+		}
+		validationResult = this.checkEmailAddressUpdate({
+			validationResult: validationResult,
+			fixed: fixed,
+			localPart: localPart,
+			domainPart: domainPart,
+			functionName: 'fixDefaultDomainEnd'
+		});
+		return validationResult;
+	}
+
 	fixEmailAddressTypo(validationResult) {
 		validationResult = this.fixRemoveWhiteSpaces(validationResult);
 		// Fix cases like: test@test.007@gmail.com => test@gmail.com.
@@ -788,8 +841,8 @@ class EmailAddressValidationService {
 	checkForDomainTypo(emailAddress) {
 		const [localPart, domainPart] = emailAddressUtils.getEmailAddressParts(emailAddress);
 		for (let i = 0, length = commonEmailAddressDomainsList.length; i < length; i++) {
-			const domain = textUtils.getSplitDotParts(commonEmailAddressDomainsList[i].domain)[0];
-			const result = this.checkForCloseMatch(domainPart, domain);
+			const { firstDotSplit } = commonEmailAddressDomainsList[i];
+			const result = this.checkForCloseMatch(domainPart, firstDotSplit);
 			if (result) {
 				return emailAddressUtils.getEmailAddressFromParts(localPart, domainPart);
 			}
@@ -833,6 +886,12 @@ class EmailAddressValidationService {
 	fixMicromatch(validationResult, type, functionName) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		let testDomainPart = '';
+		for (let i = 0, length = commonEmailAddressDomainsList.length; i < length; i++) {
+			const { ignoreList } = commonEmailAddressDomainsList[i];
+			if (validationUtils.isExists(ignoreList) && ignoreList.findIndex(d => d === domainPart) > -1) {
+				return validationResult;
+			}
+		}
 		switch (type) {
 			case MicromatchAction.NORMAL: testDomainPart = domainPart; break;
 			case MicromatchAction.FIRST: testDomainPart = textUtils.removeFirstCharacter(domainPart); break;
@@ -859,7 +918,7 @@ class EmailAddressValidationService {
 		for (let i = 0, length = commonEmailAddressDomainsList.length; i < length; i++) {
 			const { domain, micromatchName } = commonEmailAddressDomainsList[i];
 			const result = micromatch(domainPart, [micromatchName]);
-			if (result.length > 0) {
+			if (validationUtils.isExists(result)) {
 				fixDomainPart = domain;
 				isMatch = true;
 				break;

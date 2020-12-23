@@ -1,8 +1,8 @@
 const pathUtils = require('../utils/files/path.utils');
-const { GoalType } = require('../core/enums/files/system.enum');
+const { GoalType } = require('../core/enums');
 
 const innerSettings = {
-    // ===FLAGS=== //
+    // ===FLAG=== //
     // Determine if to run for a long time. Settings this to true, will take a bigger
     // values, enable to the crawler to run for a long time without any interaption.
     IS_LONG_RUN: true,
@@ -14,7 +14,7 @@ const innerSettings = {
 };
 
 const settings = {
-    // ===FLAGS=== //
+    // ===FLAG=== //
     // Determine if to load local sources (engine and pages) in development mode (=this value false) or to do real requests for
     // sources with puppeteer.js NPM package in production mode (=this value true).
     IS_PRODUCTION_MODE: true,
@@ -43,12 +43,12 @@ const settings = {
     // to user the advance keys from the 'advance' array and logic.
     IS_ADVANCE_SEARCH_KEYS: true,
 
-    // ===STEPS=== //
+    // ===METHOD=== //
     // Determine if to do the logic of crawl links by search engines.
-    IS_LINKS_STEP: true,
+    IS_LINKS_METHOD_ACTIVE: true,
     // Determine if to do the logic of crawl email addresses from page's sources.
-    IS_CRAWL_STEP: true,
-    // Determine if to active the SKIP logic in the crawl step, that detailed in above the
+    IS_CRAWL_METHOD_ACTIVE: true,
+    // Determine if to active the SKIP logic in the crawl method, that detailed in above the
     // MAXIMUM_UNIQUE_DOMAIN_COUNT parameter.
     IS_SKIP_LOGIC: innerSettings.IS_TEST_PRODUCTION_MONGO_DATABASE ? true : false,
 
@@ -60,7 +60,7 @@ const settings = {
     // Determine the maximum number of restarts of the monitor if the application exit.
     MAXIMUM_RESTARTS_COUNT: 50,
 
-    // ===LOGS=== //
+    // ===LOG=== //
     // Determine if to log valid email addresses to a TXT file.
     IS_LOG_VALID_EMAIL_ADDRESSES: true,
     // Determine if to log fix email addresses to a TXT file.
@@ -76,10 +76,10 @@ const settings = {
     // Determine the maximum number of charecters to set to the fix log to make it prettify.
     MAXIMUM_FIX_LOG_SPACES_CHARECTERS_COUNT: 25,
 
-    // ===COUNTS & LIMITS=== //
+    // ===COUNT & LIMIT=== //
     // Determine how much time (in minutes) to wait until start the crawl process. It's good
     // if the user want to delay the start of the process. If it's 0 - No schedule will take place.
-    SCHEDULE_MINUTES_COUNT: 0,
+    SCHEDULE_MINUTES_COUNT: 60,
     // Determine how many processes to run during a single life time of the application.
     MAXIMUM_SEARCH_PROCESSES_COUNT: innerSettings.IS_LONG_RUN ? 10000 : 10,
     // Determine how many pages to pager with the search engine during a single process.
@@ -123,49 +123,46 @@ const settings = {
     // (This, of course, not include common domains like gmail, hotmail, ect.)
     MAXIMUM_UNIQUE_DOMAIN_COUNT: 3,
 
-    // ===ROOT PATHS=== //
+    // ===ROOT PATH=== //
     // Determine the application name used for some of the calculated paths.
-    APPLICATION_NAME: 'Crawler',
-    // Determine the path for the directory of which a secondary backup will be created.
-    // (Working example: 'G:\\Or\\Web\\Crawler').
-    SECONDARY_BACKUP_PATH: 'G:/Or/Web/Crawler',
+    APPLICATION_NAME: 'crawler',
     // Determine the path for the outer application, where other directories located, such as backups, sources, etc..
-    // (Working example: 'C:\\Or\\Web\\Crawler\\').
+    // (Working example: 'C:\\Or\\Web\\crawler\\').
     OUTER_APPLICATION_PATH: pathUtils.getJoinPath({
         targetPath: __dirname,
         targetName: '../../../'
     }),
     // Determine the inner application path where all the source of the application is located.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\').
     INNER_APPLICATION_PATH: pathUtils.getJoinPath({
         targetPath: __dirname,
         targetName: '../../'
     }),
 
-    // ===DYNAMIC PATHS=== //
+    // ===DYNAMIC PATH=== //
     // All the these paths will be calculated during runtime in the initiate service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler').
-    APPLICATION_PATH: 'Crawler',
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler').
+    APPLICATION_PATH: 'crawler',
     // Determine the backups directory which all the local backup will be created to.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Backups').
-    BACKUPS_PATH: 'Backups',
+    // (Working example: 'C:\\Or\\Web\\Crawler\\backups').
+    BACKUPS_PATH: 'backups',
     // Determine the dist directory path which there, all the outcome of the crawling will be created.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\dist').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\dist').
     DIST_PATH: 'dist',
     // Determine the sources directory path which there, all the sources are taken in development mode.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\sources').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\sources').
     SOURCES_PATH: 'sources',
     // Determine the directory path of the node_modules, do refresh each time switching from development and production modes.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\node_modules').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\node_modules').
     NODE_MODULES_PATH: 'node_modules',
     // Determine the directory of the package.json to update each time switching
     // from development and production modes (add/remove Puppeeter.js NPM package).
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\package.json').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\package.json').
     PACKAGE_JSON_PATH: 'package.json',
     // Determine the path of the package-lock.json to remove it each time switching from development and production modes.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\Crawler\\package-lock.json').
+    // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\package-lock.json').
     PACKAGE_LOCK_JSON_PATH: 'package-lock.json',
     // Determine the path where the crawler sometimes download files (like cvs, doc, ect) to crawl them locally
     // and which they will be deleted from after each process.
@@ -178,7 +175,7 @@ const settings = {
     IGNORE_DIRECTORIES: ['dist', 'node_modules'],
     // Determine the files to ignore when the back copy is taking place.
     // For example: 'back_sources_tasks.txt'.
-    IGNORE_FILES: ['back_sources_tasks.txt', 'sources_tasks.txt'],
+    IGNORE_FILES: ['back_sources_tasks.txt', 'sources_tasks.txt', 'todo_tasks.txt'],
     // Determine the files to force include when the back copy is taking place.
     // For example: '.gitignore'.
     INCLUDE_FILES: ['.gitignore'],
@@ -216,7 +213,7 @@ const settings = {
     // Determine if to validate mongod server certificate against CA (needs to have a mongod server with SSL support, 2.4 or higher).
     IS_MONGO_DATABASE_SSL_VALIDATE: false,
 
-    // ===PACKAGES=== //
+    // ===PACKAGE=== //
     // Determine the version number of the Puppeteer.js NPM package to implement in the package.json in the pre-load script.
     NPM_PUPPETEER_VERSION: '^5.5.0',
 
@@ -224,7 +221,7 @@ const settings = {
     // Determine the link address to test the internet connection.
     VALIDATION_CONNECTION_LINK: 'google.com',
 
-    // ===TESTS=== //
+    // ===TEST=== //
     // Determine the minimum number of email addresses to create in case of random validation test.
     MINIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT: 100,
     // Determine the maximum number of email addresses to create in case of random validation test.
@@ -264,7 +261,7 @@ const settings = {
     // Determine the minimum length of the short string in a close typo check in the validation email service.
     MINIMUM_SHORT_STRING_CHARACTERS_COUNT: 3,
 
-    // ===UNCHANGED SETTINGS=== //
+    // ===UNCHANGED SETTING=== //
     // ========================================
     // DON'T CHANGE THESE SETTINGS IN ANY CASE!
     // ========================================

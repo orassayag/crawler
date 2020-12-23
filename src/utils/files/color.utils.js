@@ -1,4 +1,4 @@
-const { ColorCode } = require('../../core/enums/files/text.enum');
+const { ColorCode } = require('../../core/enums');
 
 class ColorUtils {
 

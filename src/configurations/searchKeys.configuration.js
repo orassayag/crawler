@@ -1,6 +1,6 @@
 /* cSpell:disable */
 const { SearchKey } = require('../core/models/application');
-const { SearchKeyType } = require('../core/enums/files/search.enum');
+const { SearchKeyType } = require('../core/enums');
 
 const advanceSearchKeys = [
     // ===NEED=== //

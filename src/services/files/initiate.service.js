@@ -1,14 +1,17 @@
 const settings = require('../../settings/settings');
-const { GoalType } = require('../../core/enums/files/system.enum');
 const globalUtils = require('../../utils/files/global.utils');
 const pathUtils = require('../../utils/files/path.utils');
 const validationUtils = require('../../utils/files/validation.utils');
+const { GoalType, ScriptType } = require('../../core/enums');
 
 class InitiateService {
 
 	constructor() { }
 
-	initiate() {
+	initiate(scriptType) {
+		// Validate the script type.
+		this.scriptType = scriptType;
+		this.validateScriptType();
 		// First, setup handle errors and promises.
 		this.setup();
 		// The second important thing to to it to validate all the parameters of the settings.js file.
@@ -19,6 +22,15 @@ class InitiateService {
 		this.validateDirectories();
 		// Validate that certain directories exists, and if not, create them.
 		this.createDirectories();
+	}
+
+	validateScriptType() {
+		if (!validationUtils.isValidEnum({
+			enum: ScriptType,
+			value: this.scriptType
+		})) {
+			throw new Error('Invalid or no ScriptType parameter was found (1000011)');
+		}
 	}
 
 	setup() {
@@ -40,7 +52,7 @@ class InitiateService {
 	validateSettings() {
 		// Validate the settings object existence.
 		if (!settings) {
-			throw new Error('Invalid or no settings object was found (1000013)');
+			throw new Error('Invalid or no settings object was found (1000012)');
 		}
 		this.validateNumbers();
 		this.validatePositiveNumbers();
@@ -52,27 +64,26 @@ class InitiateService {
 	}
 
 	calculateSettings() {
-		const { APPLICATION_NAME, SECONDARY_BACKUP_PATH, OUTER_APPLICATION_PATH, INNER_APPLICATION_PATH, APPLICATION_PATH,
+		const { OUTER_APPLICATION_PATH, INNER_APPLICATION_PATH, APPLICATION_PATH,
 			BACKUPS_PATH, DIST_PATH, SOURCES_PATH, NODE_MODULES_PATH, PACKAGE_JSON_PATH,
 			PACKAGE_LOCK_JSON_PATH } = settings;
-		// ===ROOT PATHS=== //
-		settings.SECONDARY_BACKUP_PATH = pathUtils.getJoinPath({ targetPath: SECONDARY_BACKUP_PATH, targetName: APPLICATION_NAME });
-		// ===DYNAMIC PATHS=== //
 		settings.APPLICATION_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: APPLICATION_PATH });
-		settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });
+		if (this.scriptType === ScriptType.BACKUP) {
+			settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });
+			settings.SOURCES_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: SOURCES_PATH });
+		}
 		settings.DIST_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: DIST_PATH });
-		settings.SOURCES_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: SOURCES_PATH });
 		settings.NODE_MODULES_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: NODE_MODULES_PATH });
 		settings.PACKAGE_JSON_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: PACKAGE_JSON_PATH });
 		settings.PACKAGE_LOCK_JSON_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: PACKAGE_LOCK_JSON_PATH });
 	}
 
 	validateNumbers() {
-		// ===COUNTS & LIMITS=== //
+		// ===COUNT & LIMIT=== //
 		['SCHEDULE_MINUTES_COUNT'].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidNumber(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000040)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000013)`);
 			}
 		});
 	}
@@ -84,9 +95,9 @@ class InitiateService {
 			// ===MONITOR=== //
 			'MAXIMUM_MINUTES_WITHOUT_UPDATE',
 			'MAXIMUM_RESTARTS_COUNT',
-			// ===LOGS=== //
+			// ===LOG=== //
 			'MAXIMUM_FIX_LOG_SPACES_CHARECTERS_COUNT',
-			// ===COUNTS & LIMITS=== //
+			// ===COUNT & LIMIT=== //
 			'MAXIMUM_SEARCH_PROCESSES_COUNT', 'MAXIMUM_SEARCH_ENGINE_PAGES_PER_PROCESS_COUNT',
 			'MAXIMUM_DISPLAY_SEARCH_KEY_CHARACTERS_COUNT', 'MINIMUM_SEARCH_KEY_CHARACTERS_COUNT', 'MAXIMUM_RETRIES_GENERATE_SEARCH_KEY_COUNT',
 			'MILLISECONDS_INTERVAL_COUNT', 'MILLISECONDS_DELAY_BETWEEN_PROCESS_COUNT', 'MILLISECONDS_DELAY_BETWEEN_SEARCH_PAGES_COUNT',
@@ -98,7 +109,7 @@ class InitiateService {
 			// ===MONGO DATABASE=== //
 			'MAXIMUM_DROP_COLLECTION_RETRIES_COUNT', 'MONGO_DATABASE_POOL_SIZE_COUNT', 'MONGO_DATABASE_SOCKET_TIMEOUT_MILLISECONDS_COUNT',
 			'MONGO_DATABASE_KEEP_ALIVE_MILLISECONDS_COUNT',
-			// ===TESTS=== //
+			// ===TEST=== //
 			'MINIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT',
 			'MAXIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARECTERS_COUNT', 'MAXIMUM_SPECIAL_CHARECTERS_COUNT',
 			'MAXIMUM_LOCAL_TEST_SIMPLE_CHARACTERS_COUNT', 'MAXIMUM_DOMAIN_TEST_SIMPLE_CHARACTERS_COUNT', 'MINIMUM_REPLACE_RANDOM_POSITIONS_COUNT',
@@ -106,7 +117,7 @@ class InitiateService {
 			// ===EMAIL ADDRESS=== //
 			'MINIMUM_LOCAL_PART_CHARACTERS_COUNT', 'MINIMUM_DOMAIN_PART_CHARACTERS_COUNT', 'MINIMUM_EMAIL_ADDRESS_CHARACTERS_COUNT',
 			'MAXIMUM_COMMON_DOMAIN_LOCAL_PART_CHARACTERS_COUNT', 'MINIMUM_SHORT_STRING_CHARACTERS_COUNT',
-			// ===UNCHANGED SETTINGS=== //
+			// ===UNCHANGED SETTING=== //
 			'MAXIMUM_LOCAL_PART_CHARACTERS_COUNT', 'MAXIMUM_DOMAIN_PART_CHARACTERS_COUNT', 'MAXIMUM_EMAIL_ADDRESS_CHARACTERS_COUNT'
 		].map(key => {
 			const value = settings[key];
@@ -117,37 +128,39 @@ class InitiateService {
 	}
 
 	validateStrings() {
+		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
+			...keys,
 			// ===GOAL=== //
 			'GOAL_TYPE',
-			// ===ROOT PATHS=== //
-			'APPLICATION_NAME', 'SECONDARY_BACKUP_PATH', 'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH',
-			// ===DYNAMIC PATHS=== //
-			'APPLICATION_PATH', 'BACKUPS_PATH', 'DIST_PATH', 'SOURCES_PATH', 'NODE_MODULES_PATH', 'PACKAGE_JSON_PATH',
-			'PACKAGE_LOCK_JSON_PATH',
+			// ===ROOT PATH=== //
+			'APPLICATION_NAME', 'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH',
+			// ===DYNAMIC PATH=== //
+			'APPLICATION_PATH', 'DIST_PATH', 'NODE_MODULES_PATH', 'PACKAGE_JSON_PATH',
+			'PACKAGE_LOCK_JSON_PATH', 'DOWNLOADS_PATH',
 			// ===MONGO DATABASE=== //
 			'MONGO_DATABASE_CONNECTION_STRING', 'MONGO_DATABASE_NAME', 'MONGO_DATABASE_COLLECTION_NAME',
-			// ===PACKAGES=== //
+			// ===PACKAGE=== //
 			'NPM_PUPPETEER_VERSION',
 			// ===VALIDATION=== //
 			'VALIDATION_CONNECTION_LINK'
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isExists(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a string but received: ${value} (1000038)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a string but received: ${value} (1000015)`);
 			}
 		});
 	}
 
 	validateBooleans() {
 		[
-			// ===FLAGS=== //
+			// ===FLAG=== //
 			'IS_PRODUCTION_MODE', 'IS_DROP_COLLECTION', 'IS_STATUS_MODE', 'IS_EMPTY_DIST_DIRECTORY', 'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN',
 			// ===SEARCH=== //
 			'IS_ADVANCE_SEARCH_KEYS',
-			// ===STEPS=== //
-			'IS_LINKS_STEP', 'IS_CRAWL_STEP', 'IS_SKIP_LOGIC',
-			// ===LOGS=== //
+			// ===METHOD=== //
+			'IS_LINKS_METHOD_ACTIVE', 'IS_CRAWL_METHOD_ACTIVE', 'IS_SKIP_LOGIC',
+			// ===LOG=== //
 			'IS_LOG_VALID_EMAIL_ADDRESSES', 'IS_LOG_FIX_EMAIL_ADDRESSES', 'IS_LOG_INVALID_EMAIL_ADDRESSES',
 			'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS',
 			// ===MONGO DATABASE=== //
@@ -156,7 +169,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidBoolean(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a boolean but received: ${value} (1000015)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a boolean but received: ${value} (1000016)`);
 			}
 		});
 	}
@@ -168,7 +181,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidArray(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a array but received: ${value} (1000016)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a array but received: ${value} (1000017)`);
 			}
 		});
 	}
@@ -180,7 +193,7 @@ class InitiateService {
 			enum: GoalType,
 			value: GOAL_TYPE
 		})) {
-			throw new Error('Invalid or no GOAL_TYPE parameter was found (1000017)');
+			throw new Error('Invalid or no GOAL_TYPE parameter was found (1000018)');
 		}
 	}
 
@@ -188,24 +201,26 @@ class InitiateService {
 		const { MONGO_DATABASE_CONNECTION_STRING, VALIDATION_CONNECTION_LINK, NPM_PUPPETEER_VERSION } = settings;
 		// ===MONGO DATABASE=== //
 		if (!validationUtils.isValidMongoConnectionString(MONGO_DATABASE_CONNECTION_STRING)) {
-			throw new Error('Invalid or no MONGO_DATABASE_CONNECTION_STRING parameter was found (1000018)');
+			throw new Error('Invalid or no MONGO_DATABASE_CONNECTION_STRING parameter was found (1000019)');
 		}
 		// ===VALIDATION=== //
 		if (!validationUtils.isValidLink(VALIDATION_CONNECTION_LINK)) {
-			throw new Error('No VALIDATION_CONNECTION_LINK parameter was found (1000019)');
+			throw new Error('No VALIDATION_CONNECTION_LINK parameter was found (1000020)');
 		}
-		// ===PACKAGES=== //
+		// ===PACKAGE=== //
 		if (!validationUtils.isValidVersion(NPM_PUPPETEER_VERSION)) {
-			throw new Error('Invalid or no NPM_PUPPETEER_VERSION parameter was found (1000020)');
+			throw new Error('Invalid or no NPM_PUPPETEER_VERSION parameter was found (1000021)');
 		}
 	}
 
 	validateDirectories() {
+		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
-			// ===ROOT PATHS=== //
-			'SECONDARY_BACKUP_PATH', 'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH',
-			// ===DYNAMIC PATHS===
-			'APPLICATION_PATH', 'BACKUPS_PATH', 'SOURCES_PATH', 'PACKAGE_JSON_PATH', 'DOWNLOADS_PATH'
+			...keys,
+			// ===ROOT PATH=== //
+			'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH',
+			// ===DYNAMIC PATH===
+			'APPLICATION_PATH', 'PACKAGE_JSON_PATH', 'DOWNLOADS_PATH'
 		].map(key => {
 			const value = settings[key];
 			// Verify that the dist and the sources paths exists.
@@ -217,7 +232,7 @@ class InitiateService {
 
 	createDirectories() {
 		[
-			// ===DYNAMIC PATHS===
+			// ===DYNAMIC PATH===
 			'DIST_PATH', 'NODE_MODULES_PATH'
 		].map(key => {
 			const value = settings[key];

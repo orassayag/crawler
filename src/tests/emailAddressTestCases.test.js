@@ -1,8 +1,7 @@
-require('../services/files/initiate.service').initiate();
+require('../services/files/initiate.service').initiate('test');
 const { logService, emailAddressesGeneratorService, emailAddressValidationService } = require('../services');
 const { logUtils, validationUtils } = require('../utils');
-const { StatusIcon } = require('../core/enums/files/text.enum');
-const { TestType } = require('../core/enums/files/emailAddress.enum');
+const { StatusIcon, TestType } = require('../core/enums');
 
 // Email Address Validation //
 // ======================== //
@@ -60,7 +59,7 @@ const sortResults = (isValidTest, validationResults) => {
         enum: TestType,
         value: testType
     })) {
-        throw new Error('Invalid or no testType parameter was found (1000024)');
+        throw new Error('Invalid or no testType parameter was found (1000028)');
     }
     await emailAddressesGeneratorService.initiate();
     let list = null;
@@ -99,7 +98,7 @@ const sortResults = (isValidTest, validationResults) => {
             isValidTest = true;
             break;
         default:
-            throw new Error('No testType selected (1000037)');
+            throw new Error('No testType selected (1000029)');
     }
     // Let the test begin.
     await emailAddressesGeneratorService.done();

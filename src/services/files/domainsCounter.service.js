@@ -2,20 +2,19 @@ const settings = require('../../settings/settings');
 const { emailAddressUtils, fileUtils, textUtils, logUtils, validationUtils } = require('../../utils');
 const logService = require('./log.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
-const { ApplicationData, DomainCounter, CountsLimitsData, MongoDatabaseData, PathsData } = require('../../core/models/application');
-const { ScriptType, DomainsCounterSourceType } = require('../../core/enums/files/script.enum');
-const { Color } = require('../../core/enums/files/text.enum');
+const { ApplicationData, DomainCounter, CountLimitData, MongoDatabaseData, PathData } = require('../../core/models/application');
+const { Color, DomainsCounterSourceType, ScriptType } = require('../../core/enums');
 const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
 
 class DomainsCounterService {
 
 	constructor() {
-		// ===COUNTS & LIMITS DATA=== //
-		this.countsLimitsData = null;
+		// ===COUNT & LIMIT DATA=== //
+		this.countLimitData = null;
 		// ===MONGO DATABASE DATA=== //
 		this.mongoDatabaseData = null;
-		// ===PATHS DATA=== //
-		this.pathsData = null;
+		// ===PATH DATA=== //
+		this.pathData = null;
 		this.isLogs = null;
 		this.sourceType = null;
 		this.sourcePath = null;
@@ -51,15 +50,15 @@ class DomainsCounterService {
 			method: null,
 			restartsCount: 0
 		});
-		// ===COUNTS & LIMITS DATA=== //
-		this.countsLimitsData = new CountsLimitsData(settings);
+		// ===COUNT & LIMIT DATA=== //
+		this.countLimitData = new CountLimitData(settings);
 		// ===MONGO DATABASE DATA=== //
 		this.mongoDatabaseData = new MongoDatabaseData(settings);
-		// ===PATHS DATA=== //
-		this.pathsData = new PathsData(settings);
+		// ===PATH DATA=== //
+		this.pathData = new PathData(settings);
 		// Initiate the Mongo database service.
 		await mongoDatabaseService.initiate({
-			countsLimitsData: this.countsLimitsData,
+			countLimitData: this.countLimitData,
 			mongoDatabaseData: this.mongoDatabaseData
 		});
 	}
@@ -69,7 +68,7 @@ class DomainsCounterService {
 			enum: DomainsCounterSourceType,
 			value: this.sourceType
 		})) {
-			throw new Error('Invalid sourceType selected (1000008)');
+			throw new Error('Invalid sourceType selected (1000006)');
 		}
 	}
 
@@ -91,7 +90,7 @@ class DomainsCounterService {
 		switch (this.sourceType) {
 			case DomainsCounterSourceType.FILE:
 				if (!this.sourcePath) {
-					throw new Error('No sourcePath was provided (1000009)');
+					throw new Error('No sourcePath was provided (1000007)');
 				}
 				if (await fileUtils.isPathExists(this.sourcePath)) {
 					this.sourceContent = await fileUtils.readFile(this.sourcePath);
@@ -99,7 +98,7 @@ class DomainsCounterService {
 				break;
 			case DomainsCounterSourceType.DIRECTORY:
 				if (!this.sourcePath) {
-					throw new Error('No sourcePath was provided (1000010)');
+					throw new Error('No sourcePath was provided (1000008)');
 				}
 				if (await fileUtils.isPathExists(this.sourcePath)) {
 					filePaths = await fileUtils.getFilesRecursive(this.sourcePath);
@@ -122,7 +121,7 @@ class DomainsCounterService {
 			case DomainsCounterSourceType.FILE:
 			case DomainsCounterSourceType.DIRECTORY:
 				if (!this.isPartOfCrawLogic && !this.sourceContent) {
-					throw new Error('Empty sourceContent was provided (1000011)');
+					throw new Error('Empty sourceContent was provided (1000009)');
 				}
 				this.emailAddressesList = emailAddressUtils.getEmailAddresses(this.sourceContent);
 				break;
@@ -194,9 +193,9 @@ class DomainsCounterService {
 		}
 		await logService.logScript({
 			applicationData: this.applicationData,
-			pathsData: this.pathsData,
+			pathData: this.pathData,
 			scriptData: domainsCounterData,
-			scriptType: ScriptType.DOMAINS_COUNTER
+			scriptType: ScriptType.DOMAINS
 		});
 		this.log('ALL DONE', Color.GREEN);
 	}

@@ -1,7 +1,7 @@
 const settings = require('../settings/settings');
-const { Color } = require('../core/enums/files/text.enum');
 const { pathUtils, fileUtils, logUtils, textUtils, timeUtils } = require('../utils');
 const { BackupData } = require('../core/models/application');
+const { Color } = require('../core/enums');
 const globalUtils = require('../utils/files/global.utils');
 
 class BackupLogic {
@@ -13,7 +13,7 @@ class BackupLogic {
 
     initiate() {
         // Get the backup title from the console.
-        this.backupTitle = process.argv[2];
+        this.backupTitle = textUtils.removeAllCharacters(process.argv[2], '.');
         logUtils.logMagentaStatus('INITIATE THE BASE PARAMETERS');
         this.backupData = new BackupData(settings);
     }

@@ -1,4 +1,4 @@
-class CountsLimitsData {
+class CountLimitData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -31,4 +31,4 @@ class CountsLimitsData {
 	}
 }
 
-module.exports = CountsLimitsData;
+module.exports = CountLimitData;

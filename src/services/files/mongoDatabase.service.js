@@ -1,22 +1,23 @@
 const mongoose = require('mongoose');
 const EmailAddressModel = require('../../core/models/database/EmailAddressModel');
 const globalUtils = require('../../utils/files/global.utils');
-const { SaveStatus } = require('../../core/enums/files/emailAddress.enum');
+const { systemUtils } = require('../../utils');
+const { SaveStatus } = require('../../core/enums');
 
 class MongoDatabaseService {
 
     constructor() {
         this.client = null;
         this.mongoDatabaseData = null;
-        this.countsLimitsData = null;
+        this.countLimitData = null;
         this.mongoDatabaseConnectionString = null;
         this.mongoDatabaseConnectionOptions = null;
     }
 
     async initiate(data) {
-        const { countsLimitsData, mongoDatabaseData } = data;
+        const { countLimitData, mongoDatabaseData } = data;
         this.mongoDatabaseData = mongoDatabaseData;
-        this.countsLimitsData = countsLimitsData;
+        this.countLimitData = countLimitData;
         this.mongoDatabaseConnectionString = `${this.mongoDatabaseData.mongoDatabaseConnectionString}${this.mongoDatabaseData.mongoDatabaseModeName}`;
         this.mongoDatabaseConnectionOptions = {
             useUnifiedTopology: this.mongoDatabaseData.isMongoDatabaseUseUnifiledTopology,
@@ -28,10 +29,17 @@ class MongoDatabaseService {
             ssl: this.mongoDatabaseData.isMongoDatabaseSSL,
             sslValidate: this.mongoDatabaseData.isMongoDatabaseSSLValidate
         };
+        await this.validateProcess();
         await this.createConnection();
         await this.testMongoDatabase();
         if (this.mongoDatabaseData.isDropCollection) {
             await this.dropCollection();
+        }
+    }
+
+    async validateProcess() {
+        if (!await systemUtils.isProcessRunning('mongod.exe')) {
+            throw new Error('The process mongod.exe no running (1000022)');
         }
     }
 
@@ -42,9 +50,9 @@ class MongoDatabaseService {
     async createConnection() {
         // Connect to the Mongo database.
         this.client = await mongoose.connect(this.mongoDatabaseConnectionString, this.mongoDatabaseConnectionOptions)
-            .catch(error => { throw new Error(`Failed to connect to MongoDB: ${error} (1000006)`); });
+            .catch(error => { throw new Error(`Failed to connect to MongoDB: ${error} (1000023)`); });
         if (!this.client) {
-            throw new Error('Failed to connect to MongoDB: Client is null or empty (1000007)');
+            throw new Error('Failed to connect to MongoDB: Client is null or empty (1000024)');
         }
     }
 
@@ -105,7 +113,7 @@ class MongoDatabaseService {
             return SaveStatus.EXISTS;
         }
         let status = null;
-        for (let i = 0; i < this.countsLimitsData.maximumSaveEmailAddressesRetriesCount; i++) {
+        for (let i = 0; i < this.countLimitData.maximumSaveEmailAddressesRetriesCount; i++) {
             try {
                 await new EmailAddressModel({ emailAddress: insertEmailAddress }).save();
                 status = SaveStatus.SAVE;
@@ -115,7 +123,7 @@ class MongoDatabaseService {
                 status = SaveStatus.ERROR;
             }
             finally {
-                await globalUtils.sleep(this.countsLimitsData.millisecondsDelayMongoDatabaseSyncCount);
+                await globalUtils.sleep(this.countLimitData.millisecondsDelayMongoDatabaseSyncCount);
             }
         }
         return status;

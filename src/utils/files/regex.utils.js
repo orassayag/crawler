@@ -10,7 +10,7 @@ class RegexUtils {
 			fix: str => str.replace(/,(co\.\w{2}$)/, '.$1')
 		}, {
 			pattern: /@\w*$/,
-			fix: str => str + '.com'
+			fix: str => `${str}.com`
 		}];
 		this.detectLetter = /[a-zA-Z]/;
 		this.findPackageNameRegex = /^[0-9^.v]*$/g;

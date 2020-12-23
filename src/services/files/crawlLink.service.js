@@ -1,19 +1,18 @@
 const url = require('url');
-const dns = require('dns');
+const isReachable = require('is-reachable');
 const { crawlUtils, validationUtils, regexUtils, textUtils } = require('../../utils');
 const sourceService = require('./source.service');
 const searchService = require('./search.service');
 const logService = require('./log.service');
-const { SourceType } = require('../../core/enums/files/search.enum');
 const { filterLinkFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
 const { globalFilterLinkDomains, filterLinkDomains } = require('../../configurations/filterLinkDomains.configuration');
 const { LinksResult } = require('../../core/models/application');
-const { GoalType } = require('../../core/enums/files/system.enum');
+const { GoalType, SourceType } = require('../../core/enums');
 
 class CrawlLinkService {
 
 	constructor() {
-		this.countsLimitsData = null;
+		this.countLimitData = null;
 		this.totalCrawlCount = 0;
 		this.goalValue = 0;
 		this.replaceGoogleweblight = 'googleweblight.com/fp%3Fu%3D';
@@ -21,8 +20,8 @@ class CrawlLinkService {
 	}
 
 	async initiate(data) {
-		const { applicationData, countsLimitsData } = data;
-		this.timeout = countsLimitsData.millisecondsTimeoutSourceRequestCount;
+		const { applicationData, countLimitData } = data;
+		this.timeout = countLimitData.millisecondsTimeoutSourceRequestCount;
 		this.goalValue = applicationData.goalType === GoalType.LINKS ? applicationData.goalValue : null;
 		// Initiate the search engines.
 		await this.initiateSearchEngines(applicationData);
@@ -67,20 +66,12 @@ class CrawlLinkService {
 		}
 	}
 
-	isSearchEngineActive(searchEngineLink) {
-		return new Promise(resolve => {
-			dns.lookup(searchEngineLink, (error) => {
-				resolve(error ? false : true);
-			});
-		}).catch();
-	}
-
 	async validateSearchEngineActive(searchEngineLink) {
-		let isActive = true;
+		let isConnected = true;
 		try {
-			isActive = await this.isSearchEngineActive(searchEngineLink);
-		} catch (error) { isActive = false; }
-		return isActive;
+			isConnected = await isReachable(searchEngineLink);
+		} catch (error) { isConnected = false; }
+		return isConnected;
 	}
 
 	getLinks(data) {

@@ -17,7 +17,6 @@ class ConfirmationService {
                 readLine.on('line', (line) => {
                     switch (line) {
                         case 'y': resolve(true); break;
-                        case 'n': resolve(false); break;
                         default: resolve(false); break;
                     }
                     readLine.close();

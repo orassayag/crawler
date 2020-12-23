@@ -10,16 +10,16 @@ class PathUtils {
         const { fileName, fileExtension } = data;
         // Check if the fileName parameter was received.
         if (!fileName) {
-            throw new Error(`fileName not received: ${fileName} (1000032)`);
+            throw new Error(`fileName not received: ${fileName} (1000037)`);
         }
         // Check if the fileExtension parameter was received.
         if (!fileExtension) {
-            throw new Error(`fileExtension not received: ${fileExtension} (1000033)`);
+            throw new Error(`fileExtension not received: ${fileExtension} (1000038)`);
         }
         const extension = path.extname(fileName);
         // Check if the extension parameter was received.
         if (!extension) {
-            throw new Error(`extension not received: ${extension} (1000034)`);
+            throw new Error(`extension not received: ${extension} (1000039)`);
         }
         return textUtils.toLowerCase(extension) === textUtils.addStartDot(textUtils.toLowerCase(fileExtension));
     }
@@ -28,11 +28,11 @@ class PathUtils {
         const { targetPath, targetName } = data;
         // Check if the targetPath parameter was received.
         if (!targetPath) {
-            throw new Error(`targetPath not received: ${targetPath} (1000035)`);
+            throw new Error(`targetPath not received: ${targetPath} (1000040)`);
         }
         // Check if the fileName parameter was received.
         if (!targetName) {
-            throw new Error(`targetName not received: ${targetName} (1000036)`);
+            throw new Error(`targetName not received: ${targetName} (1000041)`);
         }
         return path.join(targetPath, targetName);
     }

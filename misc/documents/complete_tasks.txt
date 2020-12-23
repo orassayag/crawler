@@ -1,5 +1,87 @@
 Maintenance:
 ============
+-Remove all comments. *
+-Fix TXT files spell mistakes. *
+-Fix all spell mistakes in all TXT files.
+-Remove all unused files, functions, and variables. *
+-Make sure all comments ends with .*
+-Format all files. *
+-Remove all debugger. *
+-Rewrite error numbers. *
+-Move all completed tasks to complete tasks text file. *
+-Delete old project from guthub + Re-upload GitHub. *
+-Delete from developer-Story in StackOverFlow + Re-add it. *
+-Exclude the todo_tasks.txt from this specific project in the backups and remove it on other backups. *
+-Copy comment the backup logic to WorldCovid, Sender, udemy-courses projects. *
+-Add logic to backup name that if backup name contained . - Remove the dot (Ignore it). *
+-Delete the backup directory with the dot . (Remove all backup from this directory and delete the directory via code). *
+-Go on all 'validateEmailAddress.test.js' and 'todo_tasks.txt' + 'complete_tasks.txt' in all backups and clear them. *
+-Manually fix: test@test.c. *
+-Check why no function id: ajax-loader@2x.gif | ico-email@2x.png | functionIds:. *
+-If it works, write comment on StarterKits to upgrade it also - Canceled. *
+-Fix: test@test-ha...ni.il | fix: test@test-ha.ni.il | functionIds: 4 => test@test-ha.muni.il. *
+-Invalid fix: test@test-ha...ni.il | fix: test@test-ha.ni.il | functionIds: 4 => test@test-ha.muni.il. *
+-Need to unfix this: original: test-test@yahoogroups.com | fix: test-test@yahoo.com | functionIds: 19. *
+-Check if need to be fixed: original: test-test@yahoogroups.com | fix: test-test@yahoo.com. *
+-Check why not fix as it should be: original: test@eca.gov.il012-3456789 | fix: test@eca.gov.ilm@eca.gov.il0 | functionIds: 27,-15 => test@eca.gov.il. *
+-Fix: -test@bmc.gov_.il_ID606767_2_P1010023-110x75.jpg | fix: test@bmc.gov-ilid6067672p1010023-110x75.jpg | functionIds: 3,6,8,11,16 => test@bmc.gov.il *
+-Fix test@test.oirg.il => test@test.org.il. *
+-Improve logic of commonEmailAddressDomainsList. *
+-Check why not converted to .com in the end: isValid: false | original: test@test-is... | *
+fix: test@test-is | functionIds: 4,11,-15 (in test@y... it works good). *
+-Find manually fix: test@test.c, test@test.c, test@netvision.n, test@test-r.c, test-v@test.o, test@test.g, test@test.c *
+test@test.c, test@test.c, test@test.c, test@test.b, test@test.c, test@test-ltd.c, test@test-test.c *
+-Should not be fixed: original: test@test.community | fix: test@test.com | functionIds: 28. *
+-Should not be fixed: original: test@test.company | fix: test@test.com | functionIds: 28. *
+-Refactor time.utils.js. *
+-Check how the log file name created like 'crawl_error_links_20201210_000000.txt' (also the directory name '1_20201210_000000') (no time). *
+-Fix: test@test.govil => test@test.gov.il. *
+-Need to fix test@test.orgl => test@test.org. *
+-Need to be invalid: 67256@agur-logo-ivrit6.1.05.jpg. *
+-Invalid fix: original: test@mail....ov.il | fix: test@mail.ov.il | functionIds: 4 => test@mail.co.il. *
+-Check why not invalid: original: 67256_@Agur-logo_ivrit_6.1.05.JPG | fix: 67256@agur-logo-ivrit6.1.05.jpg | functionIds: 3,6,11,16,-16. *
+-Fix: Need to be valid: test@10.tv | functionIds: -16. *
+-Fix: test@savion.huj => test@savion.huji.ac.il. *
+-Need to fix - test@asat.technion.ac.ilsyor => test@asat.technion.ac.il. *
+-Need to be fixed: test@insurance.il.org => test@insurance.org.il. *
+-Add to filter: test@test-test.com. *
+-Add to filter: test@knesset.tv. *
+-Add to filter: your.name@provider.com, email@email.com, your@friend.email. *
+-Fix: test@test.ci.il => test@test.co.il. *
+-Fix: test@test.otg.il => test@test.org.il. *
+-Fix: test@zahav.nrt.il => test@zahav.net.il. *
+-Add to invalid: 14370afcdc17429f9e418d5ffbd0334a@sentry.wixpress.com. *
+-Mongodb Service - Check if the service running: *
+https://stackoverflow.com/questions/38033127/node-js-how-to-check-a-process-is-running-by-the-process-name *
+(Check second answer). *
+-Add index.js file to enums and change in all places. *
+-Add the exit 'ABORTED_BY_THE_USER' to the Status enum + change it to 'ABORT_BY_THE_USER'. Add all statuses to Status enum. *
+-Change the step 'IS_LINKS_STEP' keys to 'IS_LINKS_METHOD_ACTIVE' in all places. Change 'Method' to 'Step' in all places. *
+-Remove 'setCrawlStart' function, just assign normally. *
+-Copy the 'isPathAccessible' from 'udemy-courses' project. *
+-Change the console message of confirmation: 'OK to run? (y = yes)' + refactor function logic (take from 'udemy-courses' project) + *
+Update the INSTRUCTIONS.md. *
+-Copy all the logic from 'udemy-courses' project of running the project after downloaded from GitHub. *
+-Change the counter parameter variable name in the logService in the logProgress to be with the word 'Count' (Example: savedCount). *
+-Add logic that if no log flag is true, don't create any directory. *
+-Change 'if (linksList && linksList.length > 0) {' to validationUtils + Search more examples of theses to fix. *
+-Change the validateInternetConnection like the in the 'udemy-courses' project. *
+-Change all many to single. 'logsUtils' / 'logsService' => 'log' (also in comments of // === and all comments). *
+-In package.json change "main" path to monitor. *
+-Sort the services in index.js file again, it's not sorted. *
+-Make sure that in log services there is 'this.emptyValue' parameter. *
+-Change the project name to 'crawler' (lowercase) instead of 'Crawler' (uppercase). *
+-Convert all backups to the new lowercase name. *
+-Update packages. *
+-Remove all 'SECONDARY_BACKUP_PATH'. *
+-Add the logic in puppeter of closing first empty tab: *
+        const page = await browser.newPage(); *
+        const pages = await browser.pages(); *
+        if (pages.length > 1) { *
+            await pages[0].close(); *
+        } *
+-Add 'DOWNLOADS_PATH' to initiate - validate strings. *
+-Fix bug of puppeter on single round. *
 -Check all functions in use. Remove the unused functions. *
 -Change all 'saved' to 'save'. *
 -Clean all the comments from the project. *

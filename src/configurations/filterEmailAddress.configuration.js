@@ -9,15 +9,19 @@ const filterEmailAddressDomains = [
 	'example.com',
 	'example.web',
 	'iana.org',
+	'email.com',
 	'no_such_domain.com',
+	'provider.com',
 	'nosuchdomain.com',
 	'test.com',
+	'friend.email',
 	'yourdomain.com',
 	'justice.gov.il',
 	'police.gov.il',
 	'taxes.gov.il',
 	'knesset.gov.il',
-	'court.gov.il'
+	'court.gov.il',
+	'knesset.tv'
 ];
 
 const unfixEmailAddressDomains = [
@@ -467,7 +471,11 @@ const unfixEmailAddressDomains = [
 ];
 
 const filterEmailAddresses = [
-	'nurit.fadida@gmail.com'
+	'nurit.fadida@gmail.com',
+	'amit@amit-segal.com',
+	'your.name@provider.com',
+	'email@email.com',
+	'your@friend.email'
 ];
 
 module.exports = { filterEmailAddressDomains, unfixEmailAddressDomains, filterEmailAddresses };

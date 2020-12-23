@@ -160,12 +160,12 @@ class TextUtils {
         if (!validationUtils.isExists(list)) {
             return false;
         }
-        return list.filter(t => target.indexOf(t) > -1).length > 0;
+        return validationUtils.isExists(list.filter(t => target.indexOf(t) > -1));
     }
 
     removeDuplicates(list) {
         if (!validationUtils.isExists(list)) {
-            return [];
+            return list;
         }
         return Array.from(new Set(list));
     }
@@ -219,7 +219,7 @@ class TextUtils {
         if (!text) {
             return '';
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             if (!this.isCharacterALetter(text.charAt(text.length - 1))) {
                 text = this.removeLastCharacter(text);
             }
@@ -258,6 +258,13 @@ class TextUtils {
             return '';
         }
         return text.replace(regexUtils.createRegex(origin), target);
+    }
+
+    removeAllCharacters(text, target) {
+        if (!text) {
+            return '';
+        }
+        return text.split(target).join('');
     }
 
     toLowerCase(text) {

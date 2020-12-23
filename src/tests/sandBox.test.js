@@ -1,3 +1,4 @@
-require('../services/files/initiate.service').initiate();
-(() => {
+require('../services/files/initiate.service').initiate('test');
+
+(async () => {
 })();

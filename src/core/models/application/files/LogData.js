@@ -1,4 +1,4 @@
-class LogsData {
+class LogData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -15,4 +15,4 @@ class LogsData {
 	}
 }
 
-module.exports = LogsData;
+module.exports = LogData;

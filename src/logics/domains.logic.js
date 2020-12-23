@@ -1,13 +1,13 @@
 const { pathUtils } = require('../utils');
 const { domainsCounterService } = require('../services');
-const { DomainsCounterSourceType } = require('../core/enums/files/script.enum');
+const { DomainsCounterSourceType } = require('../core/enums');
 
 class DomainsLogic {
 
 	constructor() { }
 
 	async run() {
-		const sourceType = DomainsCounterSourceType.FILE; // FILE / DIRECTORY / DATABASE
+		const sourceType = DomainsCounterSourceType.FILE; // FILE / DIRECTORY / DATABASE.
 		const sourcePath = pathUtils.getJoinPath({
 			targetPath: __dirname,
 			targetName: ''

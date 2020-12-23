@@ -75,14 +75,14 @@ SEARCH_KEY:
 If you don't want to use the random search key and to use a static search key, you can write
 the desired search key in this value, and in all the process this will be the search key.
 
-IS_LINKS_STEP:
-If true, the step of fetching links within a search engine search by query string will be take place.
-This step not include other logic. If it false, it will not do any logic, and en error will be throwen.
+IS_LINKS_METHOD_ACTIVE:
+If true, the method of fetching links within a search engine search by query string will be take place.
+This method not include other logic. If it false, it will not do any logic, and en error will be throwen.
 
-IS_CRAWL_STEP:
-If true, and the links step is also true, a full crawl operation will take place, include fetch links
+IS_CRAWL_METHOD_ACTIVE:
+If true, and the links method is also true, a full crawl operation will take place, include fetch links
 from search engine search, and for each link fetched - Preform a crawling action to fetch all the email
-addresses from each link. If this step is mark as false, no crawling email addresses will take place.
+addresses from each link. If this method is mark as false, no crawling email addresses will take place.
 
 MAXIMUM_SEARCH_PROCESSES_COUNT:
 This parameter determine the number of process to run in the entire application lifetime. If the process
@@ -94,7 +94,7 @@ This parameter determine the number of pages to page in the search engine during
 For example, if this number is 2, the process will contain 2 rounds, with '&page=1' and '&page=2'
 in the query string for the search engine.
 
-ALL PATHS (APPLICATION_NAME, SECONDARY_BACKUP_PATH, OUTER_APPLICATION_PATH, INNER_APPLICATION_PATH,
+ALL PATHS (APPLICATION_NAME, OUTER_APPLICATION_PATH, INNER_APPLICATION_PATH,
 APPLICATION_PATH, BACKUPS_PATH, DIST_PATH, SOURCES_PATH, NODE_MODULES_PATH,
 PACKAGE_JSON_PATH, PACKAGE_LOCK_JSON_PATH):
 All these parameters of path required for couple of reasons: for the secondary backup directory,
@@ -330,8 +330,8 @@ IS_RUN_DOMAINS_COUNTER: true
 GOAL_TYPE: MINUTES
 GOAL_VALUE: 5
 SEARCH_KEY: null
-IS_LINKS_STEP: true
-IS_CRAWL_STEP: true
+IS_LINKS_METHOD_ACTIVE: true
+IS_CRAWL_METHOD_ACTIVE: true
 IS_LOG_VALID_EMAIL_ADDRESSES: true
 IS_LOG_FIX_EMAIL_ADDRESSES: true
 IS_LOG_INVALID_EMAIL_ADDRESSES: true
@@ -339,12 +339,12 @@ IS_LOG_UNSAVE_EMAIL_ADDRESSES: true
 IS_LOG_CRAWL_LINKS: true
 IS_LOG_CRAWL_ERROR_LINKS: true
 ========================
-OK to run? y/n
+OK to run? (y = yes)
 y
 ===INITIATE THE SETTINGS===
 ===INITIATE THE SERVICES===
 ===VALIDATE INTERNET CONNECTION===
-===[SETTINGS] Mode: PRODUCTION | Database: crawl_production | Drop: true | Steps: LINKS,CRAWL===
+===[SETTINGS] Mode: PRODUCTION | Database: crawl_production | Drop: true | Active Methods: LINKS,CRAWL===
 ===[GENERAL] Time: 00.00:00:26 [\] | Goal: MINUTES | Progress: 0/5 (00.00%) | Status: CRAWL===
 ===[PROCESS] Process: 1/10 | Page: 1/3 | Engine: google | Key: ליימ יא ןויצ ינבב ברע תינדקומ השורד===
 ===[LINK] Crawl: ✅  8 | Total: 67 | Filter: 59 | Error: 0 | Error In A Row: 0 | Current: 5/8===

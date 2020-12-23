@@ -7,17 +7,41 @@ class TimeUtils {
 
     getFullTime() {
         const date = new Date();
-        return `${textUtils.addLeadingZero(date.getHours())}:${textUtils.addLeadingZero(date.getMinutes())}:${textUtils.addLeadingZero(date.getSeconds())}`;
+        return `${this.getHours(date)}:${this.getMinutes(date)}:${this.getSeconds(date)}`;
     }
 
     getFullDateNoSpaces() {
         const date = new Date();
-        return `${[date.getFullYear(), (textUtils.addLeadingZero(date.getMonth() + 1)), textUtils.addLeadingZero(date.getDate())].join('')}_${[textUtils.addLeadingZero(date.getHours()), textUtils.addLeadingZero(date.getMinutes()), textUtils.addLeadingZero(date.getSeconds())].join('')}`;
+        return `${[this.getYear(date), this.getMonth(date), this.getDay(date)].join('')}_${[this.getHours(date), this.getMinutes(date), this.getSeconds(date)].join('')}`;
     }
 
     getDateNoSpaces() {
         const date = new Date();
-        return [textUtils.addLeadingZero(date.getDate()), (textUtils.addLeadingZero(date.getMonth() + 1)), date.getFullYear()].join('');
+        return [this.getDay(date), this.getMonth(date), this.getYear(date)].join('');
+    }
+
+    getSeconds(date) {
+        return textUtils.addLeadingZero(date.getSeconds());
+    }
+
+    getMinutes(date) {
+        return textUtils.addLeadingZero(date.getMinutes());
+    }
+
+    getHours(date) {
+        return textUtils.addLeadingZero(date.getHours());
+    }
+
+    getDay(date) {
+        return textUtils.addLeadingZero(date.getDate());
+    }
+
+    getMonth(date) {
+        return textUtils.addLeadingZero(date.getMonth() + 1);
+    }
+
+    getYear(date) {
+        return date.getFullYear();
     }
 
     getDifferenceTimeBetweenDates(data) {

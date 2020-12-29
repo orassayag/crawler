@@ -1,6 +1,6 @@
 const kill = require('tree-kill');
-const logUtils = require('./log.utils');
 const exec = require('child_process').exec;
+const logUtils = require('./log.utils');
 
 class SystemUtils {
 

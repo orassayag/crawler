@@ -5,6 +5,7 @@ class ValidationResult {
 		this.fix = null;
 		this.isValid = true;
 		this.functionIds = [];
+		this.isGibberish = false;
 	}
 }
 

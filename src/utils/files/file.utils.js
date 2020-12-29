@@ -116,6 +116,11 @@ class FileUtils {
     async copyDirectory(sourcePath, targetPath, filterFunction) {
         await fs.copy(sourcePath, targetPath, { filter: filterFunction });
     }
+
+    isDirectoryPath(path) {
+        const stats = fs.statSync(path);
+        return stats.isDirectory();
+    }
 }
 
 module.exports = new FileUtils();

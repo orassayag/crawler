@@ -1,5 +1,33 @@
 Maintenance:
 ============
+-Copy the logic of nonNumeric in logProgress funcion from 'udemy-courses' project. *
+-Add 	constructor() { *
+		this.scriptType = null; *
+	} *
+In the initiateService.js *
+-Add validation of 'isFilePath' and 'isDirectoryPath' in all relevant places. *
+-Fix manually: test@test.c, hr-test@test.g, test@test.c. *
+-Add to filter: 3c6b9c1e.0306242134.203da40c@posting.google.com *
+-Need to be invalid: original: image005.png@01CBEDF1.1CFF5D70 | fix: image005.png@01cbedf1.1cff5d | functionIds: 3,27,-15 *
+-Lower case the backup name. Copy the logic from 'sender' project. *
+-Invalid fix: original: jobsmedia@kahane.oil. | fix: jobsmedia@kahane.il | functionIds: 11,14. *
+-Update the last error number in error_index.txt. *
+-Remove all comments. *
+-Fix TXT files spell mistakes. *
+-Remove all unused files, functions, and variables. *
+-Make sure all comments ends with . *
+-Format all files. *
+-Remove all debugger. *
+-Rewrite error numbers. *
+-Move all completed tasks to complete tasks text file. *
+-Delete old project from guthub + Re-upload GitHub. *
+-Delete from developer-Story in StackOverFlow + Re-add it. *
+-Add gibberish tests: https://stackoverflow.com/questions/65393659/javascript-script-to-detect-gibberish/65467625#comment115755926_65467625 *
+-Add gibberish detection service logic. If local part is larger than 32 characters and domain part is not common, check for detection. *
+-If return true, do not include it on email addresses txt file, include it in a new log file. *
+-Add flag for gibberish logic. *
+-Add flag log for gibberish. *
+-Add gibberish counter to the console status. *
 -Remove all comments. *
 -Fix TXT files spell mistakes. *
 -Fix all spell mistakes in all TXT files.

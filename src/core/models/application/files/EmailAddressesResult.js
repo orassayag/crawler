@@ -11,6 +11,7 @@ class EmailAddressesResult {
         this.unsaveCount = 0;
         this.filterCount = 0;
         this.skipCount = 0;
+        this.gibberishCount = 0;
         this.trendingSaveList = [];
         this.isValidPage = true;
     }

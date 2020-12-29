@@ -12,6 +12,8 @@ class RegexUtils {
 			pattern: /@\w*$/,
 			fix: str => `${str}.com`
 		}];
+		this.punctuation = /[.,\/#!$%\^&\*;:{}=\-_`~()]/g;
+		this.countVowels = /[aeiou]/gi;
 		this.detectLetter = /[a-zA-Z]/;
 		this.findPackageNameRegex = /^[0-9^.v]*$/g;
 		this.cleanAtRegex = /@/g;

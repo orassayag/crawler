@@ -27,6 +27,8 @@ const settings = {
     // Determine if to run the domains counter script in the end of all the processes.
     IS_RUN_DOMAINS_COUNTER: false,
     IS_LONG_RUN: innerSettings.IS_LONG_RUN,
+    // Determine if to active the gibberish validation logic.
+    IS_GIBBERISH_VALIDATION_ACTIVE: true,
 
     // ===GOAL=== //
     // Determine the goal type which the application will run on, and determine by it when to stop the application.
@@ -69,6 +71,8 @@ const settings = {
     IS_LOG_INVALID_EMAIL_ADDRESSES: true,
     // Determine if to log unsave email addresses to a TXT file.
     IS_LOG_UNSAVE_EMAIL_ADDRESSES: true,
+    // Determine if to log gibberish email addresses to a TXT file.
+    IS_LOG_GIBBERISH_EMAIL_ADDRESSES: true,
     // Determine if to log crawl links to a TXT file.
     IS_LOG_CRAWL_LINKS: true,
     // Determine if to log crawl error links to a TXT file.
@@ -79,7 +83,7 @@ const settings = {
     // ===COUNT & LIMIT=== //
     // Determine how much time (in minutes) to wait until start the crawl process. It's good
     // if the user want to delay the start of the process. If it's 0 - No schedule will take place.
-    SCHEDULE_MINUTES_COUNT: 60,
+    SCHEDULE_MINUTES_COUNT: 0,
     // Determine how many processes to run during a single life time of the application.
     MAXIMUM_SEARCH_PROCESSES_COUNT: innerSettings.IS_LONG_RUN ? 10000 : 10,
     // Determine how many pages to pager with the search engine during a single process.
@@ -260,6 +264,8 @@ const settings = {
     MAXIMUM_COMMON_DOMAIN_LOCAL_PART_CHARACTERS_COUNT: 1,
     // Determine the minimum length of the short string in a close typo check in the validation email service.
     MINIMUM_SHORT_STRING_CHARACTERS_COUNT: 3,
+    // Determine the minimum length of the local part to perform the gibberish validation logic.
+    MINIMUM_GIBBERISH_CHARACTERS_COUNT: 32,
 
     // ===UNCHANGED SETTING=== //
     // ========================================

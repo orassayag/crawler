@@ -152,7 +152,7 @@ class CrawlEmailAddressService {
 		// Get the status of the email address.
 		const validationResult = await emailAddressValidationService.validateEmailAddress(emailAddress);
 		const emailAddressStatus = new EmailAddressStatus(validationResult);
-		const { original, fix, isValid } = validationResult;
+		const { original, fix, isValid, isGibberish } = validationResult;
 		let trendingSaveEmailAddress = null;
 		if (fix) {
 			emailAddressStatus.logStatus = LogStatus.FIX;
@@ -186,6 +186,13 @@ class CrawlEmailAddressService {
 		if (trendingSaveEmailAddress) {
 			// Add the email address to the trending save list if not exists already.
 			emailAddressesResult = this.addTrendingSave(trendingSaveEmailAddress, emailAddressesResult, emailAddressStatus.isValidFix);
+		}
+		// Log the email address to specific TXT file if it's gibberish.
+		if (isGibberish) {
+			const originalStatus = emailAddressStatus.logStatus;
+			emailAddressStatus.logStatus = LogStatus.GIBBERISH;
+			await logService.logEmailAddress(emailAddressStatus);
+			emailAddressStatus.logStatus = originalStatus;
 		}
 		// Log the email address to the relevant TXT file.
 		await logService.logEmailAddress(emailAddressStatus);
@@ -226,6 +233,9 @@ class CrawlEmailAddressService {
 		}
 		if (emailAddressStatus.isUnsave) {
 			emailAddressesResult.unsaveCount++;
+		}
+		if (emailAddressStatus.isGibberish) {
+			emailAddressesResult.gibberishCount++;
 		}
 		return emailAddressesResult;
 	}

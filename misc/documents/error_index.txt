@@ -1,4 +1,4 @@
 ==========================
-Last error number: 1000040
+Last error number: 1000042
 Available numbers:
 ==========================

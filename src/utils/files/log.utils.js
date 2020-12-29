@@ -51,7 +51,7 @@ class LogUtils {
     }
 
     logProgress(data) {
-        const { titlesList, colorsTitlesList, keysLists, colorsLists, statusColor } = data;
+        const { titlesList, colorsTitlesList, keysLists, colorsLists, nonNumericKeys, statusColor } = data;
         let results = '';
         for (let i = 0, lengthX = keysLists.length; i < lengthX; i++) {
             let result = '';
@@ -69,6 +69,7 @@ class LogUtils {
             for (let y = 0, lengthY = keys.length; y < lengthY; y++) {
                 const color = colorsList ? colorsList[y] : null;
                 let keyParameter = keys[y];
+                const isNonNumberic = nonNumericKeys[keyParameter];
                 if (color) {
                     keyParameter = colorUtils.createColorMessage({
                         message: keys[y],
@@ -76,7 +77,7 @@ class LogUtils {
                     });
                 }
                 const value = keysList[keys[y]];
-                const displayValue = value && validationUtils.isValidNumber(value) ? textUtils.getNumberWithCommas(value) : value;
+                const displayValue = value && !isNonNumberic && validationUtils.isValidNumber(value) ? textUtils.getNumberWithCommas(value) : value;
                 const message = `${keyParameter === '#' ? '' : `${keyParameter}: `}${displayValue} | `;
                 result += message;
             }

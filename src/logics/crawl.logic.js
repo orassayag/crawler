@@ -13,7 +13,7 @@ class CrawlLogic {
     constructor() {
         // ===LOG=== //
         this.logData = null;
-        // ==SEARCH DATA=== //
+        // ===SEARCH DATA=== //
         this.searchData = null;
         // ===COUNT & LIMIT DATA=== //
         this.countLimitData = null;
@@ -85,7 +85,7 @@ class CrawlLogic {
         });
         // ===LOG=== //
         this.logData = new LogData(settings);
-        // ==SEARCH DATA=== //
+        // ===SEARCH DATA=== //
         this.searchData = new SearchData(settings);
         // ===COUNT & LIMIT DATA=== //
         this.countLimitData = new CountLimitData(settings);

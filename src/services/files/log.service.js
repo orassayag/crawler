@@ -21,6 +21,7 @@ class LogService {
 		this.fixedEmailAddressesPath = null;
 		this.invalidEmailAddressesPath = null;
 		this.unsaveEmailAddressesPath = null;
+		this.gibberishEmailAddressesPath = null;
 		this.crawlLinksPath = null;
 		this.crawlErrorLinksPath = null;
 		this.frames = ['-', '\\', '|', '/'];
@@ -37,7 +38,8 @@ class LogService {
 		this.countLimitData = countLimitData;
 		this.pathData = pathData;
 		this.isLogs = (this.logData.isLogValidEmailAddresses || this.logData.isLogFixEmailAddresses ||
-			this.logData.isLogInvalidEmailAddresses || this.logData.isLogUnsaveEmailAddresses || this.logData.isLogCrawlLinks ||
+			this.logData.isLogInvalidEmailAddresses || this.logData.isLogUnsaveEmailAddresses ||
+			this.logData.isLogGibberishEmailAddresses || this.logData.isLogCrawlLinks ||
 			this.logData.isLogCrawlErrorLinks);
 		await this.initiateDirectories();
 	}
@@ -62,6 +64,9 @@ class LogService {
 		}
 		if (this.logData.isLogUnsaveEmailAddresses) {
 			this.unsaveEmailAddressesPath = this.createFilePath(`unsave_email_addresses_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogGibberishEmailAddresses) {
+			this.gibberishEmailAddressesPath = this.createFilePath(`gibberish_email_addresses_${Placeholder.DATE}`);
 		}
 		if (this.logData.isLogCrawlLinks) {
 			this.crawlLinksPath = this.createFilePath(`crawl_links_${Placeholder.DATE}`);
@@ -187,7 +192,8 @@ class LogService {
 				'Invalid Fix': this.applicationData.crawlEmailAddressData.invalidFixCount,
 				'Unsave': this.applicationData.crawlEmailAddressData.unsaveCount,
 				'Filter': this.applicationData.crawlEmailAddressData.filterCount,
-				'Skip': this.applicationData.crawlEmailAddressData.skipCount
+				'Skip': this.applicationData.crawlEmailAddressData.skipCount,
+				'Gibberish': this.applicationData.crawlEmailAddressData.gibberishCount
 			}, {
 				'#': page
 			}, {
@@ -205,8 +211,9 @@ class LogService {
 				[Color.CYAN, Color.CYAN, Color.CYAN, Color.MAGENTA],
 				[Color.GREEN, Color.CYAN, Color.CYAN, Color.RED, Color.RED, Color.CYAN],
 				[Color.GREEN, Color.CYAN, Color.CYAN, Color.CYAN, Color.RED, Color.GREEN,
-				Color.RED, Color.RED, Color.MAGENTA, Color.YELLOW]
+				Color.RED, Color.RED, Color.MAGENTA, Color.YELLOW, Color.YELLOW]
 			],
+			nonNumericKeys: {},
 			statusColor: Color.CYAN
 		});
 	}
@@ -277,6 +284,12 @@ class LogService {
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), original);
 				}
 				break;
+			case LogStatus.GIBBERISH:
+				if (this.logData.isLogGibberishEmailAddresses) {
+					path = this.gibberishEmailAddressesPath;
+					message = this.createWrapTemplate(await fileUtils.isPathExists(path), fix ? fix : original);
+				}
+				break;
 		}
 		// In case no log status is relevant to log, don't log anything.
 		if (path && message) {
@@ -328,9 +341,10 @@ class LogService {
 	createConfirmSettingsTemplate(settings) {
 		const searchEngines = searchService.getAllActiveSearchEngines().map(engine => engine.name).join(', ');
 		const parameters = ['IS_PRODUCTION_MODE', 'IS_DROP_COLLECTION', 'IS_STATUS_MODE', 'IS_EMPTY_DIST_DIRECTORY',
-			'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN', 'GOAL_TYPE', 'GOAL_VALUE', 'SEARCH_KEY', 'IS_LINKS_METHOD_ACTIVE', 'IS_CRAWL_METHOD_ACTIVE',
-			'IS_SKIP_LOGIC', 'MAXIMUM_MINUTES_WITHOUT_UPDATE', 'IS_LOG_VALID_EMAIL_ADDRESSES', 'IS_LOG_FIX_EMAIL_ADDRESSES',
-			'IS_LOG_INVALID_EMAIL_ADDRESSES', 'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS'];
+			'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN', 'IS_GIBBERISH_VALIDATION_ACTIVE', 'GOAL_TYPE', 'GOAL_VALUE', 'SEARCH_KEY',
+			'IS_LINKS_METHOD_ACTIVE', 'IS_CRAWL_METHOD_ACTIVE', 'IS_SKIP_LOGIC', 'MAXIMUM_MINUTES_WITHOUT_UPDATE',
+			'IS_LOG_VALID_EMAIL_ADDRESSES', 'IS_LOG_FIX_EMAIL_ADDRESSES', 'IS_LOG_INVALID_EMAIL_ADDRESSES', 'IS_LOG_GIBBERISH_EMAIL_ADDRESSES',
+			'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS'];
 		let settingsText = this.createLineTemplate('SEARCH ENGINES', searchEngines);
 		settingsText += this.createLineTemplate('DATABASE', mongoDatabaseUtils.getMongoDatabaseModeName(settings));
 		settingsText += Object.keys(settings).filter(s => parameters.indexOf(s) > -1)

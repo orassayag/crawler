@@ -10,12 +10,13 @@ const settings = require('../../settings/settings');
 const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
 const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
 const { domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList, emailAddressDomainEndsList, validOneWordDomainEndsList,
-	emailAddressEndFixTypos, commonDomainEndsList, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
+	emailAddressEndFixTypos, commonDomainEndsList, endsWithDotIgnore, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
 const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
 const { filterEmailAddressFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
 const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
 const shortEmailAddressDomainsList = require('../../configurations/shortEmailAddressDomainsList.configuration');
 const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
+const emailGibberishValidationService = require('./emailGibberishValidation.service');
 const { EmailAddressData, ValidationResult } = require('../../core/models/application');
 const { MicromatchAction, PartType } = require('../../core/enums');
 
@@ -96,6 +97,8 @@ class EmailAddressValidationService {
 			if (!this.secondValidations(validationResult, resolve)) { return; }
 			// Fourth Step - The final validations.
 			if (!this.finalValidations(validationResult, resolve)) { return; }
+			// Validate that the email address is not gibberish.
+			validationResult = this.validateGibberish(validationResult);
 			// If all good and the email address is valid - Resolve.
 			resolve(validationResult);
 		}).catch();
@@ -271,7 +274,7 @@ class EmailAddressValidationService {
 	validateFileName(validationResult) {
 		const { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		let invalidPart = null;
-		let isInvalid = false;
+		let isValid = true;
 		if (!this.validatePartFileName(localPart)) {
 			invalidPart = PartType.LOCAL;
 		}
@@ -279,10 +282,10 @@ class EmailAddressValidationService {
 			invalidPart = PartType.DOMAIN;
 		}
 		if (invalidPart) {
-			isInvalid = invalidPart === PartType.DOMAIN;
+			isValid = false;
 			const domainEndsDots = domainEndsDotsList.filter(d => domainPart.indexOf(d) > -1);
 			if (validationUtils.isExists(domainEndsDots)) {
-				isInvalid = false;
+				isValid = invalidPart === PartType.DOMAIN;
 				validationResult = this.fixTypoFileName({
 					fixed: fixed,
 					localPart: localPart,
@@ -293,7 +296,7 @@ class EmailAddressValidationService {
 				});
 			}
 		}
-		if (isInvalid) {
+		if (!isValid) {
 			validationResult.isValid = false;
 			validationResult.functionIds.push(this.validationFunctionIdsMap[`validateFileName${textUtils.upperCaseFirstLetter(invalidPart, 0)}Part`]);
 		}
@@ -385,8 +388,11 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	fixCommonInvalidPartCharacters(part) {
+	fixCommonInvalidPartCharacters(part, checkIgnore) {
 		const originalPart = part;
+		if (checkIgnore && endsWithDotIgnore.find(e => part.endsWith(e))) {
+			return originalPart;
+		}
 		for (let i = 0, length = characterUtils.commonInvalidCharacters.length; i < length; i++) {
 			const character = characterUtils.commonInvalidCharacters[i];
 			part = textUtils.removeFirstCharacterLoop({
@@ -423,8 +429,8 @@ class EmailAddressValidationService {
 	// Remove from the local & domain parts invalid characters from the start and the end.
 	fixCommonInvalidCharacters(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-		localPart = this.fixCommonInvalidPartCharacters(localPart);
-		domainPart = this.fixCommonInvalidPartCharacters(domainPart);
+		localPart = this.fixCommonInvalidPartCharacters(localPart, false);
+		domainPart = this.fixCommonInvalidPartCharacters(domainPart, true);
 		validationResult = this.checkEmailAddressUpdate({
 			validationResult: validationResult,
 			fixed: fixed,
@@ -1227,6 +1233,21 @@ class EmailAddressValidationService {
 		if (isPackageName) {
 			validationResult.isValid = false;
 			validationResult.functionIds.push(this.validationFunctionIdsMap['validateVersionDomainPart']);
+		}
+		return validationResult;
+	}
+
+	// Detect gibberish email addresses like a60a26eba1e642519b43545f6be1d2b0@domain.com.
+	validateGibberish(validationResult) {
+		if (!this.emailAddressData.isGibberishValidationActive) {
+			return validationResult;
+		}
+		const { localPart, domainPart } = this.getEmailAddressData(validationResult);
+		if (validationResult.isValid && localPart.length >= this.emailAddressData.minimumGibberishCharactersCount) {
+			const isCommonDomain = commonEmailAddressDomainsList.findIndex(domain => domain.domain === domainPart) > -1;
+			if (!isCommonDomain) {
+				validationResult.isGibberish = emailGibberishValidationService.isGibberish(localPart);
+			}
 		}
 		return validationResult;
 	}

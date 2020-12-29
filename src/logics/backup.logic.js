@@ -13,7 +13,7 @@ class BackupLogic {
 
     initiate() {
         // Get the backup title from the console.
-        this.backupTitle = textUtils.removeAllCharacters(process.argv[2], '.');
+        this.backupTitle = textUtils.removeAllCharacters(textUtils.toLowerCase(process.argv[2]), '.');
         logUtils.logMagentaStatus('INITIATE THE BASE PARAMETERS');
         this.backupData = new BackupData(settings);
     }

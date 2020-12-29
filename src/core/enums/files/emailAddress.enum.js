@@ -9,7 +9,8 @@ const LogStatus = enumUtils.createEnum([
     ['FIX', 'fix'],
     ['VALID', 'valid'],
     ['INVALID', 'invalid'],
-    ['UNSAVE', 'unsave']
+    ['UNSAVE', 'unsave'],
+    ['GIBBERISH', 'gibberish']
 ]);
 
 const MicromatchAction = enumUtils.createEnum([

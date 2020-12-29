@@ -18,10 +18,11 @@ Complete + Canceled tasks:
 
 Unsolved email cases:
 =====================
+-Need to flip: il.co.p-s@g.hila
 -Fix: WWW.TEST.COMtest@test.com => test@test.com | Add validation that if starts with www / http: / https:
   => Remove all until the end of the URL address (search domain end, if not found, abort)).
 -Add this to the flip function: original: il.ac.biu.mail@law.comcenter | fix: il.ac.biu.mail@law.com | functionIds: 28 => comcenter.law@mail.biu.ac.il
--Do specific fix for: 012b00000009VaI-info@ibi.co.il, 0120N0000001XS7-maor@ibi.co.il, 012b00000009VaN-ibitrade@ibi.co.il
+-Do specific fix for: 012b00000009VaI-info@ibi.co.il, 012b00000009VaL-info@ibi.co.il, 0120N0000001XS7-maor@ibi.co.il, 012b00000009VaN-ibitrade@ibi.co.il
 
 Gibberish task:
 ===============

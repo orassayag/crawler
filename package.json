@@ -62,6 +62,7 @@
     "faker": "^5.1.0",
     "forever-monitor": "^3.0.3",
     "fs-extra": "^9.0.1",
+    "gibberish-detector": "^1.0.0",
     "is-reachable": "^5.0.0",
     "lorem-ipsum": "^2.0.3",
     "micromatch": "^4.0.2",

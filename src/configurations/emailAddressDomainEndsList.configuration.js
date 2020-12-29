@@ -30,6 +30,7 @@ let emailAddressDomainEndsList = [
             '.c.il',
             '.c.ill',
             '.c.l',
+            '.oil.',
             '.c.oil',
             '.co',
             '.co.',
@@ -249,11 +250,12 @@ const commonDomainEndsList = [
     new CommonEmailAddressDomainEnd({ commonDomainEnd: '.org.il', isAllowDotAfter: false, excludeWords: null }),
     new CommonEmailAddressDomainEnd({ commonDomainEnd: '.ac.il', isAllowDotAfter: false, excludeWords: null })
 ];
+const endsWithDotIgnore = emailAddressDomainEndsList.filter(d => d.typosList.length).map(t => t.typosList.find(e => e.endsWith('.'))).filter(t => t);
 // Don't delete this array or change it to const, will auto filled dynamically.
 let commonEmailAddressDomainsList = [];
 
 module.exports = {
     domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList,
     validDomainEndsList, validOneWordDomainEndsList, emailAddressEndFixTypos, emailAddressDomainEndsList,
-    commonDomainEndsList, commonEmailAddressDomainsList
+    commonDomainEndsList, endsWithDotIgnore, commonEmailAddressDomainsList
 };

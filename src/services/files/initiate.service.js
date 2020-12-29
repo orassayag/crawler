@@ -3,10 +3,13 @@ const globalUtils = require('../../utils/files/global.utils');
 const pathUtils = require('../../utils/files/path.utils');
 const validationUtils = require('../../utils/files/validation.utils');
 const { GoalType, ScriptType } = require('../../core/enums');
+const { fileUtils } = require('../../utils');
 
 class InitiateService {
 
-	constructor() { }
+	constructor() {
+		this.scriptType = null;
+	}
 
 	initiate(scriptType) {
 		// Validate the script type.
@@ -116,7 +119,7 @@ class InitiateService {
 			'MAXIMUM_REPLACE_RANDOM_POSITIONS_COUNT', 'MINIMUM_TEST_RANDOM_WORDS_COUNT', 'MAXIMUM_TEST_RANDOM_WORDS_COUNT', 'MINIMUM_RANDOM_PART_CHARACTERS_COUNT',
 			// ===EMAIL ADDRESS=== //
 			'MINIMUM_LOCAL_PART_CHARACTERS_COUNT', 'MINIMUM_DOMAIN_PART_CHARACTERS_COUNT', 'MINIMUM_EMAIL_ADDRESS_CHARACTERS_COUNT',
-			'MAXIMUM_COMMON_DOMAIN_LOCAL_PART_CHARACTERS_COUNT', 'MINIMUM_SHORT_STRING_CHARACTERS_COUNT',
+			'MAXIMUM_COMMON_DOMAIN_LOCAL_PART_CHARACTERS_COUNT', 'MINIMUM_SHORT_STRING_CHARACTERS_COUNT', 'MINIMUM_GIBBERISH_CHARACTERS_COUNT',
 			// ===UNCHANGED SETTING=== //
 			'MAXIMUM_LOCAL_PART_CHARACTERS_COUNT', 'MAXIMUM_DOMAIN_PART_CHARACTERS_COUNT', 'MAXIMUM_EMAIL_ADDRESS_CHARACTERS_COUNT'
 		].map(key => {
@@ -156,13 +159,14 @@ class InitiateService {
 		[
 			// ===FLAG=== //
 			'IS_PRODUCTION_MODE', 'IS_DROP_COLLECTION', 'IS_STATUS_MODE', 'IS_EMPTY_DIST_DIRECTORY', 'IS_RUN_DOMAINS_COUNTER', 'IS_LONG_RUN',
+			'IS_GIBBERISH_VALIDATION_ACTIVE',
 			// ===SEARCH=== //
 			'IS_ADVANCE_SEARCH_KEYS',
 			// ===METHOD=== //
 			'IS_LINKS_METHOD_ACTIVE', 'IS_CRAWL_METHOD_ACTIVE', 'IS_SKIP_LOGIC',
 			// ===LOG=== //
 			'IS_LOG_VALID_EMAIL_ADDRESSES', 'IS_LOG_FIX_EMAIL_ADDRESSES', 'IS_LOG_INVALID_EMAIL_ADDRESSES',
-			'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS',
+			'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_GIBBERISH_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS',
 			// ===MONGO DATABASE=== //
 			'IS_MONGO_DATABASE_USE_UNIFILED_TOPOLOGY', 'IS_MONGO_DATABASE_USE_NEW_URL_PARSER', 'IS_MONGO_DATABASE_USE_CREATE_INDEX', 'IS_MONGO_DATABASE_SSL',
 			'IS_MONGO_DATABASE_SSL_VALIDATE'
@@ -223,10 +227,21 @@ class InitiateService {
 			'APPLICATION_PATH', 'PACKAGE_JSON_PATH', 'DOWNLOADS_PATH'
 		].map(key => {
 			const value = settings[key];
-			// Verify that the dist and the sources paths exists.
+			// Verify that the paths exists.
 			globalUtils.isPathExistsError(value);
-			// Verify that the dist and the sources paths accessible.
+			// Verify that the paths accessible.
 			globalUtils.isPathAccessible(value);
+		});
+		[
+			...keys,
+			// ===ROOT PATH=== //
+			'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH'
+		].map(key => {
+			const value = settings[key];
+			// Verify that the paths are of directory and not a file.
+			if (!fileUtils.isDirectoryPath(value)) {
+				throw new Error(`The parameter path ${key} marked as directory but it's a path of a file: ${value} (1000042)`);
+			}
 		});
 	}
 

@@ -11,12 +11,13 @@ class CrawlEmailAddressData {
 		this.unsaveCount = 0;
 		this.filterCount = 0;
 		this.skipCount = 0;
+		this.gibberishCount = 0;
 		this.statistics = activeSearchEngineNames.reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
 	}
 
 	updateEmailAddressData(emailAddressesResult, searchEngineName) {
 		const { saveCount, totalCount, existsCount, invalidCount, validFixCount,
-			invalidFixCount, unsaveCount, filterCount, skipCount } = emailAddressesResult;
+			invalidFixCount, unsaveCount, filterCount, skipCount, gibberishCount } = emailAddressesResult;
 		// Update all the data.
 		this.saveCount += saveCount;
 		this.totalCount += totalCount;
@@ -28,6 +29,7 @@ class CrawlEmailAddressData {
 		this.unsaveCount += unsaveCount;
 		this.filterCount += filterCount;
 		this.skipCount += skipCount;
+		this.gibberishCount += gibberishCount;
 		this.statistics[searchEngineName] += saveCount;
 	}
 }

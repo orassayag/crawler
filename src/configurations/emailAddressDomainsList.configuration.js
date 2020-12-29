@@ -3682,6 +3682,9 @@ const emailAddressDomainsList = [
 	}),
 
 	// ===SINGLE=== //
+	new EmailAddressDomain({ domain: 'facejobs.co.il', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['facejobs.c'] }),
+	new EmailAddressDomain({ domain: 'tlvmc.gov.il', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['tlvmc.g'] }),
+	new EmailAddressDomain({ domain: 'hefzihr.com', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['hefzihr.c'] }),
 	new EmailAddressDomain({ domain: 'tslonim.co.il', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['tslonim.c'] }),
 	new EmailAddressDomain({ domain: 'taldor.co.il', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['taldor.c'] }),
 	new EmailAddressDomain({ domain: 'smarti.co.il', ignoredomainName: null, micromatchName: null, ignoreList: null, isCommonDomain: false, typosList: ['smarti.c'] }),

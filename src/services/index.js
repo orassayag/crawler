@@ -4,6 +4,7 @@ const crawlLinkService = require('./files/crawlLink.service');
 const domainsCounterService = require('./files/domainsCounter.service');
 const emailAddressesGeneratorService = require('./files/emailAddressesGenerator.service');
 const emailAddressValidationService = require('./files/emailAddressValidation.service');
+const emailGibberishValidationService = require('./files/emailGibberishValidation.service');
 const logService = require('./files/log.service');
 const mongoDatabaseService = require('./files/mongoDatabase.service');
 const searchService = require('./files/search.service');
@@ -13,6 +14,7 @@ const uuidGeneratorService = require('./files/uuidGenerator.service');
 
 module.exports = {
     confirmationService, crawlEmailAddressService, crawlLinkService, domainsCounterService,
-    emailAddressesGeneratorService, emailAddressValidationService, logService,
-    mongoDatabaseService, searchService, sourceService, uuidGeneratorService, typosGeneratorService
+    emailAddressesGeneratorService, emailAddressValidationService, emailGibberishValidationService,
+    logService, mongoDatabaseService, searchService, sourceService, uuidGeneratorService,
+    typosGeneratorService
 };

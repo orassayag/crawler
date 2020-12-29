@@ -10,6 +10,7 @@ class EmailAddressStatus {
         this.isInvalidFix = false;
         this.isFilter = false;
         this.isUnsave = false;
+        this.isGibberish = validationResult.isGibberish;
     }
 }
 

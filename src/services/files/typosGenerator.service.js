@@ -10,7 +10,7 @@ const { TestData } = require('../../core/models/application');
 class TyposGeneratorService {
 
 	constructor() {
-		// ===TESS DATA=== //
+		// ===TEST DATA=== //
 		this.testData = null;
 	}
 

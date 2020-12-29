@@ -1,0 +1,37 @@
+/*
+	this.punctuation = /[.,\/#!$%\^&\*;:{}=\-_`~()]/g;
+	this.countVowels = /[aeiou]/gi; */
+
+	/* 	run() {
+
+		const emails = `
+		or assayag
+		a60a26eba1e642519b43545f6be1d2b0
+		315d73bdc1614a5caad9cf96e94bac5a
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		u002F736e443433c3403396572cc0526bba2d
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		251383661830465f98a4aac04e1c2111
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		251383661830465f98a4aac04e1c2111
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		c47c4df4c8c14c3bbbb6d56201d6d7a9
+		0252655a41544fd28ae41f8b8ff36917
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		0252655a41544fd28ae41f8b8ff36917
+		u002F736e443433c3403396572cc0526bba2d
+		251383661830465f98a4aac04e1c2111
+		`;
+		const array = emails.split('\n');
+		for (let i = 0; i < array.length; i++) {
+			console.log(`${array[i]} - ${this.isGibberish(array[i])}`);
+		}
+	} */
+
+    /* const emailGibberishValidationService = require('../services/files/emailGibberishValidation.service'); */
+/*     emailGibberishValidationService.run(); */

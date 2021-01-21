@@ -1,22 +1,22 @@
+const Chance = require('chance');
+const chance = new Chance();
+const faker = require('faker');
+const LoremIpsum = require('lorem-ipsum').LoremIpsum;
 const randomEmail = require('random-email');
 const randomWords = require('random-words');
-const faker = require('faker');
-const Chance = require('chance');
-const LoremIpsum = require('lorem-ipsum').LoremIpsum;
-const chance = new Chance();
 const settings = require('../../settings/settings');
-const { characterUtils, emailAddressUtils, textUtils, validationUtils } = require('../../utils');
 const { ApplicationData, CountLimitData, EmailAddressData, MongoDatabaseData, TestData } = require('../../core/models/application');
 const { PartType } = require('../../core/enums');
+const { removeAtCharectersList } = require('../../configurations/emailAddressConfigurations.configuration');
+const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
+const { commonEmailAddressDomainsList, emailAddressEndFixTypos } = require('../../configurations/emailAddressDomainEndsList.configuration');
+const { invalidEmailAddresses, updatesEmailAddresses, validEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
+const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
 const crawlEmailAddressService = require('./crawlEmailAddress.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
 const typosGeneratorService = require('./typosGenerator.service');
 const uuidGeneratorService = require('./uuidGenerator.service');
-const { removeAtCharectersList } = require('../../configurations/emailAddressConfigurations.configuration');
-const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
-const { commonEmailAddressDomainsList, emailAddressEndFixTypos } = require('../../configurations/emailAddressDomainEndsList.configuration');
-const { validEmailAddresses, invalidEmailAddresses, updatesEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
-const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
+const { characterUtils, emailAddressUtils, textUtils, validationUtils } = require('../../utils');
 
 class EmailAddressesGeneratorService {
 
@@ -106,7 +106,7 @@ class EmailAddressesGeneratorService {
         // Get random typos and test them.
         const typos = await typosGeneratorService.generateTyposAsync(domainPart);
         if (!validationUtils.isExists(typos)) {
-            throw new Error('No typos generated (1000010)');
+            throw new Error('No typos generated (1000009)');
         }
         if (!localPart) {
             localPart = 'test';

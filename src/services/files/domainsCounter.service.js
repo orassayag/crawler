@@ -1,10 +1,10 @@
 const settings = require('../../settings/settings');
-const { emailAddressUtils, fileUtils, textUtils, logUtils, validationUtils } = require('../../utils');
-const logService = require('./log.service');
-const mongoDatabaseService = require('./mongoDatabase.service');
-const { ApplicationData, DomainCounter, CountLimitData, MongoDatabaseData, PathData } = require('../../core/models/application');
+const { ApplicationData, CountLimitData, DomainCounter, MongoDatabaseData, PathData } = require('../../core/models/application');
 const { Color, DomainsCounterSourceType, ScriptType } = require('../../core/enums');
 const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
+const logService = require('./log.service');
+const mongoDatabaseService = require('./mongoDatabase.service');
+const { emailAddressUtils, fileUtils, logUtils, textUtils, validationUtils } = require('../../utils');
 
 class DomainsCounterService {
 
@@ -68,7 +68,7 @@ class DomainsCounterService {
 			enum: DomainsCounterSourceType,
 			value: this.sourceType
 		})) {
-			throw new Error('Invalid sourceType selected (1000006)');
+			throw new Error('Invalid sourceType selected (1000005)');
 		}
 	}
 
@@ -90,7 +90,7 @@ class DomainsCounterService {
 		switch (this.sourceType) {
 			case DomainsCounterSourceType.FILE:
 				if (!this.sourcePath) {
-					throw new Error('No sourcePath was provided (1000007)');
+					throw new Error('No sourcePath was provided (1000006)');
 				}
 				if (await fileUtils.isPathExists(this.sourcePath)) {
 					this.sourceContent = await fileUtils.readFile(this.sourcePath);
@@ -98,7 +98,7 @@ class DomainsCounterService {
 				break;
 			case DomainsCounterSourceType.DIRECTORY:
 				if (!this.sourcePath) {
-					throw new Error('No sourcePath was provided (1000008)');
+					throw new Error('No sourcePath was provided (1000007)');
 				}
 				if (await fileUtils.isPathExists(this.sourcePath)) {
 					filePaths = await fileUtils.getFilesRecursive(this.sourcePath);
@@ -121,7 +121,7 @@ class DomainsCounterService {
 			case DomainsCounterSourceType.FILE:
 			case DomainsCounterSourceType.DIRECTORY:
 				if (!this.isPartOfCrawLogic && !this.sourceContent) {
-					throw new Error('Empty sourceContent was provided (1000009)');
+					throw new Error('Empty sourceContent was provided (1000008)');
 				}
 				this.emailAddressesList = emailAddressUtils.getEmailAddresses(this.sourceContent);
 				break;

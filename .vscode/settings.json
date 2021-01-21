@@ -19,6 +19,7 @@
         "jsbeautifyrc",
         "micromatch",
         "networkidle",
+        "ondata",
         "orassayag",
         "preload",
         "regexs",
@@ -46,8 +47,5 @@
     "eslint.validate": [
         "javascript"
     ],
-    "http.proxy": "",
-    "http.proxyAuthorization": null,
-    "http.proxyStrictSSL": false,
     "editor.renderWhitespace": "none"
 }

@@ -1,18 +1,4 @@
 /* cSpell:disable */
-const removeAtCharectersList = [
-    '@.',
-    '@_'
-];
-
-// Don't change the order.
-const removeStartKeysList = [
-    'u00a0',
-    'u002F',
-    'u003e',
-    'u003E',
-    'u003'
-];
-
 const invalidDomains = [
     'ingest.sentry.io',
     'sentry.indeed.com',
@@ -29,6 +15,20 @@ const invalidDomains = [
     'posting.google.com'
 ];
 
+const removeAtCharectersList = [
+    '@.',
+    '@_'
+];
+
+// Don't change the order.
+const removeStartKeysList = [
+    'u00a0',
+    'u002F',
+    'u003e',
+    'u003E',
+    'u003'
+];
+
 module.exports = {
-    removeAtCharectersList, removeStartKeysList, invalidDomains
+    invalidDomains, removeAtCharectersList, removeStartKeysList
 };

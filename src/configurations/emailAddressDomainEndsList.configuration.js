@@ -16,7 +16,6 @@ const extraCultureEndsList = [
 ];
 
 let emailAddressDomainEndsList = [
-
     // Group: co
     new EmailAddressDomainEnd({ domainEnd: 'co', domainEndGroupName: 'co', isSingleWord: false, typosList: [] }),
     new EmailAddressDomainEnd({
@@ -175,7 +174,7 @@ let emailAddressDomainEndsList = [
     new EmailAddressDomainEnd({ domainEnd: 'edu.il', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
     new EmailAddressDomainEnd({ domainEnd: 'edu.ps', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
 
-    // Singles
+    // Singles.
     new EmailAddressDomainEnd({
         domainEnd: 'ac.il',
         domainEndGroupName: 'ac.il',
@@ -231,7 +230,6 @@ let emailAddressDomainEndsList = [
     new EmailAddressDomainEnd({ domainEnd: 'us', domainEndGroupName: 'us', isSingleWord: false, typosList: [] }),
     new EmailAddressDomainEnd({ domainEnd: 'usmc.mil', domainEndGroupName: 'us', isSingleWord: false, typosList: [] })
 ];
-
 ['com', 'co'].map(domainEnd =>
     emailAddressDomainEndsList = emailAddressDomainEndsList.concat(extraCultureEndsList.map(cultureKey => {
         return new EmailAddressDomainEnd({ domainEnd: `${domainEnd}.${cultureKey}`, domainEndGroupName: 'co', isSingleWord: false, typosList: [] });
@@ -255,7 +253,7 @@ const endsWithDotIgnore = emailAddressDomainEndsList.filter(d => d.typosList.len
 let commonEmailAddressDomainsList = [];
 
 module.exports = {
-    domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList,
-    validDomainEndsList, validOneWordDomainEndsList, emailAddressEndFixTypos, emailAddressDomainEndsList,
-    commonDomainEndsList, endsWithDotIgnore, commonEmailAddressDomainsList
+    commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList, domainEndsDotsList, domainEndsHyphenList,
+    domainEndsList, emailAddressDomainEndsList, emailAddressEndFixTypos, endsWithDotIgnore, validDomainEndsList,
+    validOneWordDomainEndsList
 };

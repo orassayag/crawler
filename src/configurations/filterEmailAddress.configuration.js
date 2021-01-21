@@ -1,4 +1,12 @@
 /* cSpell:disable */
+const filterEmailAddresses = [
+	'nurit.fadida@gmail.com',
+	'amit@amit-segal.com',
+	'your.name@provider.com',
+	'email@email.com',
+	'your@friend.email'
+];
+
 const filterEmailAddressDomains = [
 	'123.co',
 	'123.co.il',
@@ -470,12 +478,4 @@ const unfixEmailAddressDomains = [
 	'walkout'
 ];
 
-const filterEmailAddresses = [
-	'nurit.fadida@gmail.com',
-	'amit@amit-segal.com',
-	'your.name@provider.com',
-	'email@email.com',
-	'your@friend.email'
-];
-
-module.exports = { filterEmailAddressDomains, unfixEmailAddressDomains, filterEmailAddresses };
+module.exports = { filterEmailAddresses, filterEmailAddressDomains, unfixEmailAddressDomains };

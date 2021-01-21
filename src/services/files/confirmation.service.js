@@ -1,6 +1,6 @@
 const readline = require('readline');
-const { logUtils } = require('../../utils');
 const logService = require('./log.service');
+const { logUtils } = require('../../utils');
 
 class ConfirmationService {
 

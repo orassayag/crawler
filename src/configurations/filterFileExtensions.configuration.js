@@ -41,4 +41,4 @@ const filterEmailAddressFileExtensions = [
 	'.webp'
 ];
 
-module.exports = { filterLinkFileExtensions, filterEmailAddressFileExtensions };
+module.exports = { filterEmailAddressFileExtensions, filterLinkFileExtensions };

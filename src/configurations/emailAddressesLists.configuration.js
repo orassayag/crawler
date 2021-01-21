@@ -891,4 +891,4 @@ const updatesEmailAddresses = [
 	new ValidEmailAddress('x@w.z')
 ];
 
-module.exports = { validEmailAddresses, invalidEmailAddresses, updatesEmailAddresses };
+module.exports = { invalidEmailAddresses, updatesEmailAddresses, validEmailAddresses };

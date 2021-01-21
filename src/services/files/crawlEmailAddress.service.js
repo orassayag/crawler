@@ -1,12 +1,12 @@
-const { emailAddressUtils, validationUtils, textUtils } = require('../../utils');
-const { GoalType, LogStatus, SaveStatus, SourceType } = require('../../core/enums');
-let { commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
-const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
-const { filterEmailAddressDomains, filterEmailAddresses } = require('../../configurations/filterEmailAddress.configuration');
 const { CommonEmailAddressDomain, EmailAddressesResult, EmailAddressStatus } = require('../../core/models/application');
-const mongoDatabaseService = require('./mongoDatabase.service');
+const { GoalType, LogStatus, SaveStatus, SourceType } = require('../../core/enums');
+const { emailAddressUtils, textUtils, validationUtils } = require('../../utils');
+const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
+let { commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
+const { filterEmailAddresses, filterEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const logService = require('./log.service');
+const mongoDatabaseService = require('./mongoDatabase.service');
 const sourceService = require('./source.service');
 
 class CrawlEmailAddressService {

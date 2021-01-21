@@ -1,5 +1,5 @@
-const pathUtils = require('../utils/files/path.utils');
 const { GoalType } = require('../core/enums');
+const pathUtils = require('../utils/files/path.utils');
 
 const innerSettings = {
     // ===FLAG=== //
@@ -124,7 +124,7 @@ const settings = {
     MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT: 2,
     // Determine the maximum unique domain count in a single page process per domain.
     // If exceeded, the rest of the email addresses with the domain are skipped.
-    // (This, of course, not include common domains like gmail, hotmail, ect.)
+    // (This, of course, not include common domains like gmail, hotmail, ect...)
     MAXIMUM_UNIQUE_DOMAIN_COUNT: 3,
 
     // ===ROOT PATH=== //

@@ -1,6 +1,6 @@
+const { DomainsCounterSourceType } = require('../core/enums');
 const { pathUtils } = require('../utils');
 const { domainsCounterService } = require('../services');
-const { DomainsCounterSourceType } = require('../core/enums');
 
 class DomainsLogic {
 

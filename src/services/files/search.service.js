@@ -1,8 +1,8 @@
-const { regexUtils, textUtils, validationUtils } = require('../../utils');
-const { basicSearchKeys, advanceSearchKeys } = require('../../configurations/searchKeys.configuration');
-const { searchEngineStatuses, searchEngines } = require('../../configurations/searchEngines.configuration');
 const { SearchProcessData } = require('../../core/models/application');
 const { SearchKeyGender, SearchPlaceHolder } = require('../../core/enums');
+const { searchEngines, searchEngineStatuses } = require('../../configurations/searchEngines.configuration');
+const { advanceSearchKeys, basicSearchKeys } = require('../../configurations/searchKeys.configuration');
+const { regexUtils, textUtils, validationUtils } = require('../../utils');
 
 class SearchService {
 

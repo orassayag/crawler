@@ -1,6 +1,6 @@
-const { applicationUtils, timeUtils } = require('../../../../utils');
 const CrawlEmailAddressData = require('./CrawlEmailAddressData');
 const CrawlLinkData = require('./CrawlLinkData');
+const { applicationUtils, timeUtils } = require('../../../../utils');
 
 class ApplicationData {
 

@@ -1,12 +1,12 @@
 const settings = require('../settings/settings');
-const { CountLimitData, ApplicationData, LogData, MongoDatabaseData, PathData, SearchData } = require('../core/models/application');
-const { logUtils, timeUtils, systemUtils, fileUtils, validationUtils } = require('../utils');
-const globalUtils = require('../utils/files/global.utils');
+const { ApplicationData, CountLimitData, LogData, MongoDatabaseData, PathData, SearchData } = require('../core/models/application');
 const { Color, DomainsCounterSourceType, GoalType, Plan, Status } = require('../core/enums');
-const { domainsCounterService, crawlEmailAddressService, crawlLinkService,
+const puppeteerService = require('../services/files/puppeteer.service');
+const { crawlEmailAddressService, crawlLinkService, domainsCounterService,
     logService, mongoDatabaseService, searchService, sourceService } = require('../services');
 const { activeSearchEngineNames } = require('../configurations/searchEngines.configuration');
-const puppeteerService = require('../services/files/puppeteer.service');
+const globalUtils = require('../utils/files/global.utils');
+const { logUtils, fileUtils, systemUtils, timeUtils, validationUtils } = require('../utils');
 
 class CrawlLogic {
 
@@ -35,7 +35,7 @@ class CrawlLogic {
 
     async run(linksList) {
         this.validateSessionTest(linksList);
-        // Initiate all the settings, configurations, services, ect.
+        // Initiate all the settings, configurations, services, ect...
         await this.initiate();
         // Validate internet connection.
         await this.validateInternetConnection();
@@ -392,7 +392,7 @@ class CrawlLogic {
         logUtils.logMagentaStatus('VALIDATE INTERNET CONNECTION');
         const isConnected = await crawlLinkService.validateSearchEngineActive(this.applicationData.validationConnectionLink);
         if (!isConnected) {
-            throw new Error('Internet connections is not available (1000004)');
+            throw new Error('Internet connections is not available (1000003)');
         }
     }
 

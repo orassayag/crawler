@@ -1,9 +1,9 @@
 require('../services/files/initiate.service').initiate('crawl');
 const forever = require('forever-monitor');
 const settings = require('../settings/settings');
-const { logService, confirmationService } = require('../services');
-const { logUtils, pathUtils, timeUtils, systemUtils } = require('../utils');
 const { Color, Status } = require('../core/enums');
+const { confirmationService, logService } = require('../services');
+const { logUtils, pathUtils, systemUtils, timeUtils } = require('../utils');
 
 class NodeMonitor {
 
@@ -70,7 +70,6 @@ class NodeMonitor {
             }
         });
         child.start();
-
         // On ctrl+c destroy the child.
         process.on('SIGINT', () => {
             child.kill();

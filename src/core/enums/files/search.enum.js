@@ -16,16 +16,6 @@ const SearchEngineType = enumUtils.createEnum([
     ['YANDEX', 'yandex']
 ]);
 
-const SearchPlaceHolder = enumUtils.createEnum([
-    ['QUERY', '#QUERY#'],
-    ['PAGER', '#PAGER#']
-]);
-
-const SourceType = enumUtils.createEnum([
-    ['ENGINE', 'engine'],
-    ['PAGE', 'page']
-]);
-
 const SearchKeyGender = enumUtils.createEnum([
     ['MALE', 'male'],
     ['FEMALE', 'female'],
@@ -41,4 +31,14 @@ const SearchKeyType = enumUtils.createEnum([
     ['EMAIL_ADDRESS', 'EMAIL_ADDRESS']
 ]);
 
-module.exports = { SearchKeyGender, SearchKeyType, SearchEngineType, SearchPlaceHolder, SourceType };
+const SearchPlaceHolder = enumUtils.createEnum([
+    ['QUERY', '#QUERY#'],
+    ['PAGER', '#PAGER#']
+]);
+
+const SourceType = enumUtils.createEnum([
+    ['ENGINE', 'engine'],
+    ['PAGE', 'page']
+]);
+
+module.exports = { SearchEngineType, SearchKeyGender, SearchKeyType, SearchPlaceHolder, SourceType };

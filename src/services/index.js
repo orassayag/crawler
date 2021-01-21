@@ -13,8 +13,7 @@ const typosGeneratorService = require('./files/typosGenerator.service');
 const uuidGeneratorService = require('./files/uuidGenerator.service');
 
 module.exports = {
-    confirmationService, crawlEmailAddressService, crawlLinkService, domainsCounterService,
-    emailAddressesGeneratorService, emailAddressValidationService, emailGibberishValidationService,
-    logService, mongoDatabaseService, searchService, sourceService, uuidGeneratorService,
-    typosGeneratorService
+    confirmationService, crawlEmailAddressService, crawlLinkService, domainsCounterService, emailAddressesGeneratorService,
+    emailAddressValidationService, emailGibberishValidationService, logService, mongoDatabaseService, searchService,
+    sourceService, uuidGeneratorService, typosGeneratorService
 };

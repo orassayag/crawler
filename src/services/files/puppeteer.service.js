@@ -1,7 +1,7 @@
 const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
-const { crawlUtils, systemUtils } = require('../../utils');
 const { Color, Status } = require('../../core/enums');
+const { crawlUtils, systemUtils } = require('../../utils');
 
 class PuppeteerService {
 

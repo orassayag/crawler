@@ -1,9 +1,9 @@
-const { fileUtils, pathUtils, logUtils, mongoDatabaseUtils, textUtils, timeUtils, validationUtils } = require('../../utils');
 const { Color, LogStatus, Method, Placeholder, StatusIcon } = require('../../core/enums');
-const searchService = require('./search.service');
+const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const puppeteerService = require('./puppeteer.service');
-const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
+const searchService = require('./search.service');
+const { fileUtils, logUtils, mongoDatabaseUtils, pathUtils, textUtils, timeUtils, validationUtils } = require('../../utils');
 
 class LogService {
 

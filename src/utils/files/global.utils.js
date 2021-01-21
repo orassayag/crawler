@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 class GlobalUtils {
@@ -69,4 +69,5 @@ class GlobalUtils {
         }
     }
 }
+
 module.exports = new GlobalUtils();

@@ -1,7 +1,7 @@
 require('../services/files/initiate.service').initiate('test');
-const { logService, emailAddressesGeneratorService, emailAddressValidationService } = require('../services');
-const { logUtils, validationUtils } = require('../utils');
 const { StatusIcon, TestType } = require('../core/enums');
+const { emailAddressesGeneratorService, emailAddressValidationService, logService } = require('../services');
+const { logUtils, validationUtils } = require('../utils');
 
 // Email Address Validation //
 // ======================== //

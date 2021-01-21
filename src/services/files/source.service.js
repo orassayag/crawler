@@ -1,7 +1,7 @@
-let puppeteerService = null;
-const { pathUtils, fileUtils, textUtils, validationUtils } = require('../../utils');
-const searchService = require('./search.service');
 const { SourceType } = require('../../core/enums');
+const { fileUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
+let puppeteerService = null;
+const searchService = require('./search.service');
 
 class SourceService {
 

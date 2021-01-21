@@ -1,30 +1,8 @@
 /* cSpell:disable */
-const { SearchEngineType } = require('../core/enums');
 const { FilterLinkDomain } = require('../core/models/application');
-
-const globalFilterLinkDomains = [
-	'calameo.com',
-	'doresh-tzion.co.il',
-	'g-t.org.il',
-	'hof-hasharon.co.il',
-	'hotjob.co.il',
-	'l-b.connvisor.com',
-	'leumi.co.il',
-	'lh3.googleusercontent.com',
-	'makingmoneyfromeverything.com',
-	'pills-xxl-24.eu',
-	'rgc.co.il',
-	'runner.co.il',
-	'schema.org',
-	'schemas.live.com',
-	'w3.org',
-	'wapforum.org',
-	'sentrylabs.indeed.com',
-	'app.getsentry.com'
-];
+const { SearchEngineType } = require('../core/enums');
 
 const filterLinkDomains = [
-
 	// Ask.com
 	new FilterLinkDomain({
 		name: SearchEngineType.ASK,
@@ -132,4 +110,25 @@ const filterLinkDomains = [
 	})
 ];
 
-module.exports = { globalFilterLinkDomains, filterLinkDomains };
+const globalFilterLinkDomains = [
+	'calameo.com',
+	'doresh-tzion.co.il',
+	'g-t.org.il',
+	'hof-hasharon.co.il',
+	'hotjob.co.il',
+	'l-b.connvisor.com',
+	'leumi.co.il',
+	'lh3.googleusercontent.com',
+	'makingmoneyfromeverything.com',
+	'pills-xxl-24.eu',
+	'rgc.co.il',
+	'runner.co.il',
+	'schema.org',
+	'schemas.live.com',
+	'w3.org',
+	'wapforum.org',
+	'sentrylabs.indeed.com',
+	'app.getsentry.com'
+];
+
+module.exports = { filterLinkDomains, globalFilterLinkDomains };

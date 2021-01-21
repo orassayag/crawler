@@ -189,7 +189,7 @@ const basicSearchKeys = [
         'רכזת פרוייקטים',
         'רפרנטית שירות'
     ],
-    [ // ==CITY=== //
+    [ // ===CITY=== //
         'אבן יהודה',
         'אבן-יהודה',
         'אודים',
@@ -265,4 +265,4 @@ const basicSearchKeys = [
     ]
 ];
 
-module.exports = { basicSearchKeys, advanceSearchKeys };
+module.exports = { advanceSearchKeys, basicSearchKeys };

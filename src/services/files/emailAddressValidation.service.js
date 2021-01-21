@@ -4,21 +4,21 @@ https://medium.com/hackernoon/how-to-reduce-incorrect-email-addresses-df3b70cb15
 https://flaviocopes.com/how-to-validate-email-address-javascript/
 Made some cosmetic changers to fit modern javascript.
 */
-const validator = require('validator');
 const micromatch = require('micromatch');
+const validator = require('validator');
 const settings = require('../../settings/settings');
-const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
-const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
-const { domainEndsList, domainEndsDotsList, domainEndsHyphenList, domainEndsCommaList, emailAddressDomainEndsList, validOneWordDomainEndsList,
-	emailAddressEndFixTypos, commonDomainEndsList, endsWithDotIgnore, commonEmailAddressDomainsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
-const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
-const { filterEmailAddressFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
-const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
-const shortEmailAddressDomainsList = require('../../configurations/shortEmailAddressDomainsList.configuration');
-const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
-const emailGibberishValidationService = require('./emailGibberishValidation.service');
 const { EmailAddressData, ValidationResult } = require('../../core/models/application');
 const { MicromatchAction, PartType } = require('../../core/enums');
+const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
+const { commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList, domainEndsDotsList, domainEndsHyphenList,
+	domainEndsList, emailAddressDomainEndsList, emailAddressEndFixTypos, endsWithDotIgnore, validOneWordDomainEndsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
+const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
+const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
+const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
+const { filterEmailAddressFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
+const shortEmailAddressDomainsList = require('../../configurations/shortEmailAddressDomainsList.configuration');
+const emailGibberishValidationService = require('./emailGibberishValidation.service');
+const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
 
 class EmailAddressValidationService {
 
@@ -712,9 +712,8 @@ class EmailAddressValidationService {
 		const originalDomainPart = domainPart;
 		for (let i = 0, length = emailAddressDomainEndsList.length; i < length; i++) {
 			const { fullDomainEnd, charsAfterDot, compareMode } = emailAddressDomainEndsList[i];
-			let index = -1;
 			const compareItem = compareMode ? compareMode : fullDomainEnd;
-			index = originalDomainPart.indexOf(compareItem);
+			const index = originalDomainPart.indexOf(compareItem);
 			if (index > -1) {
 				domainPart = domainPart.substring(0, index + compareItem.length + charsAfterDot);
 				break;
@@ -930,7 +929,10 @@ class EmailAddressValidationService {
 				break;
 			}
 		}
-		return { isMatch: isMatch, fixDomainPart: fixDomainPart };
+		return {
+			isMatch: isMatch,
+			fixDomainPart: fixDomainPart
+		};
 	}
 
 	fixCommonDomain(validationResult) {
@@ -1228,7 +1230,7 @@ class EmailAddressValidationService {
 	}
 
 	validateVersionDomainPart(validationResult) {
-		let { domainPart } = this.getEmailAddressData(validationResult);
+		const { domainPart } = this.getEmailAddressData(validationResult);
 		const isPackageName = regexUtils.createRegex(regexUtils.findPackageNameRegex).test(domainPart);
 		if (isPackageName) {
 			validationResult.isValid = false;

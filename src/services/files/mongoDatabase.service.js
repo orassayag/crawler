@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const EmailAddressModel = require('../../core/models/database/EmailAddressModel');
+const { SaveStatus } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
 const { systemUtils } = require('../../utils');
-const { SaveStatus } = require('../../core/enums');
 
 class MongoDatabaseService {
 

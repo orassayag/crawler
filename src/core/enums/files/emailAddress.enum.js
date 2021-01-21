@@ -1,10 +1,5 @@
 const enumUtils = require('../enum.utils');
 
-const PartType = enumUtils.createEnum([
-    ['LOCAL', 'local'],
-    ['DOMAIN', 'domain']
-]);
-
 const LogStatus = enumUtils.createEnum([
     ['FIX', 'fix'],
     ['VALID', 'valid'],
@@ -20,6 +15,11 @@ const MicromatchAction = enumUtils.createEnum([
     ['SPECIAL', 'special']
 ]);
 
+const PartType = enumUtils.createEnum([
+    ['LOCAL', 'local'],
+    ['DOMAIN', 'domain']
+]);
+
 const SaveStatus = enumUtils.createEnum([
     ['SAVE', 'save'],
     ['EXISTS', 'exists'],
@@ -33,4 +33,4 @@ const TestType = enumUtils.createEnum([
     ['UPDATES', 'updates']
 ]);
 
-module.exports = { PartType, LogStatus, MicromatchAction, SaveStatus, TestType };
+module.exports = { LogStatus, MicromatchAction, PartType, SaveStatus, TestType };

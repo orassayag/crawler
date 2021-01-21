@@ -1,13 +1,13 @@
 const url = require('url');
 const isReachable = require('is-reachable');
-const { crawlUtils, validationUtils, regexUtils, textUtils } = require('../../utils');
-const sourceService = require('./source.service');
-const searchService = require('./search.service');
-const logService = require('./log.service');
-const { filterLinkFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
-const { globalFilterLinkDomains, filterLinkDomains } = require('../../configurations/filterLinkDomains.configuration');
 const { LinksResult } = require('../../core/models/application');
 const { GoalType, SourceType } = require('../../core/enums');
+const { filterLinkFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
+const { filterLinkDomains, globalFilterLinkDomains } = require('../../configurations/filterLinkDomains.configuration');
+const logService = require('./log.service');
+const searchService = require('./search.service');
+const sourceService = require('./source.service');
+const { crawlUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
 
 class CrawlLinkService {
 
@@ -62,7 +62,7 @@ class CrawlLinkService {
 	validateActiveSearchEngines() {
 		const searchEngines = searchService.getAllActiveSearchEngines();
 		if (!validationUtils.isExists(searchEngines)) {
-			throw new Error('No active search engine was found (1000005)');
+			throw new Error('No active search engine was found (1000004)');
 		}
 	}
 

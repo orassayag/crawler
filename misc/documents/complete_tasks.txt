@@ -396,7 +396,7 @@ B. All exists domain by order name ascending. *
  Compare between the old fixed and the new ones - Make sure all fixed and correct - Cancelled. *
 -Do a backup of the sources_tasks.txt. *
 -To get the real domain counts - Most popular domains, need to scan all the files and count the domains. *
- 1. For that, need to scan all of the sources again (found in backup in iomega sources) - Scan all files to 1 file of total domain counts. *
+ 1. For that, need to scan all of the sources again (found in backup in iOmega sources) - Scan all files to 1 file of total domain counts. *
  2. For the sources of pflogsummarymailrelay.txt - Find a way to add them. *
 -Most common domains: C:\Or\Web\Crawler\Sources\FixesToImplement\pflogsummarymailrelay.txt + pflogsummarymailrelay2.txt (Implement in common domains?). *
 -Identical endings (need to think what to do about what to do with it - maybe for each one of them - it's one typos). *
@@ -883,7 +883,7 @@ Other Tasks: *
  -Add logic to check when preforming Dropbox backup - Verify that Dropbox is running. If not - Throw error - Canccelled. *
 -Fix bug of time - 4:30 minutes and see 5/5 when goal is complete: *
 ===[GENERAL] Time: 00.00:04:30 [\] | Goal: MINUTES | Progress: 5/5 (100.00%) | Status: FINISH=== *
--Change the "dropbox" backup to secondary backup path. Change it to iomega path. *
+-Change the "dropbox" backup to secondary backup path. Change it to iOmega path. *
 -Development mode off: Test invalid search engine address and make sure it's not active. If no one else active - Throw exception. *
 
 Tasks From Production Tests: *
@@ -1275,7 +1275,7 @@ Tasks From Production Tests: *
 -Fix all 'zahav.net.il' and '012.net.il into '012.net'. *
 -Add 'zahav.net.il' to similar domains of '012.net'. *
 -Remove all the typos of any similar domain - Fix only the addresses that identical in the structure. *
--Septate all asKnowenAs to more common typos. *
+-Septate all asKnownAs to more common typos. *
 -Remove duplicate with DupChecker. *
 -Add more typos and test the new common typos. *
 -Fix mailto.bamboo@gmail.com (remove the mailto from the invalid list). *

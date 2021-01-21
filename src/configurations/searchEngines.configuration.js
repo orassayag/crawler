@@ -29,6 +29,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`web?o=0&l=dir&qo=pagination&q=${SearchPlaceHolder.QUERY}&qsrc=998&page=${SearchPlaceHolder.PAGER}`]
     }),
+
     // Baidu.com
     new SearchEngine({
         name: SearchEngineType.BAIDU,
@@ -37,6 +38,7 @@ const searchEngines = [
         advanceBy: 10,
         templatesList: [`s?wd=${SearchPlaceHolder.QUERY}&pn=${SearchPlaceHolder.PAGER}&oq=${SearchPlaceHolder.QUERY}&ie=utf-8&rsv_idx=1&rsv_pq=99ae4b5e000440b3&rsv_t=6425vwQFWiYd3GCyuSrG4KMA1nNZb2RsGxoKzjKQNrjz1jX1I2zKg3%2FPDrc`]
     }),
+
     // Bing.com
     new SearchEngine({
         name: SearchEngineType.BING,
@@ -56,6 +58,7 @@ const searchEngines = [
             `search?q=${SearchPlaceHolder.QUERY}&qs=n&sp=-1&pq=&sc=1-15&sk=&cvid=DE92792ADAF24F11BA793D9DD64AA375&first=${SearchPlaceHolder.PAGER}&FORM=PORE`
         ]
     }),
+
     // Dogpile.com
     new SearchEngine({
         name: SearchEngineType.DOGPILE,
@@ -72,6 +75,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`search?p=${SearchPlaceHolder.PAGER}&q=${SearchPlaceHolder.QUERY}`]
     }),
+
     // Exalead.com
     new SearchEngine({
         name: SearchEngineType.EXALEAD,
@@ -80,6 +84,7 @@ const searchEngines = [
         advanceBy: 10,
         templatesList: [`search/web/results/?q=${SearchPlaceHolder.QUERY}&elements_per_page=10&start_index=${SearchPlaceHolder.PAGER}`]
     }),
+
     // Google.com
     new SearchEngine({
         name: SearchEngineType.GOOGLE,
@@ -99,6 +104,7 @@ const searchEngines = [
             `search?q=${SearchPlaceHolder.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk00IjsVN1Oalj-cdvfCK7jGmgBH6jA:1604763623777&ei=57-mX6aCL9ed1fAP_8iVkAg&start=${SearchPlaceHolder.PAGER}&sa=N&ved=2ahUKEwjmkfmt4vDsAhXXThUIHX9kBYIQ8NMDegQIBRBC&biw=1920&bih=937`
         ]
     }),
+
     // Info.com
     new SearchEngine({
         name: SearchEngineType.INFO,
@@ -107,6 +113,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`serp?q=${SearchPlaceHolder.QUERY}&page=${SearchPlaceHolder.PAGER}&sc=1DrZTEqeVHY7URgEs2FYcTVPZ9aKBJ4A0dZLrw4DNMi7XTzsrbR8YhaePh8KBxbMNeOof1F86zx0pa37csj_LdgatTQzPZ_SgI5rVSUBK9IK-ks8f_Ye9A-fIe5-uua1fZu15NUMm1sLQdfWV5vkR2btHuTht42RaMMrsKqpFL8GeBxV0_UWsEzsYLA8XskvdaefeCOtJaTBkJH3aIh2rLh-pQ37S-nSO3c_ChwpSwSWnWkDA3iqTPTNoZ3nbKwqM7ck2mCELdARjBncJWYYHf4HuMSnC1JSUoo3ASWJzPMt_7ZMs9k1UblaYebbZNBim2l6jwFrUXponD9GRsQujjTl7s02ZfKm79U7ZRUDGJMo_5IUZOpaimszz2Tnre9HW7qsrtN5j7adVRfjWkAnmcemitTJPDXe_1hzpHaWinqf-xH59qbmMcKfQIa2Vewnvo7B79nBmm1RLaBWlk2LtWNCkVMsXMSW6NqlB17mGpk83AOilPkl2rJP8Et8VSg303YIf3VGu53_yR8GZwZ2Gap374hsyr83MfM1XXQaEgov9dFCq3x9-wjUJvftXwy2iUJpfm7Vd54_zVcPuoH1XYtyob0w4BBS1CqnHLqDRDIZAU-PF9enzRNAuQ-B10Pa7rAJtE38Q_uEg__MCxzKE8vXLp-7TFex29mJxaeiPNHWPIWpT2zs_Xwvyy6UxaO7KsOvbOYB4bED-v6Fu5K-SxzZabY4CTGh-e13-9-FVX8mvybdjNxgROlJmYcx2J5zM2Rzo6ZqFTtHa2Ng24txrEWhQ3L9TNg49roQxhtVWRqvvlKuu1niCiqF6WZO8pDAeGSeQfBOeJCnPXgrvX1WN4s3BxJDV6F0d8dlqZQngsjzEMwIyS6-_6aUwiRAfvreIdCIx5PWEWNjMbg7P6VsSl9KC-Uu85dks8q7hNC1J6FFu02QdtpzilivjVUH7JuXwudGCLaYQSREpV1R_JDhDXZO1jKnWwJLhyahWwYiy7VNMyFC8avjMVhNfFy36IKKQr7Jea-5L5KqlmVFQLXx6IietR6FDYwy18SdMAoFOILoopL9MdzSUOu-GJfbc6QWXSJ7k6HwMj2ad_xxDkbCG5ZSEiBjLzDwKjhyzl4BifL6HLII44_nKIuXg9vlXYyy76Mk1bHV4_Ny1ULSvwGrPgMcavNIHNhJPKqd8hiZwZWSaAWe0mZ9uE8vFuCpPS1FOPwgbfL56fmztaJDEG3kKQqKf3k-oEbcLQYaMbtfCwLcF4mC6ecMAEZahlRuo_qAZ5jTdQAoR3OrK6utJOrOhGNNLgSvT-jUgBhgHWK3U6WbimuEXxBTFaHjhYvpoKtMj7xpTYTjBk55Gm-5nCop_dKjXygzNNAC31f3krL9qsvT7wOibQBV3wn0m_NR9DoLJJNC0CRMYBLB_990V9GkUgErN7ANUl-Thrpdcbh0OUlLrUMlONwiVCOs3cYVwf2M5Gx7qprQKkKmcW9YNv63LvaXfqSlMBHsgsg9QsJ0iuasXA5qCVl1GWNXFzYBZdxTmdBBRoiYnHgYGGo55L7PwF4P8sS5YnG07KccRQ`]
     }),
+
     // InfoSpace.com
     new SearchEngine({
         name: SearchEngineType.INFOSPACE,
@@ -115,6 +122,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`serp?q=${SearchPlaceHolder.QUERY}&page=${SearchPlaceHolder.PAGER}&sc=EqJ44cOqw37vI2CiXbBXa8KeOLYTF2imR-0KvKdTNEHMES0D1Hv0Dy94zk_59MaX76VCbfP8qqZgmuqu-PbSy98rqMcCPR0Id-59LQe9eFammGOqQrPDAaeN5wAfnQhi0tQCkA6zghvdYXqOAGJFrB8j4zHQhj9v7Lkrxd1_Zr1elz4Aawv5EKaAaRpS4fbH7YtujnlJcUVz03kPapa9Wgzmlt9JOYqfJ8LzUp7rG81QzrdBGu9SWN37nFrWkR9u0cUeujmvFiX2vAtZbfrHRLN0CtEfKb2k1FO6yR_fX74IKV0UpoRK48MTYLHj32VvJYtWcfd252DDnQKG5scUnldqkgXcBkSrGxVLkXyQ57MomnIrd0T2b1KI--tP2l73FLkCg5xShYVEq2bDts4WoXUW94IqqXv1DceVqnJu6iZzu7Li_VKXPXcnOUeMV4Y-gTPm57MlLuerC2ridf6yVB8DwAGdQwDGJW7xoyKTGtRKdHi9rSH2uAVyXWTKbJvNFlsPQs6XIIikGYuxpGjtJo_GcCe2BqimZgvg9CzODlGZiwo8LDQZmKBaH-SVmgK78TwIVIENxsu3L3uL_W33bLzbi1AIWI1uCr33xQFKDgi7wRFcvN6afwU2L8tkELZo1HpImxS9bU-N0XTp9yfmKNFa9VLRVi55vgLK5HY8blv8ycSgyO2kuByVNWopTwcxjV3PEZIBjTCqtbtJl3Ksao2JK4Ddb0RGlQKkbt6o6CWcIxxHfsxkADF46FnEZhFDX6IPuJtv1hQztOwkgKk4vs3fu7vP9fWfve-cJiMap-156B1fAWMnPsNntsAnq0ZxkuTtDKUUBBy3I03J0COsDp94nL3Zp7v0L8lM6EklQaTJz14PLdYmsT54VHrqZz4zqbCmjPanZPxqw1ZU6J_r5i0QDGKovJ2hOd5-luudu4O2m6AYHHWHK2smMJyO3J9XIrLL10eQ_wlthefJtPwPVtiAnkgosW0NgXbQjNUoGdYzQvv659S2CcfBwgJ4i5J-2aH6ni3dp9s6v7Fb6Wv1Bhz_v7VFIjK1F-H7KVWfUqlTvEoYT6cx6I_UNELmvRNc6Y7-6S-rpMuqLEhEsQ8iUXopceEqALPlzLiGCEVrwu5eZ2B4lYHJFaJpyDyvYpUalG8pxg4lE2yNcP7nAMKN63iupwZCHjS1ez0WWP6WndAe021qpfX90wNwXK52mXreYaICuqi90hD1SW-rkfOzaKDHSx0B_7rlquhIpRru7LFh6KLNJjq_MsKfHyOz33nU1uY90hXRsjhbYk2GNEaT1G-bNXEAedTF9vhkuFHqwbp0NtVnVjE`]
     }),
+
     // MetaCrawler.com
     new SearchEngine({
         name: SearchEngineType.METACRAWLER,
@@ -123,6 +131,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`serp?q=${SearchPlaceHolder.QUERY}&page=${SearchPlaceHolder.PAGER}&sc=-nyJMwVSR058hFglmgkitsvwx0sO4Cck8EXHGFZQfomu8NyJRw9yTELSMvHWZTl3iCzMwjs4LzmoEfC9yG0rpakjxrPt5hNtfB0y1Rs60QGvu7_Z4yOYkq2YrBYR5h6jxGji-agnE97TfyHtJwOX0Ydz6l4nO89rb9V4l8TTmfDBJewZWbqZpun2EW2fZ3GCwsOhHRCg2I8y7ER2bsenMJhIkUVMjI5MEQdaZhd_I6cZWErKdUgGaOyB4Hpdb0JuKkkGvoW-adRt2wz0kJF0KQqYY1Hk3ankSJSZdaHQub-nz0oZlr-SedzP-jIKRGfH-oDd2wldgqyQJgTNPhg5bMig9dYXkdd-qcenUfp3mIrjmKuwMpzKZXSAx6CJ82CbkNKarfEq__9XEqGTsCHuFt2_XXroxBI6EikaLSbfzbZAUU7_nRTR1e97URYXHG00rrycGQmCCB2Q1emQf6mKSyhHJmRcZdabOgPwNZZkxi5Dh-ubUMZRYya8WOvvEgXV6ZFp-hmvYRtORcYWIKQkGuv_gaDadF9z7g1RtisnfIEDvDVVNNIHNGbhdZTcoEPG_8Wh_Y4FkRC5ctd7srjgzegc3MuxdBgqo7R6JZJ206VFbT2zZOPMNSxD4I-KxV3gGKh-dT6Di6YP6gTTZgReWXkiCt5rywg8oFu02RYDGMMxMm0ug54oIsR8TzxxbN5aaCMXHTNaW1Fgwg12xkIpJJ6UNvLCGtmbgFftK3YWlwz5XakdW4kcVgsVYVavNqG2l_vdaUL95ltTjSGF-tbgMkYwFCILg3aAyCpc3vPGeQdVZfp1yy5A6X5VnvtvlEF5DYNuiNAs6Dj8bQ_45Z2zFgEbwK3zcIO_rW87Go4upSSNJwLUimGnjgrNTZUf1XCvxvCRHwIfuE_ySQsczzBrOsVrWtcsWWFuwVOXrjd5Foxd7t5u2eMytQ60W0sEYwZciodlfSBQAggj4tRxx_yoAAtDj-hpqOJhBKuNv634kSGFyjsLuEyJuy1IfuTK1CtmJfBFs_6wTe3SbHrIjSTqCBYSiQzwmu9IyF6zB-e_4w9tkSq1yhw4dZXP0-hOh1CJXBJAZ-SCqkjC7WekaY2-VXYYVtx6S-ngX5TQLMGG8F6h8FyoMTWCiQcUxxHx4vy2xPGJ1QaCxFLfHBfAKm78fZD5Ll1e4FrpRarjmhWqR72LaV7AQ1XaXeOsTKuyzAgrrswQXm1_euuSXVproNF2N6zpbFxmXKDCUeLmyF2flXxU8LNKQW9GRTaKmZzCVqjT6zx6-NLMYhiRlB3xGjEXXRrc3rIsLHJXNHFh-H9giCDOojIDIveU31XR0QDgM9c3vpbJCwfOEZlaB9_q8hvzc8hKxib_FEosjsGCH2Cxi_DY5Ex8MGMRHTneWqS8yOIQcN2S0SiJiVKQSid3HsGJhrCL32rQsP5jf2ug2SJ6YYpy2eG9-BUDjWcAJz6eIr28XqSPhebiSbNuQkA7kOEQr1Bn3OIOnTa9zaIGGz5ENswqBdFtABmGiXRddAJtF3n4DO6elzR4cVPoqlGImDeMtjZm-WWziGhoIoW05OK1mFh2KSm1nTYu4kqM2b311vsxt1H9VV1pwFR2OeQrK2cjAb_qjcQjguEY7pxU3N9CZSJiROhRoOW16HHj6K1eazEWsNNbSr-I-jis8ST7voC_Y5CIDhg1ny4eOLqlcUygGQL-RdOdU4m538zDggoJdKM_naCapyacH14oFW7Eug`]
     }),
+
     // Naver.com
     new SearchEngine({
         name: SearchEngineType.NAVER,
@@ -131,6 +140,7 @@ const searchEngines = [
         advanceBy: 10,
         templatesList: [`search.naver?f=&fd=2&filetype=0&nso=so%3Ar%2Ca%3Aall%2Cp%3Aall&query=${SearchPlaceHolder.QUERY}&research_url=&sm=tab_pge&start=${SearchPlaceHolder.PAGER}&where=webkr`]
     }),
+
     // StartPage.com
     new SearchEngine({
         name: SearchEngineType.STARTPAGE,
@@ -139,6 +149,7 @@ const searchEngines = [
         advanceBy: 1,
         templatesList: [`sp/search?language=english&lui=english&t=default&query=${SearchPlaceHolder.QUERY}&cat=web&page=${SearchPlaceHolder.PAGER}&sc=CzFATGXE3M2x00`]
     }),
+
     // Yandex.com
     new SearchEngine({
         name: SearchEngineType.YANDEX,
@@ -149,4 +160,4 @@ const searchEngines = [
     })
 ];
 
-module.exports = { searchEngineStatuses, activeSearchEngineNames, searchEngines };
+module.exports = { searchEngines, activeSearchEngineNames, searchEngineStatuses };

@@ -1,7 +1,7 @@
 require('../services/files/initiate.service').initiate('test');
-const { crawlEmailAddressService, logService, emailAddressesGeneratorService, emailAddressValidationService } = require('../services');
-const { logUtils, emailAddressUtils } = require('../utils');
 const { StatusIcon } = require('../core/enums');
+const { crawlEmailAddressService, emailAddressesGeneratorService, emailAddressValidationService, logService } = require('../services');
+const { emailAddressUtils, logUtils } = require('../utils');
 
 // If NULL or empty - Will be filled randomly.
 const localPart = '';
@@ -44,7 +44,6 @@ const sortResults = (validationResults) => {
     // Email Address Fix Typo //
     // ====================== //
     let score = 0;
-
     // Initiate the common email address domains lists.
     crawlEmailAddressService.initiateCommonEmailAddressDomains();
     // Get random typos and test them.

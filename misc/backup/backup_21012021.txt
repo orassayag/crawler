@@ -1,8 +1,19 @@
-const settings = require('../settings/settings');
-const BackupData = require('../core/models/files/BackupData');
+/* const settings = require('../../settings/settings');
+const globalUtils = require('../../utils/files/global.utils');
+const pathUtils = require('../../utils/files/path.utils');
+const validationUtils = require('../../utils/files/validation.utils');
+const { GoalType, ScriptType } = require('../../core/enums');
+const { fileUtils } = require('../../utils'); */
+
+/* 			let index = -1; */
+
+/* //const fs = require('fs'); */
+
+/* const settings = require('../settings/settings');
+const { pathUtils, fileUtils, logUtils, textUtils, timeUtils } = require('../utils');
+const { BackupData } = require('../core/models/application');
 const { Color } = require('../core/enums');
 const globalUtils = require('../utils/files/global.utils');
-const { pathUtils, fileUtils, logUtils, textUtils, timeUtils } = require('../utils');
 
 class BackupLogic {
 
@@ -14,8 +25,8 @@ class BackupLogic {
     initiate() {
         // Get the backup title from the console.
         this.backupTitle = textUtils.removeAllCharacters(textUtils.toLowerCase(process.argv[2]), '.');
-        this.backupData = new BackupData(settings);
         logUtils.logMagentaStatus('INITIATE THE BASE PARAMETERS');
+        this.backupData = new BackupData(settings);
     }
 
     async run() {
@@ -61,6 +72,9 @@ class BackupLogic {
         if (!this.backupData.targetBackupName) {
             throw new Error('No backup name was provided (1000001)');
         }
+        if (this.backupData.targetBackupName.length <= 0) {
+            throw new Error('Invalid backup name length was provided (1000002)');
+        }
         // Reset the backup directory.
         await fileUtils.removeDirectoryIfExists(this.backupData.targetFullPath);
         await fileUtils.createDirectoryIfNotExists(this.backupData.targetFullPath);
@@ -94,7 +108,7 @@ class BackupLogic {
     async verifyBackup() {
         await globalUtils.sleep(this.backupData.millisecondsDelayVerifyBackupCount);
         if (!await fileUtils.isPathExists(this.backupData.targetFullPath)) {
-            throw new Error('No backup was provided (1000002)');
+            throw new Error('No backup was provided (1000003)');
         }
         logUtils.logColorStatus({
             status: `FINISH TO CREATE BACKUP: ${this.backupData.targetBackupName}`,
@@ -103,4 +117,4 @@ class BackupLogic {
     }
 }
 
-module.exports = BackupLogic;
+module.exports = BackupLogic; */

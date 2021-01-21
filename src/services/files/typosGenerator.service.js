@@ -4,8 +4,8 @@ Made some cosmetic changers to fit modern javascript.
 Added here special characters implementation.
 */
 const settings = require('../../settings/settings');
-const { characterUtils, textUtils } = require('../../utils');
 const { TestData } = require('../../core/models/application');
+const { characterUtils, textUtils } = require('../../utils');
 
 class TyposGeneratorService {
 

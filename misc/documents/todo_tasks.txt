@@ -10,8 +10,40 @@ d. Keep the backup update - Every change you do - Update in iOmega (each couple 
 
 ToDo tasks:
 ===========
+-Update packages. *
+-Take backup.logic.js file from 'mbox-crawler' project. *
+-Change the 'initiate.service' according to 'mbox-crawler' changes (load all utils in one line + also in all places load 'fs-extra' instead of 'fs'). *
+-Fix description in package.json + README.MD + re-create package.json-lock file. *
+-Make sure spaces in all files between bottom, need to fix cases like this: *
+} *
+module.exports *
+} *
+export default *
+-In initiate.service.js, need to re-write the utils imports - need to be same imports for all utils. *
+-Remove all the logic of adding or removing the puppeeter.js package according to development/production environment. It's not relevant anymore - Canceled. *
+-Re-check all imports in the entire project (check for duplicate imports paths). *
+-Sort alphabetically all imports: external packages, settings, (containers, components, store, assert) data, models, enums, services, utils. *
+-Sort alphabetically by https://alphabetizer.flap.tv/. *
+-Re-check all imports in the entire project (check for duplicate imports paths). *
+-Replace all 'let' to 'const' and where no bugs - change it. *
+-Check if comments of all backup parmeters in settings.js relevant to this project. *
+-Update packages npm outdated --depth 9999. *
+-Add 'Misc.' section to gitignore and npmignore files (include tasks txt files + backups directory). *
+-Remove all unused files, functions, and variables. *
+-In .eslintrc file - set "no-unused-vars": 1. *
+-Clear all comments. *
+-Rewrite error numbers. *
+-Remove all debugger. *
+-Make sure all comments ends with . *
+-Fix TXT files spell mistakes. *
+-Fix all spell mistakes in all TXT files. *
+-Format all files.
+-Verify all works as expected.
+-Upload to GitHub.
+-Fix spell mistakes in all txt files.
+-Move all complete tasks from here to complete_tasks.txt.
 
-Complete + Canceled tasks:
+Complete + canceled tasks:
 ==========================
 
 ===========================================================================

@@ -1,0 +1,131 @@
+Future tasks:
+=============
+
+Unsolved email cases:
+=====================
+-Need to flip: il.co.p-s@g.hila
+-Fix: WWW.TEST.COMtest@test.com => test@test.com | Add validation that if starts with www / http: / https:
+  => Remove all until the end of the URL address (search domain end, if not found, abort)).
+-Add this to the flip function: original: il.ac.biu.mail@law.comcenter | fix: il.ac.biu.mail@law.com | functionIds: 28 => comcenter.law@mail.biu.ac.il
+-Do specific fix for: 012b00000009VaI-info@ibi.co.il, 012b00000009VaL-info@ibi.co.il, 0120N0000001XS7-maor@ibi.co.il, 012b00000009VaN-ibitrade@ibi.co.il
+
+Try again to fix:
+=================
+-The main conclusion from 30-40 days of try refactoring - There is no specific logic.
+-There is a need to place a new logic that just to replace.
+-For example, after '.co.il' - Remove all (also gov.il, muni.il).
+-Logic of replace. That's the only solution.
+-Unzip all sources with the password.
+-Start the logic by loading all the email addresses from the backup 'TempCrawlerLogics-26042020_After_Load_All_To_Database'.
+-Good luck!
+
+INSTRUCTIONS.md + README.md tasks:
+==================================
+-Implement the logic with puppeteer.js and build alternative package.json for development and for production - *
+ Don't forget to write about it on INSTRUCTIONS.md file - Cancelled. *
+-The updates (in cases) list will always serve for changes and updates (also write it down on the instructions + every place that relevent for it).
+-Add description about each script and each test.
+-Go through the settings and mention the important ones.
+-Add reminder to update both development and production package.json files when doing some changes / update packages / update scripts.
+-On the INSTRUCTIONS.md file write explanation on each parameter on the console line.
+-Add to the INSTRUCTIONS.md file all the new options and settings that needs to be configured.
+-Create in the and a list of all credits inside to put inside the README.md file.
+-Add the 'IMPORTANT' messages to the INSTRUCTIONS.md file.
+-Fix misspells mistakes in all documents.
+-Fix spell mistakes in all of the documents.
+
+Move out all the data:
+======================
+-Do backup before start to work.
+-Move all the lists to external JSON files.
+-Build several functions that load all the different data from the JSON files and convert it to lists on the fly.
+-Create one file that will contain all the lists and from there all the exports will be.
+-After all done - Make sure everything works as before.
+
+Smart fix tasks:
+================
+-Create a copy of the crawler.
+-Install fuse.js.
+-Build a script that:
+1. Loads all the domains count from the document (not important which one of the two).
+2. Create a json file, and insert all of them by single key, and score (the number after the | part).
+The JSON file needs to be like in the example page: https://fusejs.io/demo.html
+-Build a script that takes a random domain from the JSON file, add it some extra text, change the domain end, special charecters, and so on.
+-Find out what kind of domains the fuse.js find from the JSON file. Log it to console.
+-Do backup before start any action.
+-If the logic works, build the next level script - Grouping all domains:
+-Load all domains and scores.
+-Loop all domains on on fuse.js, and see the all the suggestions (except from the full match).
+-If grouping works - Write script for that.
+3. Build a script that gets a random domain from the - Canccelled. *
+-On the copy, create a script that loads all the domain count from the document (not important which one of the two) - Canccelled. *
+-Build a script Create a json file, like in the example page: https://fusejs.io/demo.html - Canccelled. *
+-Build a script - Canccelled. *
+
+Future tasks:
+=============
+Test and maybe implement the package: https://www.npmjs.com/package/email-misspelled.
+-Add time pasted of search process, and for page process.
+-On the regex utils - Convert all the "new RegExp" to use the bottom function "createRegex".
+-For each run, make an array of (search queries + search engine) to void duplicate search for
+ the same search query in the same search engine twice in a run - Search for efficient way to do it, string compresion is heavy cost.
+-Auto refresh Google/Bing (Add property to refresh token parameters or not) query string parameters logic -
+ Every X time (hour? from settings.js) a call to (Google/Bing whatever) to
+ search, and take the url query string and refresh it on the search engines settings. Think about how to do it.
+ Think about how to search dummy thing, get all the URL parameters and replace them in the search engine URL.
+ Hint: https://stackoverflow.com/questions/48986851/puppeteer-get-request-redirects.
+-Convert all strings in the console status line to enum and replace all places.
+-Add duplicates counter in the console line, both for links and for the email addresses.
+-All substring, split, join, all utils functions around the project - Move to textUtils.
+-All places - Create index.js file and insert all relevant files there.
+-Find fix bug to the space line on the bottom.
+-Add auto logic to switch search engine in case of the same results all
+ the time / any error / repeated 0 email addresses for a few processes /
+ Or update request id's of the search engine.
+
+Other scripts tasks:
+====================
+-Add script to add email addresses from a TXT file to the Mongo database (in case failed to save - 'unsave' status).
+
+Extra super bonus tasks:
+========================
+TYPOS IMPORT:
+-All existing typos, move to a seperated special directory inside the sources directory for each file - Different typo.
+-Build a function that gets a common domain typo and insert it to model in the Mongo database.
+-If the typos does not exists in the Mongo database, load all of them from the source files in a special directory from sources directory.
+-Change all the logic to load in the first time all the typos from Mongo database and check the typos from them.
+-Move also the valid and the invalid email addresses test cases to TXT file and for the first time load from the Mongo database if missing.
+-Add logic file to add (by flag enum) to the Mongo database from the following: valid / invalid / typos.
+-The logic will be as the following:
+-Move all the typos / valid / invalid to TXT files, with specific directory in the sources directory.
+-Prepare the mongoose models for all of these, and remove the application models exists today.
+-Build the logic for each one of them to receive a list and to load to the Mongo database.
+-Build the logic to load from the TXT file all the sources to the Mongo database.
+-Change all the places in the project to load all the sources on load ONLY ONCE (and ONLY if not exists in the Mongo database).
+-Each run of the application, all the sources will be loaded from the Mongo database. If not there - As previous section said - Load from the TXT files.
+-Change all places in the project to get the sources needed from the Mongo database.
+-Do tests. Delete the sources directory / Delete the Mongo database / Ect..
+MOVE ALL TYPOS TO EXTERNAL MONGO DATABASE:
+-Move all typos to external TXT files. The file name will have the original domain name, and inside a comma split typos.
+-Build a function that insert all typos to Mongo database.
+SAME FOR THE EMAIL ADDRESSES LIST (VALID AND INVALID).
+SAVE LINKS TO MONGO DATABASE:
+-Insert the crawled link into the Mongo database in new collection (in lowercase) and check if exists before crawling the page.
+-Limit the page to be scanned 30 days (configured in the settings.js) before scanned again.
+AUTO TYPOS CREATOR:
+-Build a function that gets a domain name, maximum number of charecters to check for typo,
+ generate and log all possible typos (based on the logic of the typos tests) to a different Mongo database name.
+WORK WITH TXT FILES AS MONGO DATABASE:
+-Instead of using Mongo and mongoose, use simple TXT files to save and load email addresses.
+ Limit the Mongo database to number of email addresses.
+-Save the TXT files as numbers with limit of files.
+-Load all email addresses from TXT files before start and delete all if needed.
+-All invalid / typos will also be loaded from TXT files.
+
+Performance tasks:
+==================
+-Check if any logic of domain filter (links and email addresses) if faster with micromatch or with the current logic.
+-To improve performance on the typos search & replace, split the entire array to arrays by length. Then, the search could be
+ focus on the most relevant typos by the misspell length. For example, gamil.c === 7 characters length, will be searched only
+ in the array of all the 7 length typos, and so on.
+-Where you have functions that loop some list, do multiply action on the loop.

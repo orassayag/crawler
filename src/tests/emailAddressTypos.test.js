@@ -6,7 +6,7 @@ const { emailAddressUtils, logUtils } = require('../utils');
 // If NULL or empty - Will be filled randomly.
 const localPart = '';
 let domainPart = '';
-// ========================
+// ======================== //
 
 const logValidationTestResult = (validationResult) => {
     const { isValid } = validationResult;

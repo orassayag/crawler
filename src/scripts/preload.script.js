@@ -1,3 +1,4 @@
+const errorScript = require('./error.script');
 require('../services/files/initiate.service').initiate('preload');
 const settings = require('../settings/settings');
 const packageJson = require(settings.PACKAGE_JSON_PATH);
@@ -31,4 +32,4 @@ const globalUtils = require('../utils/files/global.utils');
             globalUtils.deleteFile(settings.PACKAGE_LOCK_JSON_PATH);
         } catch (error) { }
     }
-})();
+})().catch(e => errorScript.handleScriptError(e, 1));

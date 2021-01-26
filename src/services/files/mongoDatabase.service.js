@@ -39,7 +39,7 @@ class MongoDatabaseService {
 
     async validateProcess() {
         if (!await systemUtils.isProcessRunning('mongod.exe')) {
-            throw new Error('The process mongod.exe no running (1000022)');
+            throw new Error('The process mongod.exe not running (1000022)');
         }
     }
 

@@ -27,7 +27,7 @@ class SystemUtils {
         return `EXIT: ${exitReason}`;
     }
 
-    isProcessRunning = (processName) => {
+    isProcessRunning(processName) {
         return new Promise((resolve, reject) => {
             if (reject) { }
             const platform = process.platform;
@@ -42,7 +42,7 @@ class SystemUtils {
                 if (err || stderr) { }
                 resolve(stdout.toLowerCase().indexOf(processName.toLowerCase()) > -1);
             });
-        });
+        }).catch();
     }
 }
 

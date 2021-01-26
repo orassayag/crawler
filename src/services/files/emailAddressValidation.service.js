@@ -718,7 +718,6 @@ class EmailAddressValidationService {
 				domainPart = domainPart.substring(0, index + compareItem.length + charsAfterDot);
 				break;
 			}
-
 		}
 		validationResult = this.checkEmailAddressUpdate({
 			validationResult: validationResult,

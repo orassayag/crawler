@@ -1,3 +1,65 @@
+Complete + canceled tasks:
+==========================
+-Fix bug with backups - Modal not found: Error: Cannot find module '../core/models/files/BackupData'. *
+-Add 'Complete + canceled tasks: *
+==========================' to complete_tasks.txt. *
+-Re-arrange tasks here (for exmaple, Gibbrish task already completed). *
+-Update packages. *
+-Re-create package.json file. *
+-Change '    isProcessRunning = (processName) => {' to method like in the 'sender' project. *
+-Check for empty lines inside functions / models with regular expression: ^\s*$ *
+-Remove all comments. *
+-Add logic to exit on mongoDatabase.service.js. *
+-Add .catch(e => console.log(e)); to all (async () => { - Take the logic from 'crawler' project. *
+-Format all files. *
+-Verify all works. *
+-Update GitHub. *
+-Move all complete tasks to cmplete_tasks.txt. *
+Gibberish task: *
+=============== *
+-Try to build function to detect spam. If not working, ask in StackOverFlow for suggestion to detect spam. *
+-In Sandbox.test.js there are test to solve. *
+-Add new log file of spam detect: *
+14370afcdc17429f9e418d5ffbd0334a@domain.com *
+ce06e817-2149-6cfd-dd24-51b31e93ea1a@domain.org.il *
+87c0d782-e09f-056f-f544-c6ec9d17943c@domain.org.il *
+root@ns3160176.ip-151-106-35.eu *
+ds4-f1g-54-h5-dfg-yk-4gd-htr5-fdg5h@domain.com *
+h-rt-dfg4-sv6-fg32-dsv5-vfd5-ds312@domain.com *
+test@454-fs-ns-dff4-xhh-43d-frfs.com *
+=> Asked question: https://stackoverflow.com/questions/65393659/javascript-script-to-detect-gibberish - Give it bounty tomorrow. *
+-Update packages. *
+-Take backup.logic.js file from 'mbox-crawler' project. *
+-Change the 'initiate.service' according to 'mbox-crawler' changes (load all utils in one line + also in all places load 'fs-extra' instead of 'fs'). *
+-Fix description in package.json + README.MD + re-create package.json-lock file. *
+-Make sure spaces in all files between bottom, need to fix cases like this: *
+} *
+module.exports *
+} *
+export default *
+-In initiate.service.js, need to re-write the utils imports - need to be same imports for all utils. *
+-Remove all the logic of adding or removing the puppeeter.js package according to development/production environment. It's not relevant anymore - Canceled. *
+-Re-check all imports in the entire project (check for duplicate imports paths). *
+-Sort alphabetically all imports: external packages, settings, (containers, components, store, assert) data, models, enums, services, utils. *
+-Sort alphabetically by https://alphabetizer.flap.tv/. *
+-Re-check all imports in the entire project (check for duplicate imports paths). *
+-Replace all 'let' to 'const' and where no bugs - change it. *
+-Check if comments of all backup parmeters in settings.js relevant to this project. *
+-Update packages npm outdated --depth 9999. *
+-Add 'Misc.' section to gitignore and npmignore files (include tasks txt files + backups directory). *
+-Remove all unused files, functions, and variables. *
+-In .eslintrc file - set "no-unused-vars": 1. *
+-Clear all comments. *
+-Rewrite error numbers. *
+-Remove all debugger. *
+-Make sure all comments ends with . *
+-Fix TXT files spell mistakes. *
+-Fix all spell mistakes in all TXT files. *
+-Fix spell mistakes in all txt files. *
+-Format all files. *
+-Verify all works as expected. *
+-Upload to GitHub. *
+-Move all complete tasks from here to complete_tasks.txt. *
 Maintenance:
 ============
 -Copy the logic of nonNumeric in logProgress funcion from 'udemy-courses' project. *

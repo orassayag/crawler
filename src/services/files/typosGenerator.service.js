@@ -63,7 +63,6 @@ class TyposGeneratorService {
 				typos.push(t);
 			}
 		});
-
 		// Generate typos with special characters.
 		const numberOfTypos = textUtils.getRandomNumber(this.testData.minimumSpecialCharactersTyposEmailAddressesCount,
 			this.testData.maximumSpecialCharactersTyposEmailAddressesCount);

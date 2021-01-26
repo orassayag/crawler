@@ -1,5 +1,6 @@
 Complete + canceled tasks:
 ==========================
+-Fix uneeded formats with: "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc". *
 -Fix bug with backups - Modal not found: Error: Cannot find module '../core/models/files/BackupData'. *
 -Add 'Complete + canceled tasks: *
 ==========================' to complete_tasks.txt. *

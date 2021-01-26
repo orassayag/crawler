@@ -47,5 +47,6 @@
     "eslint.validate": [
         "javascript"
     ],
-    "editor.renderWhitespace": "none"
+    "editor.renderWhitespace": "none",
+    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc,**/sources"
 }

@@ -1,5 +1,9 @@
 Complete + canceled tasks:
 ==========================
+-Update packages + re-create package.json file. *
+-Fix the 'replaceCharacter' function (if exists), according to the logic in 'udemy-courses' project, *
+and replace it in all places (where don't need flag, pass '': regexUtils.createRegex(origin, ''). *
+-Check for duplicate 'createDirectory' - remove it from global, and use the one from fileUtils. Take it from 'udemy-courses' project. *
 -Fix uneeded formats with: "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc". *
 -Fix bug with backups - Modal not found: Error: Cannot find module '../core/models/files/BackupData'. *
 -Add 'Complete + canceled tasks: *

@@ -2,7 +2,7 @@
 REMEMBER!
 =========
 Each time you change the logic / update NPM package version, do the following steps:
-a. Perform a backup before any change has been made, by running on termine 'npm run backup' or manually to the backups directory.
+a. Perform a backup before any cnpmhange has been made, by running on termine 'npm run backup' or manually to the backups directory.
 b. After the change, check that everything works OK.
 c. Keep the maintenance - Every change you do - Make sure to update in this document if needed.
 d. Keep the backup update - Every change you do - Update in iOmega (each couple of days do backup there).

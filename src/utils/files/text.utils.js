@@ -257,7 +257,7 @@ class TextUtils {
         if (!text) {
             return '';
         }
-        return text.replace(regexUtils.createRegex(origin), target);
+        return text.replace(regexUtils.createRegex(origin, 'g'), target);
     }
 
     removeAllCharacters(text, target) {

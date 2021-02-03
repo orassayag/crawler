@@ -31,8 +31,8 @@ class RegexUtils {
 		this.cleanMultiDots = new RegExp('([.])(?=\\1{1})', 'g');
 	}
 
-	createRegex(regex) {
-		return new RegExp(regex);
+	createRegex(regex, flag) {
+		return new RegExp(regex, flag);
 	}
 }
 

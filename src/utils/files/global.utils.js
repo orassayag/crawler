@@ -59,15 +59,6 @@ class GlobalUtils {
     deleteFile(targetPath) {
         fs.unlinkSync(targetPath);
     }
-
-    createDirectory(targetPath) {
-        if (!targetPath) {
-            return;
-        }
-        if (!fs.existsSync(targetPath)) {
-            fs.mkdirSync(targetPath, { recursive: true });
-        }
-    }
 }
 
 module.exports = new GlobalUtils();

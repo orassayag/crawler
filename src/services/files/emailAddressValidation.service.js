@@ -816,18 +816,18 @@ class EmailAddressValidationService {
 			const firstPart = shortString.substring(0, i);
 			const secondPart = shortString.substring(i);
 			// Test for wrong letter.
-			const wrongLetterRegEx = regexUtils.createRegex(`${firstPart}.${secondPart.substring(1)}`);
+			const wrongLetterRegEx = regexUtils.createRegex(`${firstPart}.${secondPart.substring(1)}`, '');
 			if (wrongLetterRegEx.test(longString)) {
 				return longString.replace(wrongLetterRegEx, shortString);
 			}
 			// Test for extra letter.
-			const extraLetterRegEx = regexUtils.createRegex(`${firstPart}.${secondPart}`);
+			const extraLetterRegEx = regexUtils.createRegex(`${firstPart}.${secondPart}`, '');
 			if (extraLetterRegEx.test(longString)) {
 				return longString.replace(extraLetterRegEx, shortString);
 			}
 			// Test for missing letter.
 			if (secondPart !== 'mail') {
-				const missingLetterRegEx = regexUtils.createRegex(`${firstPart}{0}${secondPart}`);
+				const missingLetterRegEx = regexUtils.createRegex(`${firstPart}{0}${secondPart}`, '');
 				if (missingLetterRegEx.test(longString)) {
 					return longString.replace(missingLetterRegEx, shortString);
 				}
@@ -1230,7 +1230,7 @@ class EmailAddressValidationService {
 
 	validateVersionDomainPart(validationResult) {
 		const { domainPart } = this.getEmailAddressData(validationResult);
-		const isPackageName = regexUtils.createRegex(regexUtils.findPackageNameRegex).test(domainPart);
+		const isPackageName = regexUtils.createRegex(regexUtils.findPackageNameRegex, '').test(domainPart);
 		if (isPackageName) {
 			validationResult.isValid = false;
 			validationResult.functionIds.push(this.validationFunctionIdsMap['validateVersionDomainPart']);

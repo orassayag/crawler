@@ -1,5 +1,6 @@
 Complete + canceled tasks:
 ==========================
+-Update packages. *
 -Update packages + re-create package.json file. *
 -Fix the 'replaceCharacter' function (if exists), according to the logic in 'udemy-courses' project, *
 and replace it in all places (where don't need flag, pass '': regexUtils.createRegex(origin, ''). *

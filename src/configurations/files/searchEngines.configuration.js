@@ -1,6 +1,6 @@
 /* cSpell:disable */
-const { SearchEngine, SearchEngineStatus } = require('../core/models/application');
-const { SearchEngineType, SearchPlaceHolder } = require('../core/enums');
+const { SearchEngine, SearchEngineStatus } = require('../../core/models/application');
+const { SearchEngineType, SearchPlaceHolder } = require('../../core/enums');
 
 const searchEngineStatuses = [
     new SearchEngineStatus({ isActive: false, name: SearchEngineType.ASK }),

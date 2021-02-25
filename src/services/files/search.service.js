@@ -1,7 +1,6 @@
 const { SearchProcessData } = require('../../core/models/application');
 const { SearchKeyGender, SearchPlaceHolder } = require('../../core/enums');
-const { searchEngines, searchEngineStatuses } = require('../../configurations/searchEngines.configuration');
-const { advanceSearchKeys, basicSearchKeys } = require('../../configurations/searchKeys.configuration');
+const { advanceSearchKeys, basicSearchKeys, searchEngineStatuses, searchEngines } = require('../../configurations');
 const { regexUtils, textUtils, validationUtils } = require('../../utils');
 
 class SearchService {
@@ -104,7 +103,7 @@ class SearchService {
             }
         }
         if (!resultSearchKey) {
-            throw new Error('No valid resultSearchKey was created (1000025)');
+            throw new Error('No valid resultSearchKey was created (1000026)');
         }
         // Generate the search key for display by reverse only the UTF-8 keys.
         const resultDisplaySearchKey = this.generateDisplaySearchKey(resultSearchKey);

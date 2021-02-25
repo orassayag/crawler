@@ -9,14 +9,10 @@ const validator = require('validator');
 const settings = require('../../settings/settings');
 const { EmailAddressData, ValidationResult } = require('../../core/models/application');
 const { MicromatchAction, PartType } = require('../../core/enums');
-const { removeAtCharectersList, removeStartKeysList, invalidDomains } = require('../../configurations/emailAddressConfigurations.configuration');
 const { commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList, domainEndsDotsList, domainEndsHyphenList,
-	domainEndsList, emailAddressDomainEndsList, emailAddressEndFixTypos, endsWithDotIgnore, validOneWordDomainEndsList } = require('../../configurations/emailAddressDomainEndsList.configuration');
-const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
-const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
-const { unfixEmailAddressDomains } = require('../../configurations/filterEmailAddress.configuration');
-const { filterEmailAddressFileExtensions } = require('../../configurations/filterFileExtensions.configuration');
-const shortEmailAddressDomainsList = require('../../configurations/shortEmailAddressDomainsList.configuration');
+	domainEndsList, emailAddressDomainEndsList, emailAddressDomainsList, emailAddressEndFixTypos, endsWithDotIgnore,
+	filterEmailAddressFileExtensions, invalidDomains, invalidEmailAddresses, removeAtCharectersList, removeStartKeysList,
+	shortEmailAddressDomainsList, unfixEmailAddressDomains, validOneWordDomainEndsList } = require('../../configurations');
 const emailGibberishValidationService = require('./emailGibberishValidation.service');
 const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
 
@@ -82,7 +78,7 @@ class EmailAddressValidationService {
 		this.logFunctionIds = [...Object.values(this.validationFunctionIdsMap), ...Object.values(this.fixFunctionIdsMap)].filter(id => this.ignoreFunctionIds.indexOf(id) == -1);
 		this.emailAddressEndFixTyposKeys = Object.keys(emailAddressEndFixTypos);
 		this.singleTypoCommonDomains = emailAddressDomainsList.filter(d => d.typosList.length === 1).map(d => d.typosList[0]);
-		// ===EMAIL ADDRESS DATA=== //
+		// ===EMAIL ADDRESS=== //
 		this.emailAddressData = new EmailAddressData(settings);
 	}
 

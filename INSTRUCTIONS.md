@@ -1,4 +1,5 @@
 /* cSpell:disable */
+======
 INDEX:
 ======
 1. FAST & BASIC START.
@@ -28,16 +29,16 @@ INDEX:
    to reach and when the application will stop to run.
 9. You are ready to start to crawl.
 10. On terminal run 'npm start'. If everything goes well, you will start to see
-	the console status line appear.
+	 the console status line appear.
 11. If you see any error - Need to check what's change. Current to 03/16/2020,
-	It works fine.
+    It works fine.
 12. If you see the console status line but the 'Save' or 'Total' not progressing
-	- Need to check what's wrong.
+	 - Need to check what's wrong.
     Maybe on the active search engines - The URL parameters has been changed?
     Maybe the crawling puppeteer has been changed?
 13. If no errors and the progress works OK, make sure to check on
     dist/production/date of today (Example: 1_20200316_222124)/ That all TXT
-	files created successfully.
+	 files created successfully.
 14. Index about each parameter in the console status line can be found in
     misc/documents/complete_tasks.txt
 

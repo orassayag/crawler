@@ -1,6 +1,6 @@
 /* cSpell:disable */
-const { CommonEmailAddressDomainEnd, EmailAddressDomainEnd } = require('../core/models/application');
-const { emailAddressUtils } = require('../utils');
+const { CommonEmailAddressDomainEnd, EmailAddressDomainEnd } = require('../../core/models/application');
+const { emailAddressUtils } = require('../../utils');
 
 const extraCultureEndsList = [
     'ae', 'al', 'ar', 'au', 'ay', 'az', 'ba', 'bb', 'bd', 'bh',

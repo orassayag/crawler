@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const { EmailAddressDomain } = require('../core/models/application');
+const { EmailAddressDomain } = require('../../core/models/application');
 
 const emailAddressDomainsList = [
 

@@ -1,7 +1,7 @@
 const settings = require('../../settings/settings');
 const { ApplicationData, CountLimitData, DomainCounter, MongoDatabaseData, PathData } = require('../../core/models/application');
 const { Color, DomainsCounterSourceType, ScriptType } = require('../../core/enums');
-const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
+const { activeSearchEngineNames } = require('../../configurations');
 const logService = require('./log.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
 const { emailAddressUtils, fileUtils, logUtils, textUtils, validationUtils } = require('../../utils');
@@ -9,11 +9,11 @@ const { emailAddressUtils, fileUtils, logUtils, textUtils, validationUtils } = r
 class DomainsCounterService {
 
 	constructor() {
-		// ===COUNT & LIMIT DATA=== //
+		// ===COUNT & LIMIT=== //
 		this.countLimitData = null;
-		// ===MONGO DATABASE DATA=== //
+		// ===MONGO DATABASE=== //
 		this.mongoDatabaseData = null;
-		// ===PATH DATA=== //
+		// ===PATH=== //
 		this.pathData = null;
 		this.isLogs = null;
 		this.sourceType = null;
@@ -42,7 +42,7 @@ class DomainsCounterService {
 		this.sourceType = sourceType;
 		this.sourcePath = sourcePath;
 		this.log('INITIATE THE SERVICES', Color.MAGENTA);
-		// ===APPLICATION DATA=== //
+		// ===APPLICATION=== //
 		this.applicationData = new ApplicationData({
 			settings: settings,
 			activeSearchEngineNames: activeSearchEngineNames,
@@ -50,11 +50,11 @@ class DomainsCounterService {
 			method: null,
 			restartsCount: 0
 		});
-		// ===COUNT & LIMIT DATA=== //
+		// ===COUNT & LIMIT=== //
 		this.countLimitData = new CountLimitData(settings);
-		// ===MONGO DATABASE DATA=== //
+		// ===MONGO DATABASE=== //
 		this.mongoDatabaseData = new MongoDatabaseData(settings);
-		// ===PATH DATA=== //
+		// ===PATH=== //
 		this.pathData = new PathData(settings);
 		// Initiate the Mongo database service.
 		await mongoDatabaseService.initiate({

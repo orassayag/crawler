@@ -1,5 +1,5 @@
 const { Color, LogStatus, Method, Placeholder, StatusIcon } = require('../../core/enums');
-const { invalidEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
+const { invalidEmailAddresses } = require('../../configurations');
 const emailAddressValidationService = require('./emailAddressValidation.service');
 const puppeteerService = require('./puppeteer.service');
 const searchService = require('./search.service');

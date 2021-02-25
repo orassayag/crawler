@@ -39,7 +39,7 @@ class MongoDatabaseService {
 
     async validateProcess() {
         if (!await systemUtils.isProcessRunning('mongod.exe')) {
-            throw new Error('The process mongod.exe not running (1000022)');
+            throw new Error('The process mongod.exe not running (1000023)');
         }
     }
 
@@ -50,9 +50,9 @@ class MongoDatabaseService {
     async createConnection() {
         // Connect to the Mongo database.
         this.client = await mongoose.connect(this.mongoDatabaseConnectionString, this.mongoDatabaseConnectionOptions)
-            .catch(error => { throw new Error(`Failed to connect to MongoDB: ${error} (1000023)`); });
+            .catch(error => { throw new Error(`Failed to connect to MongoDB: ${error} (1000024)`); });
         if (!this.client) {
-            throw new Error('Failed to connect to MongoDB: Client is null or empty (1000024)');
+            throw new Error('Failed to connect to MongoDB: Client is null or empty (1000025)');
         }
     }
 

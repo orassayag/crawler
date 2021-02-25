@@ -1,6 +1,6 @@
 /* cSpell:disable */
-const { FilterLinkDomain } = require('../core/models/application');
-const { SearchEngineType } = require('../core/enums');
+const { FilterLinkDomain } = require('../../core/models/application');
+const { SearchEngineType } = require('../../core/enums');
 
 const filterLinkDomains = [
 	// Ask.com

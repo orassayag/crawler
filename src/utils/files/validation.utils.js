@@ -46,6 +46,10 @@ class ValidationUtils {
         return list && list.length > 0;
     }
 
+    isObject(value) {
+        return typeof value === 'object' && value !== null;
+    }
+
     // This method validates that a given string exists in array list of specific types.
     isValidEnum(data) {
         // Validate the existence and validity of the validateEnumData parameters. If not exists, return false.

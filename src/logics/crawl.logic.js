@@ -1,10 +1,10 @@
 const settings = require('../settings/settings');
 const { ApplicationData, CountLimitData, LogData, MongoDatabaseData, PathData, SearchData } = require('../core/models/application');
 const { Color, DomainsCounterSourceType, GoalType, Plan, Status } = require('../core/enums');
+const { activeSearchEngineNames } = require('../configurations');
 const puppeteerService = require('../services/files/puppeteer.service');
 const { crawlEmailAddressService, crawlLinkService, domainsCounterService,
     logService, mongoDatabaseService, searchService, sourceService } = require('../services');
-const { activeSearchEngineNames } = require('../configurations/searchEngines.configuration');
 const globalUtils = require('../utils/files/global.utils');
 const { logUtils, fileUtils, systemUtils, timeUtils, validationUtils } = require('../utils');
 
@@ -13,29 +13,29 @@ class CrawlLogic {
     constructor() {
         // ===LOG=== //
         this.logData = null;
-        // ===SEARCH DATA=== //
+        // ===SEARCH=== //
         this.searchData = null;
-        // ===COUNT & LIMIT DATA=== //
+        // ===COUNT & LIMIT=== //
         this.countLimitData = null;
-        // ===PATH DATA=== //
+        // ===PATH=== //
         this.pathData = null;
-        // ===MONGO DATABASE DATA=== //
+        // ===MONGO DATABASE=== //
         this.mongoDatabaseData = null;
-        // ===APPLICATION DATA=== //
+        // ===APPLICATION=== //
         this.applicationData = null;
-        // ===SEARCH PROCESS DATA=== //
+        // ===SEARCH PROCESS=== //
         this.searchProcessData = null;
-        // ===LINKS LIST DATA (SESSION TEST)=== //
+        // ===LINKS LIST (SESSION TEST)=== //
         this.linksList = null;
         this.isSessionTestPlan = false;
         this.planName = Plan.STANDARD;
-        // ===MONITOR DATA=== //
+        // ===MONITOR=== //
         this.lastUpdateTime = new Date();
     }
 
     async run(linksList) {
         this.validateSessionTest(linksList);
-        // Initiate all the settings, configurations, services, ect...
+        // Initiate all the settings, configurations, services, etc...
         await this.initiate();
         // Validate internet connection.
         await this.validateInternetConnection();
@@ -75,7 +75,7 @@ class CrawlLogic {
 
     initiateSettings() {
         logUtils.logMagentaStatus('INITIATE THE SETTINGS');
-        // ===APPLICATION DATA=== //
+        // ===APPLICATION=== //
         this.applicationData = new ApplicationData({
             settings: settings,
             activeSearchEngineNames: activeSearchEngineNames,
@@ -85,15 +85,15 @@ class CrawlLogic {
         });
         // ===LOG=== //
         this.logData = new LogData(settings);
-        // ===SEARCH DATA=== //
+        // ===SEARCH=== //
         this.searchData = new SearchData(settings);
-        // ===COUNT & LIMIT DATA=== //
+        // ===COUNT & LIMIT=== //
         this.countLimitData = new CountLimitData(settings);
-        // ===PATH DATA=== //
+        // ===PATH=== //
         this.pathData = new PathData(settings);
-        // ===MONGO DATABASE DATA=== //
+        // ===MONGO DATABASE=== //
         this.mongoDatabaseData = new MongoDatabaseData(settings);
-        // ===SEARCH PROCESS DATA=== //
+        // ===SEARCH PROCESS=== //
         this.searchProcessData = null;
         // ===SESSION TEST=== //
         if (this.isSessionTestPlan) {

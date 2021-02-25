@@ -42,7 +42,7 @@ class InitiateService {
 	}
 
 	validateScriptType() {
-		if (!validationUtils.isValidEnum({
+		if (!this.scriptType || !validationUtils.isValidEnum({
 			enum: ScriptType,
 			value: this.scriptType
 		})) {
@@ -61,6 +61,7 @@ class InitiateService {
 		this.validateBooleans();
 		this.validateArrays();
 		this.validateEnums();
+		this.validateObject();
 		this.validateSpecial();
 	}
 
@@ -167,9 +168,18 @@ class InitiateService {
 			'IS_LOG_UNSAVE_EMAIL_ADDRESSES', 'IS_LOG_GIBBERISH_EMAIL_ADDRESSES', 'IS_LOG_CRAWL_LINKS', 'IS_LOG_CRAWL_ERROR_LINKS',
 			// ===MONGO DATABASE=== //
 			'IS_MONGO_DATABASE_USE_UNIFILED_TOPOLOGY', 'IS_MONGO_DATABASE_USE_NEW_URL_PARSER', 'IS_MONGO_DATABASE_USE_CREATE_INDEX', 'IS_MONGO_DATABASE_SSL',
-			'IS_MONGO_DATABASE_SSL_VALIDATE'
+			'IS_MONGO_DATABASE_SSL_VALIDATE',
+			// ===INNER SETTINGS=== //
+			'INNER_SETTINGS.IS_LONG_RUN', 'INNER_SETTINGS.IS_DEBUG_MONITOR', 'INNER_SETTINGS.IS_TEST_PRODUCTION_MONGO_DATABASE'
 		].map(key => {
-			const value = settings[key];
+			let value = null;
+			if (key.indexOf('.') === -1) {
+				value = settings[key];
+			}
+			else {
+				const split = key.split('.');
+				value = settings[split[0]][split[1]];
+			}
 			if (!validationUtils.isValidBoolean(value)) {
 				throw new Error(`Invalid or no ${key} parameter was found: Excpected a boolean but received: ${value} (1000015)`);
 			}
@@ -199,19 +209,29 @@ class InitiateService {
 		}
 	}
 
+	validateObject() {
+		// ===INNER SETTINGS=== //
+		['INNER_SETTINGS'].map(key => {
+			const value = settings[key];
+			if (!validationUtils.isObject(value)) {
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000018)`);
+			}
+		});
+	}
+
 	validateSpecial() {
 		const { MONGO_DATABASE_CONNECTION_STRING, VALIDATION_CONNECTION_LINK, NPM_PUPPETEER_VERSION } = settings;
 		// ===MONGO DATABASE=== //
 		if (!validationUtils.isValidMongoConnectionString(MONGO_DATABASE_CONNECTION_STRING)) {
-			throw new Error('Invalid or no MONGO_DATABASE_CONNECTION_STRING parameter was found (1000018)');
-		}
-		// ===VALIDATION=== //
-		if (!validationUtils.isValidLink(VALIDATION_CONNECTION_LINK)) {
-			throw new Error('No VALIDATION_CONNECTION_LINK parameter was found (1000019)');
+			throw new Error('Invalid or no MONGO_DATABASE_CONNECTION_STRING parameter was found (1000019)');
 		}
 		// ===PACKAGE=== //
 		if (!validationUtils.isValidVersion(NPM_PUPPETEER_VERSION)) {
 			throw new Error('Invalid or no NPM_PUPPETEER_VERSION parameter was found (1000020)');
+		}
+		// ===VALIDATION=== //
+		if (!validationUtils.isValidLink(VALIDATION_CONNECTION_LINK)) {
+			throw new Error('No VALIDATION_CONNECTION_LINK parameter was found (1000021)');
 		}
 	}
 
@@ -238,7 +258,7 @@ class InitiateService {
 			const value = settings[key];
 			// Verify that the paths are of directory and not a file.
 			if (!fileUtils.isDirectoryPath(value)) {
-				throw new Error(`The parameter path ${key} marked as directory but it's a path of a file: ${value} (1000021)`);
+				throw new Error(`The parameter path ${key} marked as directory but it's a path of a file: ${value} (1000022)`);
 			}
 		});
 	}

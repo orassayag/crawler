@@ -16,11 +16,11 @@ class GlobalUtils {
     isPathExistsError(targetPath) {
         // Check if the path parameter was received.
         if (!targetPath) {
-            throw new Error(`targetPath not received: ${targetPath} (1000033)`);
+            throw new Error(`targetPath not received: ${targetPath} (1000034)`);
         }
         // Check if the path parameter exists.
         if (!fs.existsSync(targetPath)) {
-            throw new Error(`targetPath not exists: ${targetPath} (1000034)`);
+            throw new Error(`targetPath not exists: ${targetPath} (1000035)`);
         }
     }
 
@@ -30,11 +30,11 @@ class GlobalUtils {
         this.isPathExistsError(targetPath);
         // Check if the path is readable.
         if (fs.accessSync(targetPath, fs.constants.R_OK)) {
-            throw new Error(`targetPath not readable: ${targetPath} (1000035)`);
+            throw new Error(`targetPath not readable: ${targetPath} (1000036)`);
         }
         // Check if the path is writable.
         if (fs.accessSync(targetPath, fs.constants.W_OK)) {
-            throw new Error(`targetPath not writable: ${targetPath} (1000036)`);
+            throw new Error(`targetPath not writable: ${targetPath} (1000037)`);
         }
     }
 

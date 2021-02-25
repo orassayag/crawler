@@ -5,7 +5,7 @@ const puppeteerService = require('../services/files/puppeteer.service');
 const { logUtils } = require('../utils');
 
 (async () => {
-	// ===COUNT & LIMIT DATA=== //
+	// ===COUNT & LIMIT=== //
 	const countLimitData = new CountLimitData(settings);
 	await puppeteerService.initiate(countLimitData, true);
 	const pageSource = await puppeteerService.crawl('');

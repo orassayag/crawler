@@ -1,16 +1,47 @@
 Complete + canceled tasks:
 ==========================
+-Add index.js (like in files-spell-checker project) to the configurations directory and change in all places in the application. *
+-Remove 'DATA' keyword from section titles. *
+-Add script name to tests and add validation for empty script name in initiate.service.js. *
+-Go over timeUtils and make sure all local "this.getDay" are being used, and not "date.getDate()" for example. *
+-Fix comment in settings.js 'interval to run to calculate' => 'interval to calculate'. *
+-Fix comment:         // Get the backup title from the console.s *
+-Fix the INSTRUCTIONS.md file - 5 is not needed. *
+-Fix all README.me + package.json from 'create-react-up' to 'create-react-app'. *
+-Change all ect => etc - In all projects. *
+-Verify package.json project name. *
+-Change all README.md files to the title of the project as first line (Only one #). *
+-Change from 'Start to be built' to 'Built in', and remove space lines, and the *
+"-Goal:", and remove the 'This project was bootstrapped with [Create React App] *
+(https://github.com/facebook/create-react-app).' line under to the description *
+with line space,  all fixes in README.md. *
+-Re-format all error numbers + last_index.txt file. *
+-Clear all comments. *
+-Fix all misspells in all TXT files. *
+-Format all documents. *
+-Move all complete tasks to complete_tasks.txt. *
+-Verify all works good. *
+-Upload to GitHub. *
+-Backup iOmega. *
+-Try to merge between inner settings to settings - failed. *
+-Do backup before rollback. *
+-Try to recover this document from backup - failed. *
+-Do rollback to latest backup. *
+-Update packages. *
+-Remove the 'todo_tasks.txt' from the ignore backup files. *
+-Add the inner settings as parameter in the settings, and do validation for the inner settings in the initiate service. *
+-Check the order of the parameters in the initiate.service.js (Titles order identical to settings.js order). *
 -Update Packages. *
 -Update packages. *
 -Update packages + re-create package.json file. *
 -Fix the 'replaceCharacter' function (if exists), according to the logic in 'udemy-courses' project, *
 and replace it in all places (where don't need flag, pass '': regexUtils.createRegex(origin, ''). *
 -Check for duplicate 'createDirectory' - remove it from global, and use the one from fileUtils. Take it from 'udemy-courses' project. *
--Fix uneeded formats with: "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc". *
+-Fix uneeded formats with: "formatFiles.excludePattern": "**`/node_modules,**`/.vscode,**`/dist/`**,**`/.chrome,**`/misc". *
 -Fix bug with backups - Modal not found: Error: Cannot find module '../core/models/files/BackupData'. *
 -Add 'Complete + canceled tasks: *
 ==========================' to complete_tasks.txt. *
--Re-arrange tasks here (for exmaple, Gibbrish task already completed). *
+-Re-arrange tasks here (for example, Gibberish task already completed). *
 -Update packages. *
 -Re-create package.json file. *
 -Change '    isProcessRunning = (processName) => {' to method like in the 'sender' project. *
@@ -21,7 +52,7 @@ and replace it in all places (where don't need flag, pass '': regexUtils.createR
 -Format all files. *
 -Verify all works. *
 -Update GitHub. *
--Move all complete tasks to cmplete_tasks.txt. *
+-Move all complete tasks to complete_tasks.txt. *
 Gibberish task: *
 =============== *
 -Try to build function to detect spam. If not working, ask in StackOverFlow for suggestion to detect spam. *

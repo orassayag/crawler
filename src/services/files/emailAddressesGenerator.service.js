@@ -7,11 +7,8 @@ const randomWords = require('random-words');
 const settings = require('../../settings/settings');
 const { ApplicationData, CountLimitData, EmailAddressData, MongoDatabaseData, TestData } = require('../../core/models/application');
 const { PartType } = require('../../core/enums');
-const { removeAtCharectersList } = require('../../configurations/emailAddressConfigurations.configuration');
-const emailAddressDomainsList = require('../../configurations/emailAddressDomainsList.configuration');
-const { commonEmailAddressDomainsList, emailAddressEndFixTypos } = require('../../configurations/emailAddressDomainEndsList.configuration');
-const { invalidEmailAddresses, updatesEmailAddresses, validEmailAddresses } = require('../../configurations/emailAddressesLists.configuration');
-const { activeSearchEngineNames } = require('../../configurations/searchEngines.configuration');
+const { activeSearchEngineNames, commonEmailAddressDomainsList, emailAddressDomainsList, emailAddressEndFixTypos, invalidEmailAddresses,
+    removeAtCharectersList, updatesEmailAddresses, validEmailAddresses } = require('../../configurations');
 const crawlEmailAddressService = require('./crawlEmailAddress.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
 const typosGeneratorService = require('./typosGenerator.service');
@@ -30,20 +27,20 @@ class EmailAddressesGeneratorService {
         this.commonDomains = emailAddressDomainsList.filter(c => c.isCommonDomain);
         this.noneCommonDomains = emailAddressDomainsList.filter(c => !c.isCommonDomain);
         this.emailAddressEndFixTyposKeys = Object.keys(emailAddressEndFixTypos);
-        // ===APPLICATION DATA=== //
+        // ===APPLICATION=== //
         this.applicationData = null;
-        // ===COUNT & LIMIT DATA=== //
+        // ===COUNT & LIMIT=== //
         this.countLimitData = null;
-        // ===MONGO DATABASE DATA=== //
+        // ===MONGO DATABASE=== //
         this.mongoDatabaseData = null;
-        // ===EMAIL ADDRESS DATA=== //
+        // ===EMAIL ADDRESS=== //
         this.emailAddressData = null;
-        // ===TEST DATA=== //
+        // ===TEST=== //
         this.testData = null;
     }
 
     async initiate() {
-        // ===APPLICATION DATA=== //
+        // ===APPLICATION=== //
         this.applicationData = new ApplicationData({
             settings: settings,
             activeSearchEngineNames: activeSearchEngineNames,
@@ -51,13 +48,13 @@ class EmailAddressesGeneratorService {
             method: null,
             restartsCount: 0
         });
-        // ===COUNT & LIMIT DATA=== //
+        // ===COUNT & LIMIT=== //
         this.countLimitData = new CountLimitData(settings);
-        // ===MONGO DATABASE DATA=== //
+        // ===MONGO DATABASE=== //
         this.mongoDatabaseData = new MongoDatabaseData(settings);
-        // ===EMAIL ADDRESS DATA=== //
+        // ===EMAIL ADDRESS=== //
         this.emailAddressData = new EmailAddressData(settings);
-        // ===TEST DATA=== //
+        // ===TEST=== //
         this.testData = new TestData(settings);
         // Initiate the email address domain details lists.
         crawlEmailAddressService.initiateCommonEmailAddressDomains();

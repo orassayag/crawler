@@ -96,7 +96,7 @@ const settings = {
     MAXIMUM_RETRIES_GENERATE_SEARCH_KEY_COUNT: 10,
     // Determine how many characters of the display search key to display on the console.
     MAXIMUM_DISPLAY_SEARCH_KEY_CHARACTERS_COUNT: 60,
-    // Determine how much milliseconds interval to run to calculate the time of the
+    // Determine how much milliseconds interval to calculate the time of the
     // status line in the console.
     MILLISECONDS_INTERVAL_COUNT: 500,
     // Determine how much milliseconds to delay between each process.
@@ -123,8 +123,8 @@ const settings = {
     // Determine the maximum unsave email addresses count to stop the application from continue running.
     MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT: 2,
     // Determine the maximum unique domain count in a single page process per domain.
-    // If exceeded, the rest of the email addresses with the domain are skipped.
-    // (This, of course, not include common domains like gmail, hotmail, ect...)
+    // If exceeded, the rest of the email addresses with the domain are skipped
+    // (This, of course, not include common domains like gmail, hotmail, etc...).
     MAXIMUM_UNIQUE_DOMAIN_COUNT: 3,
 
     // ===ROOT PATH=== //
@@ -168,7 +168,7 @@ const settings = {
     // Determine the path of the package-lock.json to remove it each time switching from development and production modes.
     // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\package-lock.json').
     PACKAGE_LOCK_JSON_PATH: 'package-lock.json',
-    // Determine the path where the crawler sometimes download files (like cvs, doc, ect) to crawl them locally
+    // Determine the path where the crawler sometimes download files (like cvs, doc, etc) to crawl them locally
     // and which they will be deleted from after each process.
     // (Working example: 'C:\\Users\\Or\\Downloads').
     DOWNLOADS_PATH: `${process.env.USERPROFILE}\\Downloads`,
@@ -179,7 +179,7 @@ const settings = {
     IGNORE_DIRECTORIES: ['dist', 'node_modules'],
     // Determine the files to ignore when the back copy is taking place.
     // For example: 'back_sources_tasks.txt'.
-    IGNORE_FILES: ['back_sources_tasks.txt', 'sources_tasks.txt', 'todo_tasks.txt'],
+    IGNORE_FILES: ['back_sources_tasks.txt', 'sources_tasks.txt'],
     // Determine the files to force include when the back copy is taking place.
     // For example: '.gitignore'.
     INCLUDE_FILES: ['.gitignore'],
@@ -266,6 +266,10 @@ const settings = {
     MINIMUM_SHORT_STRING_CHARACTERS_COUNT: 3,
     // Determine the minimum length of the local part to perform the gibberish validation logic.
     MINIMUM_GIBBERISH_CHARACTERS_COUNT: 32,
+
+    // ===INNER SETTINGS=== //
+    // A copy of all the inner settings declared on top in order to do validation.
+    INNER_SETTINGS: innerSettings,
 
     // ===UNCHANGED SETTING=== //
     // ========================================

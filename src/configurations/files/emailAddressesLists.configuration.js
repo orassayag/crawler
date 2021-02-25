@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const { InvalidEmailAddress, ValidEmailAddress } = require('../core/models/application');
+const { InvalidEmailAddress, ValidEmailAddress } = require('../../core/models/application');
 
 const validEmailAddresses = [
 	new ValidEmailAddress('1234 @ local(blah) .machine .example'),

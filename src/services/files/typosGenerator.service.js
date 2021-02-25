@@ -10,7 +10,7 @@ const { characterUtils, textUtils } = require('../../utils');
 class TyposGeneratorService {
 
 	constructor() {
-		// ===TEST DATA=== //
+		// ===TEST=== //
 		this.testData = null;
 	}
 
@@ -91,7 +91,7 @@ class TyposGeneratorService {
 
 	generateTyposAsync(text) {
 		return new Promise(resolve => {
-			// ===TEST DATA=== //
+			// ===TEST=== //
 			this.testData = new TestData(settings);
 			this.generateTypos(text, (typos) => {
 				resolve(typos.join().split(','));

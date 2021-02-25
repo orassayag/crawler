@@ -1,17 +1,14 @@
-# Server
+# Crawler
 
-Start to be built in February 2020.
--Goal:
-The goal of the crawl script if to fetch as many valid email addresses
-from crawling web pages sources resulted from crawling search engines sources,
-according to specific and random search keys.
+Built in February 2020. A Node.js + Puppeteer.js application to fetch as many valid email addresses from crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.
 
 ## Getting Started
 
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-8. Terminal: npm i
+2. Terminal: npm i
+3. In terminal: npm start
 
 Search email addresses script:
 ==============================

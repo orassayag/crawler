@@ -59,7 +59,7 @@ const sortResults = (isValidTest, validationResults) => {
         enum: TestType,
         value: testType
     })) {
-        throw new Error('Invalid or no testType parameter was found (1000028)');
+        throw new Error('Invalid or no testType parameter was found (1000029)');
     }
     await emailAddressesGeneratorService.initiate();
     let list = null;
@@ -98,7 +98,7 @@ const sortResults = (isValidTest, validationResults) => {
             isValidTest = true;
             break;
         default:
-            throw new Error('No testType selected (1000029)');
+            throw new Error('No testType selected (1000030)');
     }
     // Let the test begin.
     await emailAddressesGeneratorService.done();

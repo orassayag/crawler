@@ -1,5 +1,8 @@
 Complete + canceled tasks:
 ==========================
+-Update packages. *
+-Update the instructions.MD file with console status log view. *
+-Verify all works good. *
 -Add index.js (like in files-spell-checker project) to the configurations directory and change in all places in the application. *
 -Remove 'DATA' keyword from section titles. *
 -Add script name to tests and add validation for empty script name in initiate.service.js. *

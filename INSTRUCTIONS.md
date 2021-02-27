@@ -345,14 +345,16 @@ y
 ===INITIATE THE SETTINGS===
 ===INITIATE THE SERVICES===
 ===VALIDATE INTERNET CONNECTION===
-===[SETTINGS] Mode: PRODUCTION | Database: crawl_production | Drop: true | Active Methods: LINKS,CRAWL===
-===[GENERAL] Time: 00.00:00:26 [\] | Goal: MINUTES | Progress: 0/5 (00.00%) | Status: CRAWL===
-===[PROCESS] Process: 1/10 | Page: 1/3 | Engine: google | Key: ליימ יא ןויצ ינבב ברע תינדקומ השורד===
-===[LINK] Crawl: ✅  8 | Total: 67 | Filter: 59 | Error: 0 | Error In A Row: 0 | Current: 5/8===
-===[EMAIL ADDRESS] Save: ✅  369 | Total: 1,375 | Database: 369 | Exists: 4 | Invalid: ❌  0 | Valid Fix: 9 | Invalid Fix: 0 | Unsave: 0 | Filter: 0===
-===[TRENDING] cv1@gishashona.co.il | cv@gishashona.co.il | doar.lena@gmail.com | pirsum@bis.org.il | riki@heled.org.il===
-===[PAGE (5/8)] https://www.ortal-hr.co.il/%D7%94%D7%A6%D7%A2%D7%95%D7%AA_%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%91%D7%9E%D7%A9%D7%A8%D7%94_%D7%9E%D7%===
-===[SEARCH (1/3)] https://www.google.com/search?q=דרושה+מוקדנית+ערב+בבני+ציון+אי+מייל&ei=PGo5XqvTJpCT8gKAyo3gDw&start=10&sa=N&ved=2ahUKEwir4a6q-bfnA===
+===[SETTINGS] Mode: PRODUCTION | Plan: STANDARD | Database: test_production | Drop: false | Long: true | Active Methods: LINKS,CRAWL===
+===[GENERAL] Time: 00.00:00:08 [-] | Goal: MINUTES | Progress: 0/700 (00.00%) | Status: PAUSE | Restarts: 0===
+===[PROCESS] Process: 1/10,000 | Page: 1/1 | Engine: Google | Key: Email ןופשרב הטמ םאתמ שורד===
+===[LINK] Crawl: ✅  4 | Total: 28 | Filter: 24 | Error: 0 | Error In A Row: 0 | Current: 3/4===
+===[EMAIL ADDRESS] Save: ✅  0 | Total: 6 | Database: 15,904 | Exists: 4 | Invalid: ❌  0 | Valid Fix: 0 | Invalid Fix: 0 | Unsave: 0 | Filter: 0 | Skip: 2 | Gibberish: 0===
+===[PAGE (3/4)] https://www.manpower.co.il/domain/import-and-export/&amp===
+===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa===
+===[SEARCH (1/1)] https://www.google.com/search?q=דרוש+מתאם+מטה+ברשפון+Email&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk020B0_Vktk9Z8F6gZDGCX3P===
+===[TRENDING] ===
+===[STATISTICS] Bing: 0 | Google: 0===
 
 ## Author
 

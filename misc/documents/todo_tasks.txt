@@ -10,6 +10,13 @@ d. Keep the backup update - Every change you do - Update in iOmega (each couple 
 
 ToDo tasks:
 ===========
+-Update packages + Re-create package.json files. *
+-Replace database name to other name. *
+-Replace the 'this.validateLinkRegex' from 'spam-revenge' project. *
+-Remove comments. *
+-Format all files. *
+-Verify all works good for the night.
+-Update GitHub + iOmega.
 
 Complete + canceled tasks:
 ==========================

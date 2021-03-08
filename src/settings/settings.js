@@ -10,7 +10,11 @@ const innerSettings = {
     IS_DEBUG_MONITOR: false,
     // If it's true, change the name of the Mongo database
     // something elses, to enable the crawler to run not on the production Mongo database.
-    IS_TEST_PRODUCTION_MONGO_DATABASE: true
+    IS_TEST_PRODUCTION_MONGO_DATABASE: false,
+
+    // ===MONGO DATABASE=== //
+    // Determine additional name that will be added to the end of the database name (optional).
+    MONGO_DATABASE_ADDITIONAL_NAME: '032021'
 };
 
 const settings = {
@@ -195,7 +199,7 @@ const settings = {
     // Determine the connection string path of the Mongo database.
     MONGO_DATABASE_CONNECTION_STRING: 'mongodb://localhost:27017/',
     // Determine the Mongo database name.
-    MONGO_DATABASE_NAME: innerSettings.IS_TEST_PRODUCTION_MONGO_DATABASE ? 'test' : 'crawl',
+    MONGO_DATABASE_NAME: innerSettings.IS_TEST_PRODUCTION_MONGO_DATABASE ? 'test' : `crawl${innerSettings.MONGO_DATABASE_ADDITIONAL_NAME}`,
     // Determine the Mongo collection name.
     MONGO_DATABASE_COLLECTION_NAME: 'emailaddresses',
     // Determine the maximum number of times to retry to drop the collection.

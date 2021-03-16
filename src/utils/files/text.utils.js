@@ -30,7 +30,7 @@ class TextUtils {
         return Number(text.split('_')[0]);
     }
 
-    // This method convert a given number to display comma number.
+    // This method converts a given number to display comma number.
     getNumberWithCommas(number) {
         if (number <= -1 || !validationUtils.isValidNumber(number)) {
             return '';
@@ -312,9 +312,9 @@ class TextUtils {
         return `${text1}.${text2}`;
     }
 
-    replaceLast(text, charecter, replace) {
+    replaceLast(text, character, replace) {
         const a = text.split('');
-        a[text.lastIndexOf(charecter)] = replace;
+        a[text.lastIndexOf(character)] = replace;
         return a.join('');
     }
 

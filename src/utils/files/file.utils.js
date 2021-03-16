@@ -24,7 +24,7 @@ class FileUtils {
         }
     }
 
-    // This method remove all files from a given target path.
+    // This method removes all files from a given target path.
     async emptyDirectory(targetPath) {
         // Verify that the path exists.
         globalUtils.isPathExistsError(targetPath);
@@ -38,7 +38,7 @@ class FileUtils {
             .map(dirent => dirent.name);
     }
 
-    // This method return all the files in a given target path.
+    // This method returns all the files in a given target path.
     async getDirectoryFiles(targetPath) {
         // Verify that the path exists.
         globalUtils.isPathExistsError(targetPath);
@@ -53,12 +53,12 @@ class FileUtils {
         return await this.read(targetPath);
     }
 
-    async createDirectory(targetPath) {
+    createDirectory(targetPath) {
         if (!targetPath) {
             return;
         }
-        if (!await this.isPathExists(targetPath)) {
-            await fs.mkdir(targetPath, { recursive: true });
+        if (!fs.existsSync(targetPath)) {
+            fs.mkdirSync(targetPath, { recursive: true });
         }
     }
 

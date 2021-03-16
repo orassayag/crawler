@@ -62,7 +62,7 @@ class PuppeteerService {
     async crawl(link, userAgent) {
         return await new Promise(async (resolve, reject) => {
             if (reject) { }
-            // Limit the runtime of this function in case of stuck URL crawling process.
+            // Limit the runtime of this function in case of a stuck URL crawling process.
             const abortTimeout = setTimeout(async () => {
                 try {
                     await this.page.reload(link, this.pageOptions);

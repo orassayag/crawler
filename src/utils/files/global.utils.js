@@ -12,7 +12,7 @@ class GlobalUtils {
         return new Promise(resolve => setTimeout(resolve, millisecondsCount)).catch();
     }
 
-    // This method check if a receive target path is exist.
+    // This method validates if a receive target path exists.
     isPathExistsError(targetPath) {
         // Check if the path parameter was received.
         if (!targetPath) {
@@ -24,7 +24,7 @@ class GlobalUtils {
         }
     }
 
-    // This method check if a receive target path is accessible.
+    // This method validates if a receive target path is accessible.
     isPathAccessible(targetPath) {
         // Verify that the path exists.
         this.isPathExistsError(targetPath);

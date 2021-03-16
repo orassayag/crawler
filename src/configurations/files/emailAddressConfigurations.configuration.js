@@ -15,7 +15,7 @@ const invalidDomains = [
     'posting.google.com'
 ];
 
-const removeAtCharectersList = [
+const removeAtCharactersList = [
     '@.',
     '@_'
 ];
@@ -30,5 +30,5 @@ const removeStartKeysList = [
 ];
 
 module.exports = {
-    invalidDomains, removeAtCharectersList, removeStartKeysList
+    invalidDomains, removeAtCharactersList, removeStartKeysList
 };

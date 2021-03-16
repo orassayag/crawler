@@ -1,6 +1,6 @@
 const enumUtils = require('../enum.utils');
 
-// This enum define the possible colors.
+// This enum defines the possible colors.
 const Color = enumUtils.createEnum([
     ['BLACK', 'Black'],
     ['RED', 'Red'],
@@ -12,7 +12,7 @@ const Color = enumUtils.createEnum([
     ['WHITE', 'White']
 ]);
 
-// This enum define the possible color codes.
+// This enum defines the possible color codes.
 const ColorCode = enumUtils.createEnum([
     ['Reset', '\x1b[0m'],
     ['Bright', '\x1b[1m'],
@@ -39,7 +39,7 @@ const ColorCode = enumUtils.createEnum([
     ['BgWhite', '\x1b[47m']
 ]);
 
-// This enum define the possible status icons.
+// This enum defines the possible status icons.
 const StatusIcon = enumUtils.createEnum([
     ['V', '✅'],
     ['X', '❌']

@@ -18,7 +18,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 1. Go to the settings.js file and make sure that all settings are fit to needs.
 2. Go to list/searchKeys.list.js and make sure all search keys fit to needs.
 3. Go to list/filterKeys.list.js and make sure all domains filtered are fit to needs.
-4. Make sure Mongo database is installed and configured properly.
+4. Make sure the Mongo database is installed and configured properly.
 5. Run the script by "npm start" and let the magic begin. :)
 
 In terminal: npm start
@@ -51,4 +51,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This application has UNLICENSED License.
+This application has an UNLICENSED License.

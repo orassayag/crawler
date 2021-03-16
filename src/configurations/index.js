@@ -1,4 +1,4 @@
-const { invalidDomains, removeAtCharectersList, removeStartKeysList } = require('./files/emailAddressConfigurations.configuration');
+const { invalidDomains, removeAtCharactersList, removeStartKeysList } = require('./files/emailAddressConfigurations.configuration');
 const { commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList, domainEndsDotsList, domainEndsHyphenList,
     domainEndsList, emailAddressDomainEndsList, emailAddressEndFixTypos, endsWithDotIgnore, validDomainEndsList,
     validOneWordDomainEndsList } = require('./files/emailAddressDomainEndsList.configuration');
@@ -16,7 +16,7 @@ module.exports = {
     activeSearchEngineNames, advanceSearchKeys, basicSearchKeys, commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList,
     domainEndsDotsList, domainEndsHyphenList, domainEndsList, emailAddressDomainEndsList, emailAddressDomainsList, emailAddressEndFixTypos,
     endsWithDotIgnore, filterEmailAddressDomains, filterEmailAddressFileExtensions, filterEmailAddresses, filterLinkDomains,
-    filterLinkFileExtensions, globalFilterLinkDomains, invalidDomains, invalidEmailAddresses, removeAtCharectersList, removeStartKeysList,
+    filterLinkFileExtensions, globalFilterLinkDomains, invalidDomains, invalidEmailAddresses, removeAtCharactersList, removeStartKeysList,
     searchEngineStatuses, searchEngines, shortEmailAddressDomainsList, timeoutLinks, unfixEmailAddressDomains, updatesEmailAddresses,
     validDomainEndsList, validEmailAddresses, validOneWordDomainEndsList
 };

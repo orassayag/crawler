@@ -1,6 +1,6 @@
 /*
 Credit to: https://github.com/yetzt/node-typojs
-Made some cosmetic changers to fit modern javascript.
+Made some cosmetic changes to fit modern JavaScript.
 Added here special characters implementation.
 */
 const settings = require('../../settings/settings');

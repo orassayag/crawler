@@ -5,7 +5,7 @@ class EmailAddressUtils {
 
 	constructor() { }
 
-	// This method fetch for all email addresses within given string.
+	// This method fetches all email addresses within a given string.
 	getEmailAddresses(data) {
 		if (!validationUtils.isExists(data)) {
 			return [];

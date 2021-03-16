@@ -3,10 +3,10 @@ const pathUtils = require('../utils/files/path.utils');
 
 const innerSettings = {
     // ===FLAG=== //
-    // Determine if to run for a long time. Settings this to true, will take a bigger
-    // values, enable to the crawler to run for a long time without any interaption.
+    // Determine if to run for a long time. Setting this to true, will take a bigger
+    // value, enabling the crawler to run for a long time without any interruption.
     IS_LONG_RUN: true,
-    // Determine if the debug the monitor after 1 minute, to test if it works.
+    // Determine if to debug the monitor after 1 minute, to test if it works.
     IS_DEBUG_MONITOR: false,
     // If it's true, change the name of the Mongo database
     // something elses, to enable the crawler to run not on the production Mongo database.
@@ -19,8 +19,8 @@ const innerSettings = {
 
 const settings = {
     // ===FLAG=== //
-    // Determine if to load local sources (engine and pages) in development mode (=this value false) or to do real requests for
-    // sources with puppeteer.js NPM package in production mode (=this value true).
+    // Determine if to load local sources (engine and pages) in development mode (=false) or to do real requests for
+    // sources with puppeteer.js NPM package in production mode (=true).
     IS_PRODUCTION_MODE: true,
     // Determine if to drop the collection before the process run begins. Good for test mode.
     IS_DROP_COLLECTION: false,
@@ -28,10 +28,10 @@ const settings = {
     IS_STATUS_MODE: false,
     // Determine if to clear the dist directory according to the current mode.
     IS_EMPTY_DIST_DIRECTORY: false,
-    // Determine if to run the domains counter script in the end of all the processes.
+    // Determine if to run the domain counter script at the end of all the processes.
     IS_RUN_DOMAINS_COUNTER: false,
     IS_LONG_RUN: innerSettings.IS_LONG_RUN,
-    // Determine if to active the gibberish validation logic.
+    // Determine if to activate the gibberish validation logic.
     IS_GIBBERISH_VALIDATION_ACTIVE: true,
 
     // ===GOAL=== //
@@ -43,10 +43,10 @@ const settings = {
 
     // ===SEARCH=== //
     // Determine if to search in the search engines by a static search key.
-    // If null, will be random generated search key each process.
+    // If null, will be a random generated search key each process.
     SEARCH_KEY: null,
     // Determine if to use basic search keys from the 'basic' array and logic, or
-    // to user the advance keys from the 'advance' array and logic.
+    // to use the advanced keys from the 'advance' array and logic.
     IS_ADVANCE_SEARCH_KEYS: true,
 
     // ===METHOD=== //
@@ -63,7 +63,7 @@ const settings = {
     // any change in the total or saved email addresses count.
     // If exceeded the application will exit and restart.
     MAXIMUM_MINUTES_WITHOUT_UPDATE: innerSettings.IS_DEBUG_MONITOR ? 1 : 20,
-    // Determine the maximum number of restarts of the monitor if the application exit.
+    // Determine the maximum number of restarts of the monitor if the application exits.
     MAXIMUM_RESTARTS_COUNT: 50,
 
     // ===LOG=== //
@@ -81,14 +81,14 @@ const settings = {
     IS_LOG_CRAWL_LINKS: true,
     // Determine if to log crawl error links to a TXT file.
     IS_LOG_CRAWL_ERROR_LINKS: true,
-    // Determine the maximum number of charecters to set to the fix log to make it prettify.
-    MAXIMUM_FIX_LOG_SPACES_CHARECTERS_COUNT: 25,
+    // Determine the maximum number of characters to set to the fix log to make it prettify.
+    MAXIMUM_FIX_LOG_SPACES_CHARACTERS_COUNT: 25,
 
     // ===COUNT & LIMIT=== //
-    // Determine how much time (in minutes) to wait until start the crawl process. It's good
-    // if the user want to delay the start of the process. If it's 0 - No schedule will take place.
+    // Determine how much time (in minutes) to wait until the start of the crawl process. It's good
+    // if the user wants to delay the start of the process. If it's 0 - No schedule will take place.
     SCHEDULE_MINUTES_COUNT: 0,
-    // Determine how many processes to run during a single life time of the application.
+    // Determine how many processes to run during a single lifetime of the application.
     MAXIMUM_SEARCH_PROCESSES_COUNT: innerSettings.IS_LONG_RUN ? 10000 : 10,
     // Determine how many pages to pager with the search engine during a single process.
     MAXIMUM_SEARCH_ENGINE_PAGES_PER_PROCESS_COUNT: 1,
@@ -107,12 +107,12 @@ const settings = {
     MILLISECONDS_DELAY_BETWEEN_PROCESS_COUNT: 1000,
     // Determine how much milliseconds to delay between each search engine paging.
     MILLISECONDS_DELAY_BETWEEN_SEARCH_PAGES_COUNT: 1000,
-    // Determine how much milliseconds to delay between each crawl of page.
+    // Determine how much milliseconds to delay between each crawl of a page.
     MILLISECONDS_DELAY_BETWEEN_CRAWL_PAGES_COUNT: 1000,
     // Determine the milliseconds count between each action (check if exists and insert)
     // within the Mongo database.
     MILLISECONDS_DELAY_MONGO_DATABASE_SYNC_COUNT: 10,
-    // Determine the milliseconds count timeout to wait for answer to get the page or engine source.
+    // Determine the milliseconds count timeout to wait for an answer to get the page or engine source.
     MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT: 60000,
     // Determine the maximum characters for a long line in the console.
     MAXIMUM_CONSOLE_LINE_CHARACTERS: 130,
@@ -122,14 +122,18 @@ const settings = {
     MAXIMUM_DELAY_NPM_SCRIPT: 200,
     // Determine the maximum number of times to retry to save the email address to the Mongo database.
     MAXIMUM_SAVE_EMAIL_ADDRESS_RETRIES_COUNT: 5,
-    // Determine the maximum error page in a row to stop the application from continue running.
+    // Determine the maximum error page in a row to stop the application from continuing running.
     MAXIMUM_ERROR_PAGE_IN_A_ROW_COUNT: 10,
-    // Determine the maximum unsave email addresses count to stop the application from continue running.
+    // Determine the maximum unsave email addresses count to stop the application from continuing running.
     MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT: 2,
     // Determine the maximum unique domain count in a single page process per domain.
     // If exceeded, the rest of the email addresses with the domain are skipped
     // (This, of course, not include common domains like gmail, hotmail, etc...).
     MAXIMUM_UNIQUE_DOMAIN_COUNT: 3,
+    // Determine the number of retries to validate the URLs.
+    MAXIMUM_URL_VALIDATION_COUNT: 5,
+    // Determine the milliseconds count timeout to wait between URL validation retry.
+    MILLISECONDS_TIMEOUT_URL_VALIDATION: 1000,
 
     // ===ROOT PATH=== //
     // Determine the application name used for some of the calculated paths.
@@ -148,7 +152,7 @@ const settings = {
     }),
 
     // ===DYNAMIC PATH=== //
-    // All the these paths will be calculated during runtime in the initiate service.
+    // All these paths will be calculated during runtime in the initial service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
     // (Working example: 'C:\\Or\\Web\\crawler\\crawler').
@@ -156,7 +160,7 @@ const settings = {
     // Determine the backups directory which all the local backup will be created to.
     // (Working example: 'C:\\Or\\Web\\Crawler\\backups').
     BACKUPS_PATH: 'backups',
-    // Determine the dist directory path which there, all the outcome of the crawling will be created.
+    // Determine the dist directory path which there, all the outcome of the logs will be created.
     // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\dist').
     DIST_PATH: 'dist',
     // Determine the sources directory path which there, all the sources are taken in development mode.
@@ -172,15 +176,15 @@ const settings = {
     // Determine the path of the package-lock.json to remove it each time switching from development and production modes.
     // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\package-lock.json').
     PACKAGE_LOCK_JSON_PATH: 'package-lock.json',
-    // Determine the path where the crawler sometimes download files (like cvs, doc, etc) to crawl them locally
+    // Determine the path where the crawler sometimes downloads files (like cvs, doc, etc) to crawl them locally
     // and which they will be deleted from after each process.
     // (Working example: 'C:\\Users\\Or\\Downloads').
     DOWNLOADS_PATH: `${process.env.USERPROFILE}\\Downloads`,
 
     // ===BACKUP=== //
-    // Determine the directories to ignore when an backup copy is taking place.
+    // Determine the directories to ignore when a backup copy is taking place.
     // For example: 'dist'.
-    IGNORE_DIRECTORIES: ['dist', 'node_modules'],
+    IGNORE_DIRECTORIES: ['dist', 'node_modules', 'sources'],
     // Determine the files to ignore when the back copy is taking place.
     // For example: 'back_sources_tasks.txt'.
     IGNORE_FILES: ['back_sources_tasks.txt', 'sources_tasks.txt'],
@@ -190,7 +194,7 @@ const settings = {
     // Determine the period of time in milliseconds to
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
-    // Determine the number of time in loop to check for version of a backup.
+    // Determine the number of times in loop to check for version of a backup.
     // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50,
@@ -216,9 +220,9 @@ const settings = {
     MONGO_DATABASE_SOCKET_TIMEOUT_MILLISECONDS_COUNT: 480000,
     // Determine the number of milliseconds to wait before initiating keepAlive on the TCP socket.
     MONGO_DATABASE_KEEP_ALIVE_MILLISECONDS_COUNT: 300000,
-    // Determine if to use SSL connection (needs to have a mongod server with SSL support).
+    // Determine if to use SSL connection (needs to have a mongodb server with SSL support).
     IS_MONGO_DATABASE_SSL: false,
-    // Determine if to validate mongod server certificate against CA (needs to have a mongod server with SSL support, 2.4 or higher).
+    // Determine if to validate the mongodb server certificate against CA (needs to have a mongodb server with SSL support, 2.4 or higher).
     IS_MONGO_DATABASE_SSL_VALIDATE: false,
 
     // ===PACKAGE=== //
@@ -234,21 +238,21 @@ const settings = {
     MINIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT: 100,
     // Determine the maximum number of email addresses to create in case of random validation test.
     MAXIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT: 500,
-    // Determine the minimum typos count to create with special charecters.
-    MINIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT: 10,
-    // Determine the maximum typos count to create with special charecters.
-    MAXIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT: 50,
-    // Determine the minimum number of special charecter to insert in a typo.
-    MINIMUM_SPECIAL_CHARECTERS_COUNT: 1,
-    // Determine the maximum number of special charecter to insert in a typo.
-    MAXIMUM_SPECIAL_CHARECTERS_COUNT: 3,
-    // Determine the maximum number of charecters of the local part simple email address to generate in test cases.
+    // Determine the minimum typos count to create with special characters.
+    MINIMUM_SPECIAL_CHARACTERS_TYPOS_EMAIL_ADDRESSES_COUNT: 10,
+    // Determine the maximum typos count to create with special characters.
+    MAXIMUM_SPECIAL_CHARACTERS_TYPOS_EMAIL_ADDRESSES_COUNT: 50,
+    // Determine the minimum number of special characters to insert in a typo.
+    MINIMUM_SPECIAL_CHARACTERS_COUNT: 1,
+    // Determine the maximum number of special characters to insert in a typo.
+    MAXIMUM_SPECIAL_CHARACTERS_COUNT: 3,
+    // Determine the maximum number of characters of the local part simple email address to generate in test cases.
     MAXIMUM_LOCAL_TEST_SIMPLE_CHARACTERS_COUNT: 10,
-    // Determine the maximum number of charecters of the domain part simple email address to generate in test cases.
+    // Determine the maximum number of characters of the domain part simple email address to generate in test cases.
     MAXIMUM_DOMAIN_TEST_SIMPLE_CHARACTERS_COUNT: 8,
-    // Determine the minimum number of times to replace charecters in a random position in an email address part.
+    // Determine the minimum number of times to replace characters in a random position in an email address part.
     MINIMUM_REPLACE_RANDOM_POSITIONS_COUNT: 1,
-    // Determine the maximum number of times to replace charecters in a random position in an email address part.
+    // Determine the maximum number of times to replace characters in a random position in an email address part.
     MAXIMUM_REPLACE_RANDOM_POSITIONS_COUNT: 5,
     // Determine the minimum number of words to create a dynamic test string to local or domain parts of the email address.
     MINIMUM_TEST_RANDOM_WORDS_COUNT: 1,

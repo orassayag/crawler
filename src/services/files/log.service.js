@@ -49,10 +49,10 @@ class LogService {
 			return;
 		}
 		// ===PATH=== //
-		await this.createModeDirectory();
+		this.createModeDirectory();
 		await this.clearLogFiles();
-		await this.createSessionDirectory();
-		// If you change the "email_addresses_" file name, change it also in Sender project.
+		this.createSessionDirectory();
+		// If you change the "email_addresses_" file name, change it also in the 'sender' project.
 		if (this.logData.isLogValidEmailAddresses) {
 			this.emailAddressesPath = this.createFilePath(`email_addresses_${Placeholder.DATE}`);
 		}
@@ -84,20 +84,20 @@ class LogService {
 		return Math.max(...directories.map(name => textUtils.getSplitNumber(name))) + 1;
 	}
 
-	async createModeDirectory() {
+	createModeDirectory() {
 		this.baseSessionPath = pathUtils.getJoinPath({
 			targetPath: this.pathData.distPath,
 			targetName: textUtils.toLowerCase(this.applicationData.mode)
 		});
-		await fileUtils.createDirectory(this.baseSessionPath);
+		fileUtils.createDirectory(this.baseSessionPath);
 	}
 
-	async createSessionDirectory() {
+	createSessionDirectory() {
 		this.sessionDirectoryPath = pathUtils.getJoinPath({
 			targetPath: this.baseSessionPath,
 			targetName: `${this.getNextDirectoryIndex()}_${this.applicationData.logDateTime}`
 		});
-		await fileUtils.createDirectory(this.sessionDirectoryPath);
+		fileUtils.createDirectory(this.sessionDirectoryPath);
 	}
 
 	createFilePath(fileName) {
@@ -151,7 +151,7 @@ class LogService {
 		const engine = textUtils.upperCaseFirstLetter(this.searchProcessData.searchEngine.name, 0);
 		const userAgent = this.searchProcessData.pageUserAgent ? textUtils.cutText({ text: this.searchProcessData.pageUserAgent, count: this.countLimitData.maximumConsoleLineCharacters }) : '';
 		const search = textUtils.cutText({ text: this.searchProcessData.searchEngineLinkTemplate, count: this.countLimitData.maximumConsoleLineCharacters });
-		const statistices = textUtils.getObjectKeyValues(this.applicationData.crawlEmailAddressData.statistics);
+		const statistics = textUtils.getObjectKeyValues(this.applicationData.crawlEmailAddressData.statistics);
 		logUtils.logProgress({
 			titlesList: ['SETTINGS', 'GENERAL', 'PROCESS', 'LINK', 'EMAIL ADDRESS', `PAGE (${link})`,
 				'USER AGENT', `SEARCH (${pageIndex})`, 'TRENDING', 'STATISTICS'],
@@ -203,7 +203,7 @@ class LogService {
 			}, {
 				'#': trending
 			}, {
-				'#': statistices
+				'#': statistics
 			}],
 			colorsLists: [
 				[Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW],

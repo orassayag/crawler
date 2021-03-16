@@ -7,21 +7,25 @@ const logService = require('./log.service');
 const searchService = require('./search.service');
 const sourceService = require('./source.service');
 const { crawlUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
+const globalUtils = require('../../utils/files/global.utils');
 
 class CrawlLinkService {
 
 	constructor() {
-		this.countLimitData = null;
 		this.totalCrawlCount = 0;
 		this.goalValue = 0;
 		this.replaceGoogleweblight = 'googleweblight.com/fp%3Fu%3D';
 		this.timeout = null;
+		this.maximumURLValidationCount = null;
+		this.millisecondsTimeoutURLValidation = null;
 	}
 
 	async initiate(data) {
 		const { applicationData, countLimitData } = data;
 		this.timeout = countLimitData.millisecondsTimeoutSourceRequestCount;
 		this.goalValue = applicationData.goalType === GoalType.LINKS ? applicationData.goalValue : null;
+		this.maximumURLValidationCount = countLimitData.maximumURLValidationCount;
+		this.millisecondsTimeoutURLValidation = countLimitData.millisecondsTimeoutURLValidation;
 		// Initiate the search engines.
 		await this.initiateSearchEngines(applicationData);
 		// Initiate filter link domains.
@@ -67,9 +71,19 @@ class CrawlLinkService {
 
 	async validateSearchEngineActive(searchEngineLink) {
 		let isConnected = true;
-		try {
-			isConnected = await isReachable(searchEngineLink);
-		} catch (error) { isConnected = false; }
+		for (let i = 0; i < this.maximumURLValidationCount; i++) {
+			try {
+				isConnected = await isReachable(searchEngineLink);
+			} catch (error) {
+				isConnected = false;
+			}
+			if (isConnected) {
+				break;
+			}
+			else {
+				await globalUtils.sleep(this.millisecondsTimeoutURLValidation);
+			}
+		}
 		return isConnected;
 	}
 
@@ -81,7 +95,7 @@ class CrawlLinkService {
 	}
 
 	removeDomainPrefix(domain) {
-		// Remove the 'www' prefix if exists.
+		// Remove the 'www' prefix if it exists.
 		if (domain && domain.startsWith('www')) {
 			domain = textUtils.getSplitDotParts(domain).slice(1).join('.');
 		}
@@ -126,11 +140,11 @@ class CrawlLinkService {
 
 	isFilterLink(data) {
 		const { link, searchEngine, filterLinkDomainsList } = data;
-		// Filter the link if the it's contains it's own self domain address.
+		// Filter the link if it contains it's own self domain address.
 		if (link.indexOf(searchEngine.domainAddress) > -1) {
 			return true;
 		}
-		// Filter the link if it's contains invalid file from a list.
+		// Filter the link if it contains invalid file from a list.
 		if (textUtils.checkExistence(filterLinkFileExtensions, link)) {
 			return true;
 		}
@@ -197,7 +211,7 @@ class CrawlLinkService {
 
 	getSearchEnginePageLinks(data) {
 		return new Promise(async (resolve, reject) => {
-			// Limit the runtime of this function in case of stuck URL crawling process.
+			// Limit the runtime of this function in case of a stuck URL crawling process.
 			const abortTimeout = setTimeout(() => {
 				reject(null);
 				return;

@@ -11,7 +11,7 @@ const { EmailAddressData, ValidationResult } = require('../../core/models/applic
 const { MicromatchAction, PartType } = require('../../core/enums');
 const { commonDomainEndsList, commonEmailAddressDomainsList, domainEndsCommaList, domainEndsDotsList, domainEndsHyphenList,
 	domainEndsList, emailAddressDomainEndsList, emailAddressDomainsList, emailAddressEndFixTypos, endsWithDotIgnore,
-	filterEmailAddressFileExtensions, invalidDomains, invalidEmailAddresses, removeAtCharectersList, removeStartKeysList,
+	filterEmailAddressFileExtensions, invalidDomains, invalidEmailAddresses, removeAtCharactersList, removeStartKeysList,
 	shortEmailAddressDomainsList, unfixEmailAddressDomains, validOneWordDomainEndsList } = require('../../configurations');
 const emailGibberishValidationService = require('./emailGibberishValidation.service');
 const { characterUtils, emailAddressUtils, regexUtils, textUtils, validationUtils } = require('../../utils');
@@ -44,7 +44,7 @@ class EmailAddressValidationService {
 			fixMultiAtCharacters: 2,
 			fixDomainLowercase: 3,
 			fixDots: 4,
-			removeCharectersAfterAtSign: 5,
+			removeCharactersAfterAtSign: 5,
 			replaceUnderscoreWithHyphen: 6,
 			replaceDotHyphen: 7,
 			replaceHyphenDot: 8,
@@ -89,7 +89,7 @@ class EmailAddressValidationService {
 			if (!this.firstValidations(validationResult, resolve)) { return; }
 			// Second Step - Try to fix the email address.
 			validationResult = this.tryToFix(validationResult);
-			// Third Step - More validation, after try to fix the email address (second validations).
+			// Third Step - More validation, after trying to fix the email address (second validations).
 			if (!this.secondValidations(validationResult, resolve)) { return; }
 			// Fourth Step - The final validations.
 			if (!this.finalValidations(validationResult, resolve)) { return; }
@@ -104,10 +104,10 @@ class EmailAddressValidationService {
 		// Basic validation - Validate existence.
 		validationResult = this.basicValidations(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
-		// First advance validation it to validate that the domain part is not something like 'angular.js@1.3.9'.
+		// First advance validation to validate that the domain part is not something like 'angular.js@1.3.9'.
 		validationResult = this.validateVersionDomainPart(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
-		// Validate contain invalid domains.
+		// Validate contains invalid domains.
 		validationResult = this.validateContainDomainPart(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
 		// Second advance validation is to check if the email address is a file name,
@@ -142,7 +142,7 @@ class EmailAddressValidationService {
 		// Validate common domain local part length.
 		validationResult = this.validateMaximumCommonDomainLocalPartLength(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
-		// Validate that the domain part not equal only to '.com' and others.
+		// Validate that the domain part is not equal only to '.com' and others.
 		validationResult = this.validateDomainAsDomainEnd(validationResult);
 		if (!this.validateResults(validationResult, resolve)) { return false; }
 		// Validate cases like xxxxxxx@zzzzzz.com.
@@ -312,7 +312,7 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	// Remove any whitespace if exists.
+	// Remove any whitespace if it exists.
 	fixRemoveWhiteSpaces(validationResult) {
 		const { original } = validationResult;
 		const emailAddress = textUtils.removeEmptySpaces(original);
@@ -438,7 +438,7 @@ class EmailAddressValidationService {
 	}
 
 	fixEdgeCases(validationResult) {
-		validationResult = this.removeCharectersAfterAtSign(validationResult);
+		validationResult = this.removeCharactersAfterAtSign(validationResult);
 		validationResult = this.replaceUnderscoreWithHyphen(validationResult);
 		validationResult = this.replaceDotHyphen(validationResult);
 		validationResult = this.replaceHyphenDot(validationResult);
@@ -447,11 +447,11 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	removeCharectersAfterAtSign(validationResult) {
+	removeCharactersAfterAtSign(validationResult) {
 		const fixed = this.getFixedOrOriginal(validationResult);
 		let emailAddress = fixed;
-		for (let i = 0, length = removeAtCharectersList.length; i < length; i++) {
-			const key = removeAtCharectersList[i];
+		for (let i = 0, length = removeAtCharactersList.length; i < length; i++) {
+			const key = removeAtCharactersList[i];
 			if (emailAddress.indexOf(key) > -1) {
 				emailAddress = emailAddress.replace(key, '@');
 			}
@@ -460,7 +460,7 @@ class EmailAddressValidationService {
 			validationResult: validationResult,
 			fixed: fixed,
 			emailAddress: emailAddress,
-			functionName: 'removeCharectersAfterAtSign'
+			functionName: 'removeCharactersAfterAtSign'
 		});
 		return validationResult;
 	}
@@ -480,7 +480,7 @@ class EmailAddressValidationService {
 
 	replaceDotHyphen(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-		// Check if this fix relevant.
+		// Check if this fix is relevant.
 		if (domainPart.indexOf('.-') === -1) {
 			return validationResult;
 		}
@@ -498,13 +498,13 @@ class EmailAddressValidationService {
 
 	replaceHyphenDot(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-		// Check if this fix relevant.
+		// Check if this fix is relevant.
 		if (domainPart.indexOf('-.') === -1) {
 			return validationResult;
 		}
 		const splitHyphen = domainPart.split('-');
-		const charecterReplace = domainEndsDotsList.includes(splitHyphen[splitHyphen.length - 1]) ? '.' : '-';
-		domainPart = domainPart.replace('-.', charecterReplace);
+		const characterReplace = domainEndsDotsList.includes(splitHyphen[splitHyphen.length - 1]) ? '.' : '-';
+		domainPart = domainPart.replace('-.', characterReplace);
 		validationResult = this.checkEmailAddressUpdate({
 			validationResult: validationResult,
 			fixed: fixed,
@@ -517,7 +517,7 @@ class EmailAddressValidationService {
 
 	replaceLeadingCharacterDomainEnd(validationResult, character) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
-		// Check if this fix relevant.
+		// Check if this fix is relevant.
 		if (domainPart.indexOf(character) === -1) {
 			return validationResult;
 		}
@@ -577,7 +577,7 @@ class EmailAddressValidationService {
 			number = 1;
 		}
 		let isEqualToDomainEnd = false;
-		// Check if domain end exists.
+		// Check if the domain end exists.
 		if (domainSplits.length < 1) {
 			return validationResult;
 		}
@@ -667,7 +667,7 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	// Replace by domain end clear extra unneeded charecters - Manually.
+	// Replace by domain end clear extra unneeded characters - Manually.
 	fixCleanDomainEnd(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		const domainSplits = textUtils.getSplitDotParts(domainPart);
@@ -748,7 +748,7 @@ class EmailAddressValidationService {
 		return validationResult;
 	}
 
-	// Try add last dot if not exists any dot in the domain part (like test@test-is).
+	// Try to add the last dot if there is any dot in the domain part (like test@test-is).
 	fixDefaultDomainEnd(validationResult) {
 		let { localPart, domainPart, fixed } = this.getEmailAddressData(validationResult);
 		if (domainPart.indexOf('.') === -1) {
@@ -866,13 +866,13 @@ class EmailAddressValidationService {
 		if (validationResult.functionIds.includes(this.fixFunctionIdsMap['fixMicromatchTyposNormal'])) {
 			return validationResult;
 		}
-		// Try to remove first character and then Micromatch.
+		// Try to remove the first character and then Micromatch.
 		validationResult = this.fixMicromatch(validationResult, MicromatchAction.FIRST, 'fixMicromatchTyposFirst');
 		// Check if Micromatch already took place.
 		if (validationResult.functionIds.includes(this.fixFunctionIdsMap['fixMicromatchTyposFirst'])) {
 			return validationResult;
 		}
-		// Try to remove last character and then Micromatch.
+		// Try to remove the last character and then Micromatch.
 		validationResult = this.fixMicromatch(validationResult, MicromatchAction.LAST, 'fixMicromatchTyposLast');
 		// Check if Micromatch already took place.
 		if (validationResult.functionIds.includes(this.fixFunctionIdsMap['fixMicromatchTyposLast'])) {

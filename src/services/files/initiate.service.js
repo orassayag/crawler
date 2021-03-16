@@ -10,18 +10,18 @@ class InitiateService {
 	}
 
 	initiate(scriptType) {
-		// First, setup handle errors and promises.
+		// First, setup handles errors and promises.
 		this.setup();
 		// Validate the script type.
 		this.scriptType = scriptType;
 		this.validateScriptType();
-		// The second important thing to to it to validate all the parameters of the settings.js file.
+		// The second important thing to do is to validate all the parameters of the settings.js file.
 		this.validateSettings();
 		// The next thing is to calculate paths and inject back to the settings.js file.
 		this.calculateSettings();
 		// Make sure that the dist directory exists. If not, create it.
 		this.validateDirectories();
-		// Validate that certain directories exists, and if not, create them.
+		// Validate that certain directories exist, and if not, create them.
 		this.createDirectories();
 	}
 
@@ -85,7 +85,7 @@ class InitiateService {
 		['SCHEDULE_MINUTES_COUNT'].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidNumber(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000012)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000012)`);
 			}
 		});
 	}
@@ -98,22 +98,23 @@ class InitiateService {
 			'MAXIMUM_MINUTES_WITHOUT_UPDATE',
 			'MAXIMUM_RESTARTS_COUNT',
 			// ===LOG=== //
-			'MAXIMUM_FIX_LOG_SPACES_CHARECTERS_COUNT',
+			'MAXIMUM_FIX_LOG_SPACES_CHARACTERS_COUNT',
 			// ===COUNT & LIMIT=== //
 			'MAXIMUM_SEARCH_PROCESSES_COUNT', 'MAXIMUM_SEARCH_ENGINE_PAGES_PER_PROCESS_COUNT',
 			'MAXIMUM_DISPLAY_SEARCH_KEY_CHARACTERS_COUNT', 'MINIMUM_SEARCH_KEY_CHARACTERS_COUNT', 'MAXIMUM_RETRIES_GENERATE_SEARCH_KEY_COUNT',
 			'MILLISECONDS_INTERVAL_COUNT', 'MILLISECONDS_DELAY_BETWEEN_PROCESS_COUNT', 'MILLISECONDS_DELAY_BETWEEN_SEARCH_PAGES_COUNT',
 			'MILLISECONDS_DELAY_BETWEEN_CRAWL_PAGES_COUNT', 'MILLISECONDS_DELAY_MONGO_DATABASE_SYNC_COUNT', 'MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT',
 			'MAXIMUM_CONSOLE_LINE_CHARACTERS', 'MAXIMUM_TRENDING_SAVE_COUNT', 'MAXIMUM_DELAY_NPM_SCRIPT', 'MAXIMUM_SAVE_EMAIL_ADDRESS_RETRIES_COUNT',
-			'MAXIMUM_ERROR_PAGE_IN_A_ROW_COUNT', 'MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_UNIQUE_DOMAIN_COUNT',
+			'MAXIMUM_ERROR_PAGE_IN_A_ROW_COUNT', 'MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_UNIQUE_DOMAIN_COUNT', 'MAXIMUM_URL_VALIDATION_COUNT',
+			'MILLISECONDS_TIMEOUT_URL_VALIDATION',
 			// ===BACKUP=== //
 			'MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT', 'BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT',
 			// ===MONGO DATABASE=== //
 			'MAXIMUM_DROP_COLLECTION_RETRIES_COUNT', 'MONGO_DATABASE_POOL_SIZE_COUNT', 'MONGO_DATABASE_SOCKET_TIMEOUT_MILLISECONDS_COUNT',
 			'MONGO_DATABASE_KEEP_ALIVE_MILLISECONDS_COUNT',
 			// ===TEST=== //
-			'MINIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT',
-			'MAXIMUM_SPECIAL_CHARECTERS_TYPOS_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARECTERS_COUNT', 'MAXIMUM_SPECIAL_CHARECTERS_COUNT',
+			'MINIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_CREATE_RANDOM_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARACTERS_TYPOS_EMAIL_ADDRESSES_COUNT',
+			'MAXIMUM_SPECIAL_CHARACTERS_TYPOS_EMAIL_ADDRESSES_COUNT', 'MINIMUM_SPECIAL_CHARACTERS_COUNT', 'MAXIMUM_SPECIAL_CHARACTERS_COUNT',
 			'MAXIMUM_LOCAL_TEST_SIMPLE_CHARACTERS_COUNT', 'MAXIMUM_DOMAIN_TEST_SIMPLE_CHARACTERS_COUNT', 'MINIMUM_REPLACE_RANDOM_POSITIONS_COUNT',
 			'MAXIMUM_REPLACE_RANDOM_POSITIONS_COUNT', 'MINIMUM_TEST_RANDOM_WORDS_COUNT', 'MAXIMUM_TEST_RANDOM_WORDS_COUNT', 'MINIMUM_RANDOM_PART_CHARACTERS_COUNT',
 			// ===EMAIL ADDRESS=== //
@@ -124,7 +125,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isPositiveNumber(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000013)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000013)`);
 			}
 		});
 	}
@@ -149,7 +150,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isExists(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a string but received: ${value} (1000014)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a string but received: ${value} (1000014)`);
 			}
 		});
 	}
@@ -181,7 +182,7 @@ class InitiateService {
 				value = settings[split[0]][split[1]];
 			}
 			if (!validationUtils.isValidBoolean(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a boolean but received: ${value} (1000015)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a boolean but received: ${value} (1000015)`);
 			}
 		});
 	}
@@ -193,7 +194,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidArray(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a array but received: ${value} (1000016)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a array but received: ${value} (1000016)`);
 			}
 		});
 	}
@@ -214,7 +215,7 @@ class InitiateService {
 		['INNER_SETTINGS'].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isObject(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000018)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000018)`);
 			}
 		});
 	}
@@ -245,9 +246,9 @@ class InitiateService {
 			'APPLICATION_PATH', 'PACKAGE_JSON_PATH', 'DOWNLOADS_PATH'
 		].map(key => {
 			const value = settings[key];
-			// Verify that the paths exists.
+			// Verify that the path exists.
 			globalUtils.isPathExistsError(value);
-			// Verify that the paths accessible.
+			// Verify that the paths are accessible.
 			globalUtils.isPathAccessible(value);
 		});
 		[
@@ -267,12 +268,23 @@ class InitiateService {
 		[
 			// ===DYNAMIC PATH=== //
 			'DIST_PATH', 'NODE_MODULES_PATH'
-		].map(async (key) => {
+		].map(key => {
 			const value = settings[key];
 			// Make sure that the dist directory exists, if not, create it.
-			await fileUtils.createDirectory(value);
+			fileUtils.createDirectory(value);
 		});
 	}
 }
 
 module.exports = new InitiateService();
+
+/* 	createDirectories() {
+		[
+			// ===DYNAMIC PATH=== //
+			'DIST_PATH', 'NODE_MODULES_PATH'
+		].map(async (key) => {
+			const value = settings[key];
+			// Make sure that the dist directory exists, if not, create it.
+			await fileUtils.createDirectory(value);
+		});
+	} */

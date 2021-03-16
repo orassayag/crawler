@@ -18,8 +18,8 @@ class EmailGibberishValidationService {
 
 	// Count Vowel test.
 	countVowels(word) {
-		const matchs = word.match(regexUtils.countVowels);
-		return matchs === null ? 0 : matchs.length;
+		const matches = word.match(regexUtils.countVowels);
+		return matches === null ? 0 : matches.length;
 	}
 
 	// Dummy function.

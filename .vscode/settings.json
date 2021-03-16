@@ -48,5 +48,5 @@
         "javascript"
     ],
     "editor.renderWhitespace": "none",
-    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc,**/sources"
+    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
 }

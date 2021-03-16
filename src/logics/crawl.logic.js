@@ -58,7 +58,7 @@ class CrawlLogic {
         // Initiate the settings.
         this.initiateSettings();
         // Initiate all the services.
-        logUtils.logMagentaStatus('INITIATE THE SERVICES');
+        this.updateStatus('INITIATE THE SERVICES', Status.INITIATE);
         // Initiate the Mongo database service.
         await this.initiateMongoDatabaseService();
         // Initiate the sources service.
@@ -74,7 +74,7 @@ class CrawlLogic {
     }
 
     initiateSettings() {
-        logUtils.logMagentaStatus('INITIATE THE SETTINGS');
+        this.updateStatus('INITIATE THE SERVICES', Status.SETTINGS);
         // ===APPLICATION=== //
         this.applicationData = new ApplicationData({
             settings: settings,
@@ -193,7 +193,7 @@ class CrawlLogic {
                     searchProcessData: this.searchProcessData
                 });
             }
-            // Check if need to exit the interval.
+            // Check if it needs to exit the interval.
             await this.checkStatus(crawlInterval);
         }, this.countLimitData.millisecondsIntervalCount);
     }
@@ -332,7 +332,7 @@ class CrawlLogic {
     }
 
     checkMonitor() {
-        // Check if there is any change in a period ot time. If not -
+        // Check if there is any change in a period of time. If not -
         // Exit (probably the puppeteer service stuck. The application will restart again automatically).
         const diffLastUpdateResult = timeUtils.getDifferenceTimeBetweenDates({
             startDateTime: new Date(),
@@ -342,7 +342,7 @@ class CrawlLogic {
     }
 
     async checkStatus(crawlInterval) {
-        // Check if the application stuck and need to restart.
+        // Check if the application is stuck and need to restart.
         if (this.checkMonitor()) {
             await this.endProcesses({
                 crawlInterval: crawlInterval,
@@ -389,10 +389,10 @@ class CrawlLogic {
         if (!this.applicationData.isProductionMode) {
             return;
         }
-        logUtils.logMagentaStatus('VALIDATE INTERNET CONNECTION');
+        this.updateStatus('INITIATE THE SERVICES', Status.VALIDATE);
         const isConnected = await crawlLinkService.validateSearchEngineActive(this.applicationData.validationConnectionLink);
         if (!isConnected) {
-            throw new Error('Internet connections is not available (1000003)');
+            await this.exitError(null, Status.NO_INTERNET_CONNECTION, 66);
         }
     }
 
@@ -404,6 +404,13 @@ class CrawlLogic {
                 isLogs: false,
                 isPartOfCrawLogic: true
             });
+        }
+    }
+
+    updateStatus(text, status) {
+        logUtils.logMagentaStatus(text);
+        if (this.applicationData) {
+            this.applicationData.status = status;
         }
     }
 

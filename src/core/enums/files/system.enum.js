@@ -31,6 +31,9 @@ const ScriptType = enumUtils.createEnum([
 
 const Status = enumUtils.createEnum([
     ['INITIATE', 'INITIATE'],
+    ['SETTINGS', 'SETTINGS'],
+    ['VALIDATE', 'VALIDATE'],
+    ['NO_INTERNET_CONNECTION', 'NO INTERNET CONNECTION'],
     ['FETCH', 'FETCH'],
     ['PAUSE', 'PAUSE'],
     ['CRAWL', 'CRAWL'],

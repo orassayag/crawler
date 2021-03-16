@@ -1,39 +1,39 @@
 [SETTINGS]
 Mode - The mode which the application is running on (PRODUCTION/DEVELOPMENT).
 Drop - If to drop the collection on the email address on the Mongo database before the application starts.
-Steps - Define the logic steps that active during the processes of the application (LINKS / CRAWL / SEND).
+Steps - Define the logic steps that are active during the processes of the application (LINKS / CRAWL / SEND).
 
 [GENERAL]
 Time - The time counter of all the processes during the application runtime.
-Goal - The target of that will cause the application to stop, count which when when reached - The application will stop (EMAIL ADDRESSES / MINUTES / LINKS).
-Progress - The status of the progress to reach the goal target, number of number with the percentage.
+Goal - The target of that will cause the application to stop, count which when reached - The application will stop (EMAIL ADDRESSES / MINUTES / LINKS).
+Progress - The status of the progress to reach the goal target, number of numbers with the percentage.
 Status - The status of the application at the current moment (INITIATE, FETCH, PAUSE, CRAWL, FINISH)
 
 [PROCESS]
 Process - The current process number out of the amount of the total processes count left to finish the application runtime.
-Page - The current number of search engine pager count out of the amount of total pages left to finish the current process.
+Page - The current number of search engine pagers count out of the amount of total pages left to finish the current process.
 Engine - The search engine type that within it the links were fetched.
 Key - The search key that was generated to run on the query string on the search page to fetch links to crawl.
 
 [LINK]
-Crawl - Count of: A link that were scanned to crawl from it email addresses.
-Total - Count of: A link that found in the search engine source page.
+Crawl - Count of: A link that was scanned to crawl from its email addresses.
+Total - Count of: A link that was found in the search engine source page.
 Filter - Count of: A link that was filtered by the list of filter domains, to NOT search on their source page.
 Current - Count of: current link from amount of total links to crawl during the specific page of the search engine source.
 
 [EMAIL ADDRESS]
-Total - Count of: All the email addresses fetched from the page source, before any logic happen (duplicates included here) - Only from current session.
-Save - Count of: An email address that saved to the database successfully. Will be logged to a TXT file.
-Database - Count of: Previous email addresses exists from previous sessions on the database (before the process started). When the save count progress, the database progress also.
+Total - Count of: All the email addresses fetched from the page source, before any logic happens (duplicates included here) - Only from current session.
+Save - Count of: An email address that was saved to the database successfully. Will be logged to a TXT file.
+Database - Count of: Previous email addresses exist from previous sessions on the database (before the process started). When the save count progresses, the database progresses also.
 Exists - Count of: An email address that already exists in the database. Will not be saved to the database.
 Invalid - Count of: Invalid email address detected without any fix occurred. Will not be saved to the database. Will be logged to a TXT file.
 Valid Fix: - Count of: Valid email address that was invalid before and fixed successfully. Will be saved to the database. Will be logged to a TXT file.
 Invalid Fix - Count of: Valid email address that was invalid and still invalid after a failure attempt to fix. Will not be saved to the database. Will be logged to a TXT file.
-Unsave - Count of: An email that was failed to be save to the database. Will be logged to a TXT file.
+Unsave - Count of: An email that failed to be saved to the database. Will be logged to a TXT file.
 Filter - Count of: An email address that was filtered from a domains list. Will not be saved to the database.
 
 [TRENDING]
-The trending list is a random email addresses that were saved to the database, to show the user and give indication that the application is active.
+The trending list is a random email address that was saved to the database, to show the user and give indication that the application is active.
 Can be limited to a number of email addresses to be displayed.
 
 [PAGE (1/15)]

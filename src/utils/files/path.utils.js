@@ -5,7 +5,7 @@ class PathUtils {
 
     constructor() { }
 
-    // This method check if a given file is in a given extension.
+    // This method validates if a given file is in a given extension.
     isTypeFile(data) {
         const { fileName, fileExtension } = data;
         // Check if the fileName parameter was received.

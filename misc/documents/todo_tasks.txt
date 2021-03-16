@@ -2,21 +2,15 @@
 REMEMBER!
 =========
 Each time you change the logic / update NPM package version, do the following steps:
-a. Perform a backup before any changes has been made, by running on termine 'npm run backup' or manually to the backups directory.
-b. After the change, check that everything works OK.
-c. Keep the maintenance - Every change you do - Make sure to update in this document if needed.
-d. Keep the backup update - Every change you do - Update in iOmega (each couple of days do backup there).
+1. Perform a backup before any change has been made, by running on terminal 'npm run backup' or manually to the backups directory.
+2. After the change, check that everything works OK.
+3. Keep the maintenance - Every change you do - Make sure to update in this document if needed.
+4. Do commit + push on Git project repository.
+5. Keep the backup update - Every change you do - Update in iOmega (each couple of days do backup there).
 =================================
 
 ToDo tasks:
 ===========
--Update packages + Re-create package.json files. *
--Replace database name to other name. *
--Replace the 'this.validateLinkRegex' from 'spam-revenge' project. *
--Remove comments. *
--Format all files. *
--Verify all works good for the night.
--Update GitHub + iOmega.
 
 Complete + canceled tasks:
 ==========================

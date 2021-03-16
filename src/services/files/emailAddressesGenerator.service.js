@@ -8,7 +8,7 @@ const settings = require('../../settings/settings');
 const { ApplicationData, CountLimitData, EmailAddressData, MongoDatabaseData, TestData } = require('../../core/models/application');
 const { PartType } = require('../../core/enums');
 const { activeSearchEngineNames, commonEmailAddressDomainsList, emailAddressDomainsList, emailAddressEndFixTypos, invalidEmailAddresses,
-    removeAtCharectersList, updatesEmailAddresses, validEmailAddresses } = require('../../configurations');
+    removeAtCharactersList, updatesEmailAddresses, validEmailAddresses } = require('../../configurations');
 const crawlEmailAddressService = require('./crawlEmailAddress.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
 const typosGeneratorService = require('./typosGenerator.service');
@@ -382,8 +382,8 @@ class EmailAddressesGeneratorService {
         const isAddTypos = textUtils.getRandomBoolean();
         const isAddEndTypo = textUtils.getRandomBoolean();
         if (isAddTypos) {
-            const bug = removeAtCharectersList[textUtils.getRandomNumber(0, removeAtCharectersList.length)];
-            const fix = removeAtCharectersList[bug];
+            const bug = removeAtCharactersList[textUtils.getRandomNumber(0, removeAtCharactersList.length)];
+            const fix = removeAtCharactersList[bug];
             emailAddress = emailAddress.replace(fix, bug);
         }
         if (isAddEndTypo) {
@@ -401,12 +401,12 @@ class EmailAddressesGeneratorService {
     replaceRandomPositions(part, list) {
         const count = textUtils.getRandomNumber(this.testData.minimumReplaceRandomPositionsCount, this.testData.maximumReplaceRandomPositionsCount);
         for (let i = 0; i < count; i++) {
-            const charecter = textUtils.getRandomKeyFromArray(list);
+            const character = textUtils.getRandomKeyFromArray(list);
             const index = textUtils.getRandomNumber(0, part.length);
             part = textUtils.replaceAt({
                 text: part,
                 position: index,
-                newText: charecter
+                newText: character
             });
         }
         return part;

@@ -51,7 +51,7 @@ class CrawlEmailAddressService {
 	getEmailAddressesFromPage(data) {
 		return new Promise(async (resolve, reject) => {
 			if (reject) { }
-			// Limit the runtime of this function in case of stuck URL crawling process.
+			// Limit the runtime of this function in case of a stuck URL crawling process.
 			const abortTimeout = setTimeout(() => {
 				resolve(null);
 				return;
@@ -91,7 +91,7 @@ class CrawlEmailAddressService {
 			// Remove duplicate email addresses.
 			emailAddressesList = textUtils.removeDuplicates(emailAddressesList);
 			if (this.isSkipLogic) {
-				// Skip email addresses with domain that repeats itself too many times.
+				// Skip email addresses with a domain that repeats itself too many times.
 				const skipResults = emailAddressValidationService.skipDomains({
 					emailAddressesList: emailAddressesList,
 					maximumUniqueDomainCount: this.countLimitData.maximumUniqueDomainCount
@@ -186,7 +186,7 @@ class CrawlEmailAddressService {
 			// Add the email address to the trending save list if not exists already.
 			emailAddressesResult = this.addTrendingSave(trendingSaveEmailAddress, emailAddressesResult, emailAddressStatus.isValidFix);
 		}
-		// Log the email address to specific TXT file if it's gibberish.
+		// Log the email address to a specific TXT file if it's gibberish.
 		if (isGibberish) {
 			const originalStatus = emailAddressStatus.logStatus;
 			emailAddressStatus.logStatus = LogStatus.GIBBERISH;

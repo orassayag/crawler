@@ -52,7 +52,7 @@ class LogService {
 		this.createModeDirectory();
 		await this.clearLogFiles();
 		this.createSessionDirectory();
-		// If you change the "email_addresses_" file name, change it also in the 'sender' project.
+		// If you change the 'email_addresses_' file name, change it also in the 'sender' project.
 		if (this.logData.isLogValidEmailAddresses) {
 			this.emailAddressesPath = this.createFilePath(`email_addresses_${Placeholder.DATE}`);
 		}

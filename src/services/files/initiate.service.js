@@ -277,14 +277,3 @@ class InitiateService {
 }
 
 module.exports = new InitiateService();
-
-/* 	createDirectories() {
-		[
-			// ===DYNAMIC PATH=== //
-			'DIST_PATH', 'NODE_MODULES_PATH'
-		].map(async (key) => {
-			const value = settings[key];
-			// Make sure that the dist directory exists, if not, create it.
-			await fileUtils.createDirectory(value);
-		});
-	} */

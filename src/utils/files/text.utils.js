@@ -50,7 +50,7 @@ class TextUtils {
         return value.substring(0, value.length - charactersCount);
     }
 
-    // This method add leading 0 if needed.
+    // This method adds leading 0 if needed.
     addLeadingZero(number) {
         if (!validationUtils.isValidNumber(number)) {
             return '';

@@ -66,7 +66,7 @@ Future tasks:
 =============
 Test and maybe implement the package: https://www.npmjs.com/package/email-misspelled.
 -Add time passed for the search process, and for the page process.
--On the regex utils - Convert all the "new RegExp" to use the bottom function "createRegex".
+-On the regex utils - Convert all the 'new RegExp' to use the bottom function 'createRegex'.
 -For each run, make an array of (search queries + search engine) to void duplicate search for
  the same search query in the same search engine twice in a run - Search for an efficient way to do it, string compression is heavy cost.
 -Auto refresh Google/Bing (Add property to refresh token parameters or not) query string parameters logic -

@@ -87,7 +87,7 @@ const settings = {
     // ===COUNT & LIMIT=== //
     // Determine how much time (in minutes) to wait until the start of the crawl process. It's good
     // if the user wants to delay the start of the process. If it's 0 - No schedule will take place.
-    SCHEDULE_MINUTES_COUNT: 0,
+    SCHEDULE_MINUTES_COUNT: 120,
     // Determine how many processes to run during a single lifetime of the application.
     MAXIMUM_SEARCH_PROCESSES_COUNT: innerSettings.IS_LONG_RUN ? 10000 : 10,
     // Determine how many pages to pager with the search engine during a single process.
@@ -128,7 +128,7 @@ const settings = {
     MAXIMUM_UNSAVE_EMAIL_ADDRESSES_COUNT: 2,
     // Determine the maximum unique domain count in a single page process per domain.
     // If exceeded, the rest of the email addresses with the domain are skipped
-    // (This, of course, not include common domains like gmail, hotmail, etc...).
+    // (This, of course, does not include common domains like gmail, hotmail, etc...).
     MAXIMUM_UNIQUE_DOMAIN_COUNT: 3,
     // Determine the number of retries to validate the URLs.
     MAXIMUM_URL_VALIDATION_COUNT: 5,
@@ -195,7 +195,7 @@ const settings = {
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
     // Determine the number of times in loop to check for version of a backup.
-    // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
+    // For example, if a backup name 'test-test-test-1' exists, it will check for 'test-test-test-2',
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50,
 
@@ -227,7 +227,7 @@ const settings = {
 
     // ===PACKAGE=== //
     // Determine the version number of the Puppeteer.js NPM package to implement in the package.json in the pre-load script.
-    NPM_PUPPETEER_VERSION: '^5.5.0',
+    NPM_PUPPETEER_VERSION: '^8.0.0',
 
     // ===VALIDATION=== //
     // Determine the link address to test the internet connection.

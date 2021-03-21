@@ -74,7 +74,7 @@ class CrawlLogic {
     }
 
     initiateSettings() {
-        this.updateStatus('INITIATE THE SERVICES', Status.SETTINGS);
+        this.updateStatus('INITIATE THE SETTINGS', Status.SETTINGS);
         // ===APPLICATION=== //
         this.applicationData = new ApplicationData({
             settings: settings,
@@ -389,7 +389,7 @@ class CrawlLogic {
         if (!this.applicationData.isProductionMode) {
             return;
         }
-        this.updateStatus('INITIATE THE SERVICES', Status.VALIDATE);
+        this.updateStatus('VALIDATE INTERNET CONNECTION', Status.VALIDATE);
         const isConnected = await crawlLinkService.validateSearchEngineActive(this.applicationData.validationConnectionLink);
         if (!isConnected) {
             await this.exitError(null, Status.NO_INTERNET_CONNECTION, 66);

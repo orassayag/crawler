@@ -87,7 +87,7 @@ const settings = {
     // ===COUNT & LIMIT=== //
     // Determine how much time (in minutes) to wait until the start of the crawl process. It's good
     // if the user wants to delay the start of the process. If it's 0 - No schedule will take place.
-    SCHEDULE_MINUTES_COUNT: 120,
+    SCHEDULE_MINUTES_COUNT: 0,
     // Determine how many processes to run during a single lifetime of the application.
     MAXIMUM_SEARCH_PROCESSES_COUNT: innerSettings.IS_LONG_RUN ? 10000 : 10,
     // Determine how many pages to pager with the search engine during a single process.

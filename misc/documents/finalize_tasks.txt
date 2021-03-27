@@ -1,0 +1,27 @@
+-Update packages + Recreate package-lock.json.
+-Remove code comments to a backup TXT file.
+-Convert " to ' in the relevant places.
+-Remove all 'debugger' keywords.
+-Recheck error numbers in error_index.txt.
+-Check 'let' needs to be converted to 'const'.
+-Make sure all comments '//' have: 1. space 2. ends with a dot.
+-Make sure 'id' => 'Id', 'url' => 'URL', 'api' => 'API'.
+-Make sure spaces in all files between bottom, need to fix cases like this:
+}
+module.exports
+}
+export default
+-Remove duplicate import/require (convert to index.js if possible).
+-Sort alphabetically all the imports/requires by https://alphabetizer.flap.tv/.
+-Sort alphabetically all the imports/requires: external packages, settings, (containers, components, store, assert) data, models, enums, services, utils.
+-File extensions should be upper case: JSON, TXT, etc.
+-Remove duplicate empty lines: \n\s*\n\s*\n
+-Remove last empty line: \n\s*$(?!\n)
+-Detect all comments without a dot at the end: ^// .*(?<!\.)$
+-Do all the 'ToDo' tasks.
+-Format all documents.
+-Verify all works well.
+-Fix TXT files spell mistakes via Gmail.
+-Move all complete tasks from here to complete_tasks.txt.
+-Upload to GitHub.
+-Backup to iOmega.

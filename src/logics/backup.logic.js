@@ -97,7 +97,7 @@ class BackupLogic {
             throw new Error('No backup was provided (1000002)');
         }
         logUtils.logColorStatus({
-            status: `FINISH TO CREATE BACKUP: ${this.backupData.targetBackupName}`,
+            status: `FINISH TO CREATE A BACKUP: ${this.backupData.targetBackupName}`,
             color: Color.GREEN
         });
     }

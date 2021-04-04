@@ -4,6 +4,7 @@
 -Remove all 'debugger' keywords.
 -Recheck error numbers in error_index.txt.
 -Check 'let' needs to be converted to 'const'.
+-Check places to change from simple parameters with dynamic objects to classes.
 -Make sure all comments '//' have: 1. space 2. ends with a dot.
 -Make sure 'id' => 'Id', 'url' => 'URL', 'api' => 'API'.
 -Make sure spaces in all files between bottom, need to fix cases like this:

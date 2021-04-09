@@ -2,7 +2,7 @@ const settings = require('../settings/settings');
 const { BackupData } = require('../core/models/application');
 const { Color } = require('../core/enums');
 const globalUtils = require('../utils/files/global.utils');
-const { pathUtils, fileUtils, logUtils, textUtils, timeUtils } = require('../utils');
+const { fileUtils, logUtils, pathUtils, textUtils, timeUtils } = require('../utils');
 
 class BackupLogic {
 

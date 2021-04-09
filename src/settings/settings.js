@@ -1,5 +1,5 @@
 const { GoalType } = require('../core/enums');
-const pathUtils = require('../utils/files/path.utils');
+const { pathUtils } = require('../utils/');
 
 const innerSettings = {
     // ===FLAG=== //

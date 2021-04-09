@@ -12,12 +12,14 @@
 module.exports
 }
 export default
+-Change all '.length > 0' to 'isExists'.
 -Remove duplicate import/require (convert to index.js if possible).
 -Sort alphabetically all the imports/requires by https://alphabetizer.flap.tv/.
 -Sort alphabetically all the imports/requires: external packages, settings, (containers, components, store, assert) data, models, enums, services, utils.
 -File extensions should be upper case: JSON, TXT, etc.
--Remove duplicate empty lines: \n\s*\n\s*\n
--Remove last empty line: \n\s*$(?!\n)
+-Remove the space lines inside methods and functions.
+-Remove the duplicate empty lines: \n\s*\n\s*\n
+-Remove the last empty line: \n\s*$(?!\n)
 -Detect all comments without a dot at the end: ^// .*(?<!\.)$
 -Do all the 'ToDo' tasks.
 -Format all documents.

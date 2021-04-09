@@ -52,7 +52,7 @@ class ValidationUtils {
 
     // This method validates that a given string exists in an array list of specific types.
     isValidEnum(data) {
-        // Validate the existence and validity of the validateEnumData parameters. If not exists, return false.
+        // Validate the existence and validity of the data parameters. If not exists, return false.
         if (!data || !data.enum || !data.value) {
             return false;
         }

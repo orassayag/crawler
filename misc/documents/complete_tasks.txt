@@ -1,5 +1,9 @@
 Complete + canceled tasks:
 ==========================
+-Update packages + Recreate package-lock.json. *
+-Comments: Change 'validateEnumData' to 'data'. *
+-Remove the 'await' from 'await fileUtils.createDirectory(value);'. *
+-In settings.js convert utils path to index, and check if it still works. *
 -In all the maintenance projects: *
 -Update packages + re-create package.json files. *
 01. Update the 'REMEMBER' section of this document. *

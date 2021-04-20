@@ -19,12 +19,17 @@ export default
 -File extensions should be upper case: JSON, TXT, etc.
 -Remove the space lines inside methods and functions.
 -Remove the duplicate empty lines: \n\s*\n\s*\n
+-Remove the first empty line: ^(?<![\s])\n
 -Remove the last empty line: \n\s*$(?!\n)
 -Detect all comments without a dot at the end: ^// .*(?<!\.)$
+-Make sure all switch-case have curly braces.
+-Clear unused enums and make sure all in used really exists.
+-Search for 'async ' and create a list of functions/methods, and make sure that all calls have await.
+-Scan all files for spell mistakes with the 'files-spell-checker' project.
 -Do all the 'ToDo' tasks.
 -Format all documents.
 -Verify all works well.
--Fix TXT files spell mistakes via Gmail.
+-Fix TXT files spell mistakes via Gmail (Also, convert '_' to ' ' in all places when checking).
 -Move all complete tasks from here to complete_tasks.txt.
 -Upload to GitHub.
 -Backup to iOmega.

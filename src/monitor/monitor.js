@@ -27,8 +27,7 @@ class NodeMonitor {
         if (scheduleMinutesCount <= 0) {
             return;
         }
-        const milliseconds = (scheduleMinutesCount * 60000) + 2000; // Additional 2000 to margin process.
-        const endDateTime = new Date(Date.now() + milliseconds).getTime();
+        const endDateTime = timeUtils.getCurrentDatePlusMilliseconds((scheduleMinutesCount * 60000) + 2000); // Additional 2000 to margin process.
         await new Promise((resolve) => {
             const timeInterval = setInterval(() => {
                 // Update the current time left to start the process.

@@ -260,36 +260,41 @@ class LogService {
 		const { original, fix } = validationResult;
 		let path, message = '';
 		switch (logStatus) {
-			case LogStatus.VALID:
+			case LogStatus.VALID: {
 				if (this.logData.isLogValidEmailAddresses) {
 					path = this.emailAddressesPath;
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), fix ? fix : original);
 				}
 				break;
-			case LogStatus.FIX:
+			}
+			case LogStatus.FIX: {
 				if (this.logData.isLogFixEmailAddresses && this.isLogFixEmailAddress(validationResult)) {
 					path = this.fixedEmailAddressesPath;
 					message = textUtils.addBreakLine(this.createFixResultTemplate(validationResult));
 				}
 				break;
-			case LogStatus.INVALID:
+			}
+			case LogStatus.INVALID: {
 				if (this.logData.isLogInvalidEmailAddresses && this.isLogInvalidEmailAddress(validationResult)) {
 					path = this.invalidEmailAddressesPath;
 					message = textUtils.addBreakLine(this.createInvalidResultTemplate(validationResult));
 				}
 				break;
-			case LogStatus.UNSAVE:
+			}
+			case LogStatus.UNSAVE: {
 				if (this.logData.isLogUnsaveEmailAddresses) {
 					path = this.unsaveEmailAddressesPath;
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), original);
 				}
 				break;
-			case LogStatus.GIBBERISH:
+			}
+			case LogStatus.GIBBERISH: {
 				if (this.logData.isLogGibberishEmailAddresses) {
 					path = this.gibberishEmailAddressesPath;
 					message = this.createWrapTemplate(await fileUtils.isPathExists(path), fix ? fix : original);
 				}
 				break;
+			}
 		}
 		// In case no log status is relevant to log, don't log anything.
 		if (path && message) {
@@ -349,7 +354,10 @@ class LogService {
 		settingsText += this.createLineTemplate('DATABASE', mongoDatabaseUtils.getMongoDatabaseModeName(settings));
 		settingsText += Object.keys(settings).filter(s => parameters.indexOf(s) > -1)
 			.map(k => this.createLineTemplate(k, settings[k])).join('');
-		settingsText = textUtils.removeLastCharacter(settingsText);
+		settingsText = textUtils.removeLastCharacters({
+			value: settingsText,
+			charactersCount: 1
+		});
 		return `${textUtils.setLogStatus('IMPORTANT SETTINGS')}
 ${settingsText}
 ========================

@@ -1,6 +1,6 @@
+const logUpdate = require('log-update');
 const { Color } = require('../../core/enums');
 const colorUtils = require('./color.utils');
-const logUpdate = require('../../log-update');
 const textUtils = require('./text.utils');
 const validationUtils = require('./validation.utils');
 

@@ -1,6 +1,44 @@
 Complete + canceled tasks:
 ==========================
 -Update packages + Recreate package-lock.json. *
+-Clear unused enums and make sure all in used really exists. *
+-Remove the 'destination' parameter in the 'filterDirectories' method + Verify that backup still works. *
+-Due to the break changes of log-update packages, there is a need to use a postinstall script to fix the direct file: *
+1. Remove the 'wrap-ansi', 'slice-ansi', 'cli-cursor', 'ansi-escapes' packages from the 'package.json' file. *
+2. Delete the 'log-update' directory. *
+3. Change in the 'log.utils' file to use the 'require('log-require');' syntax. *
+4. Add the postinstall script, add the 'script/initiate.js' file. *
+5. Add the 'INITIATE' key/value to the ScriptType enum. *
+6. Add the 'postinstall' script to the 'package.json file'. *
+7. Run in the terminal 'npm i' + Recreate package-lock.json. *
+8. Format the 2 files. *
+9. Make sure all work as expected. *
+-Rename and check: countLimitService.countLimitData.millisecondsSendEmailDelayCount. *
+-Check and reset the '.vscode/settings.json' by 'C:/Or/Web/auto-packages-updater/auto-packages-updater/.vscode/settings.json' +
+ Format all documents and re-add 'cSpell.words' all the words + add the 'cSpell.ignorePaths'. *
+-Convert all 'new Date()' to be from the timeUtils. Change in all places. *
+-In validation file path (probably a JSON file) there is a 'Expected a number' comment, need to fix it (take the comment from the 'auto-packages-updater' project). *
+-Convert 'removeLastCharacter' to use 'removeLastCharacters'. *
+-Make sure all switch-case have curly braces. *
+-Make sure to have space between /* cSpell:disable */ in the 'INSTRUCTIONS.md' file. *
+-Make sure to fix the grammar mistake in the 'enum.utils.js' file (an enum-like object). *
+-In the 'README.md' file, fix in all places to 'In the terminal'. *
+-Make sure that all places 'this.exit' function - Need to be 'await this.exit'. *
+-Search for 'async ' and create a list of functions/methods, and make sure that all calls have await. *
+-Scan all files for spell mistakes with the 'files-spell-checker' project. *
+-In both the 'package.json' and 'package-lock.json' files change to 'private: false'. *
+-Remove code comments to a backup TXT file. *
+-Remove the duplicate empty lines: \n\s*\n\s*\n *
+-Remove the first empty line: ^(?<![\s])\n *
+-Remove the last empty line: \n\s*$(?!\n) *
+-Detect all comments without a dot at the end: ^// .*(?<!\.)$ *
+-Format all documents. *
+-Verify all works well. *
+-Fix TXT files spell mistakes via Gmail. *
+-Move all complete tasks from here to complete_tasks.txt. *
+-Upload to GitHub. *
+-Backup to iOmega. *
+-Update packages + Recreate package-lock.json. *
 -Comments: Change 'validateEnumData' to 'data'. *
 -Remove the 'await' from 'await fileUtils.createDirectory(value);'. *
 -In settings.js convert utils path to index, and check if it still works. *

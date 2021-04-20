@@ -523,8 +523,8 @@ class EmailAddressValidationService {
 		}
 		let list, type = null;
 		switch (character) {
-			case '-': list = domainEndsHyphenList; type = 'Hyphen'; break;
-			case ',': list = domainEndsCommaList; type = 'Comma'; break;
+			case '-': { list = domainEndsHyphenList; type = 'Hyphen'; break; }
+			case ',': { list = domainEndsCommaList; type = 'Comma'; break; }
 		}
 		const splitHyphen = domainPart.split(character);
 		const domainEnd = splitHyphen[splitHyphen.length - 1];
@@ -893,10 +893,10 @@ class EmailAddressValidationService {
 			}
 		}
 		switch (type) {
-			case MicromatchAction.NORMAL: testDomainPart = domainPart; break;
-			case MicromatchAction.FIRST: testDomainPart = textUtils.removeFirstCharacter(domainPart); break;
-			case MicromatchAction.LAST: testDomainPart = textUtils.removeLastCharacter(domainPart); break;
-			case MicromatchAction.SPECIAL: testDomainPart = domainPart.replace(regexUtils.cleanAllNoneAlphaNumericRegex, ''); break;
+			case MicromatchAction.NORMAL: { testDomainPart = domainPart; break; }
+			case MicromatchAction.FIRST: { testDomainPart = textUtils.removeFirstCharacter(domainPart); break; }
+			case MicromatchAction.LAST: { testDomainPart = textUtils.removeLastCharacters({ value: domainPart, charactersCount: 1 }); break; }
+			case MicromatchAction.SPECIAL: { testDomainPart = domainPart.replace(regexUtils.cleanAllNoneAlphaNumericRegex, ''); break; }
 		}
 		const { isMatch, fixDomainPart } = this.findMicromatch([testDomainPart]);
 		if (isMatch) {

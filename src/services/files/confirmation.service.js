@@ -16,8 +16,8 @@ class ConfirmationService {
             try {
                 readLine.on('line', (line) => {
                     switch (line) {
-                        case 'y': resolve(true); break;
-                        default: resolve(false); break;
+                        case 'y': { resolve(true); break; }
+                        default: { resolve(false); break; }
                     }
                     readLine.close();
                 }).on('close', () => { resolve(false); });

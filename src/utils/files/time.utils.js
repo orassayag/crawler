@@ -5,18 +5,29 @@ class TimeUtils {
 
     constructor() { }
 
+    getCurrentDate() {
+        return new Date();
+    }
+
+    getCurrentDatePlusMilliseconds(milliseconds) {
+        if (!validationUtils.isValidNumber(milliseconds)) {
+            return this.getCurrentDate();
+        }
+        return new Date(Date.now() + milliseconds).getTime();
+    }
+
     getFullTime() {
-        const date = new Date();
+        const date = this.getCurrentDate();
         return `${this.getHours(date)}:${this.getMinutes(date)}:${this.getSeconds(date)}`;
     }
 
     getFullDateNoSpaces() {
-        const date = new Date();
+        const date = this.getCurrentDate();
         return `${[this.getYear(date), this.getMonth(date), this.getDay(date)].join('')}_${[this.getHours(date), this.getMinutes(date), this.getSeconds(date)].join('')}`;
     }
 
     getDateNoSpaces() {
-        const date = new Date();
+        const date = this.getCurrentDate();
         return [this.getDay(date), this.getMonth(date), this.getYear(date)].join('');
     }
 
@@ -72,8 +83,8 @@ class TimeUtils {
     }
 
     getRemainingTime(endDateTime) {
-        const now = new Date().getTime();
-        const timeleft = endDateTime - now;
+        const date = this.getCurrentDate();
+        const timeleft = endDateTime - date;
         const days = textUtils.getFloorPositiveNumber(timeleft / (1000 * 60 * 60 * 24));
         const hours = textUtils.getFloorPositiveNumber((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = textUtils.getFloorPositiveNumber((timeleft % (1000 * 60 * 60)) / (1000 * 60));

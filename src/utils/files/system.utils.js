@@ -33,10 +33,9 @@ class SystemUtils {
             const platform = process.platform;
             let cmd = '';
             switch (platform) {
-                case 'win32': cmd = `tasklist`; break;
-                case 'darwin': cmd = `ps -ax | grep ${processName}`; break;
-                case 'linux': cmd = `ps -A`; break;
-                default: break;
+                case 'win32': { cmd = `tasklist`; break; }
+                case 'darwin': { cmd = `ps -ax | grep ${processName}`; break; }
+                case 'linux': { cmd = `ps -A`; break; }
             }
             exec(cmd, (err, stdout, stderr) => {
                 if (err || stderr) { }

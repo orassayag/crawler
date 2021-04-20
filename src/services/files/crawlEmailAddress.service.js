@@ -109,9 +109,9 @@ class CrawlEmailAddressService {
 	async saveEmailAddressToMongoDatabase(emailAddressStatus, emailAddress) {
 		const saveStatus = await mongoDatabaseService.saveEmailAddress(emailAddress);
 		switch (saveStatus) {
-			case SaveStatus.SAVE: emailAddressStatus.isSave = true; emailAddressStatus.logStatus = LogStatus.VALID; break;
-			case SaveStatus.EXISTS: emailAddressStatus.isExists = true; break;
-			case SaveStatus.ERROR: emailAddressStatus.isUnsave = true; emailAddressStatus.logStatus = LogStatus.UNSAVE; break;
+			case SaveStatus.SAVE: { emailAddressStatus.isSave = true; emailAddressStatus.logStatus = LogStatus.VALID; break; }
+			case SaveStatus.EXISTS: { emailAddressStatus.isExists = true; break; }
+			case SaveStatus.ERROR: { emailAddressStatus.isUnsave = true; emailAddressStatus.logStatus = LogStatus.UNSAVE; break; }
 		}
 		return emailAddressStatus;
 	}

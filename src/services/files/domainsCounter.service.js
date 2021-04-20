@@ -88,7 +88,7 @@ class DomainsCounterService {
 	async getSourceContent() {
 		let filePaths = [];
 		switch (this.sourceType) {
-			case DomainsCounterSourceType.FILE:
+			case DomainsCounterSourceType.FILE: {
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000006)');
 				}
@@ -96,7 +96,8 @@ class DomainsCounterService {
 					this.sourceContent = await fileUtils.readFile(this.sourcePath);
 				}
 				break;
-			case DomainsCounterSourceType.DIRECTORY:
+			}
+			case DomainsCounterSourceType.DIRECTORY: {
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000007)');
 				}
@@ -107,24 +108,27 @@ class DomainsCounterService {
 					this.sourceContent += await fileUtils.readFile(filePaths[i]);
 				}
 				break;
-			case DomainsCounterSourceType.DATABASE:
+			}
+			case DomainsCounterSourceType.DATABASE: {
 				this.emailAddressesList = await mongoDatabaseService.getAllEmailAddresses();
 				if (validationUtils.isExists(this.emailAddressesList)) {
 					this.emailAddressesList = this.emailAddressesList.map(e => e.emailAddress);
 				}
 				break;
+			}
 		}
 	}
 
 	getEmailAddresses() {
 		switch (this.sourceType) {
 			case DomainsCounterSourceType.FILE:
-			case DomainsCounterSourceType.DIRECTORY:
+			case DomainsCounterSourceType.DIRECTORY: {
 				if (!this.isPartOfCrawLogic && !this.sourceContent) {
 					throw new Error('Empty sourceContent was provided (1000008)');
 				}
 				this.emailAddressesList = emailAddressUtils.getEmailAddresses(this.sourceContent);
 				break;
+			}
 		}
 		// Remove duplicates.
 		this.emailAddressesList = textUtils.removeDuplicates(this.emailAddressesList);

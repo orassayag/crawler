@@ -7,8 +7,8 @@ Built in February 2020. A Node.js + Puppeteer.js application to fetch as many va
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. Terminal: npm i
-3. In terminal: npm start
+2. In the terminal: npm i
+3. In the terminal: npm start
 
 Search email addresses script:
 ==============================
@@ -21,7 +21,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 4. Make sure the Mongo database is installed and configured properly.
 5. Run the script by 'npm start' and let the magic begin. :)
 
-In terminal: npm start
+In the terminal: npm start
 
 Happy testing! :)
 

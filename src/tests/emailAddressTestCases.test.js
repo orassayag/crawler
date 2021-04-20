@@ -65,7 +65,7 @@ const sortResults = (isValidTest, validationResults) => {
     let list = null;
     let isValidTest = null;
     switch (testType) {
-        case TestType.VALID:
+        case TestType.VALID: {
             // ===VALID email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.
@@ -73,7 +73,8 @@ const sortResults = (isValidTest, validationResults) => {
             list = emailAddressesGeneratorService.getValidEmailAddress();
             isValidTest = true;
             break;
-        case TestType.INVALID:
+        }
+        case TestType.INVALID: {
             // ===INVALID email addresses=== //
             // If the email address is invalid, show V.
             // If the email address is valid, show X.
@@ -81,7 +82,8 @@ const sortResults = (isValidTest, validationResults) => {
             list = emailAddressesGeneratorService.getInvalidEmailAddresses();
             isValidTest = false;
             break;
-        case TestType.RANDOM:
+        }
+        case TestType.RANDOM: {
             // ===RANDOM email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.
@@ -89,7 +91,8 @@ const sortResults = (isValidTest, validationResults) => {
             list = await emailAddressesGeneratorService.getRandomEmailAddresses();
             isValidTest = true;
             break;
-        case TestType.UPDATES:
+        }
+        case TestType.UPDATES: {
             // ===UPDATES (valid) email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.
@@ -97,8 +100,10 @@ const sortResults = (isValidTest, validationResults) => {
             list = emailAddressesGeneratorService.getUpdateEmailAddress();
             isValidTest = true;
             break;
-        default:
+        }
+        default: {
             throw new Error('No testType selected (1000030)');
+        }
     }
     // Let the test begin.
     await emailAddressesGeneratorService.done();

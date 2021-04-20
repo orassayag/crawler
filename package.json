@@ -1,7 +1,7 @@
 {
   "name": "crawler",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "A Node.js + Puppeteer.js application to fetch as many valid email addresses from crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.",
   "keywords": [
     "links",
@@ -46,6 +46,7 @@
     "link": "node src/tests/linkCrawl.test.js",
     "session": "node src/tests/linksSession.test.js",
     "preload": "npm run pre_load && npm i & npm run delay & npm i",
+    "postinstall": "node src/scripts/initiate.script.js",
     "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [
@@ -55,29 +56,26 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "ansi-escapes": "^4.3.2",
     "babel-eslint": "^10.1.0",
     "chance": "^1.1.7",
-    "cli-cursor": "^3.1.0",
     "eslint": "^7.24.0",
     "faker": "^5.5.3",
     "forever-monitor": "^3.0.3",
     "fs-extra": "^9.1.0",
     "gibberish-detector": "^1.0.0",
     "is-reachable": "^5.0.0",
+    "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.3",
-    "micromatch": "^4.0.3",
-    "mongoose": "^5.12.3",
+    "micromatch": "^4.0.4",
+    "mongoose": "^5.12.5",
     "puppeteer": "^8.0.0",
     "puppeteer-extra": "^3.1.18",
     "puppeteer-extra-plugin-stealth": "^2.7.6",
     "random-email": "^1.0.3",
     "random-useragent": "^0.5.0",
     "random-words": "^1.1.1",
-    "slice-ansi": "^4.0.0",
     "tree-kill": "^1.2.2",
     "uuid": "^8.3.2",
-    "validator": "^13.5.2",
-    "wrap-ansi": "^7.0.0"
+    "validator": "^13.6.0"
   }
 }

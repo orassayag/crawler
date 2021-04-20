@@ -77,13 +77,6 @@ class FileUtils {
         await fs.appendFile(targetPath, message);
     }
 
-    async removeFile(targetPath) {
-        // Verify that the path exists.
-        globalUtils.isPathExistsError(targetPath);
-        // Remove the file.
-        await fs.unlink(targetPath);
-    }
-
     async removeFileIfExists(targetPath) {
         // Check if the file exists.
         if (await this.isPathExists(targetPath)) {

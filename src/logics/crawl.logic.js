@@ -30,7 +30,7 @@ class CrawlLogic {
         this.isSessionTestPlan = false;
         this.planName = Plan.STANDARD;
         // ===MONITOR=== //
-        this.lastUpdateTime = new Date();
+        this.lastUpdateTime = timeUtils.getCurrentDate();
     }
 
     async run(linksList) {
@@ -172,13 +172,13 @@ class CrawlLogic {
         const crawlInterval = setInterval(async () => {
             // Start the process for the first interval round.
             if (!this.applicationData.startDateTime) {
-                this.applicationData.startDateTime = new Date();
+                this.applicationData.startDateTime = timeUtils.getCurrentDate();
                 await this.startProcesses();
             }
             // Update the current time of the process.
             const { time, minutes } = timeUtils.getDifferenceTimeBetweenDates({
                 startDateTime: this.applicationData.startDateTime,
-                endDateTime: new Date()
+                endDateTime: timeUtils.getCurrentDate()
             });
             this.applicationData.time = time;
             this.applicationData.minutesCount = minutes;
@@ -266,7 +266,7 @@ class CrawlLogic {
             else {
                 this.applicationData.pageLinksIndex = -1;
             }
-            this.pause(this.countLimitData.millisecondsDelayBetweenSearchPagesCount);
+            await this.pause(this.countLimitData.millisecondsDelayBetweenSearchPagesCount);
         }
     }
 
@@ -310,22 +310,25 @@ class CrawlLogic {
         this.applicationData.crawlLinkData.updateErrorLink(emailAddressesResult.isValidPage);
         // Update monitor data.
         if (emailAddressesResult.saveCount || emailAddressesResult.totalCount) {
-            this.lastUpdateTime = new Date();
+            this.lastUpdateTime = timeUtils.getCurrentDate();
         }
     }
 
     checkGoalComplete() {
         // Update the progress data.
         switch (this.applicationData.goalType) {
-            case GoalType.EMAIL_ADDRESSES:
+            case GoalType.EMAIL_ADDRESSES: {
                 this.applicationData.progressValue = this.applicationData.crawlEmailAddressData.saveCount;
                 break;
-            case GoalType.MINUTES:
+            }
+            case GoalType.MINUTES: {
                 this.applicationData.progressValue = this.applicationData.minutesCount;
                 break;
-            case GoalType.LINKS:
+            }
+            case GoalType.LINKS: {
                 this.applicationData.progressValue = this.applicationData.crawlLinkData.crawlCount;
                 break;
+            }
         }
         // Check if complete the goal value - Exit the interval.
         return this.applicationData.goalValue <= this.applicationData.progressValue;
@@ -335,7 +338,7 @@ class CrawlLogic {
         // Check if there is any change in a period of time. If not -
         // Exit (probably the puppeteer service stuck. The application will restart again automatically).
         const diffLastUpdateResult = timeUtils.getDifferenceTimeBetweenDates({
-            startDateTime: new Date(),
+            startDateTime: timeUtils.getCurrentDate(),
             endDateTime: this.lastUpdateTime
         });
         return this.applicationData.maximumMinutesWithoutUpdate <= diffLastUpdateResult.minutes;
@@ -425,7 +428,6 @@ class CrawlLogic {
             searchProcessData: this.searchProcessData
         });
         await this.logDomainsCounter();
-        sourceService.close();
         await puppeteerService.close();
         systemUtils.exit(exitReason, color, code);
     }

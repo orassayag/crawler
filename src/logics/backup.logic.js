@@ -70,8 +70,7 @@ class BackupLogic {
         await this.verifyBackup();
     }
 
-    filterDirectories(source, destination) {
-        if (destination) { }
+    filterDirectories(source) {
         let isIncluded = true;
         const { ignoreDirectories, ignoreFiles, includeFiles } = this.backupData.backupDirectory;
         for (let i = 0, length = ignoreDirectories.length; i < length; i++) {

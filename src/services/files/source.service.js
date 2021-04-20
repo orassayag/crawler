@@ -29,7 +29,7 @@ class SourceService {
         else {
             this.searchEngineSourcesList = [];
             this.pageSourcesList = [];
-            this.loadAllDevelopmentModeSources();
+            await this.loadAllDevelopmentModeSources();
         }
     }
 
@@ -88,21 +88,23 @@ class SourceService {
                 targetName: files[i]
             }));
             switch (sourceType) {
-                case SourceType.ENGINE:
+                case SourceType.ENGINE: {
                     this.searchEngineSourcesList.push({
                         name: searchEngine,
                         pageSource: pageSource
                     });
                     break;
-                case SourceType.PAGE:
+                }
+                case SourceType.PAGE: {
                     this.pageSourcesList.push(pageSource);
                     break;
+                }
             }
         }
     }
 
-    getPageSource(data) {
-        return this.isProductionMode ? this.getPageSourceProduction(data) : this.getPageSourceDevelopment(data);
+    async getPageSource(data) {
+        return this.isProductionMode ? await this.getPageSourceProduction(data) : this.getPageSourceDevelopment(data);
     }
 
     async getPageSourceProduction(data) {
@@ -118,19 +120,21 @@ class SourceService {
         const { sourceType, searchEngine } = data;
         const crawlResults = { isValidPage: textUtils.getRandomBoolean(), pageSource: null };
         switch (sourceType) {
-            case SourceType.ENGINE:
+            case SourceType.ENGINE: {
                 crawlResults.pageSource = textUtils.getRandomKeyFromArray(this.searchEngineSourcesList.filter(se => se.name === searchEngine)).pageSource;
                 break;
-            case SourceType.PAGE:
+            }
+            case SourceType.PAGE: {
                 crawlResults.pageSource = textUtils.getRandomKeyFromArray(this.pageSourcesList);
                 break;
+            }
         }
         return crawlResults;
     }
 
-    close() {
+    async close() {
         if (this.isProductionMode && puppeteerService) {
-            puppeteerService.close();
+            await puppeteerService.close();
         }
     }
 }

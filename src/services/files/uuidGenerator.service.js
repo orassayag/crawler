@@ -6,10 +6,10 @@ class UUIDGeneratorService {
 
 	getUUID(number, name) {
 		switch (number) {
-			case 1: return uuidv1();
-			case 2: case 3: return uuidv3(name, uuidv3.DNS);
-			case 4: return uuidv4();
-			case 5: return uuidv5(name, uuidv5.DNS);
+			case 1: { return uuidv1(); }
+			case 2: case 3: { return uuidv3(name, uuidv3.DNS); }
+			case 4: { return uuidv4(); }
+			case 5: { return uuidv5(name, uuidv5.DNS); }
 		}
 	}
 }

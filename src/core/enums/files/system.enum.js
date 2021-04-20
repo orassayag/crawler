@@ -22,6 +22,7 @@ const Plan = enumUtils.createEnum([
 ]);
 
 const ScriptType = enumUtils.createEnum([
+    ['INITIATE', 'initiate'],
     ['BACKUP', 'backup'],
     ['CRAWL', 'crawl'],
     ['DOMAINS', 'domains'],

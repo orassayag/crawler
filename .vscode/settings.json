@@ -1,37 +1,40 @@
 {
     "cSpell.words": [
         "Assayag",
-        "BING",
-        "DOGPILE",
         "ECOSIA",
         "EXALEAD",
-        "Hardcoded",
-        "METACRAWLER",
         "NAVER",
-        "Sausagefingers",
-        "UNCHANGE",
+        "UNSAVE",
         "aeiou",
-        "bezeqint",
-        "dirent",
         "dirents",
         "gmai",
-        "hotmail",
         "jsbeautifyrc",
-        "micromatch",
-        "networkidle",
-        "ondata",
         "orassayag",
-        "preload",
-        "regexs",
-        "shiftflips",
-        "uneeded",
-        "unsave",
         "uuidv",
-        "vovel",
-        "wtfnode",
-        "yandex"
+        "vovel"
+    ],
+    "cSpell.ignorePaths": [
+        "**/.git",
+        ".git/**",
+        "**/.git/**",
+        "**/node_modules",
+        "node_modules/**",
+        "**/node_modules/**",
+        "**/dist",
+        "dist/**",
+        "**/dist/**",
+        "**/sources",
+        "sources/**",
+        "**/sources/**",
+        "**/misc",
+        "misc/**",
+        "**/misc/**",
+        "package-lock.json"
     ],
     "search.exclude": {
+        "**/.git": true,
+        ".git/**": true,
+        "**/.git/**": true,
         "**/.vscode": true,
         "**/dist": true,
         "**/misc": true,
@@ -42,11 +45,18 @@
         "**/misc/**": true,
         "**/misc/documents/**": true,
         "**/node_modules": true,
-        "**/sources": true
+        "node_modules/**": true,
+        "**/node_modules/**": true,
+        "**/sources": true,
+        "sources/**": true,
+        "**/sources/**": true
     },
     "eslint.validate": [
         "javascript"
     ],
+    "http.proxy": "",
+    "http.proxyAuthorization": null,
+    "http.proxyStrictSSL": false,
     "editor.renderWhitespace": "none",
-    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
+    "formatFiles.excludePattern": "**/node_modules,**/node_modules/**,**/.vscode,**/.vscode/**,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
 }

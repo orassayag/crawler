@@ -13,7 +13,7 @@ INDEX:
 1. Open the project in IDE (Current to 03/16/2020 I'm using VSCode).
 2. Open the following file in the src/settings/settings.js file.
 3. Search for the first setting - 'IS_PRODUCTION_MODE' - Make sure it is true.
-4. Next - Time to install the NPM packages. On the terminal run 'npm run preload'.
+4. Next - Time to install the NPM packages. In the terminal run 'npm run preload'.
    It will install automatically all the required NPM packages according to the
    production mode (With NPM puppeteer.js package).
    (Note: Don't worry if you see errors on screen - It does 2 times NPM i,
@@ -27,7 +27,7 @@ INDEX:
 8. After that, go to the 'GOAL_VALUE, and declare in numbers the maximum value
    to reach and when the application will stop to run.
 9. You are ready to start to crawl.
-10. On terminal run 'npm start'. If everything goes well, you will start to see
+10. In the terminal run 'npm start'. If everything goes well, you will start to see
     the console status line appears.
 11. If you see any error - Need to check what's changed. Current to 03/16/2020,
     It works fine.
@@ -260,13 +260,13 @@ backup.script.js:
 This script performs two kinds of backups. The first one is local backup, to the backups
 directory, with the date of today and a running index. The second backup is a secondary backup,
 to a different path. You can control which backup to perform (or both of them) in the settings.js
-file. Can be run by terminal: 'npm run backup'.
+file. Can be run in the terminal: 'npm run backup'.
 
 crawl.script.js:
 This script is the main script of the application, it runs the crawling logic. Fetch links by building
 dynamic links to search engines, and for each link - Crawl the email address and save them to the Mongo
 database and log them to a TXT file.
-Can be run by terminal: 'npm start'.
+Can be run in the terminal: 'npm start'.
 
 delay.script.js:
 This script cannot run by itself, and it's only goal is to delay between first npm i script to a second one.
@@ -277,11 +277,11 @@ errors continue to appear.
 domains.script.js:
 This script activates the domainsCounter.service, which logs to TXT file a list of email addresses, domain part
 and the count of each domain.
-Can be run by terminal: 'npm run domains'.
+Can be run in the terminal: 'npm run domains'.
 
 preload.script.js:
 This
-Can be run by terminal: 'npm run preload'.
+Can be run in the terminal: 'npm run preload'.
 
 =========
 4. TESTS.
@@ -302,7 +302,7 @@ linkCrawl.test.js:
 5. IMPORTANT MESSAGES.
 ======================
 1. Each time you change the logic / update NPM package version, do the following steps:
-a. Perform a backup before any change has been made, by running on terminal 'npm run backup'
+a. Perform a backup before any change has been made, by running in the terminal 'npm run backup'
    or manually to the backups directory.
 b. After the change, check that everything works OK.
 c. Keep the maintenance - Every change you do - Make sure to update in this document if needed.

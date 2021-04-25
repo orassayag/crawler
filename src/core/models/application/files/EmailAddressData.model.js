@@ -1,4 +1,4 @@
-class EmailAddressData {
+class EmailAddressDataModel {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -20,4 +20,4 @@ class EmailAddressData {
 	}
 }
 
-module.exports = EmailAddressData;
+module.exports = EmailAddressDataModel;

@@ -1,6 +1,6 @@
 const settings = require('../../settings/settings');
-const { ApplicationData, CountLimitData, DomainCounter, MongoDatabaseData, PathData } = require('../../core/models/application');
-const { Color, DomainsCounterSourceType, ScriptType } = require('../../core/enums');
+const { ApplicationDataModel, CountLimitDataModel, DomainCounterModel, MongoDatabaseDataModel, PathDataModel } = require('../../core/models/application');
+const { ColorEnum, DomainsCounterSourceTypeEnum, ScriptTypeEnum } = require('../../core/enums');
 const { activeSearchEngineNames } = require('../../configurations');
 const logService = require('./log.service');
 const mongoDatabaseService = require('./mongoDatabase.service');
@@ -10,11 +10,11 @@ class DomainsCounterService {
 
 	constructor() {
 		// ===COUNT & LIMIT=== //
-		this.countLimitData = null;
+		this.countLimitDataModel = null;
 		// ===MONGO DATABASE=== //
-		this.mongoDatabaseData = null;
+		this.mongoDatabaseDataModel = null;
 		// ===PATH=== //
-		this.pathData = null;
+		this.pathDataModel = null;
 		this.isLogs = null;
 		this.sourceType = null;
 		this.sourcePath = null;
@@ -41,9 +41,9 @@ class DomainsCounterService {
 		this.isPartOfCrawLogic = isPartOfCrawLogic;
 		this.sourceType = sourceType;
 		this.sourcePath = sourcePath;
-		this.log('INITIATE THE SERVICES', Color.MAGENTA);
+		this.log('INITIATE THE SERVICES', ColorEnum.MAGENTA);
 		// ===APPLICATION=== //
-		this.applicationData = new ApplicationData({
+		this.applicationDataModel = new ApplicationDataModel({
 			settings: settings,
 			activeSearchEngineNames: activeSearchEngineNames,
 			status: null,
@@ -51,21 +51,21 @@ class DomainsCounterService {
 			restartsCount: 0
 		});
 		// ===COUNT & LIMIT=== //
-		this.countLimitData = new CountLimitData(settings);
+		this.countLimitDataModel = new CountLimitDataModel(settings);
 		// ===MONGO DATABASE=== //
-		this.mongoDatabaseData = new MongoDatabaseData(settings);
+		this.mongoDatabaseDataModel = new MongoDatabaseDataModel(settings);
 		// ===PATH=== //
-		this.pathData = new PathData(settings);
+		this.pathDataModel = new PathDataModel(settings);
 		// Initiate the Mongo database service.
 		await mongoDatabaseService.initiate({
-			countLimitData: this.countLimitData,
-			mongoDatabaseData: this.mongoDatabaseData
+			countLimitDataModel: this.countLimitDataModel,
+			mongoDatabaseDataModel: this.mongoDatabaseDataModel
 		});
 	}
 
 	validation() {
 		if (!validationUtils.isValidEnum({
-			enum: DomainsCounterSourceType,
+			enum: DomainsCounterSourceTypeEnum,
 			value: this.sourceType
 		})) {
 			throw new Error('Invalid sourceType selected (1000005)');
@@ -88,7 +88,7 @@ class DomainsCounterService {
 	async getSourceContent() {
 		let filePaths = [];
 		switch (this.sourceType) {
-			case DomainsCounterSourceType.FILE: {
+			case DomainsCounterSourceTypeEnum.FILE: {
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000006)');
 				}
@@ -97,7 +97,7 @@ class DomainsCounterService {
 				}
 				break;
 			}
-			case DomainsCounterSourceType.DIRECTORY: {
+			case DomainsCounterSourceTypeEnum.DIRECTORY: {
 				if (!this.sourcePath) {
 					throw new Error('No sourcePath was provided (1000007)');
 				}
@@ -109,7 +109,7 @@ class DomainsCounterService {
 				}
 				break;
 			}
-			case DomainsCounterSourceType.DATABASE: {
+			case DomainsCounterSourceTypeEnum.DATABASE: {
 				this.emailAddressesList = await mongoDatabaseService.getAllEmailAddresses();
 				if (validationUtils.isExists(this.emailAddressesList)) {
 					this.emailAddressesList = this.emailAddressesList.map(e => e.emailAddress);
@@ -121,8 +121,8 @@ class DomainsCounterService {
 
 	getEmailAddresses() {
 		switch (this.sourceType) {
-			case DomainsCounterSourceType.FILE:
-			case DomainsCounterSourceType.DIRECTORY: {
+			case DomainsCounterSourceTypeEnum.FILE:
+			case DomainsCounterSourceTypeEnum.DIRECTORY: {
 				if (!this.isPartOfCrawLogic && !this.sourceContent) {
 					throw new Error('Empty sourceContent was provided (1000008)');
 				}
@@ -150,12 +150,12 @@ class DomainsCounterService {
 			this.domainsList[domainCounterIndex].counter++;
 		}
 		else {
-			this.domainsList.push(new DomainCounter(domainPart));
+			this.domainsList.push(new DomainCounterModel(domainPart));
 		}
 	}
 
 	countDomains() {
-		this.log('COUNT THE DOMAINS', Color.MAGENTA);
+		this.log('COUNT THE DOMAINS', ColorEnum.MAGENTA);
 		if (!validationUtils.isExists(this.emailAddressesList)) {
 			return;
 		}
@@ -166,7 +166,7 @@ class DomainsCounterService {
 
 	sortDomains() {
 		// Sort by count and then by alphabetic.
-		this.log('SORT THE DOMAINS', Color.MAGENTA);
+		this.log('SORT THE DOMAINS', ColorEnum.MAGENTA);
 		return new Promise((resolve) => {
 			this.domainsList.sort((ob1, ob2) => {
 				if (ob1.counter > ob2.counter) {
@@ -196,12 +196,12 @@ class DomainsCounterService {
 			domainsCounterData += textUtils.addBreakLine(logService.createDomainCounterTemplate(this.domainsList[i]));
 		}
 		await logService.logScript({
-			applicationData: this.applicationData,
-			pathData: this.pathData,
+			applicationDataModel: this.applicationDataModel,
+			pathDataModel: this.pathDataModel,
 			scriptData: domainsCounterData,
-			scriptType: ScriptType.DOMAINS
+			scriptType: ScriptTypeEnum.DOMAINS
 		});
-		this.log('ALL DONE', Color.GREEN);
+		this.log('ALL DONE', ColorEnum.GREEN);
 	}
 
 	log(message, color) {

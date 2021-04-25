@@ -1,6 +1,6 @@
-const BackupDirectory = require('./BackupDirectory');
+const BackupDirectoryModel = require('./BackupDirectory.model');
 
-class BackupData {
+class BackupDataModel {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -13,8 +13,8 @@ class BackupData {
 		this.sourceFullPath = APPLICATION_PATH;
 		this.targetFullPath = null;
 		this.targetBackupName = null;
-		this.backupDirectory = new BackupDirectory(settings);
+		this.backupDirectoryModel = new BackupDirectoryModel(settings);
 	}
 }
 
-module.exports = BackupData;
+module.exports = BackupDataModel;

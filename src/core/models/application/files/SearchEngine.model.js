@@ -1,4 +1,4 @@
-class SearchEngine {
+class SearchEngineModel {
 
     constructor(data) {
         const { name, baseURL, startIndex, advanceBy, templatesList } = data;
@@ -11,4 +11,4 @@ class SearchEngine {
     }
 }
 
-module.exports = SearchEngine;
+module.exports = SearchEngineModel;

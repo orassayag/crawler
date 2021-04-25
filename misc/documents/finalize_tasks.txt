@@ -13,6 +13,7 @@ module.exports
 }
 export default
 -Change all '.length > 0' to 'isExists'.
+-Change all (where it's possible) from 'console.log' to 'logUtils.log'.
 -Remove duplicate import/require (convert to index.js if possible).
 -Sort alphabetically all the imports/requires by https://alphabetizer.flap.tv/.
 -Sort alphabetically all the imports/requires: external packages, settings, (containers, components, store, assert) data, models, enums, services, utils.

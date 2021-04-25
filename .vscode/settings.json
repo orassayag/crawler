@@ -58,5 +58,5 @@
     "http.proxyAuthorization": null,
     "http.proxyStrictSSL": false,
     "editor.renderWhitespace": "none",
-    "formatFiles.excludePattern": "**/node_modules,**/node_modules/**,**/.vscode,**/.vscode/**,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
+    "formatFiles.excludePattern": "**.git/,**/.git/**,**/node_modules,**/node_modules/**,**/.vscode,**/.vscode/**,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
 }

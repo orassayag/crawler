@@ -1,7 +1,7 @@
-class EmailAddressStatus {
+class EmailAddressStatusModel {
 
-    constructor(validationResult) {
-        this.validationResult = validationResult;
+    constructor(validationResultModel) {
+        this.validationResultModel = validationResultModel;
         this.logStatus = null;
         this.isSave = false;
         this.isExists = false;
@@ -10,8 +10,8 @@ class EmailAddressStatus {
         this.isInvalidFix = false;
         this.isFilter = false;
         this.isUnsave = false;
-        this.isGibberish = validationResult.isGibberish;
+        this.isGibberish = validationResultModel.isGibberish;
     }
 }
 
-module.exports = EmailAddressStatus;
+module.exports = EmailAddressStatusModel;

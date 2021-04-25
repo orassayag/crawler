@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const { CommonEmailAddressDomainEnd, EmailAddressDomainEnd } = require('../../core/models/application');
+const { CommonEmailAddressDomainEndModel, EmailAddressDomainEndModel } = require('../../core/models/application');
 const { emailAddressUtils } = require('../../utils');
 
 const extraCultureEndsList = [
@@ -17,8 +17,8 @@ const extraCultureEndsList = [
 
 let emailAddressDomainEndsList = [
     // Group: co
-    new EmailAddressDomainEnd({ domainEnd: 'co', domainEndGroupName: 'co', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({ domainEnd: 'co', domainEndGroupName: 'co', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({
         domainEnd: 'co.il',
         domainEndGroupName: 'co',
         isSingleWord: false,
@@ -60,7 +60,7 @@ let emailAddressDomainEndsList = [
             'com.il'
         ]
     }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({
         domainEnd: 'com',
         domainEndGroupName: 'co',
         isSingleWord: true,
@@ -89,7 +89,7 @@ let emailAddressDomainEndsList = [
     }),
 
     // Group: net
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({
         domainEnd: 'net',
         domainEndGroupName: 'net',
         isSingleWord: false,
@@ -99,7 +99,7 @@ let emailAddressDomainEndsList = [
             '.njet'
         ]
     }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({
         domainEnd: 'net.il',
         domainEndGroupName: 'net',
         isSingleWord: false,
@@ -109,11 +109,11 @@ let emailAddressDomainEndsList = [
             '.net.l'
         ]
     }),
-    new EmailAddressDomainEnd({ domainEnd: 'net.net', domainEndGroupName: 'net', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'net.net', domainEndGroupName: 'net', isSingleWord: false, typosList: [] }),
 
     // Group: gov
-    new EmailAddressDomainEnd({ domainEnd: 'gov', domainEndGroupName: 'gov', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({ domainEnd: 'gov', domainEndGroupName: 'gov', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({
         domainEnd: 'gov.il',
         domainEndGroupName: 'gov',
         isSingleWord: false,
@@ -127,11 +127,11 @@ let emailAddressDomainEndsList = [
             '.gov_.il'
         ]
     }),
-    new EmailAddressDomainEnd({ domainEnd: 'gov.uk', domainEndGroupName: 'gov', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'gov.uk', domainEndGroupName: 'gov', isSingleWord: false, typosList: [] }),
 
     // Group: org
-    new EmailAddressDomainEnd({ domainEnd: 'org', domainEndGroupName: 'org', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({ domainEnd: 'org', domainEndGroupName: 'org', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({
         domainEnd: 'org.il',
         domainEndGroupName: 'org',
         isSingleWord: false,
@@ -152,11 +152,11 @@ let emailAddressDomainEndsList = [
             '.il.org'
         ]
     }),
-    new EmailAddressDomainEnd({ domainEnd: 'org.ps', domainEndGroupName: 'org', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'org.ps', domainEndGroupName: 'org', isSingleWord: false, typosList: [] }),
 
     // Group: muni
-    new EmailAddressDomainEnd({ domainEnd: 'muni', domainEndGroupName: 'muni', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({ domainEnd: 'muni', domainEndGroupName: 'muni', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({
         domainEnd: 'muni.il',
         domainEndGroupName: 'muni',
         isSingleWord: false,
@@ -170,12 +170,12 @@ let emailAddressDomainEndsList = [
     }),
 
     // Group: edu
-    new EmailAddressDomainEnd({ domainEnd: 'edu', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'edu.il', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'edu.ps', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'edu', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'edu.il', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'edu.ps', domainEndGroupName: 'edu', isSingleWord: false, typosList: [] }),
 
     // Singles.
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({
         domainEnd: 'ac.il',
         domainEndGroupName: 'ac.il',
         isSingleWord: false,
@@ -192,22 +192,22 @@ let emailAddressDomainEndsList = [
             '.ax.cil'
         ]
     }),
-    new EmailAddressDomainEnd({ domainEnd: 'ai', domainEndGroupName: 'ai', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'at', domainEndGroupName: 'at', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'biz', domainEndGroupName: 'biz', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'br', domainEndGroupName: 'br', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'ch', domainEndGroupName: 'ch', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'cz', domainEndGroupName: 'cz', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'de', domainEndGroupName: 'de', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'email', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'es', domainEndGroupName: 'es', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'ey.com', domainEndGroupName: 'ey.com', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'fr', domainEndGroupName: 'fr', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'fund', domainEndGroupName: 'fund', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'hr', domainEndGroupName: 'hr', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'info', domainEndGroupName: 'info', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'io', domainEndGroupName: 'io', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({
+    new EmailAddressDomainEndModel({ domainEnd: 'ai', domainEndGroupName: 'ai', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'at', domainEndGroupName: 'at', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'biz', domainEndGroupName: 'biz', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'br', domainEndGroupName: 'br', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'ch', domainEndGroupName: 'ch', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'cz', domainEndGroupName: 'cz', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'de', domainEndGroupName: 'de', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'email', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'es', domainEndGroupName: 'es', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'ey.com', domainEndGroupName: 'ey.com', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'fr', domainEndGroupName: 'fr', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'fund', domainEndGroupName: 'fund', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'hr', domainEndGroupName: 'hr', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'info', domainEndGroupName: 'info', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'io', domainEndGroupName: 'io', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({
         domainEnd: 'il',
         domainEndGroupName: 'il',
         isSingleWord: true,
@@ -217,22 +217,22 @@ let emailAddressDomainEndsList = [
             '.oil'
         ]
     }),
-    new EmailAddressDomainEnd({ domainEnd: 'it', domainEndGroupName: 'it', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'ly', domainEndGroupName: 'ly', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'mail', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'mail.it', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'me', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'my', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'mil', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'ps', domainEndGroupName: 'ps', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'ru', domainEndGroupName: 'ru', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'uk', domainEndGroupName: 'uk', isSingleWord: true, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'us', domainEndGroupName: 'us', isSingleWord: false, typosList: [] }),
-    new EmailAddressDomainEnd({ domainEnd: 'usmc.mil', domainEndGroupName: 'us', isSingleWord: false, typosList: [] })
+    new EmailAddressDomainEndModel({ domainEnd: 'it', domainEndGroupName: 'it', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'ly', domainEndGroupName: 'ly', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'mail', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'mail.it', domainEndGroupName: 'ai', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'me', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'my', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'mil', domainEndGroupName: 'm', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'ps', domainEndGroupName: 'ps', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'ru', domainEndGroupName: 'ru', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'uk', domainEndGroupName: 'uk', isSingleWord: true, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'us', domainEndGroupName: 'us', isSingleWord: false, typosList: [] }),
+    new EmailAddressDomainEndModel({ domainEnd: 'usmc.mil', domainEndGroupName: 'us', isSingleWord: false, typosList: [] })
 ];
 ['com', 'co'].map(domainEnd =>
     emailAddressDomainEndsList = emailAddressDomainEndsList.concat(extraCultureEndsList.map(cultureKey => {
-        return new EmailAddressDomainEnd({ domainEnd: `${domainEnd}.${cultureKey}`, domainEndGroupName: 'co', isSingleWord: false, typosList: [] });
+        return new EmailAddressDomainEndModel({ domainEnd: `${domainEnd}.${cultureKey}`, domainEndGroupName: 'co', isSingleWord: false, typosList: [] });
     })));
 
 const domainEndsList = emailAddressDomainEndsList.map(d => d.domainEnd);
@@ -243,10 +243,10 @@ const validDomainEndsList = emailAddressUtils.getDomainEndsGroups(emailAddressDo
 const validOneWordDomainEndsList = emailAddressDomainEndsList.filter(domain => domain.isSingleWord).map(domain => domain.domainEnd);
 const emailAddressEndFixTypos = emailAddressUtils.getDomainsFixTyposList(emailAddressDomainEndsList);
 const commonDomainEndsList = [
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.com', isAllowDotAfter: true, excludeWords: ['community', 'company'] }),
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.co.il', isAllowDotAfter: false, excludeWords: null }),
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.org.il', isAllowDotAfter: false, excludeWords: null }),
-    new CommonEmailAddressDomainEnd({ commonDomainEnd: '.ac.il', isAllowDotAfter: false, excludeWords: null })
+    new CommonEmailAddressDomainEndModel({ commonDomainEnd: '.com', isAllowDotAfter: true, excludeWords: ['community', 'company'] }),
+    new CommonEmailAddressDomainEndModel({ commonDomainEnd: '.co.il', isAllowDotAfter: false, excludeWords: null }),
+    new CommonEmailAddressDomainEndModel({ commonDomainEnd: '.org.il', isAllowDotAfter: false, excludeWords: null }),
+    new CommonEmailAddressDomainEndModel({ commonDomainEnd: '.ac.il', isAllowDotAfter: false, excludeWords: null })
 ];
 const endsWithDotIgnore = emailAddressDomainEndsList.filter(d => d.typosList.length).map(t => t.typosList.find(e => e.endsWith('.'))).filter(t => t);
 // Don't delete this array or change it to const, will auto filled dynamically.

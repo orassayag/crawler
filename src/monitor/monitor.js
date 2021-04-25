@@ -1,7 +1,7 @@
 require('../services/files/initiate.service').initiate('crawl');
 const forever = require('forever-monitor');
 const settings = require('../settings/settings');
-const { Color, Status } = require('../core/enums');
+const { ColorEnum, StatusEnum } = require('../core/enums');
 const { confirmationService, logService } = require('../services');
 const { logUtils, pathUtils, systemUtils, timeUtils } = require('../utils');
 
@@ -15,8 +15,8 @@ class NodeMonitor {
     async confirm() {
         if (!await confirmationService.confirm(settings)) {
             logUtils.logColorStatus({
-                status: systemUtils.getExitReason(Status.ABORT_BY_THE_USER),
-                color: Color.RED
+                status: systemUtils.getExitReason(StatusEnum.ABORT_BY_THE_USER),
+                color: ColorEnum.RED
             });
             return false;
         }

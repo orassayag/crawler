@@ -1,6 +1,6 @@
 const settings = require('../settings/settings');
-const { ApplicationData, CountLimitData, LogData, MongoDatabaseData, PathData, SearchData } = require('../core/models/application');
-const { Color, DomainsCounterSourceType, GoalType, Plan, Status } = require('../core/enums');
+const { ApplicationDataModel, CountLimitDataModel, LogDataModel, MongoDatabaseDataModel, PathDataModel, SearchDataModel } = require('../core/models/application');
+const { ColorEnum, DomainsCounterSourceTypeEnum, GoalTypeEnum, PlanEnum, StatusEnum } = require('../core/enums');
 const { activeSearchEngineNames } = require('../configurations');
 const puppeteerService = require('../services/files/puppeteer.service');
 const { crawlEmailAddressService, crawlLinkService, domainsCounterService,
@@ -12,23 +12,23 @@ class CrawlLogic {
 
     constructor() {
         // ===LOG=== //
-        this.logData = null;
+        this.logDataModel = null;
         // ===SEARCH=== //
-        this.searchData = null;
+        this.searchDataModel = null;
         // ===COUNT & LIMIT=== //
-        this.countLimitData = null;
+        this.countLimitDataModel = null;
         // ===PATH=== //
-        this.pathData = null;
+        this.pathDataModel = null;
         // ===MONGO DATABASE=== //
-        this.mongoDatabaseData = null;
+        this.mongoDatabaseDataModel = null;
         // ===APPLICATION=== //
-        this.applicationData = null;
+        this.applicationDataModel = null;
         // ===SEARCH PROCESS=== //
-        this.searchProcessData = null;
+        this.searchProcessDataModel = null;
         // ===LINKS LIST (SESSION TEST)=== //
         this.linksList = null;
         this.isSessionTestPlan = false;
-        this.planName = Plan.STANDARD;
+        this.planName = PlanEnum.STANDARD;
         // ===MONITOR=== //
         this.lastUpdateTime = timeUtils.getCurrentDate();
     }
@@ -50,7 +50,7 @@ class CrawlLogic {
         if (validationUtils.isExists(linksList)) {
             this.linksList = linksList;
             this.isSessionTestPlan = true;
-            this.planName = Plan.SESSION_TEST;
+            this.planName = PlanEnum.SESSION_TEST;
         }
     }
 
@@ -58,7 +58,7 @@ class CrawlLogic {
         // Initiate the settings.
         this.initiateSettings();
         // Initiate all the services.
-        this.updateStatus('INITIATE THE SERVICES', Status.INITIATE);
+        this.updateStatus('INITIATE THE SERVICES', StatusEnum.INITIATE);
         // Initiate the Mongo database service.
         await this.initiateMongoDatabaseService();
         // Initiate the sources service.
@@ -74,142 +74,142 @@ class CrawlLogic {
     }
 
     initiateSettings() {
-        this.updateStatus('INITIATE THE SETTINGS', Status.SETTINGS);
+        this.updateStatus('INITIATE THE SETTINGS', StatusEnum.SETTINGS);
         // ===APPLICATION=== //
-        this.applicationData = new ApplicationData({
+        this.applicationDataModel = new ApplicationDataModel({
             settings: settings,
             activeSearchEngineNames: activeSearchEngineNames,
-            status: Status.INITIATE,
+            status: StatusEnum.INITIATE,
             plan: this.planName,
             restartsCount: process.argv[2]
         });
         // ===LOG=== //
-        this.logData = new LogData(settings);
+        this.logDataModel = new LogDataModel(settings);
         // ===SEARCH=== //
-        this.searchData = new SearchData(settings);
+        this.searchDataModel = new SearchDataModel(settings);
         // ===COUNT & LIMIT=== //
-        this.countLimitData = new CountLimitData(settings);
+        this.countLimitDataModel = new CountLimitDataModel(settings);
         // ===PATH=== //
-        this.pathData = new PathData(settings);
+        this.pathDataModel = new PathDataModel(settings);
         // ===MONGO DATABASE=== //
-        this.mongoDatabaseData = new MongoDatabaseData(settings);
+        this.mongoDatabaseDataModel = new MongoDatabaseDataModel(settings);
         // ===SEARCH PROCESS=== //
-        this.searchProcessData = null;
+        this.searchProcessDataModel = null;
         // ===SESSION TEST=== //
         if (this.isSessionTestPlan) {
-            this.countLimitData.maximumSearchProcessesCount = 2;
-            this.countLimitData.maximumSearchEnginePagesPerProcessCount = 1;
+            this.countLimitDataModel.maximumSearchProcessesCount = 2;
+            this.countLimitDataModel.maximumSearchEnginePagesPerProcessCount = 1;
         }
     }
 
     async initiateMongoDatabaseService() {
         // Initiate the Mongo database service.
         await mongoDatabaseService.initiate({
-            countLimitData: this.countLimitData,
-            mongoDatabaseData: this.mongoDatabaseData
+            countLimitDataModel: this.countLimitDataModel,
+            mongoDatabaseDataModel: this.mongoDatabaseDataModel
         });
         // Load all the previous existing email addresses from the Mongo database.
-        this.applicationData.crawlEmailAddressData.databaseCount = await mongoDatabaseService.getEmailAddressesCount();
+        this.applicationDataModel.crawlEmailAddressDataModel.databaseCount = await mongoDatabaseService.getEmailAddressesCount();
     }
 
     async initiateSourceService() {
         // Initiate the source service.
         await sourceService.initiate({
-            applicationData: this.applicationData,
-            pathData: this.pathData,
-            countLimitData: this.countLimitData
+            applicationDataModel: this.applicationDataModel,
+            pathDataModel: this.pathDataModel,
+            countLimitDataModel: this.countLimitDataModel
         });
     }
 
     initiateSearchService() {
         // Initiate the search service.
         searchService.initiate({
-            searchData: this.searchData,
-            countLimitData: this.countLimitData
+            searchDataModel: this.searchDataModel,
+            countLimitDataModel: this.countLimitDataModel
         });
     }
 
     async initiateCrawlLinkService() {
         // Initiate the crawl link service.
         await crawlLinkService.initiate({
-            applicationData: this.applicationData,
-            countLimitData: this.countLimitData
+            applicationDataModel: this.applicationDataModel,
+            countLimitDataModel: this.countLimitDataModel
         });
     }
 
     initiateCrawlEmailAddressService() {
         // Initiate the crawl email address service.
         crawlEmailAddressService.initiate({
-            applicationData: this.applicationData,
-            countLimitData: this.countLimitData
+            applicationDataModel: this.applicationDataModel,
+            countLimitDataModel: this.countLimitDataModel
         });
     }
 
     async initiateLogService() {
         // Initiate the log service.
         await logService.initiate({
-            logData: this.logData,
-            applicationData: this.applicationData,
-            mongoDatabaseData: this.mongoDatabaseData,
-            countLimitData: this.countLimitData,
-            pathData: this.pathData
+            logDataModel: this.logDataModel,
+            applicationDataModel: this.applicationDataModel,
+            mongoDatabaseDataModel: this.mongoDatabaseDataModel,
+            countLimitDataModel: this.countLimitDataModel,
+            pathDataModel: this.pathDataModel
         });
     }
 
     validateActiveMethods() {
-        const isNoActiveMethods = !this.applicationData.isLinksMethodActive && !this.applicationData.isCrawlMethodActive;
+        const isNoActiveMethods = !this.applicationDataModel.isLinksMethodActive && !this.applicationDataModel.isCrawlMethodActive;
         if (isNoActiveMethods) {
-            systemUtils.exit(Status.NO_ACTIVE_METHODS, Color.RED);
+            systemUtils.exit(StatusEnum.NO_ACTIVE_METHODS, ColorEnum.RED);
         }
-        const isNoLinksNoCrawl = !this.applicationData.isLinksMethodActive && !this.applicationData.isCrawlMethodActive;
-        const isNoLinks = !this.applicationData.isLinksMethodActive;
+        const isNoLinksNoCrawl = !this.applicationDataModel.isLinksMethodActive && !this.applicationDataModel.isCrawlMethodActive;
+        const isNoLinks = !this.applicationDataModel.isLinksMethodActive;
         if (isNoLinksNoCrawl || isNoLinks) {
-            systemUtils.exit(Status.LINKS_METHOD_IS_NOT_ACTIVE, Color.RED);
+            systemUtils.exit(StatusEnum.LINKS_METHOD_IS_NOT_ACTIVE, ColorEnum.RED);
         }
     }
 
     startCrawl() {
         const crawlInterval = setInterval(async () => {
             // Start the process for the first interval round.
-            if (!this.applicationData.startDateTime) {
-                this.applicationData.startDateTime = timeUtils.getCurrentDate();
+            if (!this.applicationDataModel.startDateTime) {
+                this.applicationDataModel.startDateTime = timeUtils.getCurrentDate();
                 await this.startProcesses();
             }
             // Update the current time of the process.
             const { time, minutes } = timeUtils.getDifferenceTimeBetweenDates({
-                startDateTime: this.applicationData.startDateTime,
+                startDateTime: this.applicationDataModel.startDateTime,
                 endDateTime: timeUtils.getCurrentDate()
             });
-            this.applicationData.time = time;
-            this.applicationData.minutesCount = minutes;
-            if (this.applicationData.isStatusMode) {
+            this.applicationDataModel.time = time;
+            this.applicationDataModel.minutesCount = minutes;
+            if (this.applicationDataModel.isStatusMode) {
                 // Log the status process each interval round.
-                logService.logStatus(this.applicationData);
+                logService.logStatus(this.applicationDataModel);
             }
             else {
                 // Log the status console each interval round.
                 logService.logProgress({
-                    applicationData: this.applicationData,
-                    searchProcessData: this.searchProcessData
+                    applicationDataModel: this.applicationDataModel,
+                    searchProcessDataModel: this.searchProcessDataModel
                 });
             }
             // Check if it needs to exit the interval.
             await this.checkStatus(crawlInterval);
-        }, this.countLimitData.millisecondsIntervalCount);
+        }, this.countLimitDataModel.millisecondsIntervalCount);
     }
 
     async pause(milliseconds) {
-        this.applicationData.status = Status.PAUSE;
+        this.applicationDataModel.status = StatusEnum.PAUSE;
         await globalUtils.sleep(milliseconds);
     }
 
     async startProcesses() {
-        for (let i = 0; i < this.countLimitData.maximumSearchProcessesCount; i++) {
-            this.searchProcessData = null;
-            this.applicationData.processIndex = i;
+        for (let i = 0; i < this.countLimitDataModel.maximumSearchProcessesCount; i++) {
+            this.searchProcessDataModel = null;
+            this.applicationDataModel.processIndex = i;
             await this.runProcess();
-            await fileUtils.emptyDirectory(this.pathData.downloadsPath);
-            await this.pause(this.countLimitData.millisecondsDelayBetweenProcessCount);
+            await fileUtils.emptyDirectory(this.pathDataModel.downloadsPath);
+            await this.pause(this.countLimitDataModel.millisecondsDelayBetweenProcessCount);
         }
     }
 
@@ -218,8 +218,8 @@ class CrawlLogic {
         let searchEngineResults = null;
         try {
             searchEngineResults = await crawlLinkService.getSearchEnginePageLinks({
-                searchProcessData: this.searchProcessData,
-                totalCrawlCount: this.applicationData.crawlLinkData.crawlCount
+                searchProcessDataModel: this.searchProcessDataModel,
+                totalCrawlCount: this.applicationDataModel.crawlLinkDataModel.crawlCount
             });
         }
         catch (error) {
@@ -242,15 +242,15 @@ class CrawlLogic {
     }
 
     async runProcess() {
-        for (let i = 0; i < this.countLimitData.maximumSearchEnginePagesPerProcessCount; i++) {
-            if (!this.applicationData.isLinksMethodActive) {
+        for (let i = 0; i < this.countLimitDataModel.maximumSearchEnginePagesPerProcessCount; i++) {
+            if (!this.applicationDataModel.isLinksMethodActive) {
                 break;
             }
-            this.searchProcessData = searchService.getSearchProcessData(this.searchProcessData, i);
+            this.searchProcessDataModel = searchService.getSearchProcessData(this.searchProcessDataModel, i);
             // Update the crawl data.
-            this.applicationData.pageIndex = i;
-            this.applicationData.pageLinksCount = 0;
-            this.applicationData.status = Status.FETCH;
+            this.applicationDataModel.pageIndex = i;
+            this.applicationDataModel.pageLinksCount = 0;
+            this.applicationDataModel.status = StatusEnum.FETCH;
             // Get all valid links from the search engine source page.
             const { isError, searchEngineResults } = this.isSessionTestPlan ? this.getSessionTestSearchEngineResults() : await this.getSearchEngineResults();
             if (isError) {
@@ -258,29 +258,29 @@ class CrawlLogic {
             }
             // Update the crawl data.
             const crawlLinksList = searchEngineResults.crawlLinksList;
-            this.applicationData.crawlLinkData.updateLinksData(searchEngineResults);
-            this.applicationData.pageLinksCount = crawlLinksList.length;
-            if (this.applicationData.pageLinksCount > 0) {
+            this.applicationDataModel.crawlLinkDataModel.updateLinksData(searchEngineResults);
+            this.applicationDataModel.pageLinksCount = crawlLinksList.length;
+            if (this.applicationDataModel.pageLinksCount > 0) {
                 await this.crawlLinks(crawlLinksList);
             }
             else {
-                this.applicationData.pageLinksIndex = -1;
+                this.applicationDataModel.pageLinksIndex = -1;
             }
-            await this.pause(this.countLimitData.millisecondsDelayBetweenSearchPagesCount);
+            await this.pause(this.countLimitDataModel.millisecondsDelayBetweenSearchPagesCount);
         }
     }
 
     async crawlLinks(crawlLinksList) {
         // Loop on each page and crawl all email addresses from the page's source.
         for (let i = 0, length = crawlLinksList.length; i < length; i++) {
-            this.searchProcessData.pageLink = null;
+            this.searchProcessDataModel.pageLink = null;
             try {
                 await this.scanEmailAddresses(i, crawlLinksList[i]);
             }
             catch (error) {
                 continue;
             }
-            await this.pause(this.countLimitData.millisecondsDelayBetweenCrawlPagesCount);
+            await this.pause(this.countLimitDataModel.millisecondsDelayBetweenCrawlPagesCount);
         }
     }
 
@@ -290,48 +290,48 @@ class CrawlLogic {
             return;
         }
         const { link, userAgent } = data;
-        this.applicationData.pageLinksIndex = i;
-        this.applicationData.status = Status.CRAWL;
-        this.searchProcessData.pageLink = link;
-        this.searchProcessData.pageUserAgent = userAgent;
-        if (!this.applicationData.isCrawlMethodActive) {
+        this.applicationDataModel.pageLinksIndex = i;
+        this.applicationDataModel.status = StatusEnum.CRAWL;
+        this.searchProcessDataModel.pageLink = link;
+        this.searchProcessDataModel.pageUserAgent = userAgent;
+        if (!this.applicationDataModel.isCrawlMethodActive) {
             return;
         }
         // Handle all the email addresses from the page's source.
-        const emailAddressesResult = await crawlEmailAddressService.getEmailAddressesFromPage({
+        const emailAddressesResultModel = await crawlEmailAddressService.getEmailAddressesFromPage({
             linkData: data,
-            totalSaveCount: this.applicationData.crawlEmailAddressData.saveCount
+            totalSaveCount: this.applicationDataModel.crawlEmailAddressDataModel.saveCount
         });
-        if (!emailAddressesResult) {
+        if (!emailAddressesResultModel) {
             throw new Error('page timeout');
         }
-        this.applicationData.crawlEmailAddressData.updateEmailAddressData(emailAddressesResult, this.searchProcessData.searchEngine.name);
-        this.applicationData.trendingSaveList = emailAddressesResult.trendingSaveList;
-        this.applicationData.crawlLinkData.updateErrorLink(emailAddressesResult.isValidPage);
+        this.applicationDataModel.crawlEmailAddressDataModel.updateEmailAddressData(emailAddressesResultModel, this.searchProcessDataModel.searchEngineModel.name);
+        this.applicationDataModel.trendingSaveList = emailAddressesResultModel.trendingSaveList;
+        this.applicationDataModel.crawlLinkDataModel.updateErrorLink(emailAddressesResultModel.isValidPage);
         // Update monitor data.
-        if (emailAddressesResult.saveCount || emailAddressesResult.totalCount) {
+        if (emailAddressesResultModel.saveCount || emailAddressesResultModel.totalCount) {
             this.lastUpdateTime = timeUtils.getCurrentDate();
         }
     }
 
     checkGoalComplete() {
         // Update the progress data.
-        switch (this.applicationData.goalType) {
-            case GoalType.EMAIL_ADDRESSES: {
-                this.applicationData.progressValue = this.applicationData.crawlEmailAddressData.saveCount;
+        switch (this.applicationDataModel.goalType) {
+            case GoalTypeEnum.EMAIL_ADDRESSES: {
+                this.applicationDataModel.progressValue = this.applicationDataModel.crawlEmailAddressDataModel.saveCount;
                 break;
             }
-            case GoalType.MINUTES: {
-                this.applicationData.progressValue = this.applicationData.minutesCount;
+            case GoalTypeEnum.MINUTES: {
+                this.applicationDataModel.progressValue = this.applicationDataModel.minutesCount;
                 break;
             }
-            case GoalType.LINKS: {
-                this.applicationData.progressValue = this.applicationData.crawlLinkData.crawlCount;
+            case GoalTypeEnum.LINKS: {
+                this.applicationDataModel.progressValue = this.applicationDataModel.crawlLinkDataModel.crawlCount;
                 break;
             }
         }
         // Check if complete the goal value - Exit the interval.
-        return this.applicationData.goalValue <= this.applicationData.progressValue;
+        return this.applicationDataModel.goalValue <= this.applicationDataModel.progressValue;
     }
 
     checkMonitor() {
@@ -341,7 +341,7 @@ class CrawlLogic {
             startDateTime: timeUtils.getCurrentDate(),
             endDateTime: this.lastUpdateTime
         });
-        return this.applicationData.maximumMinutesWithoutUpdate <= diffLastUpdateResult.minutes;
+        return this.applicationDataModel.maximumMinutesWithoutUpdate <= diffLastUpdateResult.minutes;
     }
 
     async checkStatus(crawlInterval) {
@@ -349,8 +349,8 @@ class CrawlLogic {
         if (this.checkMonitor()) {
             await this.endProcesses({
                 crawlInterval: crawlInterval,
-                exitReason: Status.APPLICATION_STUCK,
-                color: Color.YELLOW,
+                exitReason: StatusEnum.APPLICATION_STUCK,
+                color: ColorEnum.YELLOW,
                 code: 1
             });
         }
@@ -358,24 +358,24 @@ class CrawlLogic {
         if (this.checkGoalComplete()) {
             await this.endProcesses({
                 crawlInterval: crawlInterval,
-                exitReason: Status.GOAL_COMPLETE,
-                color: Color.GREEN,
+                exitReason: StatusEnum.GOAL_COMPLETE,
+                color: ColorEnum.GREEN,
                 code: 66
             });
         }
         // If it's the last process, last page, and last link - Exit the interval.
-        if (this.applicationData.processIndex === (this.countLimitData.maximumSearchProcessesCount - 1) &&
-            this.applicationData.pageIndex === (this.countLimitData.maximumSearchEnginePagesPerProcessCount - 1) &&
-            this.applicationData.pageLinksIndex === (this.applicationData.pageLinksCount - 1)) {
-            await this.exitError(crawlInterval, Status.PROCESSES_LIMIT, 66);
+        if (this.applicationDataModel.processIndex === (this.countLimitDataModel.maximumSearchProcessesCount - 1) &&
+            this.applicationDataModel.pageIndex === (this.countLimitDataModel.maximumSearchEnginePagesPerProcessCount - 1) &&
+            this.applicationDataModel.pageLinksIndex === (this.applicationDataModel.pageLinksCount - 1)) {
+            await this.exitError(crawlInterval, StatusEnum.PROCESSES_LIMIT, 66);
         }
         // Check if error pages in a row exceeded the limit.
-        if (puppeteerService.errorInARowCounter >= this.countLimitData.maximumErrorPageInARowCount) {
-            await this.exitError(crawlInterval, Status.ERROR_PAGE_IN_A_ROW, 1);
+        if (puppeteerService.errorInARowCounter >= this.countLimitDataModel.maximumErrorPageInARowCount) {
+            await this.exitError(crawlInterval, StatusEnum.ERROR_PAGE_IN_A_ROW, 1);
         }
         // Check if unsave email addresses exceeded the limit.
-        if (this.applicationData.crawlEmailAddressData.unsaveCount >= this.countLimitData.maximumUnsaveEmailAddressesCount) {
-            await this.exitError(crawlInterval, Status.ERROR_UNSAVE_EMAIL_ADDRESSES, 66);
+        if (this.applicationDataModel.crawlEmailAddressDataModel.unsaveCount >= this.countLimitDataModel.maximumUnsaveEmailAddressesCount) {
+            await this.exitError(crawlInterval, StatusEnum.ERROR_UNSAVE_EMAIL_ADDRESSES, 66);
         }
     }
 
@@ -383,26 +383,26 @@ class CrawlLogic {
         await this.endProcesses({
             crawlInterval: crawlInterval,
             exitReason: error,
-            color: Color.RED,
+            color: ColorEnum.RED,
             code: code
         });
     }
 
     async validateInternetConnection() {
-        if (!this.applicationData.isProductionMode) {
+        if (!this.applicationDataModel.isProductionMode) {
             return;
         }
-        this.updateStatus('VALIDATE INTERNET CONNECTION', Status.VALIDATE);
-        const isConnected = await crawlLinkService.validateSearchEngineActive(this.applicationData.validationConnectionLink);
+        this.updateStatus('VALIDATE INTERNET CONNECTION', StatusEnum.VALIDATE);
+        const isConnected = await crawlLinkService.validateSearchEngineActive(this.applicationDataModel.validationConnectionLink);
         if (!isConnected) {
-            await this.exitError(null, Status.NO_INTERNET_CONNECTION, 66);
+            await this.exitError(null, StatusEnum.NO_INTERNET_CONNECTION, 66);
         }
     }
 
     async logDomainsCounter() {
-        if (this.applicationData.isRunDomainsCounter) {
+        if (this.applicationDataModel.isRunDomainsCounter) {
             await domainsCounterService.run({
-                sourceType: DomainsCounterSourceType.FILE,
+                sourceType: DomainsCounterSourceTypeEnum.FILE,
                 sourcePath: logService.emailAddressesPath,
                 isLogs: false,
                 isPartOfCrawLogic: true
@@ -412,8 +412,8 @@ class CrawlLogic {
 
     updateStatus(text, status) {
         logUtils.logMagentaStatus(text);
-        if (this.applicationData) {
-            this.applicationData.status = status;
+        if (this.applicationDataModel) {
+            this.applicationDataModel.status = status;
         }
     }
 
@@ -422,10 +422,10 @@ class CrawlLogic {
         if (crawlInterval) {
             clearInterval(crawlInterval);
         }
-        this.applicationData.status = Status.FINISH;
+        this.applicationDataModel.status = StatusEnum.FINISH;
         logService.logProgress({
-            applicationData: this.applicationData,
-            searchProcessData: this.searchProcessData
+            applicationDataModel: this.applicationDataModel,
+            searchProcessDataModel: this.searchProcessDataModel
         });
         await this.logDomainsCounter();
         await puppeteerService.close();

@@ -5,6 +5,6 @@ const { logUtils } = require('../utils');
 (async () => {
 	// Initiate the common email address domains list.
 	crawlEmailAddressService.initiateCommonEmailAddressDomains();
-	const validationResult = await emailAddressValidationService.validateEmailAddress('');
-	logUtils.log(validationResult);
+	const validationResultModel = await emailAddressValidationService.validateEmailAddress('');
+	logUtils.log(validationResultModel);
 })();

@@ -5,15 +5,15 @@ class TimeUtils {
 
     constructor() { }
 
-    getCurrentDate() {
-        return new Date();
+    getCurrentDate(value) {
+        return value ? validationUtils.isValidArray(value) ? new Date(...value) : new Date(value) : new Date();
     }
 
     getCurrentDatePlusMilliseconds(milliseconds) {
         if (!validationUtils.isValidNumber(milliseconds)) {
             return this.getCurrentDate();
         }
-        return new Date(Date.now() + milliseconds).getTime();
+        return this.getCurrentDate(Date.now() + milliseconds).getTime();
     }
 
     getFullTime() {

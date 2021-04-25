@@ -1,8 +1,8 @@
-class ValidEmailAddress {
+class ValidEmailAddressModel {
 
 	constructor(emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 }
 
-module.exports = ValidEmailAddress;
+module.exports = ValidEmailAddressModel;

@@ -1,7 +1,7 @@
-const { SourceType } = require('../../core/enums');
-const { fileUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
+const { SourceTypeEnum } = require('../../core/enums');
 let puppeteerService = null;
 const searchService = require('./search.service');
+const { fileUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
 
 class SourceService {
 
@@ -9,22 +9,22 @@ class SourceService {
         this.isProductionMode = null;
         this.sourcePath = null;
         this.distPath = null;
-        this.countLimitData = null;
+        this.countLimitDataModel = null;
         this.searchEngineSourcesList = null;
         this.pageSourcesList = null;
     }
 
     async initiate(data) {
-        const { applicationData, pathData, countLimitData } = data;
-        this.isProductionMode = applicationData.isProductionMode;
-        this.sourcePath = pathData.sourcePath;
-        this.distPath = pathData.distPath;
-        this.countLimitData = countLimitData;
+        const { applicationDataModel, pathDataModel, countLimitDataModel } = data;
+        this.isProductionMode = applicationDataModel.isProductionMode;
+        this.sourcePath = pathDataModel.sourcePath;
+        this.distPath = pathDataModel.distPath;
+        this.countLimitDataModel = countLimitDataModel;
 
         if (this.isProductionMode) {
             // On production, load puppeteer service and initiate it.
             puppeteerService = require('./puppeteer.service');
-            await puppeteerService.initiate(this.countLimitData, false);
+            await puppeteerService.initiate(this.countLimitDataModel, false);
         }
         else {
             this.searchEngineSourcesList = [];
@@ -37,26 +37,26 @@ class SourceService {
         const searchEngines = searchService.getAllActiveSearchEngines();
         for (let i = 0, length = searchEngines.length; i < length; i++) {
             await this.loadDevelopmentModeSourcesByType({
-                sourceType: SourceType.ENGINE,
-                searchEngine: searchEngines[i].name
+                sourceType: SourceTypeEnum.ENGINE,
+                searchEngineName: searchEngines[i].name
             });
         }
         await this.loadDevelopmentModeSourcesByType({
-            sourceType: SourceType.PAGE
+            sourceType: SourceTypeEnum.PAGE
         });
     }
 
     async loadDevelopmentModeSourcesByType(data) {
-        const { sourceType, searchEngine } = data;
+        const { sourceType, searchEngineName } = data;
         let sourcePath = sourceType;
-        if (searchEngine) {
+        if (searchEngineName) {
             sourcePath = pathUtils.getJoinPath({
                 targetPath: this.sourcesPath,
                 targetName: sourceType
             });
             sourcePath = pathUtils.getJoinPath({
                 targetPath: sourcePath,
-                targetName: searchEngine
+                targetName: searchEngineName
             });
         }
         else {
@@ -88,14 +88,14 @@ class SourceService {
                 targetName: files[i]
             }));
             switch (sourceType) {
-                case SourceType.ENGINE: {
+                case SourceTypeEnum.ENGINE: {
                     this.searchEngineSourcesList.push({
-                        name: searchEngine,
+                        name: searchEngineName,
                         pageSource: pageSource
                     });
                     break;
                 }
-                case SourceType.PAGE: {
+                case SourceTypeEnum.PAGE: {
                     this.pageSourcesList.push(pageSource);
                     break;
                 }
@@ -117,14 +117,14 @@ class SourceService {
     }
 
     getPageSourceDevelopment(data) {
-        const { sourceType, searchEngine } = data;
+        const { sourceType, searchEngineName } = data;
         const crawlResults = { isValidPage: textUtils.getRandomBoolean(), pageSource: null };
         switch (sourceType) {
-            case SourceType.ENGINE: {
-                crawlResults.pageSource = textUtils.getRandomKeyFromArray(this.searchEngineSourcesList.filter(se => se.name === searchEngine)).pageSource;
+            case SourceTypeEnum.ENGINE: {
+                crawlResults.pageSource = textUtils.getRandomKeyFromArray(this.searchEngineSourcesList.filter(se => se.name === searchEngineName)).pageSource;
                 break;
             }
-            case SourceType.PAGE: {
+            case SourceTypeEnum.PAGE: {
                 crawlResults.pageSource = textUtils.getRandomKeyFromArray(this.pageSourcesList);
                 break;
             }

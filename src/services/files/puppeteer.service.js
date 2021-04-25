@@ -1,6 +1,6 @@
 const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
-const { Color, Status } = require('../../core/enums');
+const { ColorEnum, StatusEnum } = require('../../core/enums');
 const { crawlUtils, systemUtils } = require('../../utils');
 
 class PuppeteerService {
@@ -16,9 +16,9 @@ class PuppeteerService {
         this.errorInARowCounter = null;
     }
 
-    async initiate(countLimitData, isLinkCrawlTest) {
+    async initiate(countLimitDataModel, isLinkCrawlTest) {
         this.errorInARowCounter = 0;
-        this.timeout = countLimitData.millisecondsTimeoutSourceRequestCount;
+        this.timeout = countLimitDataModel.millisecondsTimeoutSourceRequestCount;
         this.pageOptions = {
             waitUntil: 'networkidle2',
             timeout: this.timeout
@@ -36,7 +36,7 @@ class PuppeteerService {
         this.pid = this.browser.process().pid;
         this.browser.on('disconnected', () => {
             systemUtils.killProcess(this.pid);
-            systemUtils.exit(Status.EXCEEDED_THE_LIMIT, Color.RED, 1);
+            systemUtils.exit(StatusEnum.EXCEEDED_THE_LIMIT, ColorEnum.RED, 1);
         });
         this.page = await this.browser.newPage();
         const pages = await this.browser.pages();

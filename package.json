@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": false,
   "description": "A Node.js + Puppeteer.js application to fetch as many valid email addresses from crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/crawler.git"
+  },
   "keywords": [
     "links",
     "emails",
@@ -58,7 +62,7 @@
   "dependencies": {
     "babel-eslint": "^10.1.0",
     "chance": "^1.1.7",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "faker": "^5.5.3",
     "forever-monitor": "^3.0.3",
     "fs-extra": "^9.1.0",
@@ -68,9 +72,9 @@
     "lorem-ipsum": "^2.0.3",
     "micromatch": "^4.0.4",
     "mongoose": "^5.12.5",
-    "puppeteer": "^8.0.0",
+    "puppeteer": "^9.0.0",
     "puppeteer-extra": "^3.1.18",
-    "puppeteer-extra-plugin-stealth": "^2.7.6",
+    "puppeteer-extra-plugin-stealth": "^2.7.7",
     "random-email": "^1.0.3",
     "random-useragent": "^0.5.0",
     "random-words": "^1.1.1",

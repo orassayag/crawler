@@ -1,4 +1,4 @@
-class CommonEmailAddressDomain {
+class CommonEmailAddressDomainModel {
 
 	constructor(data) {
 		const { domain, flipDomain, domainName, firstDotSplit, micromatchName, ignoreList } = data;
@@ -11,4 +11,4 @@ class CommonEmailAddressDomain {
 	}
 }
 
-module.exports = CommonEmailAddressDomain;
+module.exports = CommonEmailAddressDomainModel;

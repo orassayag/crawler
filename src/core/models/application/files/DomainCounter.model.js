@@ -1,4 +1,4 @@
-class DomainCounter {
+class DomainCounterModel {
 
 	constructor(domainPart) {
 		this.domainPart = domainPart;
@@ -6,4 +6,4 @@ class DomainCounter {
 	}
 }
 
-module.exports = DomainCounter;
+module.exports = DomainCounterModel;

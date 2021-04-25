@@ -1,19 +1,19 @@
-const { SearchProcessData } = require('../../core/models/application');
-const { SearchKeyGender, SearchPlaceHolder } = require('../../core/enums');
+const { SearchProcessDataModel } = require('../../core/models/application');
+const { SearchKeyGenderEnum, SearchPlaceHolderEnum } = require('../../core/enums');
 const { advanceSearchKeys, basicSearchKeys, searchEngineStatuses, searchEngines } = require('../../configurations');
 const { regexUtils, textUtils, validationUtils } = require('../../utils');
 
 class SearchService {
 
     constructor() {
-        this.searchData = null;
-        this.countLimitData = null;
+        this.searchDataModel = null;
+        this.countLimitDataModel = null;
     }
 
     initiate(data) {
-        const { searchData, countLimitData } = data;
-        this.searchData = searchData;
-        this.countLimitData = countLimitData;
+        const { searchDataModel, countLimitDataModel } = data;
+        this.searchDataModel = searchDataModel;
+        this.countLimitDataModel = countLimitDataModel;
     }
 
     getAllActiveSearchEngines() {
@@ -41,7 +41,7 @@ class SearchService {
             searchKey += `${textUtils.getRandomKeyFromArray(l)} `;
         });
         searchKey = searchKey.trim();
-        if (searchKey.length > this.countLimitData.maximumSearchKeyCharactersCount || searchKey.length < this.countLimitData.minimumSearchKeyCharactersCount) {
+        if (searchKey.length > this.countLimitDataModel.maximumSearchKeyCharactersCount || searchKey.length < this.countLimitDataModel.minimumSearchKeyCharactersCount) {
             searchKey = '';
         }
         return searchKey;
@@ -49,7 +49,7 @@ class SearchService {
 
     generateAdvanceKey() {
         let searchKey = '';
-        const randomGander = Object.values(SearchKeyGender)[textUtils.getRandomNumber(0, 2)];
+        const randomGander = Object.values(SearchKeyGenderEnum)[textUtils.getRandomNumber(0, 2)];
         advanceSearchKeys.map(l => {
             const item = validationUtils.isExists(l) ? textUtils.getRandomKeyFromArray(l) : l[0];
             let word = item[`${randomGander}Key`];
@@ -82,8 +82,8 @@ class SearchService {
             }
         });
         displaySearchKey = `${validationUtils.isExists(englishKeys) ? `${englishKeys.join(' ')}` : ''} ${hebrewKeys.reverse().join(' ')}`.trim();
-        if (displaySearchKey.length > this.countLimitData.maximumDisplaySearchKeyCharactersCount) {
-            displaySearchKey = displaySearchKey.substring(0, this.countLimitData.maximumDisplaySearchKeyCharactersCount);
+        if (displaySearchKey.length > this.countLimitDataModel.maximumDisplaySearchKeyCharactersCount) {
+            displaySearchKey = displaySearchKey.substring(0, this.countLimitDataModel.maximumDisplaySearchKeyCharactersCount);
         }
         return displaySearchKey;
     }
@@ -91,12 +91,12 @@ class SearchService {
     generateSearchKey() {
         // Generate the search key.
         let resultSearchKey = null;
-        if (this.searchData.searchKey) {
-            resultSearchKey = this.searchData.searchKey;
+        if (this.searchDataModel.searchKey) {
+            resultSearchKey = this.searchDataModel.searchKey;
         }
         else {
-            for (let i = 0; i < this.countLimitData.maximumRetriesGenerateSearchKeyCount; i++) {
-                resultSearchKey = this.searchData.isAdvanceSearchKeys ? this.generateAdvanceKey() : this.generateBasicKey();
+            for (let i = 0; i < this.countLimitDataModel.maximumRetriesGenerateSearchKeyCount; i++) {
+                resultSearchKey = this.searchDataModel.isAdvanceSearchKeys ? this.generateAdvanceKey() : this.generateBasicKey();
                 if (resultSearchKey) {
                     break;
                 }
@@ -114,51 +114,51 @@ class SearchService {
     }
 
     createSearchEngineLinkTemplate(data) {
-        const { searchKey, searchEngine, pageIndex } = data;
-        const { baseURL, startIndex, advanceBy, templatesList } = searchEngine;
+        const { searchKey, searchEngineModel, pageIndex } = data;
+        const { baseURL, startIndex, advanceBy, templatesList } = searchEngineModel;
         let templateAddress = templatesList.length > 1 ? textUtils.getRandomKeyFromArray(templatesList) : templatesList[0];
         const newIndex = (pageIndex === 0 ? startIndex : pageIndex) + advanceBy;
-        templateAddress = templateAddress.split(SearchPlaceHolder.QUERY).join(searchKey);
-        templateAddress = templateAddress.split(SearchPlaceHolder.PAGER).join(newIndex);
+        templateAddress = templateAddress.split(SearchPlaceHolderEnum.QUERY).join(searchKey);
+        templateAddress = templateAddress.split(SearchPlaceHolderEnum.PAGER).join(newIndex);
         return `${baseURL}${templateAddress}`;
     }
 
-    getSearchProcessData(searchProcessData, pageIndex) {
+    getSearchProcessData(searchProcessDataModel, pageIndex) {
         let searchKey = null;
         let displaySearchKey = null;
-        let searchEngine = null;
+        let searchEngineModel = null;
         let searchEngineLinkTemplate = null;
-        if (searchProcessData) { // Process already exists - Need to update only the searchEngineLinkTemplate parameter.
-            searchKey = searchProcessData.searchKey;
-            displaySearchKey = searchProcessData.displaySearchKey;
-            searchEngine = searchProcessData.searchEngine;
+        if (searchProcessDataModel) { // Process already exists - Need to update only the searchEngineLinkTemplate parameter.
+            searchKey = searchProcessDataModel.searchKey;
+            displaySearchKey = searchProcessDataModel.displaySearchKey;
+            searchEngineModel = searchProcessDataModel.searchEngineModel;
             searchEngineLinkTemplate = this.createSearchEngineLinkTemplate({
                 searchKey: searchKey,
-                searchEngine: searchEngine,
+                searchEngineModel: searchEngineModel,
                 pageIndex: pageIndex
             });
-            searchProcessData.pageIndex = pageIndex;
-            searchProcessData.searchEngineLinkTemplate = searchEngineLinkTemplate;
+            searchProcessDataModel.pageIndex = pageIndex;
+            searchProcessDataModel.searchEngineLinkTemplate = searchEngineLinkTemplate;
         }
         else { // Generate the data for the process for the first time.
             const searchKeyResult = this.generateSearchKey();
             searchKey = searchKeyResult.searchKey;
             displaySearchKey = searchKeyResult.displaySearchKey;
-            searchEngine = this.getSearchEngine();
+            searchEngineModel = this.getSearchEngine();
             searchEngineLinkTemplate = this.createSearchEngineLinkTemplate({
                 searchKey: searchKey,
-                searchEngine: searchEngine,
+                searchEngineModel: searchEngineModel,
                 pageIndex: pageIndex
             });
-            searchProcessData = new SearchProcessData({
+            searchProcessDataModel = new SearchProcessDataModel({
                 pageIndex: pageIndex,
                 searchKey: searchKey,
                 displaySearchKey: displaySearchKey,
-                searchEngine: searchEngine,
+                searchEngineModel: searchEngineModel,
                 searchEngineLinkTemplate: searchEngineLinkTemplate
             });
         }
-        return searchProcessData;
+        return searchProcessDataModel;
     }
 }
 

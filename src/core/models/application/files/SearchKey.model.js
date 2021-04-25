@@ -1,6 +1,6 @@
 const { validationUtils } = require('../../../../utils');
 
-class SearchKey {
+class SearchKeyModel {
 
 	constructor(data) {
 		const { keyType, isMiddleReplace, isNoSpaceAfter, isMultiFemaleKey, globalKey, maleKey, femaleKey, bothKey } = data;
@@ -15,4 +15,4 @@ class SearchKey {
 	}
 }
 
-module.exports = SearchKey;
+module.exports = SearchKeyModel;

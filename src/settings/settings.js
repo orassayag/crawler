@@ -1,4 +1,4 @@
-const { GoalType } = require('../core/enums');
+const { GoalTypeEnum } = require('../core/enums');
 const { pathUtils } = require('../utils/');
 
 const innerSettings = {
@@ -36,7 +36,7 @@ const settings = {
 
     // ===GOAL=== //
     // Determine the goal type which the application will run on, and determine by it when to stop the application.
-    GOAL_TYPE: GoalType.MINUTES, // Options: EMAIL_ADDRESSES / MINUTES / LINKS.
+    GOAL_TYPE: GoalTypeEnum.MINUTES, // Options: EMAIL_ADDRESSES / MINUTES / LINKS.
     // Determine the maximum value count to reach, until to stop running processes.
     // What will come first - MAXIMUM_SEARCH_PROCESSES_COUNT - or this.
     GOAL_VALUE: innerSettings.IS_LONG_RUN ? 700 : 1,

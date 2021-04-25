@@ -1,4 +1,4 @@
-class CrawlEmailAddressData {
+class CrawlEmailAddressDataModel {
 
 	constructor(activeSearchEngineNames) {
 		this.saveCount = 0;
@@ -15,9 +15,9 @@ class CrawlEmailAddressData {
 		this.statistics = activeSearchEngineNames.reduce((acc, cur) => ({ ...acc, [cur]: 0 }), {});
 	}
 
-	updateEmailAddressData(emailAddressesResult, searchEngineName) {
+	updateEmailAddressData(emailAddressesResultModel, searchEngineName) {
 		const { saveCount, totalCount, existsCount, invalidCount, validFixCount,
-			invalidFixCount, unsaveCount, filterCount, skipCount, gibberishCount } = emailAddressesResult;
+			invalidFixCount, unsaveCount, filterCount, skipCount, gibberishCount } = emailAddressesResultModel;
 		// Update all the data.
 		this.saveCount += saveCount;
 		this.totalCount += totalCount;
@@ -34,4 +34,4 @@ class CrawlEmailAddressData {
 	}
 }
 
-module.exports = CrawlEmailAddressData;
+module.exports = CrawlEmailAddressDataModel;

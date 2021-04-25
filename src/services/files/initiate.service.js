@@ -1,7 +1,7 @@
 const settings = require('../../settings/settings');
-const { GoalType, ScriptType } = require('../../core/enums');
-const { fileUtils, pathUtils, validationUtils } = require('../../utils');
+const { GoalTypeEnum, ScriptTypeEnum } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
+const { fileUtils, pathUtils, validationUtils } = require('../../utils');
 
 class InitiateService {
 
@@ -43,10 +43,10 @@ class InitiateService {
 
 	validateScriptType() {
 		if (!this.scriptType || !validationUtils.isValidEnum({
-			enum: ScriptType,
+			enum: ScriptTypeEnum,
 			value: this.scriptType
 		})) {
-			throw new Error('Invalid or no ScriptType parameter was found (1000010)');
+			throw new Error('Invalid or no ScriptTypeEnum parameter was found (1000010)');
 		}
 	}
 
@@ -70,7 +70,7 @@ class InitiateService {
 			BACKUPS_PATH, DIST_PATH, SOURCES_PATH, NODE_MODULES_PATH, PACKAGE_JSON_PATH,
 			PACKAGE_LOCK_JSON_PATH } = settings;
 		settings.APPLICATION_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: APPLICATION_PATH });
-		if (this.scriptType === ScriptType.BACKUP) {
+		if (this.scriptType === ScriptTypeEnum.BACKUP) {
 			settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });
 			settings.SOURCES_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: SOURCES_PATH });
 		}
@@ -131,7 +131,7 @@ class InitiateService {
 	}
 
 	validateStrings() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
 			...keys,
 			// ===GOAL=== //
@@ -203,7 +203,7 @@ class InitiateService {
 		const { GOAL_TYPE } = settings;
 		// ===GOAL=== //
 		if (!validationUtils.isValidEnum({
-			enum: GoalType,
+			enum: GoalTypeEnum,
 			value: GOAL_TYPE
 		})) {
 			throw new Error('Invalid or no GOAL_TYPE parameter was found (1000017)');
@@ -237,7 +237,7 @@ class InitiateService {
 	}
 
 	validateDirectories() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
 			...keys,
 			// ===ROOT PATH=== //

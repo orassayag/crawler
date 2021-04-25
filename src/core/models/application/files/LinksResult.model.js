@@ -1,4 +1,4 @@
-class LinksResult {
+class LinksResultModel {
 
     constructor() {
         this.isValidPage = true;
@@ -9,4 +9,4 @@ class LinksResult {
     }
 }
 
-module.exports = LinksResult;
+module.exports = LinksResultModel;

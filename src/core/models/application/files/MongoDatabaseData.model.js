@@ -1,6 +1,6 @@
 const { mongoDatabaseUtils } = require('../../../../utils');
 
-class MongoDatabaseData {
+class MongoDatabaseDataModel {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -25,4 +25,4 @@ class MongoDatabaseData {
 	}
 }
 
-module.exports = MongoDatabaseData;
+module.exports = MongoDatabaseDataModel;

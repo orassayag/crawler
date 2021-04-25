@@ -1,4 +1,4 @@
-class EmailAddressesResult {
+class EmailAddressesResultModel {
 
     constructor() {
         this.isGoalComplete = false;
@@ -17,4 +17,4 @@ class EmailAddressesResult {
     }
 }
 
-module.exports = EmailAddressesResult;
+module.exports = EmailAddressesResultModel;

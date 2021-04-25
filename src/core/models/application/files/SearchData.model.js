@@ -1,4 +1,4 @@
-class SearchData {
+class SearchDataModel {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -8,4 +8,4 @@ class SearchData {
 	}
 }
 
-module.exports = SearchData;
+module.exports = SearchDataModel;

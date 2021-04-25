@@ -1,27 +1,27 @@
 const enumUtils = require('../enum.utils');
 
-const GoalType = enumUtils.createEnum([
+const GoalTypeEnum = enumUtils.createEnum([
     ['EMAIL_ADDRESSES', 'EMAIL_ADDRESSES'],
     ['MINUTES', 'MINUTES'],
     ['LINKS', 'LINKS']
 ]);
 
-const Method = enumUtils.createEnum([
+const MethodEnum = enumUtils.createEnum([
     ['LINKS', 'LINKS'],
     ['CRAWL', 'CRAWL']
 ]);
 
-const Mode = enumUtils.createEnum([
+const ModeEnum = enumUtils.createEnum([
     ['PRODUCTION', 'PRODUCTION'],
     ['DEVELOPMENT', 'DEVELOPMENT']
 ]);
 
-const Plan = enumUtils.createEnum([
+const PlanEnum = enumUtils.createEnum([
     ['STANDARD', 'STANDARD'],
     ['SESSION_TEST', 'SESSION_TEST']
 ]);
 
-const ScriptType = enumUtils.createEnum([
+const ScriptTypeEnum = enumUtils.createEnum([
     ['INITIATE', 'initiate'],
     ['BACKUP', 'backup'],
     ['CRAWL', 'crawl'],
@@ -30,7 +30,7 @@ const ScriptType = enumUtils.createEnum([
     ['TEST', 'test']
 ]);
 
-const Status = enumUtils.createEnum([
+const StatusEnum = enumUtils.createEnum([
     ['INITIATE', 'INITIATE'],
     ['SETTINGS', 'SETTINGS'],
     ['VALIDATE', 'VALIDATE'],
@@ -50,4 +50,4 @@ const Status = enumUtils.createEnum([
     ['FINISH', 'FINISH']
 ]);
 
-module.exports = { GoalType, Method, Mode, Plan, ScriptType, Status };
+module.exports = { GoalTypeEnum, MethodEnum, ModeEnum, PlanEnum, ScriptTypeEnum, StatusEnum };

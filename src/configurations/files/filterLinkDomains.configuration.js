@@ -1,18 +1,18 @@
 /* cSpell:disable */
-const { FilterLinkDomain } = require('../../core/models/application');
-const { SearchEngineType } = require('../../core/enums');
+const { FilterLinkDomainModel } = require('../../core/models/application');
+const { SearchEngineTypeEnum } = require('../../core/enums');
 
 const filterLinkDomains = [
 	// Ask.com
-	new FilterLinkDomain({
-		name: SearchEngineType.ASK,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.ASK,
 		domains: [
 		]
 	}),
 
 	// Baidu.com
-	new FilterLinkDomain({
-		name: SearchEngineType.BAIDU,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.BAIDU,
 		domains: [
 			'baiducontent.com',
 			'bdstatic.com'
@@ -20,8 +20,8 @@ const filterLinkDomains = [
 	}),
 
 	// Bing.com
-	new FilterLinkDomain({
-		name: SearchEngineType.BING,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.BING,
 		domains: [
 			'bing.com',
 			'business.bing.com',
@@ -36,29 +36,29 @@ const filterLinkDomains = [
 	}),
 
 	// Dogpile.com
-	new FilterLinkDomain({
-		name: SearchEngineType.DOGPILE,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.DOGPILE,
 		domains: [
 		]
 	}),
 
 	// Ecosia.com
-	new FilterLinkDomain({
-		name: SearchEngineType.ECOSIA,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.ECOSIA,
 		domains: [
 		]
 	}),
 
 	// Exalead.com
-	new FilterLinkDomain({
-		name: SearchEngineType.EXALEAD,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.EXALEAD,
 		domains: [
 		]
 	}),
 
 	// Google.com
-	new FilterLinkDomain({
-		name: SearchEngineType.GOOGLE,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.GOOGLE,
 		domains: [
 			'google.co.il',
 			'googleadservices.com',
@@ -68,43 +68,43 @@ const filterLinkDomains = [
 	}),
 
 	// Info.com
-	new FilterLinkDomain({
-		name: SearchEngineType.INFO,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.INFO,
 		domains: [
 		]
 	}),
 
 	// InfoSpace.com
-	new FilterLinkDomain({
-		name: SearchEngineType.INFOSPACE,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.INFOSPACE,
 		domains: [
 		]
 	}),
 
 	// MetaCrawler.com
-	new FilterLinkDomain({
-		name: SearchEngineType.METACRAWLER,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.METACRAWLER,
 		domains: [
 		]
 	}),
 
 	// Naver.com
-	new FilterLinkDomain({
-		name: SearchEngineType.NAVER,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.NAVER,
 		domains: [
 		]
 	}),
 
 	// StartPage.com
-	new FilterLinkDomain({
-		name: SearchEngineType.STARTPAGE,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.STARTPAGE,
 		domains: [
 		]
 	}),
 
 	// Yandex.com
-	new FilterLinkDomain({
-		name: SearchEngineType.YANDEX,
+	new FilterLinkDomainModel({
+		name: SearchEngineTypeEnum.YANDEX,
 		domains: [
 		]
 	})

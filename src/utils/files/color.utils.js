@@ -1,4 +1,4 @@
-const { ColorCode } = require('../../core/enums');
+const { ColorCodeEnum } = require('../../core/enums');
 
 class ColorUtils {
 
@@ -9,7 +9,7 @@ class ColorUtils {
         if (!message) {
             return '';
         }
-        return `${ColorCode[`Fg${color}`]}${message}${ColorCode.Reset}`;
+        return `${ColorCodeEnum[`Fg${color}`]}${message}${ColorCodeEnum.Reset}`;
     }
 }
 

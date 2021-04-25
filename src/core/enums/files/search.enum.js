@@ -1,6 +1,6 @@
 const enumUtils = require('../enum.utils');
 
-const SearchEngineType = enumUtils.createEnum([
+const SearchEngineTypeEnum = enumUtils.createEnum([
     ['ASK', 'ask'],
     ['BAIDU', 'baidu'],
     ['BING', 'bing'],
@@ -16,13 +16,13 @@ const SearchEngineType = enumUtils.createEnum([
     ['YANDEX', 'yandex']
 ]);
 
-const SearchKeyGender = enumUtils.createEnum([
+const SearchKeyGenderEnum = enumUtils.createEnum([
     ['MALE', 'male'],
     ['FEMALE', 'female'],
     ['BOTH', 'both']
 ]);
 
-const SearchKeyType = enumUtils.createEnum([
+const SearchKeyTypeEnum = enumUtils.createEnum([
     ['NEED', 'need'],
     ['PERSON', 'preson'],
     ['PROFESSION', 'PROFESSION'],
@@ -31,14 +31,14 @@ const SearchKeyType = enumUtils.createEnum([
     ['EMAIL_ADDRESS', 'EMAIL_ADDRESS']
 ]);
 
-const SearchPlaceHolder = enumUtils.createEnum([
+const SearchPlaceHolderEnum = enumUtils.createEnum([
     ['QUERY', '#QUERY#'],
     ['PAGER', '#PAGER#']
 ]);
 
-const SourceType = enumUtils.createEnum([
+const SourceTypeEnum = enumUtils.createEnum([
     ['ENGINE', 'engine'],
     ['PAGE', 'page']
 ]);
 
-module.exports = { SearchEngineType, SearchKeyGender, SearchKeyType, SearchPlaceHolder, SourceType };
+module.exports = { SearchEngineTypeEnum, SearchKeyGenderEnum, SearchKeyTypeEnum, SearchPlaceHolderEnum, SourceTypeEnum };

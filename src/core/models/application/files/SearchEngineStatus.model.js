@@ -1,4 +1,4 @@
-class SearchEngineStatus {
+class SearchEngineStatusModel {
 
     constructor(data) {
         const { isActive, name } = data;
@@ -7,4 +7,4 @@ class SearchEngineStatus {
     }
 }
 
-module.exports = SearchEngineStatus;
+module.exports = SearchEngineStatusModel;

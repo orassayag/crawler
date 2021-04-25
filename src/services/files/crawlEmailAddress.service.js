@@ -1,5 +1,5 @@
-const { CommonEmailAddressDomain, EmailAddressesResult, EmailAddressStatus } = require('../../core/models/application');
-const { GoalType, LogStatus, SaveStatus, SourceType } = require('../../core/enums');
+const { CommonEmailAddressDomainModel, EmailAddressesResultModel, EmailAddressStatusModel } = require('../../core/models/application');
+const { GoalTypeEnum, LogStatusEnum, SaveStatusEnum, SourceTypeEnum } = require('../../core/enums');
 const { emailAddressDomainsList, filterEmailAddressDomains, filterEmailAddresses } = require('../../configurations');
 let { commonEmailAddressDomainsList } = require('../../configurations');
 const emailAddressValidationService = require('./emailAddressValidation.service');
@@ -14,14 +14,14 @@ class CrawlEmailAddressService {
 		this.totalSaveCount = 0;
 		this.goalValue = 0;
 		this.isSkipLogic = null;
-		this.countLimitData = null;
+		this.countLimitDataModel = null;
 	}
 
 	initiate(data) {
-		const { applicationData, countLimitData } = data;
-		this.goalValue = applicationData.goalType === GoalType.EMAIL_ADDRESSES ? applicationData.goalValue : null;
-		this.isSkipLogic = applicationData.isSkipLogic;
-		this.countLimitData = countLimitData;
+		const { applicationDataModel, countLimitDataModel } = data;
+		this.goalValue = applicationDataModel.goalType === GoalTypeEnum.EMAIL_ADDRESSES ? applicationDataModel.goalValue : null;
+		this.isSkipLogic = applicationDataModel.isSkipLogic;
+		this.countLimitDataModel = countLimitDataModel;
 		// Initiate the common email address domains lists.
 		this.initiateCommonEmailAddressDomains();
 	}
@@ -31,7 +31,7 @@ class CrawlEmailAddressService {
 		for (let i = 0, length = emailAddressDomainsList.length; i < length; i++) {
 			const { domain, domainName, micromatchName, ignoreList, isCommonDomain } = emailAddressDomainsList[i];
 			if (isCommonDomain) {
-				commonEmailAddressDomainsList.push(new CommonEmailAddressDomain({
+				commonEmailAddressDomainsList.push(new CommonEmailAddressDomainModel({
 					domain: domain,
 					flipDomain: textUtils.flipDotParts(domain),
 					domainName: domainName,
@@ -55,89 +55,89 @@ class CrawlEmailAddressService {
 			const abortTimeout = setTimeout(() => {
 				resolve(null);
 				return;
-			}, this.countLimitData.millisecondsTimeoutSourceRequestCount);
+			}, this.countLimitDataModel.millisecondsTimeoutSourceRequestCount);
 			const { linkData, totalSaveCount } = data;
 			this.totalSaveCount = totalSaveCount;
-			let emailAddressesResult = new EmailAddressesResult();
+			let emailAddressesResultModel = new EmailAddressesResultModel();
 			if (this.checkGoalComplete()) {
 				clearTimeout(abortTimeout);
-				resolve(emailAddressesResult);
+				resolve(emailAddressesResultModel);
 				return;
 			}
 			// Get the source of the specific link to fetch from it's email addresses.
 			const pageResults = await sourceService.getPageSource({
-				sourceType: SourceType.PAGE,
-				searchEngine: null,
+				sourceType: SourceTypeEnum.PAGE,
+				searchEngineName: null,
 				linkData: linkData
 			});
 			if (!pageResults) {
 				clearTimeout(abortTimeout);
-				resolve(emailAddressesResult);
+				resolve(emailAddressesResultModel);
 				return;
 			}
 			const { isValidPage, pageSource } = pageResults;
 			if (!isValidPage) {
 				await logService.logErrorLink(linkData.link);
 			}
-			emailAddressesResult.isValidPage = isValidPage;
+			emailAddressesResultModel.isValidPage = isValidPage;
 			// Get all the email addresses from the page source.
 			let emailAddressesList = emailAddressUtils.getEmailAddresses(pageSource);
 			if (!validationUtils.isExists(emailAddressesList)) {
 				clearTimeout(abortTimeout);
-				resolve(emailAddressesResult);
+				resolve(emailAddressesResultModel);
 				return;
 			}
-			emailAddressesResult.totalCount = emailAddressesList.length;
+			emailAddressesResultModel.totalCount = emailAddressesList.length;
 			// Remove duplicate email addresses.
 			emailAddressesList = textUtils.removeDuplicates(emailAddressesList);
 			if (this.isSkipLogic) {
 				// Skip email addresses with a domain that repeats itself too many times.
 				const skipResults = emailAddressValidationService.skipDomains({
 					emailAddressesList: emailAddressesList,
-					maximumUniqueDomainCount: this.countLimitData.maximumUniqueDomainCount
+					maximumUniqueDomainCount: this.countLimitDataModel.maximumUniqueDomainCount
 				});
-				emailAddressesResult.skipCount = skipResults.skipCount;
+				emailAddressesResultModel.skipCount = skipResults.skipCount;
 				emailAddressesList = skipResults.emailAddressesList;
 			}
 			// Scan all the email addresses.
-			emailAddressesResult = await this.validateEmailAddresses(emailAddressesList, emailAddressesResult);
+			emailAddressesResultModel = await this.validateEmailAddresses(emailAddressesList, emailAddressesResultModel);
 			clearTimeout(abortTimeout);
-			resolve(emailAddressesResult);
+			resolve(emailAddressesResultModel);
 		}).catch();
 	}
 
-	async saveEmailAddressToMongoDatabase(emailAddressStatus, emailAddress) {
+	async saveEmailAddressToMongoDatabase(emailAddressStatusModel, emailAddress) {
 		const saveStatus = await mongoDatabaseService.saveEmailAddress(emailAddress);
 		switch (saveStatus) {
-			case SaveStatus.SAVE: { emailAddressStatus.isSave = true; emailAddressStatus.logStatus = LogStatus.VALID; break; }
-			case SaveStatus.EXISTS: { emailAddressStatus.isExists = true; break; }
-			case SaveStatus.ERROR: { emailAddressStatus.isUnsave = true; emailAddressStatus.logStatus = LogStatus.UNSAVE; break; }
+			case SaveStatusEnum.SAVE: { emailAddressStatusModel.isSave = true; emailAddressStatusModel.logStatus = LogStatusEnum.VALID; break; }
+			case SaveStatusEnum.EXISTS: { emailAddressStatusModel.isExists = true; break; }
+			case SaveStatusEnum.ERROR: { emailAddressStatusModel.isUnsave = true; emailAddressStatusModel.logStatus = LogStatusEnum.UNSAVE; break; }
 		}
-		return emailAddressStatus;
+		return emailAddressStatusModel;
 	}
 
-	filterEmailAddress(emailAddress, emailAddressStatus) {
+	filterEmailAddress(emailAddress, emailAddressStatusModel) {
 		const domainPart = emailAddressUtils.getEmailAddressParts(emailAddress)[1];
 		if (filterEmailAddressDomains.includes(domainPart)) {
-			emailAddressStatus.isFilter = true;
+			emailAddressStatusModel.isFilter = true;
 		}
 		const emailAddressIndex = filterEmailAddresses.findIndex(emailAddressItem =>
 			textUtils.toLowerCaseTrim(emailAddressItem) === textUtils.toLowerCaseTrim(emailAddress));
 		if (emailAddressIndex > -1) {
-			emailAddressStatus.isFilter = true;
+			emailAddressStatusModel.isFilter = true;
 		}
-		return emailAddressStatus;
+		return emailAddressStatusModel;
 	}
 
-	async saveEmailAddress(emailAddress, emailAddressStatus) {
+	async saveEmailAddress(emailAddress, emailAddressStatusModel) {
 		let isSave = false;
 		let isGoalComplete = false;
 		// Check if the email address is filtered.
-		emailAddressStatus = this.filterEmailAddress(emailAddress, emailAddressStatus);
-		if (!emailAddressStatus.isFilter) {
+		emailAddressStatusModel = this.filterEmailAddress(emailAddress, emailAddressStatusModel);
+		if (!emailAddressStatusModel.isFilter) {
 			// Save to Mongo database.
-			emailAddressStatus = await this.saveEmailAddressToMongoDatabase(emailAddressStatus, emailAddress);
-			isSave = emailAddressStatus.isSave;
+			emailAddressStatusModel = await this.saveEmailAddressToMongoDatabase(emailAddressStatusModel, emailAddress);
+			isSave = emailAddressStatusModel.isSave;
 		}
 		// Check if goal is complete.
 		if (isSave) {
@@ -147,108 +147,108 @@ class CrawlEmailAddressService {
 		return { isSave: isSave, isGoalComplete: isGoalComplete };
 	}
 
-	async handleEmailAddress(emailAddress, emailAddressesResult) {
+	async handleEmailAddress(emailAddress, emailAddressesResultModel) {
 		// Get the status of the email address.
-		const validationResult = await emailAddressValidationService.validateEmailAddress(emailAddress);
-		const emailAddressStatus = new EmailAddressStatus(validationResult);
-		const { original, fix, isValid, isGibberish } = validationResult;
+		const validationResultModel = await emailAddressValidationService.validateEmailAddress(emailAddress);
+		const emailAddressStatusModel = new EmailAddressStatusModel(validationResultModel);
+		const { original, fix, isValid, isGibberish } = validationResultModel;
 		let trendingSaveEmailAddress = null;
 		if (fix) {
-			emailAddressStatus.logStatus = LogStatus.FIX;
+			emailAddressStatusModel.logStatus = LogStatusEnum.FIX;
 			// Log the email address to the relevant TXT file in case of fix.
-			await logService.logEmailAddress(emailAddressStatus);
+			await logService.logEmailAddress(emailAddressStatusModel);
 			if (isValid) {
-				const { isSave, isGoalComplete } = await this.saveEmailAddress(fix, emailAddressStatus);
+				const { isSave, isGoalComplete } = await this.saveEmailAddress(fix, emailAddressStatusModel);
 				if (isSave) {
-					emailAddressesResult.isGoalComplete = isGoalComplete;
-					emailAddressStatus.isValidFix = true;
+					emailAddressesResultModel.isGoalComplete = isGoalComplete;
+					emailAddressStatusModel.isValidFix = true;
 					trendingSaveEmailAddress = fix;
 				}
 			}
 			else {
-				emailAddressStatus.isInvalidFix = true;
+				emailAddressStatusModel.isInvalidFix = true;
 			}
 		}
 		else {
 			if (isValid) {
-				const { isSave, isGoalComplete } = await this.saveEmailAddress(original, emailAddressStatus);
+				const { isSave, isGoalComplete } = await this.saveEmailAddress(original, emailAddressStatusModel);
 				if (isSave) {
-					emailAddressesResult.isGoalComplete = isGoalComplete;
+					emailAddressesResultModel.isGoalComplete = isGoalComplete;
 					trendingSaveEmailAddress = original;
 				}
 			}
 			else {
-				emailAddressStatus.logStatus = LogStatus.INVALID;
-				emailAddressStatus.isInvalid = true;
+				emailAddressStatusModel.logStatus = LogStatusEnum.INVALID;
+				emailAddressStatusModel.isInvalid = true;
 			}
 		}
 		if (trendingSaveEmailAddress) {
 			// Add the email address to the trending save list if not exists already.
-			emailAddressesResult = this.addTrendingSave(trendingSaveEmailAddress, emailAddressesResult, emailAddressStatus.isValidFix);
+			emailAddressesResultModel = this.addTrendingSave(trendingSaveEmailAddress, emailAddressesResultModel, emailAddressStatusModel.isValidFix);
 		}
 		// Log the email address to a specific TXT file if it's gibberish.
 		if (isGibberish) {
-			const originalStatus = emailAddressStatus.logStatus;
-			emailAddressStatus.logStatus = LogStatus.GIBBERISH;
-			await logService.logEmailAddress(emailAddressStatus);
-			emailAddressStatus.logStatus = originalStatus;
+			const originalStatus = emailAddressStatusModel.logStatus;
+			emailAddressStatusModel.logStatus = LogStatusEnum.GIBBERISH;
+			await logService.logEmailAddress(emailAddressStatusModel);
+			emailAddressStatusModel.logStatus = originalStatus;
 		}
 		// Log the email address to the relevant TXT file.
-		await logService.logEmailAddress(emailAddressStatus);
+		await logService.logEmailAddress(emailAddressStatusModel);
 		return {
-			emailAddressesResult: emailAddressesResult,
-			emailAddressStatus: emailAddressStatus
+			emailAddressesResultModel: emailAddressesResultModel,
+			emailAddressStatusModel: emailAddressStatusModel
 		};
 	}
 
-	addTrendingSave(emailAddress, emailAddressesResult, isValidFix) {
-		if (emailAddressesResult.trendingSaveList.includes(emailAddress)) {
-			return emailAddressesResult;
+	addTrendingSave(emailAddress, emailAddressesResultModel, isValidFix) {
+		if (emailAddressesResultModel.trendingSaveList.includes(emailAddress)) {
+			return emailAddressesResultModel;
 		}
-		if (emailAddressesResult.trendingSaveList.length < this.countLimitData.maximumTrendingSaveCount) {
-			emailAddressesResult.trendingSaveList.push(isValidFix ? `Fix: ${emailAddress}` : emailAddress);
+		if (emailAddressesResultModel.trendingSaveList.length < this.countLimitDataModel.maximumTrendingSaveCount) {
+			emailAddressesResultModel.trendingSaveList.push(isValidFix ? `Fix: ${emailAddress}` : emailAddress);
 		}
-		return emailAddressesResult;
+		return emailAddressesResultModel;
 	}
 
-	updateCounters(emailAddressStatus, emailAddressesResult) {
-		if (emailAddressStatus.isSave) {
-			emailAddressesResult.saveCount++;
+	updateCounters(emailAddressStatusModel, emailAddressesResultModel) {
+		if (emailAddressStatusModel.isSave) {
+			emailAddressesResultModel.saveCount++;
 		}
-		if (emailAddressStatus.isExists) {
-			emailAddressesResult.existsCount++;
+		if (emailAddressStatusModel.isExists) {
+			emailAddressesResultModel.existsCount++;
 		}
-		if (emailAddressStatus.isInvalid) {
-			emailAddressesResult.invalidCount++;
+		if (emailAddressStatusModel.isInvalid) {
+			emailAddressesResultModel.invalidCount++;
 		}
-		if (emailAddressStatus.isValidFix) {
-			emailAddressesResult.validFixCount++;
+		if (emailAddressStatusModel.isValidFix) {
+			emailAddressesResultModel.validFixCount++;
 		}
-		if (emailAddressStatus.isInvalidFix) {
-			emailAddressesResult.invalidFixCount++;
+		if (emailAddressStatusModel.isInvalidFix) {
+			emailAddressesResultModel.invalidFixCount++;
 		}
-		if (emailAddressStatus.isFilter) {
-			emailAddressesResult.filterCount++;
+		if (emailAddressStatusModel.isFilter) {
+			emailAddressesResultModel.filterCount++;
 		}
-		if (emailAddressStatus.isUnsave) {
-			emailAddressesResult.unsaveCount++;
+		if (emailAddressStatusModel.isUnsave) {
+			emailAddressesResultModel.unsaveCount++;
 		}
-		if (emailAddressStatus.isGibberish) {
-			emailAddressesResult.gibberishCount++;
+		if (emailAddressStatusModel.isGibberish) {
+			emailAddressesResultModel.gibberishCount++;
 		}
-		return emailAddressesResult;
+		return emailAddressesResultModel;
 	}
 
-	async validateEmailAddresses(emailAddressesList, emailAddressesResult) {
+	async validateEmailAddresses(emailAddressesList, emailAddressesResultModel) {
 		for (let i = 0, length = emailAddressesList.length; i < length; i++) {
-			const handleResult = await this.handleEmailAddress(emailAddressesList[i], emailAddressesResult);
-			emailAddressesResult = this.updateCounters(handleResult.emailAddressStatus, handleResult.emailAddressesResult);
+			const handleResult = await this.handleEmailAddress(emailAddressesList[i], emailAddressesResultModel);
+			emailAddressesResultModel = this.updateCounters(handleResult.emailAddressStatusModel, handleResult.emailAddressesResultModel);
 			// Check if the goal isn't complete already. If so, stop the loop and return.
-			if (emailAddressesResult.isGoalComplete) {
+			if (emailAddressesResultModel.isGoalComplete) {
 				break;
 			}
 		}
-		return emailAddressesResult;
+		return emailAddressesResultModel;
 	}
 }
 

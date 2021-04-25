@@ -1,8 +1,8 @@
-const CrawlEmailAddressData = require('./CrawlEmailAddressData');
-const CrawlLinkData = require('./CrawlLinkData');
+const CrawlEmailAddressDataModel = require('./CrawlEmailAddressData.model');
+const CrawlLinkDataModel = require('./CrawlLinkData.model');
 const { applicationUtils, timeUtils } = require('../../../../utils');
 
-class ApplicationData {
+class ApplicationDataModel {
 
 	constructor(data) {
 		// Set the parameters from the settings file.
@@ -34,10 +34,10 @@ class ApplicationData {
 		this.pageLinksIndex = 0;
 		this.pageLinksCount = 0;
 		this.progressValue = 0;
-		this.crawlLinkData = new CrawlLinkData();
-		this.crawlEmailAddressData = new CrawlEmailAddressData(activeSearchEngineNames);
+		this.crawlLinkDataModel = new CrawlLinkDataModel();
+		this.crawlEmailAddressDataModel = new CrawlEmailAddressDataModel(activeSearchEngineNames);
 		this.trendingSaveList = [];
 	}
 }
 
-module.exports = ApplicationData;
+module.exports = ApplicationDataModel;

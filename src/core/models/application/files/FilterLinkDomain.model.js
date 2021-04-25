@@ -1,4 +1,4 @@
-class FilterLinkDomain {
+class FilterLinkDomainModel {
 
     constructor(data) {
         const { name, domains } = data;
@@ -7,4 +7,4 @@ class FilterLinkDomain {
     }
 }
 
-module.exports = FilterLinkDomain;
+module.exports = FilterLinkDomainModel;

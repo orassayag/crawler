@@ -1,11 +1,11 @@
 require('../services/files/initiate.service').initiate('test');
-const { StatusIcon, TestType } = require('../core/enums');
+const { StatusIconEnum, TestTypeEnum } = require('../core/enums');
 const { emailAddressesGeneratorService, emailAddressValidationService, logService } = require('../services');
 const { logUtils, validationUtils } = require('../utils');
 
 // Email Address Validation //
 // ======================== //
-const testType = TestType.UPDATES; // Options: VALID / INVALID / RANDOM / UPDATES.
+const testType = TestTypeEnum.UPDATES; // Options: VALID / INVALID / RANDOM / UPDATES.
 // ======================== //
 
 const testEmailAddressValidation = async (list, isValidTest) => {
@@ -21,10 +21,10 @@ const testEmailAddressValidation = async (list, isValidTest) => {
     logService.logScore(list, score);
 };
 
-const setValidationTestResult = (isValidTest, validationResult, score) => {
-    const { isValid } = validationResult;
-    const icon = `${isValid ? `${isValidTest ? StatusIcon.V : StatusIcon.X}` : `${isValidTest ? StatusIcon.X : StatusIcon.V}`} `;
-    logUtils.log(logService.createFixResultTemplate(validationResult, icon));
+const setValidationTestResult = (isValidTest, validationResultModel, score) => {
+    const { isValid } = validationResultModel;
+    const icon = `${isValid ? `${isValidTest ? StatusIconEnum.V : StatusIconEnum.X}` : `${isValidTest ? StatusIconEnum.X : StatusIconEnum.V}`} `;
+    logUtils.log(logService.createFixResultTemplate(validationResultModel, icon));
     if (isValidTest) {
         if (isValid) {
             score++;
@@ -56,16 +56,16 @@ const sortResults = (isValidTest, validationResults) => {
 (async () => {
     // Validation on enum.
     if (!validationUtils.isValidEnum({
-        enum: TestType,
+        enum: TestTypeEnum,
         value: testType
     })) {
-        throw new Error('Invalid or no testType parameter was found (1000029)');
+        throw new Error('Invalid or no TestTypeEnum parameter was found (1000029)');
     }
     await emailAddressesGeneratorService.initiate();
     let list = null;
     let isValidTest = null;
     switch (testType) {
-        case TestType.VALID: {
+        case TestTypeEnum.VALID: {
             // ===VALID email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.
@@ -74,7 +74,7 @@ const sortResults = (isValidTest, validationResults) => {
             isValidTest = true;
             break;
         }
-        case TestType.INVALID: {
+        case TestTypeEnum.INVALID: {
             // ===INVALID email addresses=== //
             // If the email address is invalid, show V.
             // If the email address is valid, show X.
@@ -83,7 +83,7 @@ const sortResults = (isValidTest, validationResults) => {
             isValidTest = false;
             break;
         }
-        case TestType.RANDOM: {
+        case TestTypeEnum.RANDOM: {
             // ===RANDOM email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.
@@ -92,7 +92,7 @@ const sortResults = (isValidTest, validationResults) => {
             isValidTest = true;
             break;
         }
-        case TestType.UPDATES: {
+        case TestTypeEnum.UPDATES: {
             // ===UPDATES (valid) email addresses=== //
             // If the email address is invalid, show X.
             // If the email address is valid, show V.

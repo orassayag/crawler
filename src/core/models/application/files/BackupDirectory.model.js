@@ -1,4 +1,4 @@
-class BackupDirectory {
+class BackupDirectoryModel {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
@@ -9,4 +9,4 @@ class BackupDirectory {
 	}
 }
 
-module.exports = BackupDirectory;
+module.exports = BackupDirectoryModel;

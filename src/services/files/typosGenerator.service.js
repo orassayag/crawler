@@ -4,14 +4,14 @@ Made some cosmetic changes to fit modern JavaScript.
 Added here special characters implementation.
 */
 const settings = require('../../settings/settings');
-const { TestData } = require('../../core/models/application');
+const { TestDataModel } = require('../../core/models/application');
 const { characterUtils, textUtils } = require('../../utils');
 
 class TyposGeneratorService {
 
 	constructor() {
 		// ===TEST=== //
-		this.testData = null;
+		this.testDataModel = null;
 	}
 
 	tripleReplace(data) {
@@ -64,12 +64,12 @@ class TyposGeneratorService {
 			}
 		});
 		// Generate typos with special characters.
-		const numberOfTypos = textUtils.getRandomNumber(this.testData.minimumSpecialCharactersTyposEmailAddressesCount,
-			this.testData.maximumSpecialCharactersTyposEmailAddressesCount);
+		const numberOfTypos = textUtils.getRandomNumber(this.testDataModel.minimumSpecialCharactersTyposEmailAddressesCount,
+			this.testDataModel.maximumSpecialCharactersTyposEmailAddressesCount);
 		for (let i = 0; i < numberOfTypos; i++) {
 			let typo = word;
-			const randomSpecialCharactersNumber = textUtils.getRandomNumber(this.testData.minimumSpecialCharactersCount,
-				this.testData.maximumSpecialCharactersCount);
+			const randomSpecialCharactersNumber = textUtils.getRandomNumber(this.testDataModel.minimumSpecialCharactersCount,
+				this.testDataModel.maximumSpecialCharactersCount);
 			for (let y = 0; y < randomSpecialCharactersNumber; y++) {
 				const randomSpecialCharacter = textUtils.getRandomKeyFromArray(characterUtils.allSpecialCharacters);
 				const randomPositionIndex = textUtils.getRandomNumber(0, word.length);
@@ -92,7 +92,7 @@ class TyposGeneratorService {
 	generateTyposAsync(text) {
 		return new Promise(resolve => {
 			// ===TEST=== //
-			this.testData = new TestData(settings);
+			this.testDataModel = new TestDataModel(settings);
 			this.generateTypos(text, (typos) => {
 				resolve(typos.join().split(','));
 			});

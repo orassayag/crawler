@@ -1,4 +1,4 @@
-class CommonEmailAddressDomainEnd {
+class CommonEmailAddressDomainEndModel {
 
 	constructor(data) {
 		const { commonDomainEnd, isAllowDotAfter, excludeWords } = data;
@@ -8,4 +8,4 @@ class CommonEmailAddressDomainEnd {
 	}
 }
 
-module.exports = CommonEmailAddressDomainEnd;
+module.exports = CommonEmailAddressDomainEndModel;

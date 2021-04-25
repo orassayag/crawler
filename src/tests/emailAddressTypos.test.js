@@ -1,5 +1,5 @@
 require('../services/files/initiate.service').initiate('test');
-const { StatusIcon } = require('../core/enums');
+const { StatusIconEnum } = require('../core/enums');
 const { crawlEmailAddressService, emailAddressesGeneratorService, emailAddressValidationService, logService } = require('../services');
 const { emailAddressUtils, logUtils } = require('../utils');
 
@@ -8,15 +8,15 @@ const localPart = '';
 let domainPart = '';
 // ======================== //
 
-const logValidationTestResult = (validationResult) => {
-    const { isValid } = validationResult;
-    const icon = `${isValid ? StatusIcon.V : StatusIcon.X} `;
-    logUtils.log(logService.createFixResultTemplate(validationResult, icon));
+const logValidationTestResult = (validationResultModel) => {
+    const { isValid } = validationResultModel;
+    const icon = `${isValid ? StatusIconEnum.V : StatusIconEnum.X} `;
+    logUtils.log(logService.createFixResultTemplate(validationResultModel, icon));
 };
 
-const setValidationTestResult = (validationResult, score) => {
-    const { original, fix } = validationResult;
-    let { isValid } = validationResult;
+const setValidationTestResult = (validationResultModel, score) => {
+    const { original, fix } = validationResultModel;
+    let { isValid } = validationResultModel;
     const fixed = fix ? fix : original;
     const fixedDomainPart = emailAddressUtils.getEmailAddressParts(fixed)[1];
     const isMatch = fixedDomainPart === domainPart;

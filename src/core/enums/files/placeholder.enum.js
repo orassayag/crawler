@@ -1,7 +1,7 @@
 const enumUtils = require('../enum.utils');
 
-const Placeholder = enumUtils.createEnum([
+const PlaceholderEnum = enumUtils.createEnum([
     ['DATE', '#DATE#']
 ]);
 
-module.exports = { Placeholder };
+module.exports = { PlaceholderEnum };

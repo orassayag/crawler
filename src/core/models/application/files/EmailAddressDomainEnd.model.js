@@ -1,6 +1,6 @@
 const { textUtils } = require('../../../../utils');
 
-class EmailAddressDomainEnd {
+class EmailAddressDomainEndModel {
 
 	constructor(data) {
 		const { domainEnd, domainEndGroupName, isSingleWord, typosList } = data;
@@ -11,4 +11,4 @@ class EmailAddressDomainEnd {
 	}
 }
 
-module.exports = EmailAddressDomainEnd;
+module.exports = EmailAddressDomainEndModel;

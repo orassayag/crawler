@@ -1,4 +1,4 @@
-class InvalidEmailAddress {
+class InvalidEmailAddressModel {
 
 	constructor(emailAddress, recoverFix) {
 		this.emailAddress = emailAddress;
@@ -6,4 +6,4 @@ class InvalidEmailAddress {
 	}
 }
 
-module.exports = InvalidEmailAddress;
+module.exports = InvalidEmailAddressModel;

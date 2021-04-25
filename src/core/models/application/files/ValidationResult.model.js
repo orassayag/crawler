@@ -1,4 +1,4 @@
-class ValidationResult {
+class ValidationResultModel {
 
 	constructor(emailAddress) {
 		this.original = emailAddress;
@@ -9,4 +9,4 @@ class ValidationResult {
 	}
 }
 
-module.exports = ValidationResult;
+module.exports = ValidationResultModel;

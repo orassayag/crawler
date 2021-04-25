@@ -7,7 +7,7 @@ const { logUtils } = require('../utils');
 	crawlEmailAddressService.initiateCommonEmailAddressDomains();
 	let emailAddresses = [];
 	for (let i = 0; i < emailAddresses.length; i++) {
-		const validationResult = await emailAddressValidationService.validateEmailAddress(emailAddresses[i]);
-		logUtils.log(validationResult);
+		const validationResultModel = await emailAddressValidationService.validateEmailAddress(emailAddresses[i]);
+		logUtils.log(validationResultModel);
 	}
 })();

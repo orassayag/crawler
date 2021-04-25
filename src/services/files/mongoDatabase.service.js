@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const EmailAddressModel = require('../../core/models/database/EmailAddressModel');
-const { SaveStatus } = require('../../core/enums');
+const EmailAddressModel = require('../../core/models/database/EmailAddress.model');
+const { SaveStatusEnum } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
 const { systemUtils } = require('../../utils');
 
@@ -8,31 +8,31 @@ class MongoDatabaseService {
 
     constructor() {
         this.client = null;
-        this.mongoDatabaseData = null;
-        this.countLimitData = null;
+        this.mongoDatabaseDataModel = null;
+        this.countLimitDataModel = null;
         this.mongoDatabaseConnectionString = null;
         this.mongoDatabaseConnectionOptions = null;
     }
 
     async initiate(data) {
-        const { countLimitData, mongoDatabaseData } = data;
-        this.mongoDatabaseData = mongoDatabaseData;
-        this.countLimitData = countLimitData;
-        this.mongoDatabaseConnectionString = `${this.mongoDatabaseData.mongoDatabaseConnectionString}${this.mongoDatabaseData.mongoDatabaseModeName}`;
+        const { countLimitDataModel, mongoDatabaseDataModel } = data;
+        this.mongoDatabaseDataModel = mongoDatabaseDataModel;
+        this.countLimitDataModel = countLimitDataModel;
+        this.mongoDatabaseConnectionString = `${this.mongoDatabaseDataModel.mongoDatabaseConnectionString}${this.mongoDatabaseDataModel.mongoDatabaseModeName}`;
         this.mongoDatabaseConnectionOptions = {
-            useUnifiedTopology: this.mongoDatabaseData.isMongoDatabaseUseUnifiledTopology,
-            useNewUrlParser: this.mongoDatabaseData.isMongoDatabaseUseNewURLParser,
-            useCreateIndex: this.mongoDatabaseData.isMongoDatabaseUseCreateIndex,
-            poolSize: this.mongoDatabaseData.mongoDatabasePoolSizeCount,
-            socketTimeoutMS: this.mongoDatabaseData.mongoDatabaseSocketTimeoutMillisecondsCount,
-            keepAlive: this.mongoDatabaseData.mongoDatabaseKeepAliveMillisecondsCount,
-            ssl: this.mongoDatabaseData.isMongoDatabaseSSL,
-            sslValidate: this.mongoDatabaseData.isMongoDatabaseSSLValidate
+            useUnifiedTopology: this.mongoDatabaseDataModel.isMongoDatabaseUseUnifiledTopology,
+            useNewUrlParser: this.mongoDatabaseDataModel.isMongoDatabaseUseNewURLParser,
+            useCreateIndex: this.mongoDatabaseDataModel.isMongoDatabaseUseCreateIndex,
+            poolSize: this.mongoDatabaseDataModel.mongoDatabasePoolSizeCount,
+            socketTimeoutMS: this.mongoDatabaseDataModel.mongoDatabaseSocketTimeoutMillisecondsCount,
+            keepAlive: this.mongoDatabaseDataModel.mongoDatabaseKeepAliveMillisecondsCount,
+            ssl: this.mongoDatabaseDataModel.isMongoDatabaseSSL,
+            sslValidate: this.mongoDatabaseDataModel.isMongoDatabaseSSLValidate
         };
         await this.validateProcess();
         await this.createConnection();
         await this.testMongoDatabase();
-        if (this.mongoDatabaseData.isDropCollection) {
+        if (this.mongoDatabaseDataModel.isDropCollection) {
             await this.dropCollection();
         }
     }
@@ -92,9 +92,9 @@ class MongoDatabaseService {
     }
 
     async dropCollection() {
-        for (let i = 0; i < this.mongoDatabaseData.maximumDropCollectionRetriesCount; i++) {
+        for (let i = 0; i < this.mongoDatabaseDataModel.maximumDropCollectionRetriesCount; i++) {
             try {
-                await this.client.connection.collection(this.mongoDatabaseData.mongoDatabaseCollectionName).drop();
+                await this.client.connection.collection(this.mongoDatabaseDataModel.mongoDatabaseCollectionName).drop();
                 break;
             }
             catch (error) { }
@@ -102,7 +102,7 @@ class MongoDatabaseService {
     }
 
     async getEmailAddressesCount() {
-        return await mongoose.connection.collection(this.mongoDatabaseData.mongoDatabaseCollectionName).countDocuments();
+        return await mongoose.connection.collection(this.mongoDatabaseDataModel.mongoDatabaseCollectionName).countDocuments();
     }
 
     async saveEmailAddress(emailAddress) {
@@ -110,20 +110,20 @@ class MongoDatabaseService {
         // Check if the email address exists in the Mongo database.
         const emailAddressModel = await EmailAddressModel.findOne({ 'emailAddress': insertEmailAddress });
         if (emailAddressModel) {
-            return SaveStatus.EXISTS;
+            return SaveStatusEnum.EXISTS;
         }
         let status = null;
-        for (let i = 0; i < this.countLimitData.maximumSaveEmailAddressesRetriesCount; i++) {
+        for (let i = 0; i < this.countLimitDataModel.maximumSaveEmailAddressesRetriesCount; i++) {
             try {
                 await new EmailAddressModel({ emailAddress: insertEmailAddress }).save();
-                status = SaveStatus.SAVE;
+                status = SaveStatusEnum.SAVE;
                 break;
             }
             catch (error) {
-                status = SaveStatus.ERROR;
+                status = SaveStatusEnum.ERROR;
             }
             finally {
-                await globalUtils.sleep(this.countLimitData.millisecondsDelayMongoDatabaseSyncCount);
+                await globalUtils.sleep(this.countLimitDataModel.millisecondsDelayMongoDatabaseSyncCount);
             }
         }
         return status;

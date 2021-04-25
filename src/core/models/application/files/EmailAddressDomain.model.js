@@ -1,6 +1,6 @@
 const { textUtils } = require('../../../../utils');
 
-class EmailAddressDomain {
+class EmailAddressDomainModel {
 
 	constructor(data) {
 		const { domain, domainName, micromatchName, ignoreList, isCommonDomain, typosList } = data;
@@ -13,4 +13,4 @@ class EmailAddressDomain {
 	}
 }
 
-module.exports = EmailAddressDomain;
+module.exports = EmailAddressDomainModel;

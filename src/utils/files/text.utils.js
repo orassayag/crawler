@@ -199,7 +199,7 @@ class TextUtils {
         }
         for (let i = 0; i < 10; i++) {
             if (text.charAt(text.length - 1) === character) {
-                text = this.removeLastCharacter({
+                text = this.removeLastCharacters({
                     value: text,
                     charactersCount: 1
                 });
@@ -217,7 +217,7 @@ class TextUtils {
         }
         for (let i = 0; i < 20; i++) {
             if (!this.isCharacterALetter(text.charAt(text.length - 1))) {
-                text = this.removeLastCharacter({
+                text = this.removeLastCharacters({
                     value: text,
                     charactersCount: 1
                 });

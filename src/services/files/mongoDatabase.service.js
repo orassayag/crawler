@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const EmailAddressModel = require('../../core/models/database/EmailAddress.model');
+const { EmailAddressModel } = require('../../core/models/database');
 const { SaveStatusEnum } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
 const { systemUtils } = require('../../utils');

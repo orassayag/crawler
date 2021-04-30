@@ -11,8 +11,6 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
--Update packages + Recreate package-lock.json.
--Create directory for the mongo model + index.js file + Change in all places + Verify all works well.
 
 Complete + canceled tasks:
 ==========================

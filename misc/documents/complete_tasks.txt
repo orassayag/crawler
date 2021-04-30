@@ -1,6 +1,8 @@
 Complete + canceled tasks:
 ==========================
 -Update packages + Recreate package-lock.json. *
+-Create directory for the mongo model + index.js file + Change in all places + Verify all works well. *
+-Update packages + Recreate package-lock.json. *
 -Take the 'getCurrentDate' function from the 'event-dates-calendar' project. *
 -All time logic is in place + Take the 'getCurrentDate' function from the 'event-dates-calendar' project. *
 -Convert in all places from all versions of canceled keyword to 'Canceled' keyword. *

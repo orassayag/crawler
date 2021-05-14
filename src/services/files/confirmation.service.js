@@ -10,17 +10,17 @@ class ConfirmationService {
         if (!settings.IS_PRODUCTION_MODE) {
             return true;
         }
-        const readLine = readline.createInterface(process.stdin, process.stdout);
         logUtils.log(logService.createConfirmSettingsTemplate(settings));
+        readline.emitKeypressEvents(process.stdin);
+        if (process.stdin.isTTY) {
+            process.stdin.setRawMode(true);
+        }
         return new Promise((resolve, reject) => {
             try {
-                readLine.on('line', (line) => {
-                    switch (line) {
-                        case 'y': { resolve(true); break; }
-                        default: { resolve(false); break; }
-                    }
-                    readLine.close();
-                }).on('close', () => { resolve(false); });
+                process.stdin.on('keypress', (chunk, key) => {
+                    if (chunk) { }
+                    resolve(key && key.name === 'y');
+                });
             }
             catch (error) { reject(false); }
         }).catch();

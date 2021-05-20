@@ -6,21 +6,21 @@ class ConfirmationService {
 
     constructor() { }
 
-    confirm(settings) {
+    confirm(settings, mode) {
         if (!settings.IS_PRODUCTION_MODE) {
             return true;
         }
-        logUtils.log(logService.createConfirmSettingsTemplate(settings));
-        readline.emitKeypressEvents(process.stdin);
-        if (process.stdin.isTTY) {
-            process.stdin.setRawMode(true);
-        }
+        const readLine = readline.createInterface(process.stdin, process.stdout);
+        logUtils.log(logService.createConfirmSettingsTemplate(settings, mode));
         return new Promise((resolve, reject) => {
             try {
-                process.stdin.on('keypress', (chunk, key) => {
-                    if (chunk) { }
-                    resolve(key && key.name === 'y');
-                });
+                readLine.on('line', (line) => {
+                    switch (line) {
+                        case 'y': resolve(true); break;
+                        default: resolve(false); break;
+                    }
+                    readLine.close();
+                }).on('close', () => { resolve(false); });
             }
             catch (error) { reject(false); }
         }).catch();

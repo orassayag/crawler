@@ -19,7 +19,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 2. Go to list/searchKeys.list.js and make sure all search keys fit to needs.
 3. Go to list/filterKeys.list.js and make sure all domains filtered are fit to needs.
 4. Make sure the Mongo database is installed and configured properly.
-5. Run the script by 'npm start' and let the magic begin. :)
+5. Run the script by 'npm start' in the terminal and let the magic begin. :)
 
 In the terminal: npm start
 
@@ -27,11 +27,11 @@ Happy testing! :)
 
 ### Prerequisites
 
-You'll need to install VSCode, Node, and clone the application, run npm i.
+You'll need to install VSCode, Node, and clone the application, and in the terminal run npm i.
 
 ## Built With
 
-* [Node.JS](https://nodejs.org/en/) - The web framework used - Server side.
+* [Node.js](https://nodejs.org/en/) - The web framework used - Server side.
 
 ## Contributing
 

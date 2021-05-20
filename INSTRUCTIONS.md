@@ -36,7 +36,7 @@ INDEX:
     Maybe on the active search engines - The URL parameters has been changed?
     Maybe the crawling puppeteer has been changed?
 13. If no errors and the progress works OK, make sure to check on
-    dist/production/date of today (Example: 1_20200316_222124)/ That all TXT
+    dist/production/date of today (Example: 1_20200316_222124)/ that all TXT
     files created successfully.
 14. Index about each parameter in the console status line can be found in
     misc/documents/complete_tasks.txt

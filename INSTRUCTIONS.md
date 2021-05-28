@@ -19,18 +19,18 @@ INDEX:
    (Note: Don't worry if you see errors on screen - It does 2 times NPM i,
    since there are a few packages that cause errors -
    Just validate that the second 'npm i' goes without errors. If you see errors -
-   Run 'npm i' manually. If still got errors - Need to check what's wrong).
+   Run in the terminal: 'npm i' manually. If still got errors - Need to check what's wrong).
 5. Once finished with the node_modules installation, it's time to set up your goal.
-6. Open once again the Open the following file in the src/settings/settings.js file.
+6. Open once again the Open the following file in the 'src/settings/settings.js' file.
 7. Go to the 'GOAL_TYPE' setting and select the desired one from the following
    options: EMAIL_ADDRESSES / MINUTES / LINKS.
 8. After that, go to the 'GOAL_VALUE, and declare in numbers the maximum value
    to reach and when the application will stop to run.
 9. You are ready to start to crawl.
-10. In the terminal run 'npm start'. If everything goes well, you will start to see
+10. In the terminal run: 'npm start'. If everything goes well, you will start to see
     the console status line appears.
 11. If you see any error - Need to check what's changed. Current to 03/16/2020,
-    It works fine.
+    it works fine.
 12. If you see the console status line but the 'Save' or 'Total' not progressing
     - Need to check what's wrong.
     Maybe on the active search engines - The URL parameters has been changed?

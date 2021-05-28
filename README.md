@@ -7,27 +7,27 @@ Built in February 2020. A Node.js + Puppeteer.js application to fetch as many va
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. In the terminal: npm i
-3. In the terminal: npm start
+2. In the terminal: 'npm i'.
+3. In the terminal: 'npm start'.
 
 Search email addresses script:
 ==============================
 READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
 -Instructions & How to use:
-1. Go to the settings.js file and make sure that all settings are fit to needs.
-2. Go to list/searchKeys.list.js and make sure all search keys fit to needs.
-3. Go to list/filterKeys.list.js and make sure all domains filtered are fit to needs.
+1. Go to the 'settings.js' file and make sure that all settings are fit to needs.
+2. Go to the 'list/searchKeys.list.js' file and make sure all search keys fit to needs.
+3. Go to the 'list/filterKeys.list.js' file and make sure all domains filtered are fit to needs.
 4. Make sure the Mongo database is installed and configured properly.
 5. Run the script by 'npm start' in the terminal and let the magic begin. :)
 
-In the terminal: npm start
+In the terminal: 'npm start'.
 
 Happy testing! :)
 
 ### Prerequisites
 
-You'll need to install VSCode, Node, and clone the application, and in the terminal run npm i.
+You'll need to install VSCode, Node, and clone the application, and in the terminal run: 'npm i'.
 
 ## Built With
 
@@ -51,4 +51,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This application has an UNLICENSED License.
+This application has an UNLICENSED license.

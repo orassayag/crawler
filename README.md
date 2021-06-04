@@ -19,7 +19,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 2. Go to the 'list/searchKeys.list.js' file and make sure all search keys fit to needs.
 3. Go to the 'list/filterKeys.list.js' file and make sure all domains filtered are fit to needs.
 4. Make sure the Mongo database is installed and configured properly.
-5. Run the script by 'npm start' in the terminal and let the magic begin. :)
+5. Run the script by 'npm start' in the terminal and let the magic begin :).
 
 In the terminal: 'npm start'.
 

@@ -7,8 +7,8 @@ Built in February 2020. A Node.js + Puppeteer.js application to fetch as many va
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. In the terminal: 'npm i'.
-3. In the terminal: 'npm start'.
+2. In the terminal run: 'npm i'.
+3. In the terminal run: 'npm start'.
 
 Search email addresses script:
 ==============================
@@ -32,6 +32,7 @@ You'll need to install VSCode, Node, and clone the application, and in the termi
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - The web framework used - Server side.
+* [Git](https://git-scm.com/) - Source management.
 
 ## Contributing
 

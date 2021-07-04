@@ -13,7 +13,7 @@ INDEX:
 1. Open the project in IDE (Current to 03/16/2020 I'm using VSCode).
 2. Open the following file in the src/settings/settings.js file.
 3. Search for the first setting - 'IS_PRODUCTION_MODE' - Make sure it is true.
-4. Next - Time to install the NPM packages. In the terminal run 'npm run preload'.
+4. Next - Time to install the NPM packages. In the terminal run: 'npm run preload'.
    It will install automatically all the required NPM packages according to the
    production mode (With NPM puppeteer.js package).
    (Note: Don't worry if you see errors on screen - It does 2 times NPM i,

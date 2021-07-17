@@ -1,6 +1,7 @@
 # Crawler
 
-Built in February 2020. A Node.js + Puppeteer.js application to fetch as many valid email addresses from crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.
+Built in February 2020. A Node.js + Puppeteer.js application to fetch as many valid email addresses from
+crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.
 
 ## Getting Started
 
@@ -21,9 +22,9 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 4. Make sure the Mongo database is installed and configured properly.
 5. Run the script by 'npm start' in the terminal and let the magic begin :).
 
-In the terminal: 'npm start'.
+In the terminal run: 'npm start'.
 
-Happy testing! :)
+Happy testing! :).
 
 ### Prerequisites
 
@@ -31,8 +32,8 @@ You'll need to install VSCode, Node, and clone the application, and in the termi
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en/) - The web framework used - Server side.
-* [Git](https://git-scm.com/) - Source management.
+* [Node.js](https://nodejs.org/en) - The web framework used - Server side.
+* [Git](https://git-scm.com) - Source management.
 
 ## Contributing
 
@@ -40,7 +41,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Author
 

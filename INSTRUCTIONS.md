@@ -11,7 +11,7 @@ INDEX:
 1. FAST & BASIC START.
 ======================
 1. Open the project in IDE (Current to 03/16/2020 I'm using VSCode).
-2. Open the following file in the src/settings/settings.js file.
+2. Open the following file in the 'src/settings/settings.js' file.
 3. Search for the first setting - 'IS_PRODUCTION_MODE' - Make sure it is true.
 4. Next - Time to install the NPM packages. In the terminal run: 'npm run preload'.
    It will install automatically all the required NPM packages according to the
@@ -36,10 +36,10 @@ INDEX:
     Maybe on the active search engines - The URL parameters has been changed?
     Maybe the crawling puppeteer has been changed?
 13. If no errors and the progress works OK, make sure to check on
-    dist/production/date of today (Example: 1_20200316_222124)/ that all TXT
+    the 'dist/production/date' of today (Example: 1_20200316_222124)/ that all TXT
     files created successfully.
 14. Index about each parameter in the console status line can be found in
-    misc/documents/complete_tasks.txt
+    'misc/documents/complete_tasks.txt' file.
 
 ==============================
 2. ADVANCE OPTIONS & SETTINGS.
@@ -302,7 +302,7 @@ linkCrawl.test.js:
 5. IMPORTANT MESSAGES.
 ======================
 1. Each time you change the logic / update NPM package version, do the following steps:
-a. Perform a backup before any change has been made, by running in the terminal 'npm run backup'
+a. Perform a backup before any change has been made, by running in the terminal run: 'npm run backup'
    or manually to the backups directory.
 b. After the change, check that everything works OK.
 c. Keep the maintenance - Every change you do - Make sure to update in this document if needed.

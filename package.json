@@ -71,7 +71,7 @@
     "micromatch": "^4.0.4",
     "mongoose": "^6.0.8",
     "puppeteer": "^10.4.0",
-    "puppeteer-extra": "^3.2.2",
+    "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-stealth": "^2.8.1",
     "random-email": "^1.0.3",
     "random-useragent": "^0.5.0",
@@ -83,6 +83,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.7",
     "eslint": "^7.32.0",
-    "@types/node": "^16.10.1"
+    "@types/node": "^16.10.2"
   }
 }

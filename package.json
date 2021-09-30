@@ -67,7 +67,7 @@
     "gibberish-detector": "^1.0.0",
     "is-reachable": "^5.1.0",
     "log-update": "^4.0.0",
-    "lorem-ipsum": "^2.0.3",
+    "lorem-ipsum": "^2.0.4",
     "micromatch": "^4.0.4",
     "mongoose": "^6.0.8",
     "puppeteer": "^10.4.0",

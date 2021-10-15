@@ -69,7 +69,7 @@
     "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.4",
     "micromatch": "^4.0.4",
-    "mongoose": "^6.0.10",
+    "mongoose": "^6.0.11",
     "puppeteer": "^10.4.0",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-stealth": "^2.8.2",

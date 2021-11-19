@@ -9,7 +9,7 @@ const searchEngineStatuses = [
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.DOGPILE }),
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.ECOSIA }),
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.EXALEAD }),
-    new SearchEngineStatusModel({ isActive: true, name: SearchEngineTypeEnum.GOOGLE }),
+    new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.GOOGLE }),
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.INFO }),
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.INFOSPACE }),
     new SearchEngineStatusModel({ isActive: false, name: SearchEngineTypeEnum.METACRAWLER }),
@@ -92,16 +92,8 @@ const searchEngines = [
         startIndex: 0,
         advanceBy: 10,
         templatesList: [
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk00pZsDz0iKJgXmkPDus2qzIp24C8g:1604435091632&ei=k7yhX9eTJqXF8gKR4rDwDg&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiXqc69mufsAhWlolwKHRExDO4Q8NMDegQIBRBD&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk020B0_Vktk9Z8F6gZDGCX3PqN_yQQ:1604763495158&ei=Z7-mX9GYCYag1fAP0N-K8Ac&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiR6M7w4fDsAhUGUBUIHdCvAn4Q8NMDegQIBhBA&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk03CIm1luLRLBuK3Zo-GAscGCWatrA:1604763509956&ei=db-mX8jxObKp1fAPmsGhuAo&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiIgNb34fDsAhWyVBUIHZpgCKcQ8NMDegQIBxBA&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk03Uozric0JTm3EhCv0yKdrKwu16EQ:1604763536316&ei=kL-mX8vkEsyE1fAP_b2KsAQ&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwjL7J6E4vDsAhVMQhUIHf2eAkYQ8NMDegQIBhBC&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk01TTD_U7wmSygdP-XmvJJDFfHQz5g:1604763551066&ei=n7-mX-7RA--i1fAP2MmCsAw&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiunaOL4vDsAhVvURUIHdikAMYQ8NMDegQIBhA8&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk03HjQwukWJvSovYG7moGvedqcfPaA:1604763561627&ei=qb-mX8vcJbXrxgPHqrTwCQ&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiL1aeQ4vDsAhW1tXEKHUcVDZ4Q8NMDegQIBhBA&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk01Wl187yvsDTFxs_aWwz8OZwYYmww:1604763574884&ei=tr-mX6q7NaaH1fAP9s-ekAY&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiq7tCW4vDsAhWmQxUIHfanB2IQ8NMDegQIBxA6&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk03lDiUko79b9dQYkE4z5ZKXNSGE-Q:1604763592992&ei=yL-mX66TPIHlxgP72Yv4Bw&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiul6Kf4vDsAhWBsnEKHfvsAn8Q8NMDegQIBhBC&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk000XePujrV7Te1OwIPANjcZGscD5w:1604763609808&ei=2b-mX93cMIHlxgP72Yv4Bw&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwidraSn4vDsAhWBsnEKHfvsAn8Q8NMDegQIBRBC&biw=1920&bih=937`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=ALeKk00IjsVN1Oalj-cdvfCK7jGmgBH6jA:1604763623777&ei=57-mX6aCL9ed1fAP_8iVkAg&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwjmkfmt4vDsAhXXThUIHX9kBYIQ8NMDegQIBRBC&biw=1920&bih=937`
+            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=AOaemvI2EzU7HeYl8XSsxrIL-tYC11x7Ag:1637306044836&ei=vE6XYZHXMofZgAa97ZigAw&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwiRpcOp8KP0AhWHLMAKHb02BjQQ8NMDegQIARBJ&biw=1920&bih=937&dpr=1`,
+            `search?q=${SearchPlaceHolderEnum.QUERY}&newwindow=1&rlz=1C1CHBF_enIL821IL821&sxsrf=AOaemvI-Qyb-h38ittXjk9GRHpzseRMvyA:1637306213484&ei=ZU-XYfj6HI7dgQar4LOgAQ&start=${SearchPlaceHolderEnum.PAGER}&sa=N&ved=2ahUKEwi4wfj58KP0AhWObsAKHSvwDBQQ8NMDegQIARBE&biw=1920&bih=937&dpr=1`
         ]
     }),
 

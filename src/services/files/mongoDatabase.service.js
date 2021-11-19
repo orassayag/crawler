@@ -19,13 +19,9 @@ class MongoDatabaseService {
         this.mongoDatabaseDataModel = mongoDatabaseDataModel;
         this.countLimitDataModel = countLimitDataModel;
         this.mongoDatabaseConnectionString = `${this.mongoDatabaseDataModel.mongoDatabaseConnectionString}${this.mongoDatabaseDataModel.mongoDatabaseModeName}`;
-        this.mongoDatabaseConnectionOptions = {
-            useUnifiedTopology: this.mongoDatabaseDataModel.isMongoDatabaseUseUnifiledTopology,
-            useNewUrlParser: this.mongoDatabaseDataModel.isMongoDatabaseUseNewURLParser,
-            useCreateIndex: this.mongoDatabaseDataModel.isMongoDatabaseUseCreateIndex,
-            poolSize: this.mongoDatabaseDataModel.mongoDatabasePoolSizeCount,
+        this.mongoConnectionOptions = {
             socketTimeoutMS: this.mongoDatabaseDataModel.mongoDatabaseSocketTimeoutMillisecondsCount,
-            keepAlive: this.mongoDatabaseDataModel.mongoDatabaseKeepAliveMillisecondsCount,
+            keepAlive: this.mongoDatabaseDataModel.mongoDatabaseKeepAlive,
             ssl: this.mongoDatabaseDataModel.isMongoDatabaseSSL,
             sslValidate: this.mongoDatabaseDataModel.isMongoDatabaseSSLValidate
         };
@@ -78,8 +74,8 @@ class MongoDatabaseService {
         await EmailAddressModel.findOne({ 'emailAddress': 'XXX' });
     }
 
-    async testMongoDatabaseUpdate(result) {
-        await EmailAddressModel.updateOne({ id: result._id, 'emailAddress': 'XXX' }, new EmailAddressModel({ emailAddress: 'XXY' }));
+    testMongoDatabaseUpdate(result) {
+        EmailAddressModel.updateOne({ _id: result._id }, new EmailAddressModel({ emailAddress: 'XXY' }));
     }
 
     async testMongoDatabaseDelete() {

@@ -65,12 +65,12 @@
     "forever-monitor": "^3.0.3",
     "fs-extra": "^10.0.0",
     "gibberish-detector": "^1.0.0",
-    "is-reachable": "^5.1.0",
+    "is-reachable": "^5.1.1",
     "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.4",
     "micromatch": "^4.0.4",
-    "mongoose": "^6.0.13",
-    "puppeteer": "^11.0.0",
+    "mongoose": "^6.1.1",
+    "puppeteer": "^13.0.0",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-stealth": "^2.9.0",
     "random-email": "^1.0.3",
@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
-    "@types/node": "^16.11.8",
-    "eslint": "^8.3.0"
+    "@types/node": "^16.11.12",
+    "eslint": "^8.4.1"
   }
 }

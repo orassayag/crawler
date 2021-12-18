@@ -44,9 +44,10 @@ const searchEngines = [
         name: SearchEngineTypeEnum.BING,
         baseURL: 'https://www.bing.com/',
         startIndex: 1,
-        advanceBy: 10,
+        advanceBy: 8,
         templatesList: [
-            `search?q=${SearchPlaceHolderEnum.QUERY}&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=F6A9A51C2A884A459B4C65332D7506E5&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
+            `search?q=${SearchPlaceHolderEnum.QUERY}sp=-1&pq=${SearchPlaceHolderEnum.QUERY}&sc=8-11&qs=n&sk=&cvid=0531478D70EE4DCAB6A52D442FF8CB77&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
+/*             `search?q=${SearchPlaceHolderEnum.QUERY}&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=F6A9A51C2A884A459B4C65332D7506E5&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
             `search?q=${SearchPlaceHolderEnum.QUERY}&sp=-1&pq=&sc=0-1&qs=n&sk=&cvid=93A55275D8274A4E8A430EE1C9F19E81&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
             `search?q=${SearchPlaceHolderEnum.QUERY}&sp=-1&pq=&sc=0-10&qs=n&sk=&cvid=18C2128B49394B1698C634B8FB48D49B&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
             `search?q=${SearchPlaceHolderEnum.QUERY}&qs=n&sp=-1&pq=&sc=0-13&sk=&cvid=5A9B8073A60A4F4095BFB99091E938E1&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
@@ -55,7 +56,7 @@ const searchEngines = [
             `search?q=${SearchPlaceHolderEnum.QUERY}&qs=n&sp=-1&pq=&sc=0-8&sk=&cvid=433DE9390F2C461EBBC03F6F0811FC23&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
             `search?q=${SearchPlaceHolderEnum.QUERY}&qs=n&sp=-1&pq=&sc=0-10&sk=&cvid=D6508085B2F341B195ACB1E0050AB3EE&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
             `search?q=${SearchPlaceHolderEnum.QUERY}&sp=-1&pq=&sc=0-7&qs=n&sk=&cvid=70C0B8E7EA864F338E37F75A34FFD035&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`,
-            `search?q=${SearchPlaceHolderEnum.QUERY}&qs=n&sp=-1&pq=&sc=1-15&sk=&cvid=DE92792ADAF24F11BA793D9DD64AA375&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE`
+            `search?q=${SearchPlaceHolderEnum.QUERY}&qs=n&sp=-1&pq=&sc=1-15&sk=&cvid=DE92792ADAF24F11BA793D9DD64AA375&first=${SearchPlaceHolderEnum.PAGER}&FORM=PORE` */
         ]
     }),
 

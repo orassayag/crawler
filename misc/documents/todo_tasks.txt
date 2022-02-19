@@ -11,6 +11,7 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
+-Resolve issue with faker. Last working version was 5.5.3.
 
 Complete + canceled tasks:
 ==========================

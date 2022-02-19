@@ -61,7 +61,6 @@
   ],
   "dependencies": {
     "chance": "^1.1.8",
-    "faker": "^5.5.3",
     "forever-monitor": "^3.0.3",
     "fs-extra": "^10.0.0",
     "gibberish-detector": "^1.0.0",
@@ -81,8 +80,8 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.16.5",
-    "@types/node": "^17.0.13",
-    "eslint": "^8.7.0"
+    "@babel/eslint-parser": "^7.17.0",
+    "@types/node": "^17.0.18",
+    "eslint": "^8.9.0"
   }
 }

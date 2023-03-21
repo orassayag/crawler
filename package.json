@@ -62,7 +62,7 @@
   "dependencies": {
     "chance": "^1.1.11",
     "forever-monitor": "^3.0.3",
-    "fs-extra": "^11.1.0",
+    "fs-extra": "^11.1.1",
     "gibberish-detector": "^1.0.0",
     "is-reachable": "^5.2.1",
     "log-update": "^4.0.0",
@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.5",
     "eslint": "^8.36.0"
   }
 }

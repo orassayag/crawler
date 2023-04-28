@@ -68,7 +68,7 @@
     "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.8",
     "micromatch": "^4.0.5",
-    "mongoose": "^7.0.5",
+    "mongoose": "^7.1.0",
     "puppeteer": "^19.11.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
-    "@types/node": "^18.16.1",
+    "@types/node": "^18.16.2",
     "eslint": "^8.39.0"
   }
 }

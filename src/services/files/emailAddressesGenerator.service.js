@@ -1,9 +1,7 @@
 const Chance = require('chance');
 const chance = new Chance();
-const faker = require('faker');
 const LoremIpsum = require('lorem-ipsum').LoremIpsum;
 const randomEmail = require('random-email');
-const randomWords = require('random-words');
 const settings = require('../../settings/settings');
 const { ApplicationDataModel, CountLimitDataModel, EmailAddressDataModel, MongoDatabaseDataModel, TestDataModel } = require('../../core/models/application');
 const { PartTypeEnum } = require('../../core/enums');
@@ -121,10 +119,9 @@ class EmailAddressesGeneratorService {
             switch (textUtils.getRandomNumber(1, 7)) {
                 case 1: { emailAddress = await this.createMongoDatabaseEmailAddress(); break; }
                 case 2: { emailAddress = this.createSimpleValidEmailAddress(); break; }
-                case 3: { emailAddress = this.createEmailAddressNPMFaker(); break; }
                 case 4: { emailAddress = this.createEmailAddressNPMRandomEmail(); break; }
                 case 5: { emailAddress = this.createEmailAddressNPMChance(); break; }
-                case 6: { emailAddress = this.createEmailAddressMispelledPartsListEnds(); break; }
+                case 6: { emailAddress = this.createEmailAddressMisspelledPartsListEnds(); break; }
             }
         }
         else {
@@ -139,15 +136,13 @@ class EmailAddressesGeneratorService {
         let localPart = '';
         switch (textUtils.getRandomNumber(1, 15)) {
             case 1: { localPart = emailAddressUtils.getEmailAddressParts(this.createSimpleValidEmailAddress())[0]; break; }
-            case 2: { localPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMFaker())[0]; break; }
             case 3: { localPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMRandomEmail())[0]; break; }
             case 4: { localPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMChance())[0]; break; }
-            case 5: { localPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressMispelledPartsListEnds())[0]; break; }
+            case 5: { localPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressMisspelledPartsListEnds())[0]; break; }
             case 6: { localPart = this.createRandomPartLists(PartTypeEnum.LOCAL); break; }
             case 7: { localPart = this.createRandomPartNPM(PartTypeEnum.LOCAL); break; }
             case 8: { localPart = this.createRandomPartNPMLoremIpsum(); break; }
             case 9: { localPart = this.createRandomPartNPMChance(); break; }
-            case 10: { localPart = this.createRandomPartNPMFaker(); break; }
             case 11: { localPart = await this.createRandomPartTypo(); break; }
             case 12: { localPart = this.createRandomPartUUID(); break; }
             case 13: { localPart = this.createRandomPartManually(PartTypeEnum.LOCAL); break; }
@@ -160,19 +155,16 @@ class EmailAddressesGeneratorService {
         let domainPart = '';
         switch (textUtils.getRandomNumber(1, 19)) {
             case 1: { domainPart = emailAddressUtils.getEmailAddressParts(this.createSimpleValidEmailAddress())[1]; break; }
-            case 2: { domainPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMFaker())[1]; break; }
             case 3: { domainPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMRandomEmail())[1]; break; }
             case 4: { domainPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressNPMChance())[1]; break; }
-            case 5: { domainPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressMispelledPartsListEnds())[1]; break; }
+            case 5: { domainPart = emailAddressUtils.getEmailAddressParts(this.createEmailAddressMisspelledPartsListEnds())[1]; break; }
             case 6: { domainPart = this.createDomainPartLists(); break; }
             case 7: { domainPart = this.createDomainPartDomainsDetails(); break; }
-            case 8: { domainPart = this.createDomainPartNPMFaker(); break; }
             case 9: { domainPart = this.createDomainPartNPMChance(); break; }
             case 10: { domainPart = this.createRandomPartLists(PartTypeEnum.DOMAIN); break; }
             case 11: { domainPart = this.createRandomPartNPM(PartTypeEnum.DOMAIN); break; }
             case 12: { domainPart = this.createRandomPartNPMLoremIpsum(); break; }
             case 13: { domainPart = this.createRandomPartNPMChance(); break; }
-            case 14: { domainPart = this.createRandomPartNPMFaker(); break; }
             case 15: { domainPart = await this.createRandomPartTypo(); break; }
             case 16: { domainPart = this.createRandomPartUUID(); break; }
             case 17: { domainPart = this.createRandomPartManually(PartTypeEnum.DOMAIN); break; }
@@ -208,10 +200,6 @@ class EmailAddressesGeneratorService {
         return emailAddress;
     }
 
-    createEmailAddressNPMFaker() {
-        return this.mayMisspellEmailAddress(faker.internet.email());
-    }
-
     createEmailAddressNPMRandomEmail() {
         return this.mayMisspellEmailAddress(randomEmail());
     }
@@ -220,7 +208,7 @@ class EmailAddressesGeneratorService {
         return this.mayMisspellEmailAddress(chance.email());
     }
 
-    createEmailAddressMispelledPartsListEnds() {
+    createEmailAddressMisspelledPartsListEnds() {
         const localPart = this.createRandomPartNPM(PartTypeEnum.LOCAL);
         const domainPart = this.createRandomPartNPM(PartTypeEnum.DOMAIN);
         if (!localPart || !domainPart) {
@@ -242,10 +230,6 @@ class EmailAddressesGeneratorService {
         return textUtils.getRandomKeyFromArray(commonEmailAddressDomainsList).domain;
     }
 
-    createDomainPartNPMFaker() {
-        return this.mayMisspellEmailAddress(faker.internet.domainName());
-    }
-
     createDomainPartNPMChance() {
         return chance.domain();
     }
@@ -259,7 +243,6 @@ class EmailAddressesGeneratorService {
         let emailAddress = '';
         switch (textUtils.getRandomNumber(1, 5)) {
             case 1: { emailAddress = this.createSimpleValidEmailAddress(); break; }
-            case 2: { emailAddress = this.createEmailAddressNPMFaker(); break; }
             case 3: { emailAddress = this.createEmailAddressNPMRandomEmail(); break; }
             case 4: { emailAddress = this.createEmailAddressNPMChance(); break; }
         }
@@ -285,25 +268,6 @@ class EmailAddressesGeneratorService {
             case 9: { part = chance.last(); break; }
             case 10: { part = chance.first(); break; }
             case 11: { part = chance.suffix({ full: true }); break; }
-        }
-        return textUtils.removeEmptySpaces(part);
-    }
-
-    createRandomPartNPMFaker() {
-        let part = '';
-        switch (textUtils.getRandomNumber(1, 13)) {
-            case 1: { part = faker.commerce.productName(); break; }
-            case 2: { part = faker.finance.accountName(); break; }
-            case 3: { part = faker.internet.userName(); break; }
-            case 4: { part = faker.internet.domainWord(); break; }
-            case 5: { part = faker.internet.password(); break; }
-            case 6: { part = faker.lorem.word(); break; }
-            case 7: { part = faker.name.firstName(); break; }
-            case 8: { part = faker.name.lastName(); break; }
-            case 9: { part = faker.name.findName(); break; }
-            case 10: { part = faker.name.jobTitle(); break; }
-            case 11: { part = faker.random.word(); break; }
-            case 12: { part = faker.system.fileName(); break; }
         }
         return textUtils.removeEmptySpaces(part);
     }
@@ -343,11 +307,11 @@ class EmailAddressesGeneratorService {
             separator: isSeparator ? textUtils.getRandomKeyFromArray(characterUtils.separatorsCharacters) : '',
             formatter: isFormatter ? textUtils.getRandomBoolean() ? this.formatter1 : this.formatter2 : null
         };
-        part = randomWords(randomWordsSettings)[0];
+        // part = randomWords(randomWordsSettings)[0];
         if (isOverLength) {
             for (let i = 0; i < 20; i++) {
                 if (part.length < maximumLength) {
-                    part += randomWords(randomWordsSettings)[0];
+                    // part += randomWords(randomWordsSettings)[0];
                 }
                 else {
                     break;
@@ -361,11 +325,11 @@ class EmailAddressesGeneratorService {
         return part;
     }
 
-    getSingleWord() {
-        return randomWords({
-            exactly: 1
-        })[0];
-    }
+    /*     getSingleWord() {
+            return randomWords({
+                exactly: 1
+            })[0];
+        } */
 
     getRelevantEmailAddressPart(emailAddress, partType) {
         const [localPart, domainPart] = emailAddressUtils.getEmailAddressParts(emailAddress);

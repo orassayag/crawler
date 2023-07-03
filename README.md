@@ -7,15 +7,17 @@ crawling web pages sources resulted from crawling search engines sources, accord
 
 Clone the application to your computer.
 Steps to view the solution:
+
 1. Open server application on IDE (I use VSCode).
 2. In the terminal run: 'npm i'.
 3. In the terminal run: 'npm start'.
 
-Search email addresses script:
-==============================
+# Search email addresses script:
+
 READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
 -Instructions & How to use:
+
 1. Go to the 'settings.js' file and make sure that all settings are fit to needs.
 2. Go to the 'list/searchKeys.list.js' file and make sure all search keys fit to needs.
 3. Go to the 'list/filterKeys.list.js' file and make sure all domains filtered are fit to needs.
@@ -32,8 +34,8 @@ You'll need to install VSCode, Node, and clone the application, and in the termi
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en) - The web framework used - Server side.
-* [Git](https://git-scm.com) - Source management.
+- [Node.js](https://nodejs.org/en) - The web framework used - Server side.
+- [Git](https://git-scm.com) - Source management.
 
 ## Contributing
 
@@ -45,12 +47,12 @@ We use [SemVer](http://semver.org) for versioning. For the versions available, s
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 
-This application has an UNLICENSED license.
+This application has an MIT license.

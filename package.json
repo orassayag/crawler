@@ -68,8 +68,8 @@
     "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.8",
     "micromatch": "^4.0.5",
-    "mongoose": "^7.3.1",
-    "puppeteer": "^20.7.4",
+    "mongoose": "^7.3.2",
+    "puppeteer": "^20.8.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-email": "^1.0.3",
@@ -79,8 +79,8 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.6",
-    "@types/node": "^20.3.3",
+    "@babel/eslint-parser": "^7.22.7",
+    "@types/node": "^20.4.0",
     "eslint": "^8.44.0"
   }
 }

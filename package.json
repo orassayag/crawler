@@ -80,7 +80,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.10",
-    "@types/node": "^20.4.10",
+    "@types/node": "^20.5.0",
     "eslint": "^8.47.0"
   }
 }

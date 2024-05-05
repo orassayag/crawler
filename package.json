@@ -79,6 +79,6 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
-    "eslint": "^9.1.1"
+    "eslint": "^9.2.0"
   }
 }

@@ -69,7 +69,7 @@
     "lorem-ipsum": "^2.0.8",
     "micromatch": "^4.0.7",
     "mongoose": "^8.4.1",
-    "puppeteer": "^22.10.0",
+    "puppeteer": "^22.10.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-email": "^1.0.3",

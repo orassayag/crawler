@@ -69,7 +69,7 @@
     "lorem-ipsum": "^2.0.8",
     "micromatch": "^4.0.8",
     "mongoose": "^8.9.4",
-    "puppeteer": "^23.11.1",
+    "puppeteer": "^24.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-email": "^1.0.3",
@@ -79,6 +79,6 @@
     "validator": "^13.12.0"
   },
   "devDependencies": {
-    "eslint": "^9.17.0"
+    "eslint": "^9.18.0"
   }
 }

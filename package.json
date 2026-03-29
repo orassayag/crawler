@@ -2,15 +2,27 @@
   "name": "crawler",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js + Puppeteer.js application to fetch as many valid email addresses from crawling web pages sources resulted from crawling search engines sources, according to specific and random search keys.",
+  "description": "A Node.js + Puppeteer.js application to fetch and validate email addresses by crawling web pages from search engine results. Features intelligent search strategies, advanced email validation with typo correction, MongoDB storage, and automatic restart monitoring.",
   "repository": {
     "type": "git",
     "url": "git://github.com/orassayag/crawler.git"
   },
   "keywords": [
-    "links",
-    "emails",
-    "email addresses"
+    "crawler",
+    "web-scraping",
+    "email-extraction",
+    "puppeteer",
+    "mongodb",
+    "search-engine",
+    "email-validation",
+    "data-mining",
+    "web-crawler",
+    "headless-browser",
+    "bing",
+    "google",
+    "automation",
+    "typo-correction",
+    "gibberish-detection"
   ],
   "license": "MIT",
   "author": "Or Assayag <orassayag@gmail.com>",

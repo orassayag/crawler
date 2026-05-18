@@ -2,11 +2,7 @@
   "name": "crawler",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js + Puppeteer.js application to fetch and validate email addresses by crawling web pages from search engine results. Features intelligent search strategies, advanced email validation with typo correction, MongoDB storage, and automatic restart monitoring.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/orassayag/crawler.git"
-  },
+  "description": "A Node.js + Puppeteer.js application that crawls web pages from search engine results to discover and validate email addresses using specific and random search keys. Built to automate large-scale email discovery with intelligent search strategies, validation logic, and MongoDB storage at scale",
   "keywords": [
     "crawler",
     "web-scraping",
@@ -24,8 +20,24 @@
     "typo-correction",
     "gibberish-detection"
   ],
+  "homepage": "https://github.com/orassayag/crawler#readme",
+  "bugs": {
+    "url": "https://github.com/orassayag/crawler/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/crawler.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/orassayag"
+  },
   "license": "MIT",
-  "author": "Or Assayag <orassayag@gmail.com>",
+  "author": {
+    "name": "Or Assayag",
+    "email": "orassayag@gmail.com",
+    "url": "https://github.com/orassayag"
+  },
   "contributors": [
     {
       "name": "Or Assayag",
@@ -33,37 +45,48 @@
       "url": "https://github.com/orassayag"
     }
   ],
-  "main": "src/monitor/monitor.js",
+  "type": "module",
+  "main": "src/scripts/crawl.script.js",
   "files": [
+    ".github",
+    ".vscode",
+    "dist",
+    "misc",
+    "sources",
     "src",
-    ".eslintignore",
     ".eslintrc",
     ".gitignore",
-    ".jsbeautifyrc",
     ".npmignore",
+    ".prettierrc",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
     "INSTRUCTIONS.md",
+    "knip.json",
+    "LICENSE",
     "package-lock.json",
     "package.json",
-    "README.md"
+    "README.md",
+    "SECURITY.md"
   ],
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
-    "start": "node src/monitor/monitor.js",
-    "domains": "node src/scripts/domains.script.js",
-    "delay": "node src/scripts/delay.script.js",
-    "pre_load": "node src/scripts/preload.script.js",
     "cases": "node src/tests/emailAddressTestCases.test.js",
+    "delay": "node src/scripts/delay.script.js",
+    "domains": "node src/scripts/domains.script.js",
     "generator": "node src/tests/emailAddressGenerator.test.js",
-    "val": "node src/tests/validateEmailAddress.test.js",
-    "valmany": "node src/tests/validateEmailAddresses.test.js",
-    "valdebug": "node --inspect-brk src/tests/validateEmailAddress.test.js",
-    "typos": "node src/tests/emailAddressTypos.test.js",
-    "sand": "node src/tests/sandBox.test.js",
-    "link": "node src/tests/linkCrawl.test.js",
-    "session": "node src/tests/linksSession.test.js",
-    "preload": "npm run pre_load && npm i & npm run delay & npm i",
     "postinstall": "node src/scripts/initiate.script.js",
-    "stop": "taskkill -f -im node.exe"
+    "link": "node src/tests/linkCrawl.test.js",
+    "pre_load": "node src/scripts/preload.script.js",
+    "preload": "npm run pre_load && npm i & npm run delay & npm i",
+    "sand": "node src/tests/sandBox.test.js",
+    "session": "node src/tests/linksSession.test.js",
+    "start": "node src/monitor/monitor.js",
+    "stop": "taskkill -f -im node.exe",
+    "typos": "node src/tests/emailAddressTypos.test.js",
+    "val": "node src/tests/validateEmailAddress.test.js",
+    "valdebug": "node --inspect-brk src/tests/validateEmailAddress.test.js",
+    "valmany": "node src/tests/validateEmailAddresses.test.js"
   },
   "browserslist": [
     ">0.2%",
@@ -91,6 +114,11 @@
     "validator": "^13.15.15"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^10.1.0",
     "eslint": "^9.37.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
   }
 }

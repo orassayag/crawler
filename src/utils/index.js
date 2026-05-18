@@ -14,7 +14,18 @@ const timeUtils = require('./files/time.utils');
 const validationUtils = require('./files/validation.utils');
 
 module.exports = {
-    applicationUtils, characterUtils, colorUtils, crawlUtils, emailAddressUtils, fileUtils,
-    logUtils, mongoDatabaseUtils, pathUtils, regexUtils, systemUtils, textUtils, timeUtils,
-    validationUtils
+  applicationUtils,
+  characterUtils,
+  colorUtils,
+  crawlUtils,
+  emailAddressUtils,
+  fileUtils,
+  logUtils,
+  mongoDatabaseUtils,
+  pathUtils,
+  regexUtils,
+  systemUtils,
+  textUtils,
+  timeUtils,
+  validationUtils,
 };

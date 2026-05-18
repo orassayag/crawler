@@ -6,6 +6,8 @@ Built in February 2020. This application automates the process of discovering em
 
 ## Features
 
+### Core Capabilities
+
 - 🔍 **Multi-Search Engine Support**: Crawls Bing and Google search results
 - 🤖 **Headless Browser**: Uses Puppeteer.js for real browser-based page rendering
 - ✉️ **Smart Email Validation**: Advanced validation with automatic typo correction
@@ -13,11 +15,21 @@ Built in February 2020. This application automates the process of discovering em
 - 🔄 **Auto-Restart Monitor**: Automatically restarts on failures or timeouts
 - 🎯 **Flexible Goals**: Stop based on email count, time duration, or links crawled
 - 📊 **Real-Time Statistics**: Live console status updates with progress tracking
+
+### Technical Excellence
+
 - 🧪 **Development Mode**: Test with local sources without making real requests
 - 🚫 **Smart Filtering**: Configurable domain and email filters
 - 📝 **Comprehensive Logging**: Logs all emails and links to TXT files
 - 🇮🇱 **Hebrew Support**: Built-in Hebrew search key generation
 - 🧹 **Gibberish Detection**: Filters out randomly generated email addresses
+
+### Developer Experience
+
+- **Real-Time Feedback**: Detailed console status lines for monitoring progress
+- **Resilience**: Automatic restart logic for handling network timeouts or crashes
+- **Testability**: Sandbox and specialized test scripts for validating individual components
+- **Configuration Flexibility**: Modular settings for search, filtering, and goal management
 
 ## Getting Started
 
@@ -30,22 +42,26 @@ Built in February 2020. This application automates the process of discovering em
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/orassayag/crawler.git
 cd crawler
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Ensure MongoDB is running:
+
 ```bash
 mongod
 ```
 
 4. For production mode with Puppeteer:
+
 ```bash
 npm run preload
 ```
@@ -53,6 +69,7 @@ npm run preload
 ### Quick Start
 
 #### Test Mode (Development)
+
 ```bash
 # Edit src/settings/settings.js
 # Set IS_PRODUCTION_MODE: false
@@ -61,6 +78,7 @@ npm start
 ```
 
 #### Production Mode
+
 ```bash
 # Edit src/settings/settings.js
 # Set IS_PRODUCTION_MODE: true
@@ -71,23 +89,48 @@ npm start
 
 Type `y` when prompted to confirm settings and start crawling.
 
+## Usage
+
+### Starting the Application
+
+The main entry point is the monitor script, which ensures the crawler remains active:
+
+```bash
+npm start
+```
+
+### Goal Management
+
+Configure your crawling goals in `src/settings/settings.js`:
+
+- **EMAIL_ADDRESSES**: Stop after finding X valid emails.
+- **MINUTES**: Stop after running for X minutes.
+- **LINKS**: Stop after crawling X links.
+
+### Data Extraction
+
+The application automatically extracts emails from the page source of search results and subsequent links, applying multi-stage validation.
+
 ## Configuration
 
 Edit `src/settings/settings.js` to configure:
 
 ### Core Settings
+
 - `IS_PRODUCTION_MODE`: Use real crawling (`true`) or test mode (`false`)
 - `GOAL_TYPE`: Stop condition - `EMAIL_ADDRESSES`, `MINUTES`, or `LINKS`
 - `GOAL_VALUE`: Target value for the goal
 - `IS_DROP_COLLECTION`: Clear database before starting
 
 ### Search Configuration
+
 - `SEARCH_KEY`: Static search term or `null` for random keys
 - `IS_ADVANCE_SEARCH_KEYS`: Use advanced Hebrew keys or basic static keys
 - Search engines configured in `src/configurations/files/searchEngines.configuration.js`
 - Search keys configured in `src/configurations/files/searchKeys.configuration.js`
 
 ### Filtering
+
 - Email filters: `src/configurations/files/filterEmailAddress.configuration.js`
 - Link filters: `src/configurations/files/filterLinkDomains.configuration.js`
 - File extensions: `src/configurations/files/filterFileExtensions.configuration.js`
@@ -97,6 +140,7 @@ See [INSTRUCTIONS.md](INSTRUCTIONS.md) for detailed configuration options.
 ## Available Scripts
 
 ### Main Application
+
 ```bash
 npm start              # Start crawler with monitoring
 npm run backup         # Backup the project
@@ -104,6 +148,7 @@ npm run domains        # Count email domains from results
 ```
 
 ### Testing Scripts
+
 ```bash
 npm run val            # Validate single email address
 npm run valmany        # Validate multiple email addresses
@@ -156,6 +201,34 @@ crawler/
 └── package.json
 ```
 
+## Architecture
+
+### Directory Structure
+
+The project follows a modular structure:
+
+- **`src/monitor/`**: Process management and auto-restart logic.
+- **`src/scripts/`**: Top-level execution scripts for different tasks.
+- **`src/logics/`**: Orchestration of complex business workflows.
+- **`src/services/`**: Atomic business logic (Puppeteer, MongoDB, Search).
+- **`src/configurations/`**: Static and dynamic rule sets.
+- **`src/settings/`**: Centralized application configuration.
+- **`src/core/`**: Shared models, enums, and data structures.
+
+### Architecture Principles
+
+- **Separation of Concerns**: UI (Monitor) is separated from Business Logic (Logics) and Infrastructure (Services).
+- **Goal-Oriented Design**: Execution is driven by configurable targets (emails, time, links).
+- **Fault Tolerance**: Automatic monitoring and restart mechanisms handle runtime failures.
+- **Stateless Services**: Most services are designed to be stateless, relying on the logic layer for state management.
+
+### Design Patterns
+
+- **Monitor Pattern**: A wrapper process handles the lifecycle of the main crawler.
+- **Service Layer**: Decouples business logic from implementation details like Puppeteer or MongoDB.
+- **Configuration-Driven Development**: Application behavior is primarily controlled through configuration files rather than code changes.
+- **Singleton Pattern**: Core services like database and loggers are managed as singletons.
+
 ## How It Works
 
 ```mermaid
@@ -164,44 +237,44 @@ graph TB
     B --> C{MongoDB Connected?}
     C -->|No| D[Exit with Error]
     C -->|Yes| E[Start Crawl Logic]
-    
+
     E --> F[Generate Search Key]
     F --> G[Build Search Engine URL]
     G --> H[Fetch Search Results with Puppeteer]
-    
+
     H --> I[Extract Links from Results]
     I --> J[Filter Links]
     J --> K{More Links?}
-    
+
     K -->|Yes| L[Fetch Page with Puppeteer]
     L --> M[Extract Email Addresses]
     M --> N[Validate Each Email]
-    
+
     N --> O{Valid Email?}
     O -->|Yes| P[Check if Exists in DB]
     O -->|No| Q{Can Fix Typo?}
-    
+
     Q -->|Yes| P
     Q -->|No| R[Log as Invalid]
-    
+
     P --> S{Exists?}
     S -->|No| T[Save to MongoDB]
     S -->|Yes| U[Skip - Already Exists]
-    
+
     T --> V[Log to TXT File]
     V --> K
     U --> K
     R --> K
-    
+
     K -->|No| W{Goal Reached?}
     W -->|No| X[Next Process]
     W -->|Yes| Y[End & Log Statistics]
-    
+
     X --> F
-    
+
     Y --> Z[Close Puppeteer]
     Z --> AA[Exit Successfully]
-    
+
     subgraph "Email Validation"
         N --> N1[Check Format]
         N1 --> N2[Check Common Typos]
@@ -209,7 +282,7 @@ graph TB
         N3 --> N4[Gibberish Detection]
         N4 --> N5[Final Validation]
     end
-    
+
     subgraph "Monitoring"
         BB[Monitor Process] --> CC{Timeout?}
         CC -->|Yes| DD[Auto Restart]
@@ -233,6 +306,7 @@ graph TB
 ## Email Validation Features
 
 The email validation service includes:
+
 - **Format Validation**: Checks proper email structure
 - **Typo Correction**: Automatically fixes common typos (e.g., `gmial.com` → `gmail.com`)
 - **Domain Validation**: Verifies domain endings and structure
@@ -273,6 +347,7 @@ All output files are saved in `dist/production/YYYYMMDD_HHMMSS/` or `dist/develo
 ## Development
 
 ### Running Tests
+
 ```bash
 # Test email validation
 npm run val
@@ -288,11 +363,21 @@ npm run typos
 ```
 
 ### Development Mode
+
 Set `IS_PRODUCTION_MODE: false` in settings to:
+
 - Use local HTML sources instead of real requests
 - Test without Puppeteer
 - Avoid rate limiting from search engines
 - Debug faster without network delays
+
+## Best Practices
+
+- **Polite Crawling**: Respect robots.txt and avoid aggressive crawling frequencies.
+- **Goal Setting**: Start with smaller goals (e.g., 50 emails) to verify settings before long runs.
+- **Database Maintenance**: Regularly backup your MongoDB collections using `npm run backup`.
+- **Search Key Diversity**: Use advanced search keys to improve discovery rates and avoid search engine pattern detection.
+- **Monitor Output**: Keep an eye on the console status line to ensure the crawler is making progress.
 
 ## Contributing
 
@@ -317,11 +402,11 @@ This application has an MIT license - see the [LICENSE](LICENSE) file for detail
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## Acknowledgments
 

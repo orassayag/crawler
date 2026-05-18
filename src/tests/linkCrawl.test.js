@@ -5,9 +5,9 @@ const puppeteerService = require('../services/files/puppeteer.service');
 const { logUtils } = require('../utils');
 
 (async () => {
-	// ===COUNT & LIMIT=== //
-	const countLimitDataModel = new CountLimitDataModel(settings);
-	await puppeteerService.initiate(countLimitDataModel, true);
-	const pageSource = await puppeteerService.crawl('');
-	logUtils.log(pageSource);
+  // ===COUNT & LIMIT=== //
+  const countLimitDataModel = new CountLimitDataModel(settings);
+  await puppeteerService.initiate(countLimitDataModel, true);
+  const pageSource = await puppeteerService.crawl('');
+  logUtils.log(pageSource);
 })();

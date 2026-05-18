@@ -170,7 +170,7 @@ const settings = {
   // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\node_modules').
   NODE_MODULES_PATH: 'node_modules',
   // Determine the directory of the package.json to update each time switching
-  // from development and production modes (add/remove Puppeeter.js NPM package).
+  // from development and production modes (add/remove Puppeteer.js NPM package).
   // (Working example: 'C:\\Or\\Web\\crawler\\crawler\\package.json').
   PACKAGE_JSON_PATH: 'package.json',
   // Determine the path of the package-lock.json to remove it each time switching from development and production modes.

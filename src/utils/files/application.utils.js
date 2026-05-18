@@ -1,12 +1,11 @@
 const { ModeEnum } = require('../../core/enums');
 
 class ApplicationUtils {
+  constructor() {}
 
-    constructor() { }
-
-    getApplicationMode(isProductionMode) {
-        return isProductionMode ? ModeEnum.PRODUCTION : ModeEnum.DEVELOPMENT;
-    }
+  getApplicationMode(isProductionMode) {
+    return isProductionMode ? ModeEnum.PRODUCTION : ModeEnum.DEVELOPMENT;
+  }
 }
 
 module.exports = new ApplicationUtils();

@@ -1,6 +1,3 @@
-const shortEmailAddressDomainsList = [
-	'i.ua',
-	't.mk'
-];
+const shortEmailAddressDomainsList = ['i.ua', 't.mk'];
 
 module.exports = shortEmailAddressDomainsList;
